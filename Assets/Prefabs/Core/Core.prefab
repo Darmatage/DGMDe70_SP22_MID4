@@ -125,10 +125,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6855656225088141095}
+  - component: {fileID: 6855656225088141088}
   - component: {fileID: 6855656225088141093}
   - component: {fileID: 6855656225088141092}
   - component: {fileID: 6855656225088141091}
-  - component: {fileID: 6855656225088141088}
+  - component: {fileID: 6088643569517010316}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -156,6 +157,17 @@ Transform:
   m_Father: {fileID: 6855656225725931441}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &6855656225088141088
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855656225088141094}
+  m_Enabled: 1
+  m_SortingLayerID: 1128791223
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!50 &6855656225088141093
 Rigidbody2D:
   serializedVersion: 4
@@ -219,7 +231,19 @@ MonoBehaviour:
     m_ActionId: e2a2ee33-192e-4477-9c21-4f8eb284af0f
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6088643569517010316}
+        m_TargetAssemblyTypeName: Game.Control.PlayerInputControl, Assembly-CSharp
+        m_MethodName: PrimaryAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: aa1f8234-e430-4275-a376-c1249ceaf326
     m_ActionName: Player/PrimaryAction[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -281,17 +305,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runningSpeed: 15
   walkingSpeed: 10
---- !u!210 &6855656225088141088
-SortingGroup:
+--- !u!114 &6088643569517010316
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6855656225088141094}
   m_Enabled: 1
-  m_SortingLayerID: 1128791223
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2524e7ab213ed4d53a08a51c25f6a2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitBox_Up: {fileID: 0}
+  hitBox_Bottom: {fileID: 0}
+  hitBox_Left: {fileID: 0}
+  hitBox_Right: {fileID: 0}
+  timeBetweenActions: 0.75
+  canAttack: 1
 --- !u!1 &6855656225337647551
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6855656225337647548
 Transform:
   m_ObjectHideFlags: 0
@@ -595,7 +626,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6302521, y: 1}
+    m_SensorSize: {x: 1.7783333, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -622,7 +653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6855656226117361792
 Transform:
   m_ObjectHideFlags: 0
@@ -982,7 +1013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6855656226708899087
 Transform:
   m_ObjectHideFlags: 0
@@ -1214,7 +1245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6855656226907022786
 Transform:
   m_ObjectHideFlags: 0

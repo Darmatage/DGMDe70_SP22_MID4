@@ -24,7 +24,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -33,7 +32,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +68,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -81,7 +80,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1469,71 +1468,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      char_a_pONE3_0bas_humn_v01_2: -1704120249
-      char_a_pONE3_0bas_humn_v01_10: 1023775326
-      char_a_pONE3_0bas_humn_v01_26: -23272682
-      char_a_pONE3_0bas_humn_v01_21: 790838442
-      char_a_pONE3_0bas_humn_v01_12: -1129169694
-      char_a_pONE3_0bas_humn_v01_62: -272239246
-      char_a_pONE3_0bas_humn_v01_52: 567515240
-      char_a_pONE3_0bas_humn_v01_5: -1682238723
-      char_a_pONE3_0bas_humn_v01_1: 1797362535
-      char_a_pONE3_0bas_humn_v01_56: 1751550160
-      char_a_pONE3_0bas_humn_v01_42: 662674532
-      char_a_pONE3_0bas_humn_v01_45: 1056114200
-      char_a_pONE3_0bas_humn_v01_55: -1505133992
-      char_a_pONE3_0bas_humn_v01_15: -450339856
-      char_a_pONE3_0bas_humn_v01_7: 980933609
-      char_a_pONE3_0bas_humn_v01_14: -931005226
-      char_a_pONE3_0bas_humn_v01_4: -322158897
-      char_a_pONE3_0bas_humn_v01_41: -1815734342
-      char_a_pONE3_0bas_humn_v01_31: -1458374593
-      char_a_pONE3_0bas_humn_v01_16: -1646855558
-      char_a_pONE3_0bas_humn_v01_60: 1184052481
-      char_a_pONE3_0bas_humn_v01_17: 919090748
-      char_a_pONE3_0bas_humn_v01_11: -1683879205
-      char_a_pONE3_0bas_humn_v01_63: 715545895
-      char_a_pONE3_0bas_humn_v01_32: -1263438972
-      char_a_pONE3_0bas_humn_v01_8: -624886778
-      char_a_pONE3_0bas_humn_v01_28: 18312525
-      char_a_pONE3_0bas_humn_v01_29: -2093914359
-      char_a_pONE3_0bas_humn_v01_23: -33731673
-      char_a_pONE3_0bas_humn_v01_58: -392448509
-      char_a_pONE3_0bas_humn_v01_0: 1271403845
-      char_a_pONE3_0bas_humn_v01_9: -2001009825
-      char_a_pONE3_0bas_humn_v01_49: -423936343
-      char_a_pONE3_0bas_humn_v01_3: 447487363
-      char_a_pONE3_0bas_humn_v01_44: 671821936
-      char_a_pONE3_0bas_humn_v01_53: 1217672000
-      char_a_pONE3_0bas_humn_v01_22: -1081975412
-      char_a_pONE3_0bas_humn_v01_18: 163495119
-      char_a_pONE3_0bas_humn_v01_33: 362831819
-      char_a_pONE3_0bas_humn_v01_35: 705191876
-      char_a_pONE3_0bas_humn_v01_48: -390985761
-      char_a_pONE3_0bas_humn_v01_27: 240487143
-      char_a_pONE3_0bas_humn_v01_38: 777898792
-      char_a_pONE3_0bas_humn_v01_36: 1716141462
-      char_a_pONE3_0bas_humn_v01_19: -1326977857
-      char_a_pONE3_0bas_humn_v01_24: -1875311549
-      char_a_pONE3_0bas_humn_v01_37: -348773831
-      char_a_pONE3_0bas_humn_v01_47: 1681028268
-      char_a_pONE3_0bas_humn_v01_51: -1829866809
-      char_a_pONE3_0bas_humn_v01_57: -949138858
-      char_a_pONE3_0bas_humn_v01_34: 1703362650
-      char_a_pONE3_0bas_humn_v01_25: 2052931611
-      char_a_pONE3_0bas_humn_v01_30: 38418015
-      char_a_pONE3_0bas_humn_v01_39: 1974314303
-      char_a_pONE3_0bas_humn_v01_50: -1427710816
-      char_a_pONE3_0bas_humn_v01_6: -2121630053
-      char_a_pONE3_0bas_humn_v01_43: 1851751686
-      char_a_pONE3_0bas_humn_v01_20: 875599198
-      char_a_pONE3_0bas_humn_v01_54: 1375575627
-      char_a_pONE3_0bas_humn_v01_40: 1237572537
-      char_a_pONE3_0bas_humn_v01_13: 684276069
-      char_a_pONE3_0bas_humn_v01_46: 1642425340
-      char_a_pONE3_0bas_humn_v01_59: 552808455
-      char_a_pONE3_0bas_humn_v01_61: 1763846917
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

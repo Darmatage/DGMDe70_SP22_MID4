@@ -24,7 +24,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -33,7 +32,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +68,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -81,7 +80,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1469,71 +1468,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      char_a_pONE3_6tla_sw01_v01_9: -274238472
-      char_a_pONE3_6tla_sw01_v01_46: 1485676380
-      char_a_pONE3_6tla_sw01_v01_17: 1620070992
-      char_a_pONE3_6tla_sw01_v01_20: -4875672
-      char_a_pONE3_6tla_sw01_v01_23: -1561262408
-      char_a_pONE3_6tla_sw01_v01_27: 1044987110
-      char_a_pONE3_6tla_sw01_v01_29: -2013926078
-      char_a_pONE3_6tla_sw01_v01_52: -46017853
-      char_a_pONE3_6tla_sw01_v01_25: -1715907291
-      char_a_pONE3_6tla_sw01_v01_38: 569612300
-      char_a_pONE3_6tla_sw01_v01_8: 624048004
-      char_a_pONE3_6tla_sw01_v01_60: -1398321297
-      char_a_pONE3_6tla_sw01_v01_35: -1488628628
-      char_a_pONE3_6tla_sw01_v01_15: -1030990266
-      char_a_pONE3_6tla_sw01_v01_44: -1419619297
-      char_a_pONE3_6tla_sw01_v01_50: -1375394618
-      char_a_pONE3_6tla_sw01_v01_4: 1407848711
-      char_a_pONE3_6tla_sw01_v01_10: 1681450696
-      char_a_pONE3_6tla_sw01_v01_61: 401381863
-      char_a_pONE3_6tla_sw01_v01_18: -2133397967
-      char_a_pONE3_6tla_sw01_v01_45: 1165028933
-      char_a_pONE3_6tla_sw01_v01_37: 1071477936
-      char_a_pONE3_6tla_sw01_v01_16: -378416271
-      char_a_pONE3_6tla_sw01_v01_24: 872002123
-      char_a_pONE3_6tla_sw01_v01_3: 805942396
-      char_a_pONE3_6tla_sw01_v01_32: -107812803
-      char_a_pONE3_6tla_sw01_v01_30: -1205722441
-      char_a_pONE3_6tla_sw01_v01_19: -1491172890
-      char_a_pONE3_6tla_sw01_v01_31: 538880029
-      char_a_pONE3_6tla_sw01_v01_5: -1614305357
-      char_a_pONE3_6tla_sw01_v01_57: -1937744598
-      char_a_pONE3_6tla_sw01_v01_42: 1583296659
-      char_a_pONE3_6tla_sw01_v01_34: 654407245
-      char_a_pONE3_6tla_sw01_v01_49: -2011480557
-      char_a_pONE3_6tla_sw01_v01_13: -1191724502
-      char_a_pONE3_6tla_sw01_v01_12: -269375619
-      char_a_pONE3_6tla_sw01_v01_11: 338312946
-      char_a_pONE3_6tla_sw01_v01_56: 2003163528
-      char_a_pONE3_6tla_sw01_v01_63: -1979343167
-      char_a_pONE3_6tla_sw01_v01_28: 93279674
-      char_a_pONE3_6tla_sw01_v01_41: 1114533910
-      char_a_pONE3_6tla_sw01_v01_1: 1525828214
-      char_a_pONE3_6tla_sw01_v01_0: 1258342048
-      char_a_pONE3_6tla_sw01_v01_48: -1192563789
-      char_a_pONE3_6tla_sw01_v01_7: 1475902321
-      char_a_pONE3_6tla_sw01_v01_36: 11224318
-      char_a_pONE3_6tla_sw01_v01_55: 1797858099
-      char_a_pONE3_6tla_sw01_v01_14: -1435246131
-      char_a_pONE3_6tla_sw01_v01_2: 861739280
-      char_a_pONE3_6tla_sw01_v01_47: 399143478
-      char_a_pONE3_6tla_sw01_v01_43: 365628215
-      char_a_pONE3_6tla_sw01_v01_59: 660908054
-      char_a_pONE3_6tla_sw01_v01_54: -1124465349
-      char_a_pONE3_6tla_sw01_v01_58: 2047326831
-      char_a_pONE3_6tla_sw01_v01_40: -2126665694
-      char_a_pONE3_6tla_sw01_v01_33: 1477575664
-      char_a_pONE3_6tla_sw01_v01_51: -834624721
-      char_a_pONE3_6tla_sw01_v01_39: 1540573245
-      char_a_pONE3_6tla_sw01_v01_53: 886014562
-      char_a_pONE3_6tla_sw01_v01_62: 325947811
-      char_a_pONE3_6tla_sw01_v01_21: 166936141
-      char_a_pONE3_6tla_sw01_v01_6: -1747593505
-      char_a_pONE3_6tla_sw01_v01_22: -200686016
-      char_a_pONE3_6tla_sw01_v01_26: 981135639
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

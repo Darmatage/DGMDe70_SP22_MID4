@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Game.Core;
 
 namespace Game.Movement
 {
@@ -24,11 +23,11 @@ namespace Game.Movement
         private bool isAttackingLeft;
         private bool isAttackingRight;
 
-        Rigidbody2D playerRigidbody;
+        private Rigidbody2D playerRigidbody;
         public Rigidbody2D GetPlayerRigidbody() { return playerRigidbody; }
 
-        Vector2 moveInput;
-        Vector2 lookDirection = new Vector2(1,0);
+        private Vector2 moveInput;
+        private Vector2 lookDirection = new Vector2(1,0);
         public Vector2 GetPlayerVector2() { return lookDirection; }
         private bool _playerInputIsDisabled = false;
         public bool PlayerInputIsDisabled { get => _playerInputIsDisabled; set => _playerInputIsDisabled = value; }
