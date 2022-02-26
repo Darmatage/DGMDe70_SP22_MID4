@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.EnemyClass;
+using Game.Enums;
+using Game.Utils;
 using UnityEngine;
 
 namespace Game.Combat
@@ -7,25 +10,35 @@ namespace Game.Combat
     public class EnemyHealth : MonoBehaviour
     {
         [SerializeField] float deathTime = 1.2f;
-        [SerializeField] float healthPoints = 10f;
+        LazyValue<float> healthPoints;
         bool isDead = false;
+        private void Awake() {
+            healthPoints = new LazyValue<float>(GetInitialHealth);
+        }
+        private float GetInitialHealth()
+        {
+            return GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.Health);
+        }
+        private void Start()
+        {
+            healthPoints.ForceInit();
+        }
         public bool IsDead()
         {
             return isDead;
         }
-
         public void TakeDamage(float damage)
         {
-            healthPoints = Mathf.Max(healthPoints - damage, 0);
+            healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
 
-            if(healthPoints == 0)
+            if(healthPoints.value == 0)
             {
                 Die();
             }
         }
         public float GetEnemyHealthPoints()
         {
-            return healthPoints;
+            return healthPoints.value;
         }
         private void Die() 
         {

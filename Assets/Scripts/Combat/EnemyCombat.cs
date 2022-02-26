@@ -1,19 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Core;
+using Game.EnemyClass;
+using Game.Enums;
 using Game.Movement;
+using Game.Utils;
 using UnityEngine;
 
 namespace Game.Combat
 {
     public class EnemyCombat : MonoBehaviour, IAction
     {
+        [SerializeField] Transform rangeAttackLaunchPosition = null;
         [SerializeField] float timeBetweenAttacks = 1f;
-        [SerializeField] float attackDamage = 5f;
-        [SerializeField] float attackRange = 1f;
+        EnemyClassSetup enemyClass;
+        LazyValue<EnemyAttackType> enemyAttackType;
+        LazyValue<float> attackDamage;
+        LazyValue<float> attackRange;
         PlayerHealth target;
+        EnemyProjectile projectile = null;
         float timeSinceLastAttack = Mathf.Infinity;
 
+        //LazyValue is used to initialize the values before they are needed as to reduce the posibility of getting null values.
+        private void Awake() {
+            attackDamage = new LazyValue<float>(GetInitialAttackDamage);
+            enemyAttackType = new LazyValue<EnemyAttackType>(GetInitialAttackType);
+            attackRange = new LazyValue<float>(GetInitialAttackRange);
+        }
+        private float GetInitialAttackDamage()
+        {
+            return enemyClass.GetAttackDamage();
+        }
+        private EnemyAttackType GetInitialAttackType()
+        {
+            return enemyClass.GetEnemyAttackType();
+        }
+        private float GetInitialAttackRange()
+        {
+            return enemyClass.GetAttackRange();
+        }
+        private void Start() 
+        {
+            enemyClass = GetComponent<EnemyClassSetup>();
+            attackDamage.ForceInit();
+            enemyAttackType.ForceInit();
+            attackRange.ForceInit(); 
+            SetupProjectile();
+        }
 
         private void Update()
         {
@@ -51,13 +84,40 @@ namespace Game.Combat
         {
             if(target == null) { return; }
 
-            target.TakeDamage(attackDamage);
+            if(enemyAttackType.value == EnemyAttackType.Range && HasProjectile())
+            {
+                LaunchProjectile();
+                print("AI Shoot Projectile");
+            }
+            else
+            {
+                target.TakeDamage(attackDamage.value);
+                print("AI Did Damage");
+            }
 
+        }
+
+        private void SetupProjectile()
+        {
+            if(HasProjectile())
+            {
+                projectile = enemyClass.GetEnemyProjectile();
+            }
+        }
+        private void LaunchProjectile()
+        {
+            EnemyProjectile projectInstance = Instantiate(projectile, rangeAttackLaunchPosition);
+            projectInstance.SetTarget(target, attackDamage.value);
+        }
+
+        private bool HasProjectile()
+        {
+            return enemyClass.GetEnemyProjectile() != null;
         }
 
         private bool GetIsInRange()
         {
-            return Vector2.Distance(transform.position, target.transform.position) < attackRange;
+            return Vector2.Distance(transform.position, target.transform.position) < attackRange.value;
         }
 
         public bool CanAttack(GameObject combatTarget)

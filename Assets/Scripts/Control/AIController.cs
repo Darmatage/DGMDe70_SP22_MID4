@@ -11,12 +11,14 @@ namespace Game.Control
     {
         [SerializeField] float chaseDistance = 10f;
         [SerializeField] float suspicionTime = 2f;
-        EnemyCombat combat;
-        EnemyHealth health;
-        AIMovement movement;
-        GameObject player;
-        Vector2 guardPosition;
-        float timeSinceLastSawlayer = Mathf.Infinity;
+        [SerializeField] bool guardThisPosition = false;
+        private EnemyCombat combat;
+        private EnemyHealth health;
+        private AIMovement movement;
+        private GameObject player;
+        private Vector2 guardPosition;
+        
+        float timeSinceLastSawPlayer = Mathf.Infinity;
         
         private void Awake() 
         {
@@ -32,21 +34,25 @@ namespace Game.Control
             if (health.IsDead()) return;
             if (InAttackRangeOfPlayer() && combat.CanAttack(player))
             {
-                timeSinceLastSawlayer = 0;
+                timeSinceLastSawPlayer = 0;
                 AttackBehaviour();
             }
-            else if (timeSinceLastSawlayer < suspicionTime)
+            else if (timeSinceLastSawPlayer < suspicionTime)
             {
                 //Suspicion State
                 SuspicionBehaviour();
             }
-            else
+            else if (guardThisPosition)
             {
                 //Guard State
                 GuardBehavior();
             }
+            else
+            {
+                WonderBehaviour();
+            }
 
-            timeSinceLastSawlayer += Time.deltaTime;
+            timeSinceLastSawPlayer += Time.deltaTime;
         }
         private void AttackBehaviour()
         {
@@ -59,6 +65,11 @@ namespace Game.Control
         private void GuardBehavior()
         {
             movement.StartMoveAction(guardPosition);
+        }
+        private void WonderBehaviour()
+        {
+            movement.MoveAround();
+
         }
 
         private bool InAttackRangeOfPlayer()

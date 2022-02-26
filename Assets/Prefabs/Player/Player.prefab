@@ -711,6 +711,7 @@ GameObject:
   - component: {fileID: 1754756201425894926}
   - component: {fileID: 1754756201425894921}
   - component: {fileID: 1754756201425894924}
+  - component: {fileID: 7866089091475728823}
   - component: {fileID: 1754756201425894925}
   - component: {fileID: 1754756201425894922}
   - component: {fileID: 1369445465240802469}
@@ -774,6 +775,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &7866089091475728823
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754756201425894927}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.023101984, y: 0.5313534}
+  m_Size: {x: 1.1155174, y: 1.0693125}
+  m_Direction: 1
 --- !u!114 &1754756201425894925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,6 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b98e115c7ece4134ac8b60adc1802a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponDamage: 5
   hitBox_Up: {fileID: 7983928533060004574}
   hitBox_Bottom: {fileID: 4165605950185995821}
   hitBox_Left: {fileID: 1194714910020406516}

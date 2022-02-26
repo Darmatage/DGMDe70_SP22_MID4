@@ -1,27 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Core;
+using Game.EnemyClass;
 using UnityEngine;
 
 namespace Game.Movement
 {
     public class AIMovement : MonoBehaviour, IAction
     {
-        [SerializeField] Transform target;
-        [SerializeField] float enemySpeed = 1f;
+        private float enemySpeed;
         private Vector2 lookDirection = new Vector2(0,0);
         private Rigidbody2D enemyRigidbody;
         private Animator animator;
         private Vector2 posLastFrame;
         private Vector2 posThisFrame;
+        private bool canMove = true;
+        private float randomNum;
+        private Vector2 movement;
 
         private void Awake() 
         {
             enemyRigidbody = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
+            enemySpeed = GetComponent<EnemyClassSetup>().GetMovementSpeed();
+        }
+        private void Start() 
+        {
+            StartCoroutine(ChangeDirectionRoutine());
         }
 
-        void Update()
+        private void Update()
         {
             posLastFrame = posThisFrame;
             posThisFrame = transform.position;
@@ -51,6 +59,21 @@ namespace Game.Movement
 
         public void Cancel()
         {
+        }
+
+        public void MoveAround() {
+            if (!canMove) { return; }
+            enemyRigidbody.MovePosition(enemyRigidbody.position + movement * enemySpeed * Time.fixedDeltaTime);
+        }
+
+        // random movement around map
+        private IEnumerator ChangeDirectionRoutine() {
+            while (true) {
+                randomNum = Random.Range(-5, 5);
+                movement.x = Random.Range(-1, 2);
+                movement.y = Random.Range(-1, 2);
+                yield return new WaitForSeconds(randomNum);
+            }
         }
 
         private void UpdateAnimator()
