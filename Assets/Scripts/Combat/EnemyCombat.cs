@@ -13,13 +13,13 @@ namespace Game.Combat
     {
         [SerializeField] Transform rangeAttackLaunchPosition = null;
         [SerializeField] float timeBetweenAttacks = 1f;
-        EnemyClassSetup enemyClass;
-        LazyValue<EnemyAttackType> enemyAttackType;
-        LazyValue<float> attackDamage;
-        LazyValue<float> attackRange;
-        PlayerHealth target;
-        EnemyProjectile projectile = null;
-        float timeSinceLastAttack = Mathf.Infinity;
+        private EnemyClassSetup enemyClass;
+        private LazyValue<EnemyAttackType> enemyAttackType;
+        private LazyValue<float> attackDamage;
+        private LazyValue<float> attackRange;
+        private PlayerHealth target;
+        private EnemyProjectile projectile = null;
+        private float timeSinceLastAttack = Mathf.Infinity;
 
         //LazyValue is used to initialize the values before they are needed as to reduce the posibility of getting null values.
         private void Awake() {

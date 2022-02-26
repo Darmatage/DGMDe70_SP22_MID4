@@ -12,8 +12,8 @@ namespace Game.Combat
         [SerializeField] float projectileSpeed = 1f;
         [SerializeField] float maxLifeTime = 5f;
         [SerializeField] bool isHoming = false;
-        PlayerHealth target = null;
-        float damage = 0f;
+        private PlayerHealth target = null;
+        private float damage = 0f;
         
         private void Start()
         {
@@ -30,10 +30,8 @@ namespace Game.Combat
                 transform.right = target.transform.position - transform.position;
             }
             transform.Translate(Vector3.right * step);
-            //transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
             
         }
-
         public void SetTarget(PlayerHealth target, float damage)
         {
             this.target = target;
@@ -41,7 +39,6 @@ namespace Game.Combat
 
             Destroy(gameObject, maxLifeTime);
         }
-
         private void OnTriggerEnter2D(Collider2D other) 
         {
             if(other.GetComponent<PlayerHealth>() != target) return;
