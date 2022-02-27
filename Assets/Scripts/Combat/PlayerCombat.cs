@@ -12,10 +12,6 @@ namespace Game.Combat
         [SerializeField] Transform rangeAttackLaunchPosition;
         [SerializeField] PlayerProjectile projectile = null;
         // The hitboxes of our 4 different directions
-        [SerializeField] private GameObject hitBox_Up;
-        [SerializeField] private GameObject hitBox_Bottom;
-        [SerializeField] private GameObject hitBox_Left;
-        [SerializeField] private GameObject hitBox_Right;
 
         private void OnEnable()
         {
@@ -49,49 +45,13 @@ namespace Game.Combat
                 {
                     LaunchProjectile(Vector3.down);
                 }
-
-                
             }
             else
             {
-                ActivateMeleeHitCollider(isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown);
+                GetComponentInChildren<PlayerHitCollidersController>().ActivateMeleeHitCollider(isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown);
             }
             
  
-        }
-
-        private void ActivateMeleeHitCollider(bool isAttackingRight, bool isAttackingLeft, bool isAttackingUp, bool isAttackingDown)
-        {
-            if (isAttackingUp) 
-            {
-                hitBox_Up.SetActive(true);
-            }
-            if (isAttackingRight) 
-            {
-                hitBox_Right.SetActive(true);
-            }
-            if (isAttackingLeft) 
-            {
-                hitBox_Left.SetActive(true);
-            }
-            if (isAttackingDown) 
-            {
-                hitBox_Bottom.SetActive(true);
-            }
-        }
-
-        //Using the animation triggers to reset the Hitboxes
-        public void DeactivateHitCollider()
-        {
-            hitBox_Left.SetActive(false);
-            hitBox_Right.SetActive(false);
-            hitBox_Bottom.SetActive(false);
-            hitBox_Up.SetActive(false);
-        }
-
-        public float GetWeaponDamage()
-        {
-            return weaponDamage;
         }
 
         private void LaunchProjectile(Vector3 launchDirection)

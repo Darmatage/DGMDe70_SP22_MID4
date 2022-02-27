@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750449374149475170}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -745,6 +745,7 @@ GameObject:
   - component: {fileID: 1754756201425894925}
   - component: {fileID: 1754756201425894922}
   - component: {fileID: 1369445465240802469}
+  - component: {fileID: 3598857346608452329}
   - component: {fileID: 1967791513877296652}
   m_Layer: 0
   m_Name: Player
@@ -951,6 +952,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenActions: 0.75
   canAttack: 1
+--- !u!114 &3598857346608452329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754756201425894927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b98e115c7ece4134ac8b60adc1802a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDamage: 5
+  rangeWeapon: 0
+  rangeAttackLaunchPosition: {fileID: 3832917801363187356}
+  projectile: {fileID: 8756327418062448723, guid: d1c6ca2d84cef46b0bda43b27e9daf73, type: 3}
 --- !u!114 &1967791513877296652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,7 +994,7 @@ GameObject:
   - component: {fileID: 1754756201601007448}
   - component: {fileID: 1754756201601007449}
   - component: {fileID: 1754756201601007450}
-  - component: {fileID: 930757160332089479}
+  - component: {fileID: 3323722500077329477}
   m_Layer: 0
   m_Name: weapon
   m_TagString: Untagged
@@ -1087,7 +1104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e2bfd146b8c4d4abe5b46e6bf3fb0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &930757160332089479
+--- !u!114 &3323722500077329477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1096,13 +1113,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1754756201601007452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b98e115c7ece4134ac8b60adc1802a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dc46d0b32de14ee7b2725cd52378100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 5
-  rangeWeapon: 0
-  rangeAttackLaunchPosition: {fileID: 3832917801363187356}
-  projectile: {fileID: 8756327418062448723, guid: d1c6ca2d84cef46b0bda43b27e9daf73, type: 3}
   hitBox_Up: {fileID: 7983928533060004574}
   hitBox_Bottom: {fileID: 4165605950185995821}
   hitBox_Left: {fileID: 1194714910020406516}
