@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22152529ea44463aadb88284a49fbad, type: 3}
+  m_Name: TestWeapon
+  m_EditorClassIdentifier: 
+  itemID: b8c5dc2f-fe8a-401b-879c-6bf9fde78cb1
+  displayName: Test Weapon
+  description: Test Weapon
+  icon: {fileID: 0}
+  pickupPrefab: {fileID: 0}
+  allowedEquipLocation: 0
+  animatorOverride: {fileID: 0}
+  equippedPrefab: {fileID: 0}
+  weaponBaseDamage: 5
+  projectile: {fileID: 0}
+  additiveModifiers:
+  - stat: 0
+    value: 0
+  percentageModifiers: []

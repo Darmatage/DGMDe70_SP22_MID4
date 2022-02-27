@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Enums;
+using Game.Inventories;
 using Game.Movement;
+using Game.Utils;
 using UnityEngine;
 
 namespace Game.Combat
@@ -11,7 +14,27 @@ namespace Game.Combat
         [SerializeField] bool rangeWeapon = false;
         [SerializeField] Transform rangeAttackLaunchPosition;
         [SerializeField] PlayerProjectile projectile = null;
-        // The hitboxes of our 4 different directions
+
+        [SerializeField] Transform weaponPosition = null;
+        [SerializeField] SO_WeaponItem defaultWeapon = null;
+        SO_WeaponItem currentWeaponConfig;
+        //LazyValue<PlayerWeaponPrefab> currentWeapon;
+        Equipment equipment;
+
+        private void Awake() 
+        {
+            currentWeaponConfig = defaultWeapon;
+            //currentWeapon = new LazyValue<PlayerWeaponPrefab>(SetupDefaultWeapon);
+            equipment = GetComponent<Equipment>();
+            if(equipment)
+            {
+                equipment.equipmentUpdated += UpdateWeapon;
+            }
+        }
+        // private PlayerWeaponPrefab SetupDefaultWeapon()
+        // {
+        //     return AttachWeapon(defaultWeapon);
+        // }
 
         private void OnEnable()
         {
@@ -22,6 +45,33 @@ namespace Game.Combat
         {
             EventHandler.PlayerInputEvent -= SetAttackDirection;
         }
+        // void Start() 
+        // {
+        //     currentWeapon.ForceInit();
+        // }
+        public void EquipWeapon(SO_WeaponItem weapon)
+        {
+            currentWeaponConfig = weapon;
+            //currentWeapon.value = AttachWeapon(weapon);
+        }
+
+        private void UpdateWeapon()
+        {
+            var weapon = equipment.GetItemInSlot(EquipLocation.Hand_Right) as SO_WeaponItem;
+            if (weapon == null)
+            {
+                EquipWeapon(defaultWeapon);
+            }
+            else
+            {
+                EquipWeapon(weapon);
+            }
+        }
+        // private PlayerWeaponPrefab AttachWeapon(SO_WeaponItem weapon)
+        // {
+        //     //Animator animator = GetComponent<Animator>();
+        //     return weapon.Spawn(weaponPosition, animator);
+        // }
 
         private void SetAttackDirection(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle,
             bool isAttackingRight, bool isAttackingLeft, bool isAttackingUp, bool isAttackingDown,
@@ -50,8 +100,6 @@ namespace Game.Combat
             {
                 GetComponentInChildren<PlayerHitCollidersController>().ActivateMeleeHitCollider(isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown);
             }
-            
- 
         }
 
         private void LaunchProjectile(Vector3 launchDirection)

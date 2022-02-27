@@ -14,7 +14,7 @@ namespace Game.Combat
         [SerializeField] Transform rangeAttackLaunchPosition = null;
         [SerializeField] float timeBetweenAttacks = 1f;
         private EnemyClassSetup enemyClass;
-        private LazyValue<EnemyAttackType> enemyAttackType;
+        private LazyValue<WeaponAttackType> enemyAttackType;
         private LazyValue<float> attackDamage;
         private LazyValue<float> attackRange;
         private PlayerHealth target;
@@ -24,14 +24,14 @@ namespace Game.Combat
         //LazyValue is used to initialize the values before they are needed as to reduce the posibility of getting null values.
         private void Awake() {
             attackDamage = new LazyValue<float>(GetInitialAttackDamage);
-            enemyAttackType = new LazyValue<EnemyAttackType>(GetInitialAttackType);
+            enemyAttackType = new LazyValue<WeaponAttackType>(GetInitialAttackType);
             attackRange = new LazyValue<float>(GetInitialAttackRange);
         }
         private float GetInitialAttackDamage()
         {
             return enemyClass.GetAttackDamage();
         }
-        private EnemyAttackType GetInitialAttackType()
+        private WeaponAttackType GetInitialAttackType()
         {
             return enemyClass.GetEnemyAttackType();
         }
@@ -84,7 +84,7 @@ namespace Game.Combat
         {
             if(target == null) { return; }
 
-            if(enemyAttackType.value == EnemyAttackType.Range && HasProjectile())
+            if(enemyAttackType.value == WeaponAttackType.Range && HasProjectile())
             {
                 LaunchProjectile();
                 print("AI Shoot Projectile");

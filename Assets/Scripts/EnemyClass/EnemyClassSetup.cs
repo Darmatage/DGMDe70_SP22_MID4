@@ -11,25 +11,25 @@ namespace Game.EnemyClass
         [Range(1,5)]
         [SerializeField] int difficultyLevel = 1;
         [SerializeField] EnemyType enemyType;
-        [SerializeField] EnemyAttackType enemyAttackType;
+        [SerializeField] WeaponAttackType enemyAttackType;
         [SerializeField] float movementSpeed = 1f;
         [SerializeField] SO_EnemyClassStats enemyClassStats = null;
         public float GetStat(EnemyBaseStat stat)
         {
             return (GetBaseStat(stat));
         }
-        public EnemyAttackType GetEnemyAttackType()
+        public WeaponAttackType GetEnemyAttackType()
         {
             return enemyAttackType;
         }
         public float GetAttackDamage()
         {
             float addedAttackDamage;
-            if(enemyAttackType == EnemyAttackType.Melee)
+            if(enemyAttackType == WeaponAttackType.Melee)
             {
                 addedAttackDamage = enemyClassStats.GetEnemyMeleeAttackDetails(enemyType).attackDamage;
             }
-            else if (enemyAttackType == EnemyAttackType.Range)
+            else if (enemyAttackType == WeaponAttackType.Range)
             {
                 addedAttackDamage = enemyClassStats.GetEnemyRangeAttackDetails(enemyType).attackDamage;
             }
@@ -43,11 +43,11 @@ namespace Game.EnemyClass
         public float GetAttackRange()
         {
             float attackRange = 0f;
-            if(enemyAttackType == EnemyAttackType.Melee)
+            if(enemyAttackType == WeaponAttackType.Melee)
             {
                 attackRange = enemyClassStats.GetEnemyMeleeAttackDetails(enemyType).attackRange;
             }
-            else if (enemyAttackType == EnemyAttackType.Range)
+            else if (enemyAttackType == WeaponAttackType.Range)
             {
                 attackRange = enemyClassStats.GetEnemyRangeAttackDetails(enemyType).attackRange;
             }
