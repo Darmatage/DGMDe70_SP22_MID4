@@ -13,15 +13,17 @@ public class GameHandler : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        bool isMonster = player.GetComponent<PlayerManager>().hasIsMonster();
-
         string playerState = "";
-        if (isMonster) {
+        if (isMonster()) {
             playerState = "monster";
         } else {
             playerState = "human";
         }
 
         Debug.Log("Player is " + playerState); 
+    }
+
+    public bool isMonster() {
+        return player.GetComponent<PlayerManager>().hasIsMonster();
     }
 }

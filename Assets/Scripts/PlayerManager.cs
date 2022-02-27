@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public GameObject thumbnail;
     public GameObject playerObject;
     public GameObject monsterObject;
     public GameObject currentObject;
@@ -12,6 +13,9 @@ public class PlayerManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        // thumbnail is only used so we have a reference in the scene editor
+        Destroy(thumbnail);
+
         currentObject = Instantiate(playerObject, transform.position, Quaternion.identity);
         currentObject.transform.SetParent(gameObject.transform);
         isMonster = false;    
