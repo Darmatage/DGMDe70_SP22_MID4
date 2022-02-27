@@ -88,6 +88,8 @@ namespace Game.Movement
             xInput = moveInput.x;
             yInput = moveInput.y;
 
+            Debug.Log("PlayerMovementInput: " + xInput + ", " + yInput);
+
             if (yInput != 0 && xInput != 0)
             {
                 xInput = xInput * 0.71f;

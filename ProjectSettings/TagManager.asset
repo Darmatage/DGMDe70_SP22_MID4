@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Projectiles
+  - Room_Root
   layers:
   - Default
   - TransparentFX
