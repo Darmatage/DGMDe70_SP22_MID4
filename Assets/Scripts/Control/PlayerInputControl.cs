@@ -102,7 +102,7 @@ namespace Game.Control
         private void CallAnimationEvent()
         {
             // Send event to any listeners for player movement input
-            EventHandler.CallMovementEvent(0f, 0f, false, false, false,
+            EventHandler.CallPlayerInputEvent(0f, 0f, false, false, false,
                 isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
                 false, false, false, false);
         }

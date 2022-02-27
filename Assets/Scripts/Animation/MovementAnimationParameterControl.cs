@@ -15,12 +15,12 @@ namespace Game.Animation
 
         private void OnEnable()
         {
-            EventHandler.MovementEvent += SetAnimationParameters;
+            EventHandler.PlayerInputEvent += SetAnimationParameters;
         }
 
         private void OnDisable()
         {
-            EventHandler.MovementEvent -= SetAnimationParameters;
+            EventHandler.PlayerInputEvent -= SetAnimationParameters;
         }
 
         private void SetAnimationParameters(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle,

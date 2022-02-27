@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &750449374149475170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3832917801363187356}
+  m_Layer: 0
+  m_Name: ProjectileLaunchLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3832917801363187356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750449374149475170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1754756201601007451}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1194714910020406516
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +1000,7 @@ Transform:
   - {fileID: 3073838139970709889}
   - {fileID: 1099817305183830573}
   - {fileID: 2103217932886192098}
+  - {fileID: 3832917801363187356}
   m_Father: {fileID: 1754756201425894926}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1069,6 +1100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDamage: 5
+  rangeWeapon: 0
+  rangeAttackLaunchPosition: {fileID: 3832917801363187356}
+  projectile: {fileID: 8756327418062448723, guid: d1c6ca2d84cef46b0bda43b27e9daf73, type: 3}
   hitBox_Up: {fileID: 7983928533060004574}
   hitBox_Bottom: {fileID: 4165605950185995821}
   hitBox_Left: {fileID: 1194714910020406516}

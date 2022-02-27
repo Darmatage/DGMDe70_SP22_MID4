@@ -57,7 +57,7 @@ namespace Game.Movement
                 PlayerRunInput();
 
                 // Send event to any listeners for player movement input
-                EventHandler.CallMovementEvent(xInput, yInput, isWalking, isRunning, isIdle,
+                EventHandler.CallPlayerInputEvent(xInput, yInput, isWalking, isRunning, isIdle,
                     isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
                     false, false, false, false);
                 }
@@ -144,7 +144,7 @@ namespace Game.Movement
             ResetMovement();
 
             // Send event to any listeners for player movement input
-                EventHandler.CallMovementEvent(xInput, yInput, isWalking, isRunning, isIdle,
+                EventHandler.CallPlayerInputEvent(xInput, yInput, isWalking, isRunning, isIdle,
                     isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
                     false, false, false, false);
         }

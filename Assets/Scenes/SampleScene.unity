@@ -290,6 +290,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5446185386014101934, guid: 6785cf84157b44e978676b1ac28d920f, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 8756327418062448723, guid: d1c6ca2d84cef46b0bda43b27e9daf73, type: 3}
+    - target: {fileID: 5446185386014101934, guid: 6785cf84157b44e978676b1ac28d920f, type: 3}
+      propertyPath: rangeWeapon
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6855656225088141093, guid: 6785cf84157b44e978676b1ac28d920f, type: 3}
       propertyPath: m_Constraints
       value: 4
