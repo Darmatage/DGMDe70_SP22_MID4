@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject monsterObject;
     public GameObject currentObject;
 
-    public bool isMonster;
+    private bool isMonster;
 
     // Start is called before the first frame update
     void Start() {
@@ -29,5 +29,9 @@ public class PlayerManager : MonoBehaviour
             }
             currentObject.transform.SetParent(gameObject.transform);
         }
+    }
+
+    public bool hasIsMonster() {
+        return isMonster;
     }
 }
