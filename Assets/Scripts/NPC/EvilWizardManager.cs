@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using Story;
 
-public class WizardManager : MonoBehaviour
-{
+public class EvilWizardManager : MonoBehaviour
+{    
     public GameObject speechBubble;
     public GameObject textField;
-    public DialogueScene01 dialogueScene01 = new DialogueScene01();
+    public DialogueScene02 dialogueScene02 = new DialogueScene02();
 
     private bool canInteract;
 
@@ -30,8 +30,9 @@ public class WizardManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
                 speechBubble.SetActive(true);
                 Text textBox = textField.GetComponent<Text>();
-                textBox.text = dialogueScene01.hello();
+                textBox.text = dialogueScene02.hello();
             }
         }
     }
+
 }

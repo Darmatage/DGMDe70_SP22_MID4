@@ -16,6 +16,5 @@ public class GameHandler : MonoBehaviour
 
      public bool isMonster() {
         return player.hasIsMonster();
-        // return player.GetComponent<PlayerManager>().hasIsMonster();
     }
 }
