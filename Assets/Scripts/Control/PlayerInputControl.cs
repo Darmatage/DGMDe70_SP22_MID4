@@ -10,9 +10,10 @@ namespace Game.Control
     {
         [SerializeField] float timeBetweenActions = 0.75f; //move this to settings
 
-        public bool canAttack = true;
-        float timeSinceLastAction = Mathf.Infinity;
-        Vector2 playerDirection = new Vector2(0,0);
+        private bool canAttack = true;
+        private bool isGamePaused = false;
+        private float timeSinceLastAction = Mathf.Infinity;
+        private Vector2 playerDirection = new Vector2(0,0);
         
         
         //Animation verables
@@ -33,6 +34,15 @@ namespace Game.Control
         {
             playerDirection = GetComponent<PlayerMovement>().GetPlayerVector2();
         }
+        private void OnEnable()
+        {
+            EventHandler.ActiveGameUI += SetIsActiveGameUI;
+        }
+
+        private void OnDisable()
+        {
+            EventHandler.ActiveGameUI -= SetIsActiveGameUI;
+        }
         private void Start()
         {
             ResetAnimationTriggers();
@@ -45,7 +55,7 @@ namespace Game.Control
 
         public void PrimaryAction(InputAction.CallbackContext value)
         {
-            if (value.started)
+            if (value.started && !isGamePaused)
             {
                 DoPrimaryAction();
             }
@@ -53,7 +63,7 @@ namespace Game.Control
 
         public void SecondaryAction(InputAction.CallbackContext value)
         {
-            if (value.started)
+            if (value.started && !isGamePaused)
             {
                 //DoSecondaryAction();
             }
@@ -100,6 +110,11 @@ namespace Game.Control
 
             isMakingAttack = true;
             timeSinceLastAction = 0;
+        }
+
+        private void SetIsActiveGameUI(bool setGamePaused)
+        {
+            isGamePaused = setGamePaused;
         }
 
         private void CallAnimationEvent()

@@ -24,4 +24,15 @@ public class EventHandler
                 idleUp, idleDown, idleLeft, idleRight);
     }
 
+    // Raycast interactable objects
+    public static event Action<bool> ActiveGameUI;
+
+    public static void CallActiveGameUI(bool isGamePaused)
+    {
+        if (ActiveGameUI != null)
+        {
+            ActiveGameUI(isGamePaused);
+        }
+    }
+
 }

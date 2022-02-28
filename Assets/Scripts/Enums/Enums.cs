@@ -73,7 +73,8 @@ namespace Game.Enums
         Gloves,
         Legs,
         Boots,
-        Weapon
+        Weapon,
+        Shield
     }
 
 }

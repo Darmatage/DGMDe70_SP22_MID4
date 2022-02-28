@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: TestWeapon
   m_EditorClassIdentifier: 
   itemID: b8c5dc2f-fe8a-401b-879c-6bf9fde78cb1
-  displayName: Test Weapon
+  displayName: Test Weapon - Range
   description: Test Weapon
-  icon: {fileID: 0}
-  pickupPrefab: {fileID: 0}
+  icon: {fileID: -4766862809770137684, guid: ba419f44b73fe46bd8689edc1d95a0de, type: 3}
+  pickupPrefab: {fileID: 1644453927555417061, guid: 62c5efee5cd3d4b3b97460aa4e44ee21, type: 3}
   allowedEquipLocation: 6
   weaponBaseDamage: 5
   projectile: {fileID: 8756327418062448723, guid: d1c6ca2d84cef46b0bda43b27e9daf73, type: 3}

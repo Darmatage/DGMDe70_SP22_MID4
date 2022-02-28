@@ -8,7 +8,7 @@ namespace Game.UI
     public class ShowHideUI : MonoBehaviour
     {
         [SerializeField] GameObject uiContainer = null;
-        bool isGamePaused = false;
+        private bool isGamePaused = false;
         private void Start()
         {
             uiContainer.SetActive(false);
@@ -46,6 +46,7 @@ namespace Game.UI
             {
                 isGamePaused = true;
             }
+            EventHandler.CallActiveGameUI(isGamePaused);
         }
     }
 }

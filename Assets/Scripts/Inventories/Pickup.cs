@@ -11,6 +11,7 @@ namespace Game.Inventories
         // STATE
         SO_InventoryItem item;
         int number = 1;
+        GameObject player;
 
         // CACHED REFERENCE
         Inventory inventory;
@@ -19,7 +20,7 @@ namespace Game.Inventories
 
         private void Awake()
         {
-            var player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.FindGameObjectWithTag("Player");
             inventory = player.GetComponent<Inventory>();
         }
 
@@ -59,9 +60,15 @@ namespace Game.Inventories
             }
         }
 
-        public bool CanBePickedUp()
+        public bool InventoryHasSpace()
         {
             return inventory.HasSpaceFor(item);
         }
+
+        public bool IsPlayerPickup(GameObject playerCheck)
+        {
+            return player == playerCheck;
+        }
+
     }
 }

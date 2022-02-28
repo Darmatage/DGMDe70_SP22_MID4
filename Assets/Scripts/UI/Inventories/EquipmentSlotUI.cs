@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Game.Core.UI.Dragging;
 using Game.Inventories;
 using Game.Enums;
+using TMPro;
 
 namespace Game.UI.Inventories
 {
@@ -16,7 +17,9 @@ namespace Game.UI.Inventories
         // CONFIG DATA
 
         [SerializeField] InventoryItemIcon icon = null;
-        [SerializeField] EquipLocation equipLocation = EquipLocation.Weapon;
+        [SerializeField] EquipLocation equipLocation = EquipLocation.None;
+        [SerializeField] GameObject slotTextContainer = null;
+        [SerializeField] TextMeshProUGUI slotText = null;
 
         // CACHE
         Equipment playerEquipment;
@@ -32,6 +35,7 @@ namespace Game.UI.Inventories
 
         private void Start() 
         {
+            slotText.text = equipLocation.ToString();
             RedrawUI();
         }
 
@@ -49,6 +53,7 @@ namespace Game.UI.Inventories
 
         public void AddItems(SO_InventoryItem item, int number)
         {
+            slotTextContainer.SetActive(false);
             playerEquipment.AddItem(equipLocation, (SO_EquipableItem) item);
         }
 
@@ -72,6 +77,7 @@ namespace Game.UI.Inventories
         public void RemoveItems(int number)
         {
             playerEquipment.RemoveItem(equipLocation);
+            slotTextContainer.SetActive(true);
         }
 
         // PRIVATE

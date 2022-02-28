@@ -751,6 +751,7 @@ GameObject:
   - component: {fileID: 3415857174291419149}
   - component: {fileID: 4363370716175921872}
   - component: {fileID: 2821492082033080868}
+  - component: {fileID: 3158027145902821977}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -923,6 +924,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 66240c31-ccb7-48b4-8ad9-a9eae904a1a5
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7037171178500257799, guid: 07dc30b6f1bbb4147acd5fd5555a18f5, type: 3}
+        m_TargetAssemblyTypeName: Game.UI.ShowHideUI, Assembly-CSharp
+        m_MethodName: Inventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b8165d1b-166e-46aa-8220-d4c7f7f341b6
+    m_ActionName: Player/Inventory[/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -955,7 +972,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenActions: 0.75
-  canAttack: 1
 --- !u!114 &3598857346608452329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,6 +1052,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySize: 8
+--- !u!114 &3158027145902821977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754756201425894927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9147890fa4c419ca9a35ade8564d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatterDistance: 4
 --- !u!1 &1754756201601007452
 GameObject:
   m_ObjectHideFlags: 0
