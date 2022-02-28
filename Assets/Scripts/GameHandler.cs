@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
-    private GameObject player;
+    private PlayerManager player;
 
     // UI Elements
-    public GameObject interactNotification;
     public GameObject speechBubble;
 
     void Awake() {
-        player = GameObject.FindWithTag("Player");
-        interactNotification.SetActive(false);
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
         speechBubble.SetActive(false);
     }
 
      public bool isMonster() {
-        return player.GetComponent<PlayerManager>().hasIsMonster();
+        return player.hasIsMonster();
+        // return player.GetComponent<PlayerManager>().hasIsMonster();
     }
 }
