@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Story {
     public class DialogueScene02 {
         public string hello() {
-            return "Ahhhhhh, fresh meat!";
+            return "I see you met my brother!";
         }
     }
 }

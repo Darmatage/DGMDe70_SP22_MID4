@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Story {
     public class DialogueScene01 {
         public string hello() {
-            return "Ho there, wanderer. Stay thy course a while and indulge an old man.";
+            return "A human! Why it’s been years since your kind has made its way to these parts.";
         }
     }
 }
