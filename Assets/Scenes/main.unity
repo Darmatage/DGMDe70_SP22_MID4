@@ -236,10 +236,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2243373836267694617, guid: 07bca1b09d08243e9947666d51916955, type: 3}
+      propertyPath: m_Size.x
+      value: 0.96691686
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243373836267694617, guid: 07bca1b09d08243e9947666d51916955, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.037000686
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243373836267694617, guid: 07bca1b09d08243e9947666d51916955, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.10545552
+      objectReference: {fileID: 0}
     - target: {fileID: 5543126388519751069, guid: 07bca1b09d08243e9947666d51916955, type: 3}
       propertyPath: m_Name
       value: EvilWizard
       objectReference: {fileID: 0}
+    - target: {fileID: 5990245934349576261, guid: 07bca1b09d08243e9947666d51916955, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6310e0ab154f047a98d6f917ca1da5e4, type: 3}
     - target: {fileID: 7888562454341748639, guid: 07bca1b09d08243e9947666d51916955, type: 3}
       propertyPath: textField
       value: 
@@ -483,6 +499,18 @@ PrefabInstance:
     - target: {fileID: 2419816002067204258, guid: f36ea2cc21b714673a8641b8fc4c6dfe, type: 3}
       propertyPath: m_Name
       value: Wizard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240423347271364390, guid: f36ea2cc21b714673a8641b8fc4c6dfe, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9312229
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240423347271364390, guid: f36ea2cc21b714673a8641b8fc4c6dfe, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.04268837
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240423347271364390, guid: f36ea2cc21b714673a8641b8fc4c6dfe, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.10545552
       objectReference: {fileID: 0}
     - target: {fileID: 8367631440745114260, guid: f36ea2cc21b714673a8641b8fc4c6dfe, type: 3}
       propertyPath: m_RootOrder
