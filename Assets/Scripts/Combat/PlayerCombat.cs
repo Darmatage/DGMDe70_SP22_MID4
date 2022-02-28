@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Game.Enums;
 using Game.Inventories;
 using Game.Movement;
+using Game.PlayerClass;
 using Game.Utils;
 using UnityEngine;
 
@@ -10,12 +11,8 @@ namespace Game.Combat
 {
     public class PlayerCombat : MonoBehaviour
     {
-        [SerializeField] float weaponDamage = 5f;
-        [SerializeField] bool rangeWeapon = false;
-        [SerializeField] Transform rangeAttackLaunchPosition;
-        [SerializeField] PlayerProjectile projectile = null;
 
-        [SerializeField] Transform weaponPosition = null;
+        [SerializeField] Transform rangeAttackLaunchPosition;
         [SerializeField] SO_WeaponItem defaultWeapon = null;
         SO_WeaponItem currentWeaponConfig;
         //LazyValue<PlayerWeaponPrefab> currentWeapon;
@@ -57,7 +54,7 @@ namespace Game.Combat
 
         private void UpdateWeapon()
         {
-            var weapon = equipment.GetItemInSlot(EquipLocation.Hand_Right) as SO_WeaponItem;
+            var weapon = equipment.GetItemInSlot(EquipLocation.Weapon) as SO_WeaponItem;
             if (weapon == null)
             {
                 EquipWeapon(defaultWeapon);
@@ -73,39 +70,40 @@ namespace Game.Combat
         //     return weapon.Spawn(weaponPosition, animator);
         // }
 
-        private void SetAttackDirection(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle,
+        private void SetAttackDirection(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle, bool isMakingAttack,
             bool isAttackingRight, bool isAttackingLeft, bool isAttackingUp, bool isAttackingDown,
             bool idleUp, bool idleDown, bool idleLeft, bool idleRight)
         {
-            if(rangeWeapon)
+            if(!isMakingAttack) return;
+
+            float damage = GetComponent<PlayerBaseStats>().GetStat(PlayerStats.BaseDamage);
+            //Debug.Log("Attack Damage: " + damage);
+
+            if(currentWeaponConfig.HasProjectile())
             {
+                Vector3 launchDirection = new Vector3(0.0f, 0.0f, 0.0f);
                 if (isAttackingUp) 
                 {
-                    LaunchProjectile(Vector3.up);
+                    launchDirection = Vector3.up;
                 }
                 if (isAttackingRight) 
                 {
-                    LaunchProjectile(Vector3.right);
+                    launchDirection = Vector3.right;
                 }
                 if (isAttackingLeft) 
                 {
-                    LaunchProjectile(Vector3.left);
+                    launchDirection = Vector3.left;
                 }
                 if (isAttackingDown) 
                 {
-                    LaunchProjectile(Vector3.down);
+                    launchDirection = Vector3.down;
                 }
+                currentWeaponConfig.LaunchProjectile(rangeAttackLaunchPosition, launchDirection, damage);
             }
             else
             {
                 GetComponentInChildren<PlayerHitCollidersController>().ActivateMeleeHitCollider(isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown);
             }
-        }
-
-        private void LaunchProjectile(Vector3 launchDirection)
-        {
-            PlayerProjectile projectInstance = Instantiate(projectile, rangeAttackLaunchPosition.position, Quaternion.identity, GameObject.FindGameObjectWithTag(Tags.ProjectilesTag).transform);
-            projectInstance.SetTarget(launchDirection, weaponDamage);
         }
 
     }

@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a22152529ea44463aadb88284a49fbad, type: 3}
-  m_Name: TestWeapon
+  m_Name: Unarmed
   m_EditorClassIdentifier: 
-  itemID: b8c5dc2f-fe8a-401b-879c-6bf9fde78cb1
-  displayName: Test Weapon
-  description: Test Weapon
+  itemID: 6ea60dd7-3bcb-41a5-802b-b3cdd5341392
+  displayName: 
+  description: 
   icon: {fileID: 0}
   pickupPrefab: {fileID: 0}
   allowedEquipLocation: 6
   weaponBaseDamage: 5
-  projectile: {fileID: 8756327418062448723, guid: d1c6ca2d84cef46b0bda43b27e9daf73, type: 3}
+  projectile: {fileID: 0}
   additiveModifiers: []
-  percentageModifiers: []
+  percentageModifiers:
+  - stat: 4
+    value: 50

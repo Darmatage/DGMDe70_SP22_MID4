@@ -23,7 +23,7 @@ namespace Game.Animation
             EventHandler.PlayerInputEvent -= SetAnimationParameters;
         }
 
-        private void SetAnimationParameters(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle,
+        private void SetAnimationParameters(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle, bool isMakingAttack,
             bool isAttackingRight, bool isAttackingLeft, bool isAttackingUp, bool isAttackingDown,
             bool idleUp, bool idleDown, bool idleLeft, bool idleRight)
         {

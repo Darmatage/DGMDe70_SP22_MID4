@@ -1,64 +1,68 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using Game.Utils;
 using Game.Enums;
+using Game.Utils;
+using UnityEngine;
 
 namespace Game.PlayerClass
 {
     public class PlayerBaseStats : MonoBehaviour
     {
-        [Range(1,10)]
+        [Range(1, 99)]
         [SerializeField] int startingLevel = 1;
-        [SerializeField] CharacterClasses characterClasses;
-        [SerializeField] Progression progression = null;
-        [SerializeField] bool shouldUseModifiers = false;
-        LazyValue<int> currentLevel;
-        Experience experience;
+        [SerializeField] CharacterClasses characterClass;
+        [SerializeField] SO_PlayerProgression progression = null;
         public event Action onLevelUp;
+        LazyValue<int> currentLevel;
 
-        private void Awake() 
-        {
-            experience = GetComponent<Experience>();
+        PlayerExperience experience;
+
+        private void Awake() {
+            experience = GetComponent<PlayerExperience>();
             currentLevel = new LazyValue<int>(CalculateLevel);
         }
+
         private void Start() 
         {
             currentLevel.ForceInit();
         }
-        private void OnEnable() 
-        {
+
+        private void OnEnable() {
             if (experience != null)
             {
                 experience.onExperienceGained += UpdateLevel;
             }
         }
-        private void OnDisable() 
-        {
+
+        private void OnDisable() {
             if (experience != null)
             {
                 experience.onExperienceGained -= UpdateLevel;
             }
         }
-        private void UpdateLevel()  //Recalculates Level on gain level not on update
+
+        private void UpdateLevel() 
         {
             int newLevel = CalculateLevel();
             if (newLevel > currentLevel.value)
             {
                 currentLevel.value = newLevel;
-                print("Levelled Up!");
                 onLevelUp();
             }
         }
+
         public float GetStat(PlayerStats stat)
         {
+            // Debug.Log("Base Stat: " + GetBaseStat(stat));
+            // Debug.Log("Additive Modifier: " + GetAdditiveModifier(stat));
+            // Debug.Log("Percentage Modifier: " + GetPercentageModifier(stat));
             return (GetBaseStat(stat) + GetAdditiveModifier(stat)) * (1 + GetPercentageModifier(stat)/100);
         }
 
         private float GetBaseStat(PlayerStats stat)
         {
-            return progression.GetStat(stat, characterClasses, GetLevel());
+            return progression.GetStat(stat, characterClass, GetLevel());
         }
 
         public int GetLevel()
@@ -81,8 +85,6 @@ namespace Game.PlayerClass
 
         private float GetPercentageModifier(PlayerStats stat)
         {
-            if (!shouldUseModifiers) return 0;
-
             float total = 0;
             foreach (IModifierProvider provider in GetComponents<IModifierProvider>())
             {
@@ -96,22 +98,21 @@ namespace Game.PlayerClass
 
         private int CalculateLevel()
         {
-            Experience experience = GetComponent<Experience>();
+            PlayerExperience experience = GetComponent<PlayerExperience>();
             if (experience == null) return startingLevel;
 
-            float currentXP = experience.GetExperiencePoints();
-            int penultimateLevel = progression.GetLevels(Stat.ExperienceToLevelUp, characterClasses);
-
+            float currentXP = experience.GetPoints();
+            int penultimateLevel = progression.GetLevels(PlayerStats.ExperienceToLevelUp, characterClass);
             for (int level = 1; level <= penultimateLevel; level++)
             {
-                float XPToLevelUp = progression.GetStat(Stat.ExperienceToLevelUp, characterClasses, level);
-                if(XPToLevelUp > currentXP)
+                float XPToLevelUp = progression.GetStat(PlayerStats.ExperienceToLevelUp, characterClass, level);
+                if (XPToLevelUp > currentXP)
                 {
                     return level;
                 }
             }
+
             return penultimateLevel + 1;
         }
-
     }
 }

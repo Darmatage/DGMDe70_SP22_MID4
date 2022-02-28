@@ -9,9 +9,10 @@ namespace Game.Inventories
     [CreateAssetMenu(fileName = "Weapon", menuName = "Game/Inventory/New Weapon Item")]
     public class SO_WeaponItem : SO_EquipableItem, IModifierProvider
     {
-        [Tooltip("To change which animation is played based on the equiped weapon.")]
-        [SerializeField] AnimatorOverrideController animatorOverride = null;
-        [SerializeField] PlayerWeaponPrefab equippedPrefab = null; //<- Need to remove this 
+        //[Tooltip("To change which animation is played based on the equiped weapon.")]
+        //[SerializeField] AnimatorOverrideController animatorOverride = null; //<- Need to add in the override control system
+        
+        //[SerializeField] PlayerWeaponPrefab equippedPrefab = null; //<- Need to remove this 
         [Tooltip("The weapons base damage.")]
         [SerializeField] float weaponBaseDamage = 5f;
 
@@ -63,11 +64,12 @@ namespace Game.Inventories
         {
             return projectile != null;
         }
-        // public void LaunchProjectile(Transform weaponPosition, Health target, GameObject instigator, float calculatedDamage)
-        // {
-        //     Projectile projectInstance = Instantiate(projectile, weaponPosition);
-        //     projectInstance.SetTarget(target, instigator, calculatedDamage);
-        // }
+
+        public void LaunchProjectile(Transform weaponPosition, Vector3 launchDirection, float calculatedDamage)
+        {
+            PlayerProjectile projectInstance = Instantiate(projectile, weaponPosition.position, Quaternion.identity, GameObject.FindGameObjectWithTag(Tags.ProjectilesTag).transform);
+            projectInstance.SetTarget(launchDirection, calculatedDamage);
+        }
         public float GetDamage()
         {
             return weaponBaseDamage;

@@ -27,11 +27,9 @@ namespace Game.Enums
         Health,
         Mana,
         ManaRegenRate,
-        Strength,
-        Dexterity,
-        Intelligence,
         BaseDamage,
-        Defence
+        BaseDefence,
+        ExperienceToLevelUp
     }
 
     /// <summary>
@@ -48,7 +46,8 @@ namespace Game.Enums
     public enum EnemyBaseStat
     {
         Health,
-        BaseDamage
+        BaseDamage,
+        ExperienceReward
     }
 
     /// <summary>
@@ -74,8 +73,7 @@ namespace Game.Enums
         Gloves,
         Legs,
         Boots,
-        Hand_Right,
-        Hand_Left
+        Weapon
     }
 
 }

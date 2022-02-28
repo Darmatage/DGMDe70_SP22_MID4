@@ -17,8 +17,8 @@ namespace Game.Combat
             if (other.gameObject.CompareTag(Tags.EnemyTag)) 
             {
                 Debug.Log("Attacking: " + other);
-                float damage = GetComponent<PlayerBaseStats>().GetStat(PlayerStats.BaseDamage);
-                other.GetComponent<EnemyHealth>().TakeDamage(damage);
+                float damage = GetComponentInParent<PlayerBaseStats>().GetStat(PlayerStats.BaseDamage);
+                other.GetComponent<EnemyHealth>().TakeDamage(other.gameObject, damage);
             }
         }
     }

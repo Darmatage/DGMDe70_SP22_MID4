@@ -1,70 +1,93 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Enums;
+using Game.PlayerClass;
+using Game.Utils;
 using UnityEngine;
 
 namespace Game.Combat
 {
     public class PlayerHealth : MonoBehaviour
     {
-        [SerializeField] float timeInvincible = 2.0f;
-        [SerializeField] float playerHealth = 20f;
-        private float playerMaxHealth = 20f;
-        private bool isDead = false;
-        private bool isInvincible;
-        private float invincibleTimer;
-        private void Update()
+        [SerializeField] float regenerationPercentage = 5;
+        LazyValue<float> healthPoints;
+
+        private void Awake() 
         {
-            if (isInvincible)
-            {
-                invincibleTimer -= Time.deltaTime;
-                if (invincibleTimer < 0)
-                {
-                    isInvincible = false;
-                }
-            }
+            healthPoints = new LazyValue<float>(GetInitialHealth);
         }
-        public float GetHealthPoints()
+        private float GetInitialHealth()
         {
-            return playerHealth;
+            return GetComponent<PlayerBaseStats>().GetStat(PlayerStats.Health);
         }
-        public float GetMaxHealthPoints()
+        private void Start()
         {
-            return playerMaxHealth;
+            healthPoints.ForceInit();
+        }
+
+        private void OnEnable() {
+            GetComponent<PlayerBaseStats>().onLevelUp += RegenerateHealth;
+        }
+
+        private void OnDisable() {
+            GetComponent<PlayerBaseStats>().onLevelUp -= RegenerateHealth;
         }
         public bool IsDead()
         {
-            return isDead;
-        }
-        public void ChangeHealth(float amount)
-        {
-            if (amount < 0)
-            {
-                if (isInvincible) {return;}
-
-                isInvincible = true;
-                invincibleTimer = timeInvincible;
-            }
-
-            playerHealth = Mathf.Clamp(playerHealth + amount, 0, playerMaxHealth);
+            return healthPoints.value <= 0;
         }
 
         public void TakeDamage(float damage)
         {
-            playerHealth = Mathf.Max(playerHealth - damage, 0);
-            if(playerHealth == 0)
+            healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
+            
+            if(IsDead())
             {
-                Die();
-            }
+                Debug.Log("Player is dead!");
+            } 
         }
+
+        public void Heal(float healthToRestore)
+        {
+            healthPoints.value = Mathf.Min(healthPoints.value + healthToRestore, GetMaxHealthPoints());
+        }
+
+        public float GetHealthPoints()
+        {
+            return healthPoints.value;
+        }
+
+        public float GetMaxHealthPoints()
+        {
+            return GetComponent<PlayerBaseStats>().GetStat(PlayerStats.Health);
+        }
+
         public float GetPercentage()
         {
-            return (playerHealth / playerMaxHealth) * 100;
+            return 100 * GetFraction();
         }
-        private void Die()
-        {
-            if (isDead) return;
 
-            isDead = true;
+        public float GetFraction()
+        {
+            return healthPoints.value / GetComponent<PlayerBaseStats>().GetStat(PlayerStats.Health);
         }
+
+        private void RegenerateHealth()
+        {
+            float regenHealthPoints = GetComponent<PlayerBaseStats>().GetStat(PlayerStats.Health) * (regenerationPercentage / 100);
+            healthPoints.value = Mathf.Max(healthPoints.value, regenHealthPoints);
+        }
+
+        // public object CaptureState()
+        // {
+        //     return healthPoints.value;
+        // }
+
+        // public void RestoreState(object state)
+        // {
+        //     healthPoints.value = (float) state;
+            
+        //     UpdateState();
+        // }
     }   
 }

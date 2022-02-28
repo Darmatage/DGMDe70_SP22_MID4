@@ -21,6 +21,7 @@ namespace Game.Control
         private bool isIdle;
         private bool isRunning;
         private bool isWalking;
+        private bool isMakingAttack;
         private bool isAttackingUp;
         private bool isAttackingDown;
         private bool isAttackingLeft;
@@ -96,19 +97,22 @@ namespace Game.Control
             {
                 ResetAnimationTriggers();
             }
-                timeSinceLastAction = 0;
+
+            isMakingAttack = true;
+            timeSinceLastAction = 0;
         }
 
         private void CallAnimationEvent()
         {
             // Send event to any listeners for player movement input
-            EventHandler.CallPlayerInputEvent(0f, 0f, false, false, false,
+            EventHandler.CallPlayerInputEvent(0f, 0f, false, false, false, isMakingAttack,
                 isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
                 false, false, false, false);
         }
 
         private void ResetAnimationTriggers()
         {
+            isMakingAttack = false;
             isAttackingRight = false;
             isAttackingLeft = false;
             isAttackingUp = false;

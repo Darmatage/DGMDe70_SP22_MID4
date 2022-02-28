@@ -747,6 +747,10 @@ GameObject:
   - component: {fileID: 1369445465240802469}
   - component: {fileID: 3598857346608452329}
   - component: {fileID: 1967791513877296652}
+  - component: {fileID: 1323031101731078211}
+  - component: {fileID: 3415857174291419149}
+  - component: {fileID: 4363370716175921872}
+  - component: {fileID: 2821492082033080868}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -964,10 +968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b98e115c7ece4134ac8b60adc1802a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 5
-  rangeWeapon: 0
   rangeAttackLaunchPosition: {fileID: 3832917801363187356}
-  projectile: {fileID: 8756327418062448723, guid: d1c6ca2d84cef46b0bda43b27e9daf73, type: 3}
+  defaultWeapon: {fileID: 11400000, guid: eab168d2bfc0e48e490ec1ad68256a6a, type: 2}
 --- !u!114 &1967791513877296652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,8 +982,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af60e0584874545a9a62c0b4484bb307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeInvincible: 2
-  playerHealth: 20
+  regenerationPercentage: 5
+--- !u!114 &1323031101731078211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754756201425894927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0689395bf79459b9f2ba069a15fca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingLevel: 1
+  characterClass: 0
+  progression: {fileID: 11400000, guid: f8f6511dd51614e52971d8e66af94594, type: 2}
+--- !u!114 &3415857174291419149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754756201425894927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e16117195be4954ab022bc93a33c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoints: 0
+--- !u!114 &4363370716175921872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754756201425894927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3147b91746a50416cb326f942a451e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2821492082033080868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754756201425894927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded166849f8ce48a9bb225f3df75b235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySize: 8
 --- !u!1 &1754756201601007452
 GameObject:
   m_ObjectHideFlags: 0
