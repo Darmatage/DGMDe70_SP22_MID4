@@ -192,9 +192,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 317092929}
     m_Modifications:
+    - target: {fileID: 188601010586342665, guid: 07bca1b09d08243e9947666d51916955, type: 3}
+      propertyPath: textField
+      value: 
+      objectReference: {fileID: 734975974}
+    - target: {fileID: 188601010586342665, guid: 07bca1b09d08243e9947666d51916955, type: 3}
+      propertyPath: speechBubble
+      value: 
+      objectReference: {fileID: 1574290057}
     - target: {fileID: 1830152186627452843, guid: 07bca1b09d08243e9947666d51916955, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1830152186627452843, guid: 07bca1b09d08243e9947666d51916955, type: 3}
       propertyPath: m_LocalPosition.x
@@ -500,6 +508,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard
       objectReference: {fileID: 0}
+    - target: {fileID: 7415626621460735411, guid: f36ea2cc21b714673a8641b8fc4c6dfe, type: 3}
+      propertyPath: textField
+      value: 
+      objectReference: {fileID: 734975974}
+    - target: {fileID: 7415626621460735411, guid: f36ea2cc21b714673a8641b8fc4c6dfe, type: 3}
+      propertyPath: speechBubble
+      value: 
+      objectReference: {fileID: 1574290057}
     - target: {fileID: 8240423347271364390, guid: f36ea2cc21b714673a8641b8fc4c6dfe, type: 3}
       propertyPath: m_Size.x
       value: 0.9312229
