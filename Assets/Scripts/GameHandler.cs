@@ -4,26 +4,19 @@ using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
 
-    // Start is called before the first frame update
-    void Start() {
+    // UI Elements
+    public GameObject interactNotification;
+    public GameObject speechBubble;
 
+    void Awake() {
+        player = GameObject.FindWithTag("Player");
+        interactNotification.SetActive(false);
+        speechBubble.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update() {
-        string playerState = "";
-        if (isMonster()) {
-            playerState = "monster";
-        } else {
-            playerState = "human";
-        }
-
-        Debug.Log("Player is " + playerState); 
-    }
-
-    public bool isMonster() {
+     public bool isMonster() {
         return player.GetComponent<PlayerManager>().hasIsMonster();
     }
 }

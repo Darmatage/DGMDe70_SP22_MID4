@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
         // thumbnail is only used so we have a reference in the scene editor
         Destroy(thumbnail);
 
+        // player starts as a human
         currentObject = Instantiate(playerObject, transform.position, Quaternion.identity);
         currentObject.transform.SetParent(gameObject.transform);
         isMonster = false;    
@@ -26,6 +27,7 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetKeyDown("m")) {
             isMonster = !isMonster;
             Destroy(currentObject);
+
             if (isMonster) {
                 currentObject = Instantiate(monsterObject, transform.position, Quaternion.identity);
             } else {
