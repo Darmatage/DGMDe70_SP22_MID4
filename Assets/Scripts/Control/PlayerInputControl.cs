@@ -8,11 +8,6 @@ namespace Game.Control
 {
    public class PlayerInputControl : MonoBehaviour
     {
-        // The hitboxes of our 4 different directions
-        [SerializeField] private GameObject hitBox_Up;
-        [SerializeField] private GameObject hitBox_Bottom;
-        [SerializeField] private GameObject hitBox_Left;
-        [SerializeField] private GameObject hitBox_Right;
         [SerializeField] float timeBetweenActions = 0.75f; //move this to settings
 
         public bool canAttack = true;
@@ -63,35 +58,6 @@ namespace Game.Control
             }
         }
 
-        //Using the animation triggers to activate the attack areas -- Animation need to be setup with triggers
-        //These shgould be moved to the weapon game object so that it can be activated by the animation or intergrate with event system 
-        public void ActivateCollider() 
-        {
-            if (playerDirection == Vector2.up) 
-            {
-                hitBox_Up.SetActive(true);
-            }
-            if (playerDirection == Vector2.right) 
-            {
-                hitBox_Right.SetActive(true);
-            }
-            if (playerDirection == Vector2.left) 
-            {
-                hitBox_Left.SetActive(true);
-            }
-            if (playerDirection == Vector2.down) 
-            {
-                hitBox_Bottom.SetActive(true);
-            }
-        }
-
-        public void canMoveFunction()
-        {
-            hitBox_Left.SetActive(false);
-            hitBox_Right.SetActive(false);
-            hitBox_Bottom.SetActive(false);
-            hitBox_Up.SetActive(false);
-        }
 
         //PRIVATE Functions
         private void DoPrimaryAction()
@@ -100,7 +66,6 @@ namespace Game.Control
             {
                 ResetAnimationTriggers();
                 MakeAttackAction();
-                Debug.Log("Do primary action!");
                 CallAnimationEvent();
             }
             else
@@ -137,7 +102,7 @@ namespace Game.Control
         private void CallAnimationEvent()
         {
             // Send event to any listeners for player movement input
-            EventHandler.CallMovementEvent(0f, 0f, false, false, false,
+            EventHandler.CallPlayerInputEvent(0f, 0f, false, false, false,
                 isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
                 false, false, false, false);
         }
