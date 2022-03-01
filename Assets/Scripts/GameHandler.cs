@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameHandler : MonoBehaviour {
-    private PlayerManager player;
+    public PlayerManager player;
 
     // UI Elements
 
