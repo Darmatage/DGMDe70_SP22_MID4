@@ -10,6 +10,7 @@ public class GameScene : MonoBehaviour
         get { return _instance; }
     }
     public GameScenes currentScene = GameScenes.S01;
+    public GameStages currentStage = GameStages.S01;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -33,16 +34,20 @@ public class GameScene : MonoBehaviour
         
     }
 
-    public void ChangeScene(GameScenes scene) {
+    public void ChangeScene(GameScenes scene, GameStages stage = GameStages.S01) {
+        currentScene = scene;
+        currentStage = stage;
 
         switch (scene) {
+            case GameScenes.Dialogue:
+                SceneManager.LoadScene("Dialogue");
+                break;
+            
             case GameScenes.Start:
                 SceneManager.LoadScene("Start");
                 break;
 
-            case GameScenes.Dialogue:
-                SceneManager.LoadScene("Dialogue");
-                break;
+            // Game Scenes
 
             case GameScenes.S01:
                 SceneManager.LoadScene("main");
@@ -54,8 +59,17 @@ public class GameScene : MonoBehaviour
 
 public enum GameScenes
 {
-    Start,
+    Credits,
     Dialogue,
+    Gameover,
+    Start,
+    S01,
+    S02,
+    S03
+}
+
+public enum GameStages
+{
     S01,
     S02,
     S03
