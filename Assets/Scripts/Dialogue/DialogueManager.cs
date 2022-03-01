@@ -35,7 +35,8 @@ public class DialogueManager : MonoBehaviour
 
     void OnDialogueScene() {
         speechBubble.SetActive(true);
-        Text textBox = textField.GetComponent<Text>();
+        // Text textBox = textField.GetComponent<Text>();
+        Text textBox = GameObject.FindWithTag("SpeechText").GetComponent<Text>();
         textBox.text = dialogueScene01.hello();
     }
 }

@@ -10,6 +10,8 @@ TagManager:
   - GameHandler
   - PlayerHandler
   - NPC
+  - SpeechBubble
+  - SpeechText
   layers:
   - Default
   - TransparentFX
