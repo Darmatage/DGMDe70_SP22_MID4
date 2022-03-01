@@ -1038,6 +1038,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1306681025845937313, guid: 7b41381e3ad684fc598b78fb7c321630, type: 3}
+      propertyPath: speechBubble
+      value: 
+      objectReference: {fileID: 1574290057}
     - target: {fileID: 3970094337712931758, guid: 7b41381e3ad684fc598b78fb7c321630, type: 3}
       propertyPath: m_RootOrder
       value: 0

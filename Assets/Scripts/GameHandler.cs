@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameHandler : MonoBehaviour
-{
+public class GameHandler : MonoBehaviour {
     private PlayerManager player;
 
     // UI Elements
-    public GameObject speechBubble;
 
     void Awake() {
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
-        speechBubble.SetActive(false);
+        if (GameObject.FindWithTag("Player") != null) {
+            player = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+        }
     }
 
      public bool isMonster() {
-        return player.hasIsMonster();
+        if (player != null) {
+            return player.hasIsMonster();
+        }
+        return false;
     }
 }
