@@ -75,7 +75,6 @@ namespace Game.Control
         private bool InAttackRangeOfPlayer()
         {  
             float distanceToPlayer = Vector2.Distance(player.transform.position, transform.position);
-            Debug.Log("distand to player = " + distanceToPlayer);
             return distanceToPlayer < chaseDistance;
         }
 
