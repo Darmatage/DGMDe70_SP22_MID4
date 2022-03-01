@@ -25,15 +25,15 @@ namespace Game.Control
             combat = GetComponent<EnemyCombat>();
             health = GetComponent<EnemyHealth>();
             movement = GetComponent<AIMovement>();
-            player = GameObject.FindWithTag(Tags.PlayerTag);
+            player = GameObject.FindWithTag("Player");
 
             guardPosition = transform.position;
         }
         void Update()
         {
             if (health.IsDead()) return;
-            if (InAttackRangeOfPlayer() && combat.CanAttack(player))
-            {
+
+            if (!player.GetComponent<PlayerManager>().hasIsMonster() && InAttackRangeOfPlayer() && combat.CanAttack(player)) {
                 timeSinceLastSawPlayer = 0;
                 AttackBehaviour();
             }
@@ -75,6 +75,7 @@ namespace Game.Control
         private bool InAttackRangeOfPlayer()
         {  
             float distanceToPlayer = Vector2.Distance(player.transform.position, transform.position);
+            Debug.Log("distand to player = " + distanceToPlayer);
             return distanceToPlayer < chaseDistance;
         }
 
