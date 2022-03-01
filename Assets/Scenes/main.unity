@@ -185,6 +185,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3995684544584063682, guid: 6066bcaba3e844abb81b7844bffa2169, type: 3}
   m_PrefabInstance: {fileID: 317092928}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &381179538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 91247321415833793, guid: d9ae1d75b401f4244bc1bb1fc631ebd7, type: 3}
+  m_PrefabInstance: {fileID: 91247322815032170}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65a2646d9d2b4a86a97c81fba41dec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &541331592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1074,6 +1085,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 4976907135995028005, guid: 7b41381e3ad684fc598b78fb7c321630, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 381179538}
     - target: {fileID: 4976907135995028005, guid: 7b41381e3ad684fc598b78fb7c321630, type: 3}
       propertyPath: speechBubble
       value: 
