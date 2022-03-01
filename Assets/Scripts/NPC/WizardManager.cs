@@ -28,9 +28,13 @@ public class WizardManager : MonoBehaviour
     void Update() {
         if (canInteract) {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
+                /*
                 speechBubble.SetActive(true);
                 Text textBox = textField.GetComponent<Text>();
                 textBox.text = dialogueScene01.hello();
+                */
+
+                GameScene.Instance.ChangeScene(GameScenes.Dialogue);
             }
         }
     }
