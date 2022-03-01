@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Enemy
   - Projectiles
+  - Room_Root
+  - GameHandler
+  - PlayerHandler
+  - NPC
+  - SpeechBubble
+  - SpeechText
   layers:
   - Default
   - TransparentFX
