@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Saving;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Game.Movement
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour//, ISaveable <- Need to work on recovering the players placement between scenes.
     {
         [SerializeField] float runningSpeed = 15f;
         [SerializeField] float walkingSpeed = 10f;
@@ -98,7 +99,7 @@ namespace Game.Movement
             xInput = moveInput.x;
             yInput = moveInput.y;
 
-            Debug.Log("PlayerMovementInput: " + xInput + ", " + yInput);
+            //Debug.Log("PlayerMovementInput: " + xInput + ", " + yInput);
 
             if (yInput != 0 && xInput != 0)
             {
@@ -178,6 +179,17 @@ namespace Game.Movement
             isAttackingUp = false;
             isAttackingDown = false;
         }
+
+        // public object CaptureState()
+        // {
+        //     return new SerializableVector2(transform.position);
+        // }
+
+        // public void RestoreState(object state)
+        // {
+        //     SerializableVector2 position = (SerializableVector2)state;
+        //     transform.position = position.ToVector();
+        // }
     }
 }
 

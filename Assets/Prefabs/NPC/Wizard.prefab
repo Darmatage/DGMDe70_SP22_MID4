@@ -45,8 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975a1a534cab447a68c4d7a1bb2d57bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speechBubble: {fileID: 0}
-  textField: {fileID: 0}
 --- !u!61 &3874200173546148347
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,8 +140,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -124173177
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f88e7a3be184e4e338e4ffc56d8c3028, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

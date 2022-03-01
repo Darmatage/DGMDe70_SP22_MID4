@@ -56,12 +56,12 @@ namespace Game.Control
             timeSinceLastAction += Time.deltaTime;
             playerDirection = GetComponent<PlayerMovement>().GetPlayerVector2();
             
-            Debug.DrawRay(playerRigidbody2D.position + Vector2.up * 0.75f, playerDirection, Color.green); //Visilize the Raycast for interaction
+            Debug.DrawRay(playerRigidbody2D.position, playerDirection, Color.green); //Visilize the Raycast for interaction
 
             if (InteractWithComponent()) return;
         }
 
-        public void PrimaryAction(InputAction.CallbackContext value)
+        public void PrimaryAction(InputAction.CallbackContext value) //<- Left mouse button
         {
             if (value.started && !isGamePaused)
             {
@@ -76,7 +76,7 @@ namespace Game.Control
                 //DoSecondaryAction();
             }
         }
-        public void InteractAction(InputAction.CallbackContext value)
+        public void InteractAction(InputAction.CallbackContext value) //<- E Key
         {
             if (value.started)
             {
@@ -86,6 +86,14 @@ namespace Game.Control
             if (value.canceled)
             {
                 EventHandler.CallInteractActionEvent(false);
+            }
+        }
+
+        public void TransformAction(InputAction.CallbackContext value)
+        {
+            if (value.started)
+            {
+                EventHandler.CallTransformEvent();
             }
         }
 
@@ -158,7 +166,7 @@ namespace Game.Control
 
         RaycastHit2D[] RaycastAllSorted()
         {
-            RaycastHit2D[] hits = Physics2D.RaycastAll(playerRigidbody2D.position + Vector2.up * 0.75f, playerDirection, 2f);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(playerRigidbody2D.position, playerDirection, 2f);
             float[] distances = new float[hits.Length];
             for (int i = 0; i < hits.Length; i++)
             {

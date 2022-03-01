@@ -21,6 +21,4 @@ MonoBehaviour:
   weaponBaseDamage: 5
   projectile: {fileID: 0}
   additiveModifiers: []
-  percentageModifiers:
-  - stat: 4
-    value: 50
+  percentageModifiers: []

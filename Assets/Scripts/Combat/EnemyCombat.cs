@@ -106,7 +106,7 @@ namespace Game.Combat
         }
         private void LaunchProjectile()
         {
-            EnemyProjectile projectInstance = Instantiate(projectile, rangeAttackLaunchPosition);
+            EnemyProjectile projectInstance = Instantiate(projectile, rangeAttackLaunchPosition.position, Quaternion.identity, GameObject.FindGameObjectWithTag(Tags.ProjectilesTag).transform);
             projectInstance.SetTarget(target, attackDamage.value);
         }
 

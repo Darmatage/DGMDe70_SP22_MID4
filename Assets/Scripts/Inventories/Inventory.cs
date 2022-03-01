@@ -1,4 +1,5 @@
 using System;
+using Game.Saving;
 using UnityEngine;
 
 namespace Game.Inventories
@@ -9,9 +10,9 @@ namespace Game.Inventories
     ///
     /// This component should be placed on the GameObject tagged "Player".
     /// </summary>
-    public class Inventory : MonoBehaviour//, ISaveable <- Saving system
+    public class Inventory : MonoBehaviour, ISaveable //<- Saving system
     {
-        [Tooltip("Allowed size")]
+        [Tooltip("Number of inventory spaces.")]
         [SerializeField] int inventorySize = 16;
         InventorySlot[] slots;
 
@@ -178,32 +179,32 @@ namespace Game.Inventories
             public int number;
         }
     
-        // object ISaveable.CaptureState()
-        // {
-        //     var slotStrings = new InventorySlotRecord[inventorySize];
-        //     for (int i = 0; i < inventorySize; i++)
-        //     {
-        //         if (slots[i].item != null)
-        //         {
-        //             slotStrings[i].itemID = slots[i].item.GetItemID();
-        //             slotStrings[i].number = slots[i].number;
-        //         }
-        //     }
-        //     return slotStrings;
-        // }
+        object ISaveable.CaptureState()
+        {
+            var slotStrings = new InventorySlotRecord[inventorySize];
+            for (int i = 0; i < inventorySize; i++)
+            {
+                if (slots[i].item != null)
+                {
+                    slotStrings[i].itemID = slots[i].item.GetItemID();
+                    slotStrings[i].number = slots[i].number;
+                }
+            }
+            return slotStrings;
+        }
 
-        // void ISaveable.RestoreState(object state)
-        // {
-        //     var slotStrings = (InventorySlotRecord[])state;
-        //     for (int i = 0; i < inventorySize; i++)
-        //     {
-        //         slots[i].item = InventoryItem.GetFromID(slotStrings[i].itemID);
-        //         slots[i].number = slotStrings[i].number;
-        //     }
-        //     if (inventoryUpdated != null)
-        //     {
-        //         inventoryUpdated();
-        //     }
-        // }
+        void ISaveable.RestoreState(object state)
+        {
+            var slotStrings = (InventorySlotRecord[])state;
+            for (int i = 0; i < inventorySize; i++)
+            {
+                slots[i].item = SO_InventoryItem.GetFromID(slotStrings[i].itemID);
+                slots[i].number = slotStrings[i].number;
+            }
+            if (inventoryUpdated != null)
+            {
+                inventoryUpdated();
+            }
+        }
     }
 }

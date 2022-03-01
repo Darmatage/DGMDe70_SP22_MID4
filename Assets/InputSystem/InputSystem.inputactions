@@ -30,6 +30,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "TransformAction",
+                    "type": "Button",
+                    "id": "31a6f861-debe-44e5-9ba9-c0b7005cb892",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Inventory",
                     "type": "Button",
                     "id": "b8165d1b-166e-46aa-8220-d4c7f7f341b6",
@@ -245,6 +253,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "InteractAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5918f59a-3ed7-4d93-89a5-d15a8ab9e9ff",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "InteractAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03708005-7565-4f54-aa65-3cc976074127",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "TransformAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

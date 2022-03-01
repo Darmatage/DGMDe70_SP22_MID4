@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Enums;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,55 +23,36 @@ public class GameScene : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void ChangeScene(GameScenes scene, GameStages stage = GameStages.S01) 
     {
+       // SavingWrapperControl wrapper = FindObjectOfType<SavingWrapperControl>(); //<- Still working on this
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void ChangeScene(GameScenes scene, GameStages stage = GameStages.S01) {
         currentScene = scene;
         currentStage = stage;
 
         switch (scene) {
             case GameScenes.Dialogue:
-                SceneManager.LoadScene("Dialogue");
+                //wrapper.Save();
+                SceneManager.LoadSceneAsync((int)SceneName.Scene_Dialogue);
+                //wrapper.Load();
                 break;
             
             case GameScenes.Start:
-                SceneManager.LoadScene("Start");
+               // wrapper.Save();
+                SceneManager.LoadSceneAsync("Start");
+                //wrapper.Load();
                 break;
 
             // Game Scenes
 
             case GameScenes.S01:
-                SceneManager.LoadScene("main");
+                //wrapper.Save();
+                SceneManager.LoadSceneAsync((int)SceneName.Scene_Main);
+                //wrapper.Load();
                 break;
         }
 
     }
 }
 
-public enum GameScenes
-{
-    Credits,
-    Dialogue,
-    Gameover,
-    Start,
-    S01,
-    S02,
-    S03
-}
 
-public enum GameStages
-{
-    S01,
-    S02,
-    S03
-}
