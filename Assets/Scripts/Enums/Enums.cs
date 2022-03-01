@@ -1,5 +1,11 @@
 namespace Game.Enums
 {
+    public enum ActionTypes
+    {
+        Attack,
+        Interact
+    }
+    
     /// <summary>
     /// Player Class Enums<br/>
     /// What is the players class.

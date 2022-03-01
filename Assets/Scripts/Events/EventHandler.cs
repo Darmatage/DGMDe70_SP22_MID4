@@ -24,7 +24,7 @@ public class EventHandler
                 idleUp, idleDown, idleLeft, idleRight);
     }
 
-    // Raycast interactable objects
+    // Pause game and controls while in UI
     public static event Action<bool> ActiveGameUI;
 
     public static void CallActiveGameUI(bool isGamePaused)
@@ -32,6 +32,17 @@ public class EventHandler
         if (ActiveGameUI != null)
         {
             ActiveGameUI(isGamePaused);
+        }
+    }
+
+    // Pause game and controls while in UI
+    public static event Action<bool> InteractActionEvent;
+
+    public static void CallInteractActionEvent(bool isKeyPressed)
+    {
+        if (InteractActionEvent != null)
+        {
+            InteractActionEvent(isKeyPressed);
         }
     }
 

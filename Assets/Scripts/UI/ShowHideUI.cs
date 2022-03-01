@@ -35,7 +35,7 @@ namespace Game.UI
             MenuToggle();
         }
 
-        public void MenuToggle()
+        private void MenuToggle()
         {
             uiContainer.SetActive(!uiContainer.activeInHierarchy);
             if(isGamePaused)

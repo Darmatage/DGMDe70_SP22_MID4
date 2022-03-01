@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2180c663d0f17458390338c29495095d, type: 3}
   m_Name: LootDropTable
   m_EditorClassIdentifier: 
-  potentialDrops: []
-  dropChancePercentage: []
-  minDrops: 
+  potentialDrops:
+  - item: {fileID: 0}
+    relativeChance:
+    - 0
+    minNumber: 
+    maxNumber: 
+  dropChancePercentage:
+  - 0
+  minDrops: 00000000
   maxDrops: 

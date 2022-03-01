@@ -753,7 +753,7 @@ GameObject:
   - component: {fileID: 2821492082033080868}
   - component: {fileID: 3158027145902821977}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player - Stu
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -940,6 +940,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b8165d1b-166e-46aa-8220-d4c7f7f341b6
     m_ActionName: Player/Inventory[/Keyboard/i]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1369445465240802469}
+        m_TargetAssemblyTypeName: Game.Control.PlayerInputControl, Assembly-CSharp
+        m_MethodName: InteractAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 450f0482-d771-41c8-b8c3-3eee9b7bcd37
+    m_ActionName: Player/InteractAction[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
