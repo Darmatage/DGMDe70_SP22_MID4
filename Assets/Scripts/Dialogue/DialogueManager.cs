@@ -8,19 +8,13 @@ using Story;
 public class DialogueManager : MonoBehaviour
 {
     public GameObject speechBubble;
-    public GameObject textField;
+    public Text textField;
     public DialogueScene01 dialogueScene01 = new DialogueScene01();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Awake() {
+        if (GameObject.FindWithTag("SpeechBubble") != null) {
+            speechBubble = GameObject.FindWithTag("SpeechBubble");
+        }
     }
 
     void OnEnable() {
@@ -28,14 +22,17 @@ public class DialogueManager : MonoBehaviour
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        Debug.Log("On Scene: " + scene.name);
-
-
+        OnDialogueScene();
     }
 
     void OnDialogueScene() {
+        if (speechBubble == null) {
+            return;
+        }
+
         speechBubble.SetActive(true);
-        Text textBox = textField.GetComponent<Text>();
+        Text textBox = GameObject.FindWithTag("SpeechText").GetComponent<Text>();
         textBox.text = dialogueScene01.hello();
+        Debug.Log(dialogueScene01.hello());
     }
 }
