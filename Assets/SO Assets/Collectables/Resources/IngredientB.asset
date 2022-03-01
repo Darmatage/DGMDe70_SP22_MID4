@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7c2904c3d6749858deea8d323dcf23, type: 3}
+  m_Name: IngredientB
+  m_EditorClassIdentifier: 
+  itemID: e8abc83c-6888-41cf-92f7-9e28fa67e3fa
+  displayName: Ingredient B
+  description: 
+  icon: {fileID: 21300000, guid: aa4b2d88fc840d646820e294830f6dde, type: 3}
+  pickupPrefab: {fileID: 1644453927555417061, guid: 62c5efee5cd3d4b3b97460aa4e44ee21, type: 3}
+  stackable: 1

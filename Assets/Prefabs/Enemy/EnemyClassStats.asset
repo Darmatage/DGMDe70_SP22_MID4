@@ -29,6 +29,13 @@ MonoBehaviour:
       - 3
       - 4
       - 5
+    - enemyBaseStat: 2
+      levels:
+      - 2
+      - 5
+      - 8
+      - 10
+      - 15
     meleeAttackDetails:
       attackDamage: 0
       attackRange: 2

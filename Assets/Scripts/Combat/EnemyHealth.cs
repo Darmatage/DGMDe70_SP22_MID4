@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.EnemyClass;
 using Game.Enums;
+using Game.PlayerClass;
 using Game.Utils;
 using UnityEngine;
 
@@ -11,8 +12,9 @@ namespace Game.Combat
     {
         [SerializeField] float deathTime = 1.2f;
         LazyValue<float> healthPoints;
-        bool isDead = false;
-        private void Awake() {
+
+        private void Awake() 
+        {
             healthPoints = new LazyValue<float>(GetInitialHealth);
         }
         private float GetInitialHealth()
@@ -25,27 +27,49 @@ namespace Game.Combat
         }
         public bool IsDead()
         {
-            return isDead;
+            return healthPoints.value <= 0;
         }
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
-
-            if(healthPoints.value == 0)
+            
+            if(IsDead())
             {
+                AwardExperience(instigator);
                 Die();
-            }
+            } 
         }
         public float GetEnemyHealthPoints()
         {
             return healthPoints.value;
         }
+
+        public float GetEnemyMaxHealthPoints()
+        {
+            return GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.Health);
+        }
+
+        public float GetPercentage()
+        {
+            return 100 * GetFraction();
+        }
+
+        public float GetFraction()
+        {
+            return healthPoints.value / GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.Health);
+        }
+
         private void Die() 
         {
-            if (isDead) return;
-            isDead = true;
             StartCoroutine(removeEnemy());
             Debug.Log("The Enemy is dead!");
+        }
+        private void AwardExperience(GameObject instigator)
+        {
+            PlayerExperience experience = instigator.GetComponent<PlayerExperience>();
+            if (experience == null) return;
+
+            experience.GainExperience(GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.ExperienceReward));
         }
         IEnumerator removeEnemy()
         {

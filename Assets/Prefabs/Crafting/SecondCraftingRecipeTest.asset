@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458f7cabaff164524b9dffd19afcba67, type: 3}
+  m_Name: SecondCraftingRecipeTest
+  m_EditorClassIdentifier: 
+  recipes:
+  - craftedItem: {fileID: 11400000, guid: fae7e666c02e94c67b94b53212edf5fe, type: 2}
+    ingredients:
+    - item: {fileID: 11400000, guid: 68d26ad5fa1a546beb7c113902818f1a, type: 2}
+      number: 1
+    - item: {fileID: 11400000, guid: 791475797a98940ab907fa34d27f67fd, type: 2}
+      number: 0

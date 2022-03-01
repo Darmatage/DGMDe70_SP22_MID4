@@ -30,7 +30,7 @@ namespace Game.Combat
         private void OnTriggerEnter2D(Collider2D other) 
         {
             if(other.GetComponent<EnemyHealth>() == null) return;
-            other.GetComponent<EnemyHealth>().TakeDamage(damage);
+            other.GetComponent<EnemyHealth>().TakeDamage(other.gameObject, damage);
             Destroy(gameObject);
         }
     }

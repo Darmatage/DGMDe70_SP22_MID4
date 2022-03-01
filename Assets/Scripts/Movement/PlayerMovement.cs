@@ -29,12 +29,22 @@ namespace Game.Movement
         private Vector2 moveInput;
         private Vector2 lookDirection = new Vector2(1,0);
         public Vector2 GetPlayerVector2() { return lookDirection; }
-        private bool _playerInputIsDisabled = false;
-        public bool PlayerInputIsDisabled { get => _playerInputIsDisabled; set => _playerInputIsDisabled = value; }
+        private bool PlayerInputIsDisabled = false;
+        //public bool PlayerInputIsDisabled { get => _playerInputIsDisabled; set => _playerInputIsDisabled = value; }
 
         private void Awake() 
         {
             playerRigidbody = GetComponent<Rigidbody2D>();
+        }
+
+        private void OnEnable()
+        {
+            EventHandler.ActiveGameUI += SetPlayerInput;
+        }
+
+        private void OnDisable()
+        {
+            EventHandler.ActiveGameUI -= SetPlayerInput;
         }
         private void FixedUpdate()
         {
@@ -57,7 +67,7 @@ namespace Game.Movement
                 PlayerRunInput();
 
                 // Send event to any listeners for player movement input
-                EventHandler.CallPlayerInputEvent(xInput, yInput, isWalking, isRunning, isIdle,
+                EventHandler.CallPlayerInputEvent(xInput, yInput, isWalking, isRunning, isIdle, false,
                     isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
                     false, false, false, false);
                 }
@@ -146,19 +156,19 @@ namespace Game.Movement
             ResetMovement();
 
             // Send event to any listeners for player movement input
-                EventHandler.CallPlayerInputEvent(xInput, yInput, isWalking, isRunning, isIdle,
+                EventHandler.CallPlayerInputEvent(xInput, yInput, isWalking, isRunning, isIdle, false,
                     isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
                     false, false, false, false);
         }
 
-        public void DisablePlayerInput()
+        private void DisablePlayerInput()
         {
             PlayerInputIsDisabled = true;
         }
 
-        public void EnablePlayerInput()
+        private void SetPlayerInput(bool setGamePaused)
         {
-            PlayerInputIsDisabled = false;
+            PlayerInputIsDisabled = setGamePaused;
         }
 
         private void ResetAnimationTriggers()
