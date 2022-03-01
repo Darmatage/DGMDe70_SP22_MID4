@@ -1029,6 +1029,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7594448573448499973, guid: d9ae1d75b401f4244bc1bb1fc631ebd7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9ae1d75b401f4244bc1bb1fc631ebd7, type: 3}
 --- !u!1001 &4188941005700649304
