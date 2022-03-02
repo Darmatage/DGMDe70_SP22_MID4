@@ -10,10 +10,7 @@ namespace Game.Inventories
     /// </summary>
     public class ItemDropper : MonoBehaviour, ISaveable
     {
-        // STATE
         private List<Pickup> droppedItems = new List<Pickup>();
-
-        // PUBLIC
 
         /// <summary>
         /// Create a pickup at the current position.
@@ -37,8 +34,6 @@ namespace Game.Inventories
             SpawnPickup(item, GetDropLocation(), 1);
         }
 
-        // PROTECTED
-
         /// <summary>
         /// Override to set a custom method for locating a drop.
         /// </summary>
@@ -47,8 +42,6 @@ namespace Game.Inventories
         {
             return transform.position;
         }
-
-        // PRIVATE
 
         public void SpawnPickup(SO_InventoryItem item, Vector3 spawnLocation, int number)
         {

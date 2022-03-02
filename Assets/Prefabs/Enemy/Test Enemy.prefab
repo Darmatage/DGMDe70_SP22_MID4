@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5338266366477963332}
   - component: {fileID: 5338266366477963333}
   - component: {fileID: 5338266366477963329}
+  - component: {fileID: 8162528261997700565}
   m_Layer: 9
   m_Name: Test Enemy
   m_TagString: Enemy
@@ -211,3 +212,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7821ed52f14ed449c806a44f89fc565d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8162528261997700565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5338266366477963342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e64ba54e1734430294479f3aaaccee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatterDistance: 2
+  lootDropLibrary: {fileID: 11400000, guid: 879223fb05f0143439c716366d504637, type: 2}

@@ -4,6 +4,10 @@ using Game.PlayerClass;
 
 namespace Game.Inventories
 {
+    /// <summary>
+    /// Placed on the player and will calculate the weapon and armor stat modifiers,
+    /// and then apply them to the players base stats.
+    /// </summary>
     public class EquipmentModifier : Equipment, IModifierProvider
     {
         IEnumerable<float> IModifierProvider.GetAdditiveModifiers(PlayerStats stat)

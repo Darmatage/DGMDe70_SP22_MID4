@@ -112,19 +112,14 @@ namespace Game.Inventories
 
         public int GetItemSlot(SO_InventoryItem item, int number)
         {
-            // Loop through all of the inventory slots. 
             for (int i = 0; i < slots.Length; i++)
             {
-                // Check if the current iteration's item equals to the parameter item.
-                // Check if the current iteration's item number equals to or greater than the parameter number.
                 if (object.ReferenceEquals(slots[i].item, item) && GetNumberInSlot(i) >= number)
                 {
-                    // If true, return the slot number
                     return i;
                 }
             }
-            // Return -1 by default.
-            // When using this method to check if a slot is found, we simply check if the returned value equals to or greater than 0.
+
             return -1;
         }
 

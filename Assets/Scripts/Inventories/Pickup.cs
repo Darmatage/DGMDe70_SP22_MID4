@@ -8,23 +8,15 @@ namespace Game.Inventories
     /// </summary>
     public class Pickup : MonoBehaviour
     {
-        // STATE
-        SO_InventoryItem item;
-        int number = 1;
-        GameObject player;
-
-        // CACHED REFERENCE
-        Inventory inventory;
-
-        // LIFECYCLE METHODS
-
+        private SO_InventoryItem item;
+        private int number = 1;
+        private GameObject player;
+        private Inventory inventory;
         private void Awake()
         {
             player = GameObject.FindGameObjectWithTag("Player");
             inventory = player.GetComponent<Inventory>();
         }
-
-        // PUBLIC
 
         /// <summary>
         /// Set the vital data after creating the prefab.

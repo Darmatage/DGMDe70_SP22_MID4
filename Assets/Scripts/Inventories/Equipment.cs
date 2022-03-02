@@ -14,10 +14,7 @@ namespace Game.Inventories
     /// </summary>
     public class Equipment : MonoBehaviour, ISaveable
     {
-        // STATE
         Dictionary<EquipLocation, SO_EquipableItem> equippedItems = new Dictionary<EquipLocation, SO_EquipableItem>();
-
-        // PUBLIC
 
         /// <summary>
         /// Broadcasts when the items in the slots are added/removed.
@@ -72,9 +69,6 @@ namespace Game.Inventories
         {
             return equippedItems.Keys;
         }
-
-        // PRIVATE
-
         object ISaveable.CaptureState()
         {
             var equippedItemsForSerialization = new Dictionary<EquipLocation, string>();

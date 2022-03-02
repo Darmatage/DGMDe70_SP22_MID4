@@ -7,7 +7,7 @@ namespace Game.Inventories
     public class LootDropper : ItemDropper
     {
         [Tooltip("How far can the loot be scattered from the dropper.")]
-        [SerializeField] float scatterDistance = 4f;
+        [SerializeField] float scatterDistance = 2f;
         [SerializeField] SO_LootDropLibrary lootDropLibrary;
 
         public void RandomDrop()

@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.EnemyClass;
 using Game.Enums;
+using Game.Inventories;
 using Game.PlayerClass;
 using Game.Utils;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Combat
 {
@@ -35,8 +37,12 @@ namespace Game.Combat
             
             if(IsDead())
             {
-                AwardExperience(instigator);
+                
                 Die();
+                AwardExperience(instigator);
+                if(!GetComponent<LootDropper>()) return;
+                GetComponent<LootDropper>().RandomDrop();
+
             } 
         }
         public float GetEnemyHealthPoints()

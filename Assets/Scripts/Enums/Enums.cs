@@ -119,4 +119,12 @@ namespace Game.Enums
         Shield
     }
 
+    public enum SoulType
+    {
+        None,
+        Red,
+        Green,
+        Blue
+    }
+
 }

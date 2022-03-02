@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d97d7c3c1fb4e9ab0c73b69fc2e069, type: 3}
+  m_Name: Soul_Red
+  m_EditorClassIdentifier: 
+  itemID: ef9c7af6-c263-43f3-9cbd-e2e224b55523
+  displayName: Red Soul
+  description: 
+  icon: {fileID: 8815208497207793672, guid: 6cce5ebd6a38a46149072fe745d03d7c, type: 3}
+  pickupPrefab: {fileID: 6859252489588781763, guid: fa1e1ef644fc94666b5383850b6b2acc, type: 3}
+  stackable: 1
+  soulType: 1

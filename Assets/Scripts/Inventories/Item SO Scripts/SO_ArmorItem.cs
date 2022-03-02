@@ -6,6 +6,10 @@ using UnityEngine;
 
 namespace Game.Inventories
 {
+    /// <summary>
+    /// A ScriptableObject that is used for player armor.
+    /// </summary>
+
     [CreateAssetMenu(fileName = "Armor", menuName = ("Game/Inventory/New Armor Item"))]
     public class SO_ArmorItem : SO_EquipableItem, IModifierProvider
     {
