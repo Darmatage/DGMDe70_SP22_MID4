@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Enums;
+using Game.Saving;
 
 namespace Game.Inventories
 {
@@ -11,7 +12,7 @@ namespace Game.Inventories
     /// 
     /// This component should be placed on the GameObject tagged "Player".
     /// </summary>
-    public class Equipment : MonoBehaviour//, ISaveable
+    public class Equipment : MonoBehaviour, ISaveable
     {
         // STATE
         Dictionary<EquipLocation, SO_EquipableItem> equippedItems = new Dictionary<EquipLocation, SO_EquipableItem>();
@@ -74,30 +75,30 @@ namespace Game.Inventories
 
         // PRIVATE
 
-        // object ISaveable.CaptureState()
-        // {
-        //     var equippedItemsForSerialization = new Dictionary<EquipLocation, string>();
-        //     foreach (var pair in equippedItems)
-        //     {
-        //         equippedItemsForSerialization[pair.Key] = pair.Value.GetItemID();
-        //     }
-        //     return equippedItemsForSerialization;
-        // }
+        object ISaveable.CaptureState()
+        {
+            var equippedItemsForSerialization = new Dictionary<EquipLocation, string>();
+            foreach (var pair in equippedItems)
+            {
+                equippedItemsForSerialization[pair.Key] = pair.Value.GetItemID();
+            }
+            return equippedItemsForSerialization;
+        }
 
-        // void ISaveable.RestoreState(object state)
-        // {
-        //     equippedItems = new Dictionary<EquipLocation, EquipableItem>();
+        void ISaveable.RestoreState(object state)
+        {
+            equippedItems = new Dictionary<EquipLocation, SO_EquipableItem>();
 
-        //     var equippedItemsForSerialization = (Dictionary<EquipLocation, string>)state;
+            var equippedItemsForSerialization = (Dictionary<EquipLocation, string>)state;
 
-        //     foreach (var pair in equippedItemsForSerialization)
-        //     {
-        //         var item = (EquipableItem)InventoryItem.GetFromID(pair.Value);
-        //         if (item != null)
-        //         {
-        //             equippedItems[pair.Key] = item;
-        //         }
-        //     }
-        // }
+            foreach (var pair in equippedItemsForSerialization)
+            {
+                var item = (SO_EquipableItem)SO_InventoryItem.GetFromID(pair.Value);
+                if (item != null)
+                {
+                    equippedItems[pair.Key] = item;
+                }
+            }
+        }
     }
 }

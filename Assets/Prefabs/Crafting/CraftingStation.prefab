@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8613417577295872837}
   - component: {fileID: 8613417577295872836}
   - component: {fileID: 8613417577295872834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CraftingStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}

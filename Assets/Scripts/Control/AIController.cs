@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Combat;
 using Game.Core;
+using Game.Enums;
 using Game.Movement;
 using UnityEngine;
 
@@ -25,15 +26,17 @@ namespace Game.Control
             combat = GetComponent<EnemyCombat>();
             health = GetComponent<EnemyHealth>();
             movement = GetComponent<AIMovement>();
-            player = GameObject.FindWithTag("Player");
+
+            player = GameObject.FindWithTag(Tags.PlayerTag);
 
             guardPosition = transform.position;
         }
+
         void Update()
         {
             if (health.IsDead()) return;
-
-            if (!player.GetComponent<PlayerManager>().hasIsMonster() && InAttackRangeOfPlayer() && combat.CanAttack(player)) {
+            if (InAttackRangeOfPlayer() && combat.CanAttack(player) && !player.GetComponent<PlayerTransformControl>().IsMonster)
+            {
                 timeSinceLastSawPlayer = 0;
                 AttackBehaviour();
             }
@@ -54,6 +57,7 @@ namespace Game.Control
 
             timeSinceLastSawPlayer += Time.deltaTime;
         }
+
         private void AttackBehaviour()
         {
             combat.Attack(player);

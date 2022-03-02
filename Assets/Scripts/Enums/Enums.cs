@@ -1,5 +1,35 @@
 namespace Game.Enums
 {
+    /// <summary>
+    /// Scene Enums
+    /// </summary>
+    public enum SceneName
+    {
+        Scene_Main,
+        Scene_Dialogue
+    }
+
+    public enum GameScenes
+    {
+        Credits,
+        Dialogue,
+        Gameover,
+        Start,
+        S01,
+        S02,
+        S03
+    }
+
+    public enum GameStages
+    {
+        S01,
+        S02,
+        S03
+    }
+
+    /// <summary>
+    /// Input Action Enums<br/>
+    /// </summary>
     public enum ActionTypes
     {
         Attack,
@@ -36,6 +66,12 @@ namespace Game.Enums
         BaseDamage,
         BaseDefence,
         ExperienceToLevelUp
+    }
+
+    public enum PlayerTransformState
+    {
+        Human,
+        Monster
     }
 
     /// <summary>

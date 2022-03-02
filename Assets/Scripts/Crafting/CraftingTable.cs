@@ -15,11 +15,17 @@ namespace Game.Crafting
         private bool isGamePaused = false;
         private void OnEnable()
         {
-            EventHandler.InteractActionEvent += InteractActionActivate;
+            EventHandler.InteractActionEvent += InteractActionActivateCraft;
         }
         private void OnDisable()
         {
-            EventHandler.InteractActionEvent -= InteractActionActivate;
+            EventHandler.InteractActionEvent -= InteractActionActivateCraft;
+        }
+        private void Awake() 
+        {
+            uiCraftingContainer = GameObject.FindWithTag(Tags.UI_CraftingContainerTag);
+            craftingItems = GameObject.FindWithTag(Tags.UI_CraftingRecipesTag).GetComponent<CraftingUI>();
+
         }
         private void Start()
         {
@@ -53,7 +59,7 @@ namespace Game.Crafting
             EventHandler.CallActiveGameUI(isGamePaused);
         }
 
-        private void InteractActionActivate(bool isKeyPressed)
+        private void InteractActionActivateCraft(bool isKeyPressed)
         {
             isActive = isKeyPressed;
         }
