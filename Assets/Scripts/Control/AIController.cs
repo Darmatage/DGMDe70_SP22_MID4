@@ -27,7 +27,7 @@ namespace Game.Control
             health = GetComponent<EnemyHealth>();
             movement = GetComponent<AIMovement>();
 
-            player = GameObject.FindWithTag(Tags.PlayerTag);
+            player = GameObject.FindWithTag(Tags.PLAYER_TAG);
 
             guardPosition = transform.position;
         }

@@ -23,8 +23,8 @@ namespace Game.Crafting
         }
         private void Awake() 
         {
-            uiCraftingContainer = GameObject.FindWithTag(Tags.UI_CraftingContainerTag);
-            craftingItems = GameObject.FindWithTag(Tags.UI_CraftingRecipesTag).GetComponent<CraftingUI>();
+            uiCraftingContainer = GameObject.FindWithTag(Tags.UI_CRAFTING_CONTAINER_TAG);
+            craftingItems = GameObject.FindWithTag(Tags.UI_CRAFTING_RECIPES_TAG).GetComponent<CraftingUI>();
 
         }
         private void Start()

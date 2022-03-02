@@ -14,7 +14,7 @@ namespace Game.Combat
         }
         private void MeleeAttack(Collider2D other)
         {
-            if (other.gameObject.CompareTag(Tags.EnemyTag)) 
+            if (other.gameObject.CompareTag(Tags.ENEMY_TAG)) 
             {
                 Debug.Log("Attacking: " + other);
                 float damage = GetComponentInParent<PlayerBaseStats>().GetStat(PlayerStats.BaseDamage);
