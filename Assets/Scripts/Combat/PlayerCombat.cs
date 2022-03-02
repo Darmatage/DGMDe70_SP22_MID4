@@ -4,12 +4,13 @@ using Game.Enums;
 using Game.Inventories;
 using Game.Movement;
 using Game.PlayerClass;
+using Game.Saving;
 using Game.Utils;
 using UnityEngine;
 
 namespace Game.Combat
 {
-    public class PlayerCombat : MonoBehaviour
+    public class PlayerCombat : MonoBehaviour, ISaveable
     {
 
         [SerializeField] Transform rangeAttackLaunchPosition;
@@ -104,6 +105,18 @@ namespace Game.Combat
             {
                 GetComponentInChildren<PlayerHitCollidersController>().ActivateMeleeHitCollider(isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown);
             }
+        }
+
+        object ISaveable.CaptureState()
+        {
+            return currentWeaponConfig.name;
+        }
+
+        void ISaveable.RestoreState(object state)
+        {
+            string weaponName = (string)state;
+            SO_WeaponItem weapon = UnityEngine.Resources.Load<SO_WeaponItem>(weaponName);
+            EquipWeapon(weapon);
         }
 
     }

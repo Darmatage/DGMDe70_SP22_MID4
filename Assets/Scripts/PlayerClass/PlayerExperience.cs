@@ -1,9 +1,10 @@
 using UnityEngine;
 using System;
+using Game.Saving;
 
 namespace Game.PlayerClass
 {
-    public class PlayerExperience : MonoBehaviour//, ISaveable
+    public class PlayerExperience : MonoBehaviour, ISaveable
     {
         [SerializeField] float experiencePoints = 0;
 
@@ -20,14 +21,14 @@ namespace Game.PlayerClass
             return experiencePoints;
         }
 
-        // public object CaptureState()
-        // {
-        //     return experiencePoints;
-        // }
+        object ISaveable.CaptureState()
+        {
+            return experiencePoints;
+        }
 
-        // public void RestoreState(object state)
-        // {
-        //     experiencePoints = (float)state;
-        // }
+        void ISaveable.RestoreState(object state)
+        {
+            experiencePoints = (float)state;
+        }
     }
 }

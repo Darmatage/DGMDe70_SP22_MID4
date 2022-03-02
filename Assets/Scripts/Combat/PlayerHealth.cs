@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
 using Game.PlayerClass;
+using Game.Saving;
 using Game.Utils;
 using UnityEngine;
 
 namespace Game.Combat
 {
-    public class PlayerHealth : MonoBehaviour
+    public class PlayerHealth : MonoBehaviour, ISaveable
     {
         [SerializeField] float regenerationPercentage = 5;
         LazyValue<float> healthPoints;
@@ -78,16 +79,14 @@ namespace Game.Combat
             healthPoints.value = Mathf.Max(healthPoints.value, regenHealthPoints);
         }
 
-        // public object CaptureState()
-        // {
-        //     return healthPoints.value;
-        // }
+        object ISaveable.CaptureState()
+        {
+            return healthPoints.value;
+        }
 
-        // public void RestoreState(object state)
-        // {
-        //     healthPoints.value = (float) state;
-            
-        //     UpdateState();
-        // }
+        void ISaveable.RestoreState(object state)
+        {
+            healthPoints.value = (float) state;
+        }
     }   
 }

@@ -12,6 +12,9 @@ TagManager:
   - NPC
   - SpeechBubble
   - SpeechText
+  - UI_CraftingRecipes
+  - UI_CraftingContainer
+  - Tilemap_Rock
   layers:
   - Default
   - TransparentFX
@@ -19,12 +22,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Floor Terrain
+  - Wall Terrain
+  - Player
+  - Enemies
+  - Interactable
+  - Projectiles
   - 
   - 
   - 
@@ -63,4 +66,7 @@ TagManager:
     locked: 0
   - name: Collisions
     uniqueID: 4147367637
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1198816385
     locked: 0

@@ -67,7 +67,7 @@ namespace Game.Inventories
 
         public void LaunchProjectile(Transform weaponPosition, Vector3 launchDirection, float calculatedDamage)
         {
-            PlayerProjectile projectInstance = Instantiate(projectile, weaponPosition.position, Quaternion.identity, GameObject.FindGameObjectWithTag(Tags.ProjectilesTag).transform);
+            PlayerProjectile projectInstance = Instantiate(projectile, weaponPosition.position + launchDirection * 1.5f, Quaternion.identity, GameObject.FindGameObjectWithTag(Tags.PROJECTILES_TAG).transform);
             projectInstance.SetTarget(launchDirection, calculatedDamage);
         }
         public float GetDamage()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
-    private PlayerManager player;
+    //private PlayerManager player;
 
     // UI Elements
     public GameObject speechBubble;
