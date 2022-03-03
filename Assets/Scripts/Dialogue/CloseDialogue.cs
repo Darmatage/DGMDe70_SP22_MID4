@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
+using Game.SceneManagement;
 using UnityEngine;
 
 namespace Game.Story
@@ -13,6 +14,7 @@ namespace Game.Story
         void Update() {
             if (Input.GetMouseButtonDown(0)) {   
                 GameScene.Instance.PreviousScene();
+                GetComponentInParent<DialoguePortal>().GoToCutScene();
             }
         }
     }

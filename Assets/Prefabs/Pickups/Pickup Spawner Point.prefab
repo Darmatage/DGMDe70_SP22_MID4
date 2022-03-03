@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3510763396391840005}
   - component: {fileID: 1538703448670050230}
-  - component: {fileID: 8358224159856191091}
+  - component: {fileID: 6693047380985891136}
   m_Layer: 0
   m_Name: Pickup Spawner Point
   m_TagString: Untagged
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   number: 1
---- !u!114 &8358224159856191091
+--- !u!114 &6693047380985891136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
