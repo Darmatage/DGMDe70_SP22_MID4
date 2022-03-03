@@ -13,8 +13,8 @@ namespace Game.Story
         // Update is called once per frame
         void Update() {
             if (Input.GetMouseButtonDown(0)) {   
-                GameScene.Instance.PreviousScene();
-                GetComponentInParent<DialoguePortal>().GoToCutScene();
+                //GameScene.Instance.PreviousScene();
+                GetComponentInParent<DialoguePortal>().GoToCutScene(); //<- using NPC and Dialogue portals.
             }
         }
     }
