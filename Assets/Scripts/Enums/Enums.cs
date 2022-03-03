@@ -3,6 +3,7 @@ namespace Game.Enums
     /// <summary>
     /// Scene Enums
     /// </summary>
+
     public enum SceneName
     {
         Scene_Main,
@@ -22,20 +23,20 @@ namespace Game.Enums
 
     public enum GameScenes
     {
-        Credits,
-        Dialogue,
-        Gameover,
-        Start,
-        S01,
-        S02,
-        S03
+        Scene_Main,
+        Scene_Dialogue,
+        Scene_Credits,
+        Scene_Gameover,
+        Scene_01,
+        Scene_02,
+        Scene_03
     }
 
     public enum GameStages
     {
-        S01,
-        S02,
-        S03
+        Stage_01,
+        Stage_02,
+        Stage_03
     }
 
     /// <summary>

@@ -30,7 +30,7 @@ namespace Game.NPC
                 Debug.Log("Activate Wizard");
                 //GameScene.Instance.ChangeScene(GameScenes.Dialogue);
                 GetComponent<NPCPortal>().GoToCutScene();
-                
+          
             }
             EventHandler.CallInteractActionEvent(false);
             return true;
@@ -43,4 +43,3 @@ namespace Game.NPC
     }
     
 }
-

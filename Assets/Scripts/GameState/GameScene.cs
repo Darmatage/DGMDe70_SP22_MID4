@@ -10,10 +10,10 @@ public class GameScene : MonoBehaviour
     public static GameScene Instance {
         get { return _instance; }
     }
-    public GameScenes currentScene = GameScenes.S01;
-    public GameStages currentStage = GameStages.S01;
-    public GameScenes previousScene = GameScenes.S01;
-    public GameStages previousStage = GameStages.S01;
+    public GameScenes currentScene = GameScenes.Scene_Main;
+    public GameStages currentStage = GameStages.Stage_01;
+    public GameScenes previousScene = GameScenes.Scene_Main;
+    public GameStages previousStage = GameStages.Stage_01;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -23,9 +23,14 @@ public class GameScene : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
+
+        /* Will remove once we resolve the (int) casting (cabrams)
+        Debug.Log("InitialScene");
+        Debug.Log("Previous Scene: " + (int)previousScene);
+        Debug.Log("Current Scene: " + (int)currentScene);*/
     }
 
-    public void ChangeScene(GameScenes scene, GameStages stage = GameStages.S01) 
+    public void ChangeScene(GameScenes scene, GameStages stage = GameStages.Stage_01) 
     {
         SavingWrapperControl wrapper = FindObjectOfType<SavingWrapperControl>(); //<- Still working on this
 
@@ -57,6 +62,12 @@ public class GameScene : MonoBehaviour
 
         }
 
+        /* Will remove once we resolve the (int) casting (cabrams)
+        Debug.Log("ChangeScene");
+        Debug.Log("Previous Scene: " + (int)previousScene);
+        Debug.Log("Current Scene: " + (int)currentScene);
+        */
+
     }
 
     public void PreviousScene() {
@@ -66,6 +77,12 @@ public class GameScene : MonoBehaviour
         previousStage = currentStage;
         currentScene = nextScreen;
         currentStage = nextStage;
+
+        /* Will remove once we resolve the (int) casting (cabrams)
+        Debug.Log("PreviousScene");
+        Debug.Log("Previous Scene: " + (int)previousScene);
+        Debug.Log("Current Scene: " + (int)currentScene);
+        */
 
         SceneManager.LoadSceneAsync((int)currentScene);
     }
