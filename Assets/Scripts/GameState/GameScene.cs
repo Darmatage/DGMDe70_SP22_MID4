@@ -50,6 +50,7 @@ public class GameScene : MonoBehaviour
                 SceneManager.LoadSceneAsync((int)SceneName.Scene_Main);
                 //wrapper.Load();
                 break;
+
         }
 
     }
