@@ -12,6 +12,8 @@ public class GameScene : MonoBehaviour
     }
     public GameScenes currentScene = GameScenes.S01;
     public GameStages currentStage = GameStages.S01;
+    public GameScenes previousScene = GameScenes.S01;
+    public GameStages previousStage = GameStages.S01;
 
     private void Awake() {
         if (_instance != null && _instance != this) {
@@ -27,6 +29,8 @@ public class GameScene : MonoBehaviour
     {
        // SavingWrapperControl wrapper = FindObjectOfType<SavingWrapperControl>(); //<- Still working on this
 
+        previousScene = currentScene;
+        previousStage = currentStage;
         currentScene = scene;
         currentStage = stage;
 
@@ -54,6 +58,15 @@ public class GameScene : MonoBehaviour
         }
 
     }
+
+    public void PreviousScene() {
+        GameScenes nextScreen = previousScene;
+        GameStages nextStage = previousStage;
+        previousScene = currentScene;
+        previousStage = currentStage;
+        currentScene = nextScreen;
+        currentStage = nextStage;
+
+        SceneManager.LoadSceneAsync((int)currentScene);
+    }
 }
-
-
