@@ -28,7 +28,7 @@ namespace Game.NPC
             {
                 Debug.Log("Activate Wizard");
                 
-                GameScene.Instance.ChangeScene(GameScenes.Dialogue);
+                GameScene.Instance.ChangeScene(GameScenes.Scene_Dialogue);
                 
             }
             EventHandler.CallInteractActionEvent(false);
@@ -42,4 +42,3 @@ namespace Game.NPC
     }
     
 }
-

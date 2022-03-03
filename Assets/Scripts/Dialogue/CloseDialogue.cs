@@ -12,9 +12,11 @@ namespace Game.Story
         // Update is called once per frame
         void Update() {
             if (Input.GetMouseButtonDown(0)) {   
-                GameScene.Instance.PreviousScene();
+                GameScene.Instance.ChangeScene(GameScenes.Scene_Main);
+                // GameScene.Instance.PreviousScene(); TODO: We want to go back to this (cabrams)
             }
         }
     }
     
 }
+
