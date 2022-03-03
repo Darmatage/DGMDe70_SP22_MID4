@@ -41,10 +41,14 @@ namespace Game.Combat
         public void TakeDamage(float damage)
         {
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
+
+            Debug.Log("Player took damage: " + damage);
+            Debug.Log("Player health: " + healthPoints.value);
             
             if(IsDead())
             {
                 Debug.Log("Player is dead!");
+                FindObjectOfType<SavingWrapperControl>().Load();
             } 
         }
 

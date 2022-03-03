@@ -7,11 +7,13 @@ namespace Game.UI
 {
     public class ShowHideUI : MonoBehaviour
     {
-        [SerializeField] GameObject uiContainer = null;
+        [SerializeField] GameObject uiInventroyContainer = null;
+        [SerializeField] GameObject uiCraftingContainer = null;
         private bool isGamePaused = false;
         private void Start()
         {
-            uiContainer.SetActive(false);
+            uiInventroyContainer.SetActive(false);
+            uiCraftingContainer.SetActive(false);
         }
         private void Update()
         {
@@ -37,7 +39,7 @@ namespace Game.UI
 
         private void MenuToggle()
         {
-            uiContainer.SetActive(!uiContainer.activeInHierarchy);
+            uiInventroyContainer.SetActive(!uiInventroyContainer.activeInHierarchy);
             if(isGamePaused)
             {
                 isGamePaused = false;
