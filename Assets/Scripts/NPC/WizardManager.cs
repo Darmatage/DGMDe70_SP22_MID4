@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Game.Story;
 using Game.Control;
 using Game.Enums;
+using Game.SceneManagement;
 
 namespace Game.NPC
 {
@@ -27,8 +28,8 @@ namespace Game.NPC
             if(canInteract)
             {
                 Debug.Log("Activate Wizard");
-                
-                GameScene.Instance.ChangeScene(GameScenes.Dialogue);
+                //GameScene.Instance.ChangeScene(GameScenes.Dialogue);
+                GetComponent<NPCPortal>().GoToCutScene();
                 
             }
             EventHandler.CallInteractActionEvent(false);

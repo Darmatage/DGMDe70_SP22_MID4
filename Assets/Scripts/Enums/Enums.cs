@@ -10,6 +10,16 @@ namespace Game.Enums
         Scene_PortalTest
     }
 
+    public enum DestinationIdentifier
+    {
+        A, B, C, D, E, F
+    }
+    public enum CutSceneDestinationIdentifier
+    {
+        Wizard,
+        EvilWizard
+    }
+
     public enum GameScenes
     {
         Credits,

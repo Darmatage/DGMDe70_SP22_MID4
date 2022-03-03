@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
+using Game.SceneManagement;
 using UnityEngine;
 
 namespace Game.Story
@@ -11,8 +12,9 @@ namespace Game.Story
 
         // Update is called once per frame
         void Update() {
-            if (Input.GetMouseButtonDown(0)) {   
-                GameScene.Instance.ChangeScene(GameScenes.S01);
+            if (Input.GetMouseButtonDown(0)) {
+                //GameScene.Instance.ChangeScene(GameScenes.S01);
+                GetComponentInParent<DialoguePortal>().GoToCutScene();
             }
         }
     }

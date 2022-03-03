@@ -7,15 +7,17 @@ using Game.Enums;
 
 namespace Game.SceneManagement
 {
-    public class Portal : MonoBehaviour
+    public class NPCPortal : MonoBehaviour
     {
     // enum DestinationIdentifier
     // {
     //     A, B, C, D, E, F
     // }
     [SerializeField] private SceneName sceneNameGoto = SceneName.Scene_Main;
-    [SerializeField] Transform spawnPoint;
-    [SerializeField] DestinationIdentifier destination;
+    [SerializeField] Transform _reappearSpawnPoint;
+    public Transform ReappearSpawnPoint { get => _reappearSpawnPoint; }
+    [SerializeField] CutSceneDestinationIdentifier _nPCDestination;
+    public CutSceneDestinationIdentifier NPCDestination { get => _nPCDestination; }
     [SerializeField] float fadeOutTime = 0.5f;
     [SerializeField] float fadeWaitTime = 0.5f;
     [SerializeField] float fadeInTime = 0.5f;
@@ -25,13 +27,11 @@ namespace Game.SceneManagement
     {
         sceneToLoad = (int)sceneNameGoto;
     }
-       private void OnTriggerEnter2D(Collider2D other) 
+       public void GoToCutScene() 
        {
-           if(other.tag == "Player") {
-               {
-                   StartCoroutine(Transitions());
-               }
-           }    
+
+            StartCoroutine(Transitions());
+    
        }
 
        private IEnumerator Transitions ()
@@ -47,8 +47,6 @@ namespace Game.SceneManagement
                 CanvasFader fader = FindObjectOfType<CanvasFader>();
                 SavingWrapperControl wrapper = FindObjectOfType<SavingWrapperControl>();
 
-                EventHandler.CallActiveGameUI(true);
-
                 yield return fader.FadeOut(fadeOutTime);
                 wrapper.Save();
 
@@ -58,32 +56,30 @@ namespace Game.SceneManagement
 
                 yield return new WaitForEndOfFrame();
 
-                Portal otherPortal = GetOtherPortal();
+                DialoguePortal otherPortal = GetDialoguePortal();
                 UpdatePlayer(otherPortal);
 
                 wrapper.Save();
 
-                EventHandler.CallActiveGameUI(false);
+                EventHandler.CallActiveGameUI(true);
 
                 yield return new WaitForSeconds(fadeWaitTime);
                 fader.FadeIn(fadeInTime);
 
-                
-
                 Destroy(gameObject);
        }
-       private void UpdatePlayer(Portal otherPortal)
+       private void UpdatePlayer(DialoguePortal dialPortal)
        {
            GameObject player = GameObject.FindWithTag("Player");
-           player.transform.position = otherPortal.spawnPoint.position;
-           player.transform.rotation = otherPortal.spawnPoint.rotation;
+           player.transform.position = dialPortal.DialogueSpawnPoint.position;
+           player.transform.rotation = dialPortal.DialogueSpawnPoint.rotation;
        }
-       private Portal GetOtherPortal()
+       private DialoguePortal GetDialoguePortal()
        {
-           foreach (Portal portal in FindObjectsOfType<Portal>())
+           foreach (DialoguePortal portal in FindObjectsOfType<DialoguePortal>())
            {
                if (portal == this) continue;
-               if (portal.destination != destination) continue;
+               if (portal.DialogueDestination != _nPCDestination) continue;
                
                return portal;
            }
