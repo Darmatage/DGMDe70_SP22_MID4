@@ -24,9 +24,10 @@ public class GameScene : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
 
+        /* Will remove once we resolve the (int) casting (cabrams)
         Debug.Log("InitialScene");
         Debug.Log("Previous Scene: " + (int)previousScene);
-        Debug.Log("Current Scene: " + (int)currentScene);
+        Debug.Log("Current Scene: " + (int)currentScene);*/
     }
 
     public void ChangeScene(GameScenes scene, GameStages stage = GameStages.Stage_01) 
@@ -44,12 +45,6 @@ public class GameScene : MonoBehaviour
                 SceneManager.LoadSceneAsync((int)GameScenes.Scene_Dialogue);
                 //wrapper.Load();
                 break;
-            
-            /*case GameScenes.Scene_Start:
-               // wrapper.Save();
-                SceneManager.LoadSceneAsync("Start");
-                //wrapper.Load();
-                break;*/
 
             // Game Scenes
 
@@ -61,9 +56,11 @@ public class GameScene : MonoBehaviour
 
         }
 
+        /* Will remove once we resolve the (int) casting (cabrams)
         Debug.Log("ChangeScene");
         Debug.Log("Previous Scene: " + (int)previousScene);
         Debug.Log("Current Scene: " + (int)currentScene);
+        */
 
     }
 
@@ -75,9 +72,11 @@ public class GameScene : MonoBehaviour
         currentScene = nextScreen;
         currentStage = nextStage;
 
+        /* Will remove once we resolve the (int) casting (cabrams)
         Debug.Log("PreviousScene");
         Debug.Log("Previous Scene: " + (int)previousScene);
         Debug.Log("Current Scene: " + (int)currentScene);
+        */
 
         SceneManager.LoadSceneAsync((int)currentScene);
     }
