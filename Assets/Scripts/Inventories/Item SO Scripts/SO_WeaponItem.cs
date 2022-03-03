@@ -6,13 +6,16 @@ using Game.Combat;
 
 namespace Game.Inventories
 {
+    /// <summary>
+    /// A ScriptableObject that is used for weapons.
+    /// </summary>
+
     [CreateAssetMenu(fileName = "Weapon", menuName = "Game/Inventory/New Weapon Item")]
     public class SO_WeaponItem : SO_EquipableItem, IModifierProvider
     {
-        //[Tooltip("To change which animation is played based on the equiped weapon.")]
-        //[SerializeField] AnimatorOverrideController animatorOverride = null; //<- Need to add in the override control system
-        
-        //[SerializeField] PlayerWeaponPrefab equippedPrefab = null; //<- Need to remove this 
+        [Tooltip("To change which animation is played based on the equiped weapon.")]
+        [SerializeField] AnimatorOverrideController animatorOverride = null; 
+
         [Tooltip("The weapons base damage.")]
         [SerializeField] float weaponBaseDamage = 5f;
 
@@ -27,38 +30,18 @@ namespace Game.Inventories
         [SerializeField] Modifier[] percentageModifiers;
         const string weaponName = "Weapon";
 
-        // public PlayerWeaponPrefab Spawn(Transform weaponPosition, Animator animator)
-        // {
-        //     DestroyOldWeapon(weaponPosition);
-
-        //     PlayerWeaponPrefab weapon = null;
-
-        //     if(equippedPrefab != null)
-        //     {
-        //         weapon = Instantiate(equippedPrefab, weaponPosition);
-        //         weapon.gameObject.name = weaponName;
-        //     }
-
-        //     var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
-        //     if (animatorOverride != null)
-        //     {
-        //         animator.runtimeAnimatorController = animatorOverride; 
-        //     }
-        //     else if (overrideController != null)
-        //     {
-        //         animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
-        //     }
-        //     return weapon;
-        // }
-
-        // private static void DestroyOldWeapon(Transform weaponPosition)
-        // {
-        //     Transform oldWeapon = weaponPosition.Find(weaponName);
-        //     if (oldWeapon == null) return;
-
-        //     oldWeapon.name = "DESTROYING";
-        //     Destroy(oldWeapon.gameObject);
-        // }
+        public void Spawn(Animator animator)
+        {
+            var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+            if (animatorOverride != null)
+            {
+                animator.runtimeAnimatorController = animatorOverride; 
+            }
+            else if (overrideController != null)
+            {
+                animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
+            }
+        }
 
         public bool HasProjectile()
         {

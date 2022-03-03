@@ -3,6 +3,12 @@ using UnityEngine;
 
 namespace Game.Inventories
 {
+    /// <summary>
+    /// This ScriptableObject is used to create a list of potential items an ememy can drop on death.
+    /// The list can include multiple items with their drop potential,
+    /// as well as the option to change chances by difficultly level.
+    /// </summary>
+
     [CreateAssetMenu(fileName = "LootDropTable", menuName = ("Game/Enemy/Loot Drop Table"))]
     public class SO_LootDropLibrary : ScriptableObject
     {

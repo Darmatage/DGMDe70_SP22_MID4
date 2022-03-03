@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5338266366477963342, guid: 2e25574924b9b4eca9707d61af8214f5, type: 3}
       propertyPath: m_Name
-      value: Test Enemy - Melee
+      value: Test Enemy - Melee Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e25574924b9b4eca9707d61af8214f5, type: 3}

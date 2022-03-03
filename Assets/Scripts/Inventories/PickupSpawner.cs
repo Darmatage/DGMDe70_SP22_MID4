@@ -9,14 +9,11 @@ namespace Game.Inventories
     /// </summary>
     public class PickupSpawner : MonoBehaviour, ISaveable
     {
-        // CONFIG DATA
         [SerializeField] SO_InventoryItem item = null;
         [SerializeField] int number = 1;
 
-        // LIFECYCLE METHODS
         private void Awake()
         {
-            // Spawn in Awake so can be destroyed by save system after.
             SpawnPickup();
         }
 
@@ -38,8 +35,6 @@ namespace Game.Inventories
         { 
             return GetPickup() == null;
         }
-
-        //PRIVATE
 
         private void SpawnPickup()
         {

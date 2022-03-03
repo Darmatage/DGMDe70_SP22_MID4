@@ -50,7 +50,7 @@ namespace Game.Combat
         public void EquipWeapon(SO_WeaponItem weapon)
         {
             currentWeaponConfig = weapon;
-            //currentWeapon.value = AttachWeapon(weapon);
+            AttachWeapon(weapon);
         }
 
         private void UpdateWeapon()
@@ -65,11 +65,12 @@ namespace Game.Combat
                 EquipWeapon(weapon);
             }
         }
-        // private PlayerWeaponPrefab AttachWeapon(SO_WeaponItem weapon)
-        // {
-        //     //Animator animator = GetComponent<Animator>();
-        //     return weapon.Spawn(weaponPosition, animator);
-        // }
+        private void AttachWeapon(SO_WeaponItem weapon)
+        {
+            PlayerHitCollidersController playerWeapon = GetComponentInChildren<PlayerHitCollidersController>();
+            Animator animator = playerWeapon.gameObject.GetComponent<Animator>();
+            weapon.Spawn(animator);
+        }
 
         private void SetAttackDirection(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle, bool isMakingAttack,
             bool isAttackingRight, bool isAttackingLeft, bool isAttackingUp, bool isAttackingDown,

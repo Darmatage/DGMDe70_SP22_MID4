@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d97d7c3c1fb4e9ab0c73b69fc2e069, type: 3}
+  m_Name: Soul_Green
+  m_EditorClassIdentifier: 
+  itemID: ec264921-5f54-4c49-a0e9-d9e5d192ba4a
+  displayName: Green Soul
+  description: 
+  icon: {fileID: 2531964600635619042, guid: 1aa84e2f09fc34cc2943567aea7d528b, type: 3}
+  pickupPrefab: {fileID: 6207134703643966157, guid: 55b7fb472429f4cdda4b6f6554f5dbef, type: 3}
+  stackable: 1
+  soulType: 2

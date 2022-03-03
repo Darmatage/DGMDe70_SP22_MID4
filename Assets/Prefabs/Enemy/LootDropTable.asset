@@ -13,12 +13,22 @@ MonoBehaviour:
   m_Name: LootDropTable
   m_EditorClassIdentifier: 
   potentialDrops:
-  - item: {fileID: 0}
+  - item: {fileID: 11400000, guid: 388e371f1f05d49cf9b70ef25eab23f8, type: 2}
     relativeChance:
-    - 0
-    minNumber: 
-    maxNumber: 
+    - 33
+    minNumber: 01000000
+    maxNumber: 03000000
+  - item: {fileID: 11400000, guid: d97b6d2f8777849bf8446f10c840530c, type: 2}
+    relativeChance:
+    - 33
+    minNumber: 01000000
+    maxNumber: 03000000
+  - item: {fileID: 11400000, guid: 5172fba3f610b484a927bf373e1699a3, type: 2}
+    relativeChance:
+    - 33
+    minNumber: 01000000
+    maxNumber: 03000000
   dropChancePercentage:
-  - 0
-  minDrops: 00000000
-  maxDrops: 
+  - 100
+  minDrops: 01000000
+  maxDrops: 03000000

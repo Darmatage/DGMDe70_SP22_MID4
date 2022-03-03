@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22152529ea44463aadb88284a49fbad, type: 3}
+  m_Name: BasicSword
+  m_EditorClassIdentifier: 
+  itemID: 1dc3979c-8146-4f8d-b44d-391d42e8407b
+  displayName: Basic Sword
+  description: It's just a little bit better than your fists!
+  icon: {fileID: 21300000, guid: b275f9c3c43f042c2b0e56b686e901c7, type: 3}
+  pickupPrefab: {fileID: 1644453927555417061, guid: 62c5efee5cd3d4b3b97460aa4e44ee21, type: 3}
+  allowedEquipLocation: 6
+  animatorOverride: {fileID: 22100000, guid: 5f43330b8d6a94d13989e0deb8c7e26c, type: 2}
+  weaponBaseDamage: 8
+  projectile: {fileID: 0}
+  additiveModifiers: []
+  percentageModifiers: []

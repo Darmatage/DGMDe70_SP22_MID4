@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22152529ea44463aadb88284a49fbad, type: 3}
+  m_Name: BasicWand
+  m_EditorClassIdentifier: 
+  itemID: a88a55fe-17ea-47df-b800-5fa39ac7a488
+  displayName: Basic Wand
+  description: Pew Pew
+  icon: {fileID: 21300000, guid: a22dd9f70c307421f8f41095da410203, type: 3}
+  pickupPrefab: {fileID: 1644453927555417061, guid: 62c5efee5cd3d4b3b97460aa4e44ee21, type: 3}
+  allowedEquipLocation: 6
+  animatorOverride: {fileID: 22100000, guid: 2cb083f3c719049339f8dbb4d7d3bbb1, type: 2}
+  weaponBaseDamage: 12
+  projectile: {fileID: 8701212113269864078, guid: c985473fe05cc48189647fbcc311ded2, type: 3}
+  additiveModifiers: []
+  percentageModifiers: []

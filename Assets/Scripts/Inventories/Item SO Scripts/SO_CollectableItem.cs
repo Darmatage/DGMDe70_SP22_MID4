@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace Game.Inventories
 {
+    /// <summary>
+    /// A ScriptableObject that is used for items that are collectable and stackable.
+    /// but have no uses other then in crafting.
+    /// </summary>
+
     [CreateAssetMenu(fileName = "Collectable", menuName = "Game/Inventory/New Collectable Item")]
     public class SO_CollectableItem : SO_InventoryItem
     {
