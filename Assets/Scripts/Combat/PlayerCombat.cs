@@ -16,23 +16,17 @@ namespace Game.Combat
         [SerializeField] Transform rangeAttackLaunchPosition;
         [SerializeField] SO_WeaponItem defaultWeapon = null;
         SO_WeaponItem currentWeaponConfig;
-        //LazyValue<PlayerWeaponPrefab> currentWeapon;
         Equipment equipment;
 
         private void Awake() 
         {
             currentWeaponConfig = defaultWeapon;
-            //currentWeapon = new LazyValue<PlayerWeaponPrefab>(SetupDefaultWeapon);
             equipment = GetComponent<Equipment>();
             if(equipment)
             {
                 equipment.equipmentUpdated += UpdateWeapon;
             }
         }
-        // private PlayerWeaponPrefab SetupDefaultWeapon()
-        // {
-        //     return AttachWeapon(defaultWeapon);
-        // }
 
         private void OnEnable()
         {
@@ -43,10 +37,7 @@ namespace Game.Combat
         {
             EventHandler.PlayerInputEvent -= SetAttackDirection;
         }
-        // void Start() 
-        // {
-        //     currentWeapon.ForceInit();
-        // }
+
         public void EquipWeapon(SO_WeaponItem weapon)
         {
             currentWeaponConfig = weapon;
