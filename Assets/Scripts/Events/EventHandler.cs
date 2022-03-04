@@ -38,12 +38,12 @@ public class EventHandler
     }
 
     // Pause game and controls while in UI
-    public static event Action<bool> InteractActionEvent;
-    public static void CallInteractActionEvent(bool isKeyPressed)
+    public static event Action<bool> InteractActionKeyEvent;
+    public static void CallInteractActionKeyEvent(bool isKeyPressed)
     {
-        if (InteractActionEvent != null)
+        if (InteractActionKeyEvent != null)
         {
-            InteractActionEvent(isKeyPressed);
+            InteractActionKeyEvent(isKeyPressed);
         }
     }
 
@@ -67,13 +67,33 @@ public class EventHandler
     }
 
 
-    // Transform Player
-    public static event Action QuitPlayGameEvent;
-    public static void CallQuitPlayGameEvent()
+    // Inventory Action
+    public static event Action InventoryActionEvent;
+    public static void CallInventoryActionEvent()
     {
-        if (QuitPlayGameEvent != null)
+        if (InventoryActionEvent != null)
         {
-            QuitPlayGameEvent();
+            InventoryActionEvent();
+        }
+    }
+
+    // Escape Action
+    public static event Action EscapeActionEvent;
+    public static void CallEscapeActionEvent()
+    {
+        if (EscapeActionEvent != null)
+        {
+            EscapeActionEvent();
+        }
+    }
+
+    // Crafting Action
+    public static event Action CraftingActionEvent;
+    public static void CallCraftingActionEvent()
+    {
+        if (CraftingActionEvent != null)
+        {
+            CraftingActionEvent();
         }
     }
 
