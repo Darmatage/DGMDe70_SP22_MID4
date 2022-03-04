@@ -44,6 +44,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "EscAction",
+                    "type": "Button",
+                    "id": "ceadcc48-3bd9-4dba-b485-f70d3e96fba1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -275,6 +283,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "TransformAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f90d8160-f313-42d4-b94f-95edc5914549",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "EscAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -10,58 +10,49 @@ namespace Game.Crafting
     {
         [SerializeField] SO_CraftingRecipe craftingRecipe = null;
         [SerializeField] CraftingUI craftingItems = null;
-        [SerializeField] GameObject uiCraftingContainer = null;
-        private bool isActive = false;
-        private bool isGamePaused = false;
+        [SerializeField] GameObject interactionIndicatorUI = null;
+        private bool isKeyActive = false;
+        private bool isRaycastOn = false;
         private void OnEnable()
         {
-            EventHandler.InteractActionEvent += InteractActionActivateCraft;
+            EventHandler.InteractActionKeyEvent += InteractActionActivateCraft;
         }
         private void OnDisable()
         {
-            EventHandler.InteractActionEvent -= InteractActionActivateCraft;
+            EventHandler.InteractActionKeyEvent -= InteractActionActivateCraft;
         }
         private void Awake() 
         {
-            uiCraftingContainer = GameObject.FindWithTag(Tags.UI_CRAFTING_CONTAINER_TAG);
             craftingItems = GameObject.FindWithTag(Tags.UI_CRAFTING_RECIPES_TAG).GetComponent<CraftingUI>();
-
         }
-        private void Start()
+        private void Update() 
         {
-            uiCraftingContainer.SetActive(false);
+            InteractUIDisplay();
+            isRaycastOn = false;
         }
         public bool HandleRaycast(PlayerInputControl callingController)
         {
-            if(isActive)
+            isRaycastOn = true;
+            
+            if(isKeyActive)
             {
-                Debug.Log("This is a crafting table");
                 craftingItems.SetupRecipes(craftingRecipe);
-                MenuToggle();
-                
+                EventHandler.CallCraftingActionEvent();
             }
-
-            EventHandler.CallInteractActionEvent(false);
+            
+            EventHandler.CallInteractActionKeyEvent(false);
             return true;
-        }
-
-        private void MenuToggle()
-        {
-            uiCraftingContainer.SetActive(!uiCraftingContainer.activeSelf);
-            if(isGamePaused)
-            {
-                isGamePaused = false;
-            }
-            else
-            {
-                isGamePaused = true;
-            }
-            EventHandler.CallActiveGameUI(isGamePaused);
         }
 
         private void InteractActionActivateCraft(bool isKeyPressed)
         {
-            isActive = isKeyPressed;
+            isKeyActive = isKeyPressed;
+        }
+
+        public void InteractUIDisplay()
+        {
+            if(!interactionIndicatorUI) return;
+            interactionIndicatorUI.SetActive(isRaycastOn);
         }
     }
 }

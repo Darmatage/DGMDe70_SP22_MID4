@@ -11,35 +11,51 @@ namespace Game.NPC
 {
     public class WizardManager : MonoBehaviour, IRaycastable
     {
+        [SerializeField] GameObject interactionIndicatorUI = null;
         public DialogueScene01 dialogueScene01 = new DialogueScene01();
-        private bool canInteract = false;
+        private bool isKeyActive = false;
+        private bool isRaycastOn = false;
         
         private void OnEnable()
         {
-            EventHandler.InteractActionEvent += InteractActionActivateWizard;
+            EventHandler.InteractActionKeyEvent += InteractActionActivateWizard;
         }
         private void OnDisable()
         {
-            EventHandler.InteractActionEvent -= InteractActionActivateWizard;
+            EventHandler.InteractActionKeyEvent -= InteractActionActivateWizard;
+        }
+
+        private void Update() 
+        {
+            InteractUIDisplay();
+            isRaycastOn = false;
+        }
+        public void InteractUIDisplay()
+        {
+            if(!interactionIndicatorUI) return;
+            interactionIndicatorUI.SetActive(isRaycastOn);
         }
 
         public bool HandleRaycast(PlayerInputControl callingController)
         {
-            if(canInteract)
+            isRaycastOn = true;
+
+            if(isKeyActive)
             {
                 Debug.Log("Activate Wizard");
                 //GameScene.Instance.ChangeScene(GameScenes.Dialogue);
                 GetComponent<NPCPortal>().GoToCutScene();
-          
             }
-            EventHandler.CallInteractActionEvent(false);
+            EventHandler.CallInteractActionKeyEvent(false);
             return true;
         }
 
         private void InteractActionActivateWizard(bool isKeyPressed)
         {
-            canInteract = isKeyPressed;
+            isKeyActive = isKeyPressed;
         }
+
+
     }
     
 }

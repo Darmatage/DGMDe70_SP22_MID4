@@ -80,16 +80,40 @@ namespace Game.Control
         {
             if (value.started)
             {
-                DoAction(ActionTypes.Interact);
+                EventHandler.CallInteractActionKeyEvent(true);
                 Debug.Log("Started interaction");
             }
             if (value.canceled)
             {
-                EventHandler.CallInteractActionEvent(false);
+                EventHandler.CallInteractActionKeyEvent(false);
             }
         }
 
-        public void TransformAction(InputAction.CallbackContext value)
+        public void EscapeAction(InputAction.CallbackContext value) //<- Esc Key
+        {
+            
+            if (value.started)
+            {
+                EventHandler.CallEscapeActionEvent();
+            }
+            if (value.canceled)
+            {
+            }
+        }
+
+        public void InventoryAction(InputAction.CallbackContext value) //<- I Key
+        {
+            
+            if (value.started)
+            {
+                EventHandler.CallInventoryActionEvent();
+            }
+            if (value.canceled)
+            {
+            }
+        }
+
+        public void TransformAction(InputAction.CallbackContext value) //<- M key
         {
             if (value.started)
             {
@@ -109,13 +133,9 @@ namespace Game.Control
                 MakeAttackAction();
                 CallAnimationEvent();
             }
-            else if (actionTypes == ActionTypes.Interact)
-            {
-                EventHandler.CallInteractActionEvent(true);
-            }
             else
             {
-                EventHandler.CallInteractActionEvent(false);
+                //EventHandler.CallInteractActionKeyEvent(false);
                 ResetAnimationTriggers();
             }
             timeSinceLastAction = 0;
