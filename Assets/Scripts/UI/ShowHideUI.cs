@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Game.UI
 {
@@ -96,6 +97,18 @@ namespace Game.UI
                 isGamePaused = true;
             }
             EventHandler.CallActiveGameUI(isGamePaused);
+        }
+
+        public void RestartGame() {
+            SceneManager.LoadScene("Scene_MainMenu");
+        }
+
+        public void QuitGame() {
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #else
+            Application.Quit();
+            #endif
         }
     }
 }

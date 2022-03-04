@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour {
     //private PlayerManager player;
@@ -19,4 +20,20 @@ public class GameHandler : MonoBehaviour {
     //     }
     //     return false;
     // }
+
+    public void StartGame() {
+        SceneManager.LoadScene("Scene_Main");
+    }
+
+    public void OpenCredits() {
+        SceneManager.LoadScene("Scene_Credits");
+    }
+
+    public void QuitGame(){
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
+    }
 }

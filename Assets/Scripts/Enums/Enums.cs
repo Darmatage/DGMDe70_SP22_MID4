@@ -6,6 +6,7 @@ namespace Game.Enums
 
     public enum SceneName
     {
+        Scene_MainMenu,
         Scene_Main,
         Scene_Dialogue,
         Scene_PortalTest
