@@ -40,13 +40,13 @@ public class GameScene : MonoBehaviour
         currentStage = stage;
 
         switch (scene) {
-            case GameScenes.Dialogue:
+            case GameScenes.Scene_Dialogue:
                 wrapper.Save();
                 SceneManager.LoadSceneAsync((int)SceneName.Scene_Dialogue);
                 wrapper.Load();
                 break;
             
-            case GameScenes.Start:
+            case GameScenes.Scene_Credits:
                 wrapper.Save();
                 SceneManager.LoadSceneAsync("Start");
                 wrapper.Load();
@@ -54,7 +54,7 @@ public class GameScene : MonoBehaviour
 
             // Game Scenes
 
-            case GameScenes.S01:
+            case GameScenes.Scene_Main:
                 wrapper.Save();
                 SceneManager.LoadSceneAsync((int)SceneName.Scene_Main);
                 wrapper.Load();
