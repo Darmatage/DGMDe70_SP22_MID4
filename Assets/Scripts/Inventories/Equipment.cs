@@ -34,6 +34,15 @@ namespace Game.Inventories
             return equippedItems[equipLocation];
         }
 
+        public bool IsItemDroppable(EquipLocation equipLocation)
+        {
+            if (!equippedItems.ContainsKey(equipLocation))
+            {
+                return false;
+            }
+            return equippedItems[equipLocation].IsDroppable();
+        }
+
         /// <summary>
         /// Add an item to the given equip location. Do not attempt to equip to
         /// an incompatible slot.

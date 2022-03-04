@@ -54,6 +54,11 @@ namespace Game.UI.Inventories
             return playerEquipment.GetItemInSlot(equipLocation);
         }
 
+        public bool IsDroppable()
+        {
+            return playerEquipment.IsItemDroppable(equipLocation);
+        }
+
         public int GetNumber()
         {
             if (GetItem() != null)

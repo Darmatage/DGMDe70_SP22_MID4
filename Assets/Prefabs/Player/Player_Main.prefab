@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 6197886959752762877}
   - component: {fileID: 6197886959752762876}
   - component: {fileID: 6197886959752762875}
+  - component: {fileID: 5980636598127323671}
   - component: {fileID: 6197886959752762871}
   - component: {fileID: 5106922876468637596}
   m_Layer: 8
@@ -567,6 +568,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3147b91746a50416cb326f942a451e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5980636598127323671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197886959752762870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b606c62aea64c45a98617c5970880139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soulGemCount: 0
 --- !u!114 &6197886959752762871
 MonoBehaviour:
   m_ObjectHideFlags: 0

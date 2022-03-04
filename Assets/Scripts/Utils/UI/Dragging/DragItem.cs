@@ -160,7 +160,7 @@ namespace Game.Core.UI.Dragging
             var acceptable = destination.MaxAcceptable(draggingItem);
             var toTransfer = Mathf.Min(acceptable, draggingNumber);
 
-            if (toTransfer > 0)
+            if (toTransfer > 0 && source.IsDroppable())
             {
                 source.RemoveItems(toTransfer);
                 destination.AddItems(draggingItem, toTransfer);

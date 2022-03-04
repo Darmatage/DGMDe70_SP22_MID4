@@ -13,7 +13,7 @@ namespace Game.UI.HUD
 
         private void Awake()
         {
-            playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+            playerHealth = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerHealth>();
         }
         void Start()
         {

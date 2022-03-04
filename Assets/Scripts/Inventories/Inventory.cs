@@ -39,6 +39,11 @@ namespace Game.Inventories
         }
         public bool AddToFirstEmptySlot(SO_InventoryItem item, int number)
         {
+            foreach (var store in GetComponents<ISoulGemCounter>())
+            {
+                store.CountSoulItems(item, number);
+            }
+
             int i = FindSlot(item);
 
             if (i < 0)
@@ -74,6 +79,11 @@ namespace Game.Inventories
         public int GetNumberInSlot(int slot)
         {
             return slots[slot].number;
+        }
+
+        public bool IsItemDroppable(int slot)
+        {
+            return slots[slot].item.IsDroppable();
         }
         public void RemoveFromSlot(int slot, int number)
         {

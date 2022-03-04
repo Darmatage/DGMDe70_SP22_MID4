@@ -39,6 +39,11 @@ namespace Game.UI.Inventories
             inventory.AddItemToSlot(index, item, number);
         }
 
+        public bool IsDroppable()
+        {
+            return inventory.IsItemDroppable(index);
+        }
+
         public SO_InventoryItem GetItem()
         {
             return inventory.GetItemInSlot(index);
