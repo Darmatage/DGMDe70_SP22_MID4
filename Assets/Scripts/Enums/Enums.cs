@@ -7,7 +7,18 @@ namespace Game.Enums
     public enum SceneName
     {
         Scene_Main,
-        Scene_Dialogue
+        Scene_Dialogue,
+        Scene_PortalTest
+    }
+
+    public enum DestinationIdentifier
+    {
+        A, B, C, D, E, F
+    }
+    public enum CutSceneDestinationIdentifier
+    {
+        Wizard,
+        EvilWizard
     }
 
     public enum GameScenes

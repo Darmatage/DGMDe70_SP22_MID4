@@ -14,17 +14,12 @@ namespace Game.UI.Inventories
     /// </summary>
     public class EquipmentSlotUI : MonoBehaviour, IItemHolder, IDragContainer<SO_InventoryItem>
     {
-        // CONFIG DATA
-
         [SerializeField] InventoryItemIcon icon = null;
         [SerializeField] EquipLocation equipLocation = EquipLocation.None;
         [SerializeField] GameObject slotTextContainer = null;
         [SerializeField] TextMeshProUGUI slotText = null;
 
-        // CACHE
         Equipment playerEquipment;
-
-        // LIFECYCLE METHODS
        
         private void Awake() 
         {
@@ -39,8 +34,6 @@ namespace Game.UI.Inventories
             RedrawUI();
         }
 
-        // PUBLIC
-
         public int MaxAcceptable(SO_InventoryItem item)
         {
             SO_EquipableItem equipableItem = item as SO_EquipableItem;
@@ -53,7 +46,6 @@ namespace Game.UI.Inventories
 
         public void AddItems(SO_InventoryItem item, int number)
         {
-            slotTextContainer.SetActive(false);
             playerEquipment.AddItem(equipLocation, (SO_EquipableItem) item);
         }
 
@@ -77,7 +69,6 @@ namespace Game.UI.Inventories
         public void RemoveItems(int number)
         {
             playerEquipment.RemoveItem(equipLocation);
-            slotTextContainer.SetActive(true);
         }
 
         // PRIVATE
@@ -85,6 +76,8 @@ namespace Game.UI.Inventories
         void RedrawUI()
         {
             icon.SetItem(playerEquipment.GetItemInSlot(equipLocation));
+            if(playerEquipment.GetItemInSlot(equipLocation) == null) slotTextContainer.SetActive(true);
+            if(playerEquipment.GetItemInSlot(equipLocation) != null) slotTextContainer.SetActive(false);
         }
     }
 }

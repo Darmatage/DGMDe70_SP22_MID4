@@ -330,7 +330,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6656564668184126760, guid: e25595832e9ea477f88ff034e21d6396, type: 3}
         m_TargetAssemblyTypeName: Game.UI.ShowHideUI, Assembly-CSharp
         m_MethodName: Inventory
         m_Mode: 0

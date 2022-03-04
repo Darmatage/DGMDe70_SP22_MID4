@@ -185,6 +185,7 @@ namespace Game.Inventories
                     slotStrings[i].number = slots[i].number;
                 }
             }
+           
             return slotStrings;
         }
 

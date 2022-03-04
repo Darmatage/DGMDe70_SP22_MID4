@@ -32,7 +32,7 @@ public class GameScene : MonoBehaviour
 
     public void ChangeScene(GameScenes scene, GameStages stage = GameStages.Stage_01) 
     {
-       // SavingWrapperControl wrapper = FindObjectOfType<SavingWrapperControl>(); //<- Still working on this
+        SavingWrapperControl wrapper = FindObjectOfType<SavingWrapperControl>(); //<- Still working on this
 
         previousScene = currentScene;
         previousStage = currentStage;
@@ -41,17 +41,23 @@ public class GameScene : MonoBehaviour
 
         switch (scene) {
             case GameScenes.Scene_Dialogue:
-                //wrapper.Save();
-                SceneManager.LoadSceneAsync((int)GameScenes.Scene_Dialogue);
-                //wrapper.Load();
+                wrapper.Save();
+                SceneManager.LoadSceneAsync((int)SceneName.Scene_Dialogue);
+                wrapper.Load();
+                break;
+            
+            case GameScenes.Scene_Credits:
+                wrapper.Save();
+                SceneManager.LoadSceneAsync("Start");
+                wrapper.Load();
                 break;
 
             // Game Scenes
 
             case GameScenes.Scene_Main:
-                //wrapper.Save();
-                SceneManager.LoadSceneAsync((int)GameScenes.Scene_Main);
-                //wrapper.Load();
+                wrapper.Save();
+                SceneManager.LoadSceneAsync((int)SceneName.Scene_Main);
+                wrapper.Load();
                 break;
 
         }
