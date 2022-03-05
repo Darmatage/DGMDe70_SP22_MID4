@@ -22,6 +22,7 @@ public class GameHandler : MonoBehaviour {
     // }
 
     public void StartGame() {
+        Debug.Log("Start Game");
         SceneManager.LoadScene("Scene_Main");
     }
 
@@ -35,5 +36,13 @@ public class GameHandler : MonoBehaviour {
         #else
         Application.Quit();
         #endif
+    }
+
+    public void ChooseHero() {
+        SceneManager.LoadScene("Scene_ChooseHero");
+    }
+    public void ChooseCurse() {
+        Debug.Log("Clicked Curse");
+        SceneManager.LoadScene("Scene_ChooseCurse");
     }
 }
