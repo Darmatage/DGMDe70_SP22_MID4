@@ -10,7 +10,7 @@ namespace Game.Inventories
     {
         [Tooltip("Where are we allowed to put this item.")]
         [SerializeField] EquipLocation allowedEquipLocation = EquipLocation.None;
-        public EquipLocation GetAllowedEquipLocation()
+        public virtual EquipLocation GetAllowedEquipLocation()
         {
             return allowedEquipLocation;
         }

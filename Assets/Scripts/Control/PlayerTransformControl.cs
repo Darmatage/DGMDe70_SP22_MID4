@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Curses;
 using Game.Enums;
 using Game.Inventories;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace Game.Control
         private PlayerTransformState playerTransformState;
 
         Equipment playerEquipment;
-        [SerializeField] SO_EquipableItem equipableItem;
+        [SerializeField] SO_Curse equipedCurse;
 
         private void Awake() 
         {
@@ -55,12 +56,12 @@ namespace Game.Control
 
         private void AddCurse()
         {
-            if(_isMonster) playerEquipment.AddItem(EquipLocation.Head, equipableItem);
+            if(_isMonster) playerEquipment.AddItem(EquipLocation.Curse, equipedCurse);
         }
 
         public void RemoveCurse()
         {
-            if(!_isMonster) playerEquipment.RemoveItem(EquipLocation.Head);
+            if(!_isMonster) playerEquipment.RemoveItem(EquipLocation.Curse);
         }
 
         // Update is called once per frame

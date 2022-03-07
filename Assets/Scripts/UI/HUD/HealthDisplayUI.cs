@@ -22,7 +22,7 @@ namespace Game.UI.HUD
 
         private void Update()
         {
-            healthDisplay.text = String.Format("{0}/{1}", playerHealth.GetHealthPoints(), playerHealth.GetMaxHealthPoints());
+            healthDisplay.text = String.Format("{0:0.0}/{1:0}", playerHealth.GetHealthPoints(), playerHealth.GetMaxHealthPoints());
         }
     }
 }

@@ -505,6 +505,7 @@ MonoBehaviour:
   playerObject: {fileID: 585338627225832369, guid: 9c68753b4b9ff4380a4524cf02769498, type: 3}
   monsterObject: {fileID: 454606006753467870, guid: c9af1e2937fa94c51919db439c2f27fe, type: 3}
   currentObject: {fileID: 585338627225832369, guid: 9c68753b4b9ff4380a4524cf02769498, type: 3}
+  equipedCurse: {fileID: 11400000, guid: fdb54697978cc411d81e64d536bd41f5, type: 2}
 --- !u!114 &6197886959752762848
 MonoBehaviour:
   m_ObjectHideFlags: 0

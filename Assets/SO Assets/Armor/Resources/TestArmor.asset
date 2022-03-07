@@ -19,8 +19,6 @@ MonoBehaviour:
   pickupPrefab: {fileID: 1644453927555417061, guid: 62c5efee5cd3d4b3b97460aa4e44ee21, type: 3}
   allowedEquipLocation: 1
   additiveModifiers:
-  - stat: 1
-    value: -5
-  percentageModifiers:
-  - stat: 1
-    value: 0
+  - stat: 5
+    value: 5
+  percentageModifiers: []

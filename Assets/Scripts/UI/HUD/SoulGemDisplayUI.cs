@@ -13,9 +13,12 @@ namespace Game.UI.HUD
 
         SoulGemManager playerSoulCount = null;
 
-        private void Start() {
+        private void Awake() 
+        {
             playerSoulCount = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG).GetComponent<SoulGemManager>();
+        }
 
+        private void Start() {
             if (playerSoulCount != null)
             {
                 playerSoulCount.onChange += RefreshUI;
