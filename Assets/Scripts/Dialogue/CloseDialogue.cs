@@ -14,10 +14,9 @@ namespace Game.Story
         void Update() {
             if (Input.GetMouseButtonDown(0)) {   
                 //GameScene.Instance.PreviousScene();
-                GetComponentInParent<DialoguePortal>().GoToCutScene(); //<- using NPC and Dialogue portals.
+                // GetComponentInParent<DialoguePortal>().GoToCutScene(); //<- using NPC and Dialogue portals.
             }
         }
     }
     
 }
-

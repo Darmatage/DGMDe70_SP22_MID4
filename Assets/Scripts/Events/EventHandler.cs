@@ -97,4 +97,14 @@ public class EventHandler
         }
     }
 
+    // Dialogue Action
+    public static event Action DialogueActionEvent;
+    public static void CallDialogueActionEvent()
+    {
+        if (DialogueActionEvent != null)
+        {
+            DialogueActionEvent();
+        }
+    }
+
 }

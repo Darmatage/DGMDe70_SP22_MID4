@@ -9,6 +9,7 @@ namespace Game.UI
     {
         [SerializeField] GameObject uiInventroyContainer = null;
         [SerializeField] GameObject uiCraftingContainer = null;
+        [SerializeField] GameObject uiDialogueContainer = null;
         [SerializeField] GameObject uiPauseContainer = null;
         private bool isGamePaused = false;
 
@@ -17,6 +18,7 @@ namespace Game.UI
             EventHandler.InventoryActionEvent += InventoryToggle;
             EventHandler.EscapeActionEvent += EscapeToggle;
             EventHandler.CraftingActionEvent += CraftingToggle;
+            EventHandler.DialogueActionEvent += DialogueToggle;
         }
 
         private void OnDisable()
@@ -24,12 +26,14 @@ namespace Game.UI
             EventHandler.InventoryActionEvent -= InventoryToggle;
             EventHandler.EscapeActionEvent -= EscapeToggle;
             EventHandler.CraftingActionEvent -= CraftingToggle;
+            EventHandler.DialogueActionEvent -= DialogueToggle;
         }
         private void Start()
         {
             uiInventroyContainer.SetActive(false);
             uiCraftingContainer.SetActive(false);
             uiPauseContainer.SetActive(false);
+            uiDialogueContainer.SetActive(false);
         }
         private void Update()
         {
@@ -60,6 +64,12 @@ namespace Game.UI
             Debug.Log("Crafting toggle");
         }
 
+        private void DialogueToggle()
+        {
+            MenuToggle(uiDialogueContainer);
+            Debug.Log("Dialogue toggle");
+        }
+
         private void EscapeToggle()
         {
             if(isGamePaused)
@@ -67,6 +77,7 @@ namespace Game.UI
                 uiInventroyContainer.SetActive(false);
                 uiCraftingContainer.SetActive(false);
                 uiPauseContainer.SetActive(false);
+                uiDialogueContainer.SetActive(false);
                 isGamePaused = false;
             }
             else 

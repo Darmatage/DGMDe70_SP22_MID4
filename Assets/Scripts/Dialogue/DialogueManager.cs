@@ -8,17 +8,34 @@ namespace Game.Story
 {
     public class DialogueManager : MonoBehaviour
     {
-        public GameObject speechBubble;
+        public GameObject dialogueScreen;
         public Text textField;
         public DialogueScene01 dialogueScene01 = new DialogueScene01();
 
         void Awake() {
-            if (GameObject.FindWithTag("SpeechBubble") != null) {
-                speechBubble = GameObject.FindWithTag("SpeechBubble");
+            if (GameObject.FindWithTag("DialogueScreen") != null) {
+                dialogueScreen = GameObject.FindWithTag("DialogueScreen");
+                textField = dialogueScreen.GetComponent<Text>();
             }
         }
 
-        private void OnEnable() 
+        void Update() {
+            if (Input.GetMouseButtonDown(0)) {   
+                CloseScreen();
+            }
+        }
+
+        public void CloseScreen() {
+            dialogueScreen.SetActive(false);
+        }
+
+        public void OpenScreen() {
+            dialogueScreen.SetActive(true);
+
+            textField.text = dialogueScene01.hello();
+        }
+
+        /*private void OnEnable() 
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
@@ -28,16 +45,15 @@ namespace Game.Story
         }
 
         void OnDialogueScene() {
-            if (speechBubble == null) {
+            if (dialogueScreen == null) {
                 return;
             }
 
-            speechBubble.SetActive(true);
-            Text textBox = GameObject.FindWithTag("SpeechText").GetComponent<Text>();
-            textBox.text = dialogueScene01.hello();
+            dialogueScreen.SetActive(true);
+            // Text textBox = GameObject.FindWithTag("SpeechText").GetComponent<Text>();
+           //  textBox.text = dialogueScene01.hello();
+            textField.text = dialogueScene01.hello();
             Debug.Log(dialogueScene01.hello());
-        }
+        }*/
     }
-
-    
 }
