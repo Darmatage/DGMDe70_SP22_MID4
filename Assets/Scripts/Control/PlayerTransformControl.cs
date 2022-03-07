@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
+using Game.Inventories;
 using UnityEngine;
 
 namespace Game.Control
@@ -15,16 +16,30 @@ namespace Game.Control
         private bool _isMonster;
         public bool IsMonster {get { return _isMonster; }}
         private PlayerTransformState playerTransformState;
+
+        Equipment playerEquipment;
+        [SerializeField] SO_EquipableItem equipableItem;
+
+        private void Awake() 
+        {
+            var player = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG);
+            playerEquipment = player.GetComponent<Equipment>();
+        }
+        
         private void OnEnable()
         {
             EventHandler.TransformEvent += TransformAction;
             EventHandler.PlayerTransformStateEvent += TransformPlayer;
+            EventHandler.TransformEvent += AddCurse;
+            EventHandler.TransformEvent += RemoveCurse;
         }
 
         private void OnDisable()
         {
             EventHandler.TransformEvent -= TransformAction;
             EventHandler.PlayerTransformStateEvent -= TransformPlayer;
+            EventHandler.TransformEvent -= AddCurse;
+            EventHandler.TransformEvent -= RemoveCurse;
         }
 
         void Start() {
@@ -35,7 +50,17 @@ namespace Game.Control
             playerTransformState = PlayerTransformState.Human;
             currentObject = Instantiate(playerObject, transform.position, Quaternion.identity);
             currentObject.transform.SetParent(gameObject.transform);
-            //isMonster = false;    
+  
+        }
+
+        private void AddCurse()
+        {
+            if(_isMonster) playerEquipment.AddItem(EquipLocation.Head, equipableItem);
+        }
+
+        public void RemoveCurse()
+        {
+            if(!_isMonster) playerEquipment.RemoveItem(EquipLocation.Head);
         }
 
         // Update is called once per frame

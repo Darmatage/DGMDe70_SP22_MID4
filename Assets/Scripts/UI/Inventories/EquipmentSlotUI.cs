@@ -23,7 +23,7 @@ namespace Game.UI.Inventories
        
         private void Awake() 
         {
-            var player = GameObject.FindGameObjectWithTag("Player");
+            var player = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG);
             playerEquipment = player.GetComponent<Equipment>();
             playerEquipment.equipmentUpdated += RedrawUI;
         }

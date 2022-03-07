@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 6197886959752762877}
   - component: {fileID: 6197886959752762876}
   - component: {fileID: 6197886959752762875}
+  - component: {fileID: 6423660341572640129}
   - component: {fileID: 5980636598127323671}
   - component: {fileID: 6197886959752762871}
   - component: {fileID: 5106922876468637596}
@@ -393,6 +394,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ceadcc48-3bd9-4dba-b485-f70d3e96fba1
     m_ActionName: Player/EscKey[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6197886959752762850}
+        m_TargetAssemblyTypeName: Game.Control.PlayerInputControl, Assembly-CSharp
+        m_MethodName: UseAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 21871440-ded9-4d81-9d2b-6285d0e2d964
+    m_ActionName: Player/UseAction[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -568,6 +585,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3147b91746a50416cb326f942a451e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6423660341572640129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197886959752762870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19ff972ec6859b48870488d7b1e81b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5980636598127323671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b606c62aea64c45a98617c5970880139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soulGemCount: 0
+  karmaCount: 0
 --- !u!114 &6197886959752762871
 MonoBehaviour:
   m_ObjectHideFlags: 0

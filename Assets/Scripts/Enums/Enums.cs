@@ -128,7 +128,8 @@ namespace Game.Enums
         Legs,
         Boots,
         Weapon,
-        Shield
+        Shield,
+        Curse
     }
 
     public enum SoulType
