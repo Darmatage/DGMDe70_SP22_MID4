@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,7 @@ namespace Game.UI
             EventHandler.EscapeActionEvent += EscapeToggle;
             EventHandler.CraftingActionEvent += CraftingToggle;
             EventHandler.DialogueActionEvent += DialogueToggle;
+            EventHandler.CloseAllUIActionEvent += CloseAllUI;
         }
 
         private void OnDisable()
@@ -27,6 +29,7 @@ namespace Game.UI
             EventHandler.EscapeActionEvent -= EscapeToggle;
             EventHandler.CraftingActionEvent -= CraftingToggle;
             EventHandler.DialogueActionEvent -= DialogueToggle;
+            EventHandler.CloseAllUIActionEvent -= CloseAllUI;
         }
         private void Start()
         {
@@ -64,7 +67,7 @@ namespace Game.UI
             Debug.Log("Crafting toggle");
         }
 
-        private void DialogueToggle()
+        private void DialogueToggle(CutSceneDestinationIdentifier cutSceneDestinationIdentifier) //<- Variables only included here because the event passes it through
         {
             MenuToggle(uiDialogueContainer);
             Debug.Log("Dialogue toggle");
@@ -90,10 +93,15 @@ namespace Game.UI
             Debug.Log("Escape toggle");
         }
 
-        // public void CloseUI()
-        // {
-        //     MenuToggle();
-        // }
+        private void CloseAllUI()
+        {
+            uiInventroyContainer.SetActive(false);
+            uiCraftingContainer.SetActive(false);
+            uiPauseContainer.SetActive(false);
+            uiDialogueContainer.SetActive(false);
+            isGamePaused = false;
+            EventHandler.CallActiveGameUI(isGamePaused);
+        }
 
         private void MenuToggle(GameObject uiContainer)
         {

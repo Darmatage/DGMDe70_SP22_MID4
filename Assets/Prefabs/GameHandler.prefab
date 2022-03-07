@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3970094337712931758}
   - component: {fileID: 4976907135995028005}
-  - component: {fileID: 1306681025845937313}
-  - component: {fileID: 371467105909455830}
+  - component: {fileID: 2230731247752189287}
+  - component: {fileID: 1438813794745382006}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: GameHandler
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5750afd55a1a4f078d4f1a3c6e5a040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1306681025845937313
+--- !u!114 &2230731247752189287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,23 +54,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4003364436841008818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b6aeddee3c64c5ab2ad4c635797619, type: 3}
+  m_Script: {fileID: 11500000, guid: d5b41086ba8fa46748d55ed7e57d3395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speechBubble: {fileID: 0}
---- !u!114 &371467105909455830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4003364436841008818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ffaa8133e174b319c0ec881b47ab4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentScene: 2
+  currentScene: 0
   currentStage: 0
   previousScene: 0
   previousStage: 0
+--- !u!114 &1438813794745382006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4003364436841008818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730a4309a59a544348b151eae0fc358c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechBubble: {fileID: 0}

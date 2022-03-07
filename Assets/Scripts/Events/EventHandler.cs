@@ -9,6 +9,7 @@ public delegate void PlayerInputDelegate(float inputX, float inputY, bool isWalk
     bool idleUp, bool idleDown, bool idleLeft, bool idleRight);
 
 public delegate void PlayerTransformStateDelegate(PlayerTransformState playerTransformState);
+public delegate void DialogueActionDelegate(CutSceneDestinationIdentifier cutSceneDestinationIdentifier);
 
 public class EventHandler
 {
@@ -98,12 +99,22 @@ public class EventHandler
     }
 
     // Dialogue Action
-    public static event Action DialogueActionEvent;
-    public static void CallDialogueActionEvent()
+    public static event DialogueActionDelegate DialogueActionEvent; //<- Changed this to included the Enum CutSceneDestinationIdentifier to be included in the event call
+    public static void CallDialogueActionEvent(CutSceneDestinationIdentifier cutSceneDestinationIdentifier)
     {
         if (DialogueActionEvent != null)
         {
-            DialogueActionEvent();
+            DialogueActionEvent(cutSceneDestinationIdentifier);
+        }
+    }
+
+    // Close All UI Action
+    public static event Action CloseAllUIActionEvent;
+    public static void CallCloseAllUIActionEvent()
+    {
+        if (CloseAllUIActionEvent != null)
+        {
+            CloseAllUIActionEvent();
         }
     }
 

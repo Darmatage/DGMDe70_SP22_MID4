@@ -12,14 +12,24 @@ namespace Game.NPC
     public class WizardManager : MonoBehaviour, IRaycastable
     {
         [SerializeField] GameObject interactionIndicatorUI = null;
+
+        [SerializeField] DialogueManager dialogueUIManager = null;
+
         DialogueManager dialogue;
         public DialogueScene01 dialogueScene01 = new DialogueScene01();
         private bool isKeyActive = false;
         private bool isRaycastOn = false;
 
         private void Awake() {
-            GameObject gameObject = new GameObject("DialogueManager");
-            dialogue = gameObject.AddComponent<DialogueManager>();
+            // This is creating a new DialogueManager GameObject with the script on it at run time,
+            // which is why the object can't be found.
+            // GameObject gameObject = new GameObject("DialogueManager"); 
+            // dialogue = gameObject.AddComponent<DialogueManager>();
+
+            dialogueUIManager = GameObject.FindWithTag(Tags.UI_DIALOGUE_CONTAINER_TAG).GetComponent<DialogueManager>();
+
+
+
         }
         
         private void OnEnable()
@@ -51,7 +61,10 @@ namespace Game.NPC
                 Debug.Log("Activate Wizard");
                 // GameScene.Instance.ChangeScene(GameScenes.Dialogue);
                 // GetComponent<NPCPortal>().GoToCutScene();
-                dialogue.OpenScreen();
+
+                EventHandler.CallDialogueActionEvent(CutSceneDestinationIdentifier.Wizard); //<- Changed it to use the event system, Decoupling its reliance on the dialogue manager and followed a similar patten to the other interactable objects.
+
+                //dialogueUIManager.OpenScreen();
 
             }
             EventHandler.CallInteractActionKeyEvent(false);
