@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Game.Story
 {
     public class DialogueManager : MonoBehaviour
     {
         public GameObject dialogueScreen;
-        public Text textField;
-        public DialogueScene01 dialogueScene01 = new DialogueScene01();
+        public GameObject textField;
+        DialogueScene01 dialogueScene01 = new DialogueScene01();
 
-        void Awake() {
-            if (GameObject.FindWithTag("DialogueScreen") != null) {
-                dialogueScreen = GameObject.FindWithTag("DialogueScreen");
-                textField = dialogueScreen.GetComponent<Text>();
-            }
-        }
+        /*void Awake() {
+            dialogueScreen = GameObject.Find("DialogueScreen");
+            textField = GameObject.Find("TextField");
+        }*/
 
         void Update() {
             if (Input.GetMouseButtonDown(0)) {   
@@ -26,13 +25,18 @@ namespace Game.Story
         }
 
         public void CloseScreen() {
+            // dialogueScreen = GameObject.Find("DialogueScreen");
             dialogueScreen.SetActive(false);
         }
 
         public void OpenScreen() {
+            // dialogueScreen = GameObject.Find("DialogueScreen");
             dialogueScreen.SetActive(true);
 
-            textField.text = dialogueScene01.hello();
+            // textField = GameObject.Find("TextField");
+            TextMeshPro textBox = textField.GetComponent<TextMeshPro>();
+            // textBox.text = dialogueScene01.hello();
+            textBox.text = "Sup";
         }
 
         /*private void OnEnable() 

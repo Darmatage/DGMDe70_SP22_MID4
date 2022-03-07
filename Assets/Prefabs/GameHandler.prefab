@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4976907135995028005}
   - component: {fileID: 1306681025845937313}
   - component: {fileID: 371467105909455830}
-  - component: {fileID: 6719382198626099911}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: GameHandler
@@ -73,17 +72,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScene: 2
   currentStage: 0
---- !u!114 &6719382198626099911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4003364436841008818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85411bc547a89480b8c1150328ef78ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speechBubble: {fileID: 0}
-  textField: {fileID: 0}
+  previousScene: 0
+  previousStage: 0
