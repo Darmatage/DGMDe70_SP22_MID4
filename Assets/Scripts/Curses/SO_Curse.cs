@@ -15,6 +15,8 @@ namespace Game.Curses
         [SerializeField] Modifier[] additiveModifiers;
         [Tooltip("Modify base stats by percentage.")]
         [SerializeField] Modifier[] percentageModifiers;
+        [Tooltip("Does the Curse have it's own attack?")]
+        [SerializeField] SO_WeaponItem curseWeapon = null;
 
         [System.Serializable]
         struct Modifier
@@ -25,6 +27,15 @@ namespace Game.Curses
         public override EquipLocation GetAllowedEquipLocation()
         {
             return EquipLocation.Curse;
+        }
+
+        public SO_WeaponItem GetCurseWeapon()
+        {
+            if (curseWeapon != null)
+            {
+                return curseWeapon;
+            }
+            return null;
         }
 
         public IEnumerable<float> GetAdditiveModifiers(PlayerStats stat)

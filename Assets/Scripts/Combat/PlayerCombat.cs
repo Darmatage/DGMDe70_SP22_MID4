@@ -14,13 +14,14 @@ namespace Game.Combat
     {
 
         [SerializeField] Transform rangeAttackLaunchPosition;
-        [SerializeField] SO_WeaponItem defaultWeapon = null;
+        [SerializeField] SO_WeaponItem _defaultWeapon = null;
+        public SO_WeaponItem DefaultWeapon {get { return _defaultWeapon; }}
         SO_WeaponItem currentWeaponConfig;
         Equipment equipment;
 
         private void Awake() 
         {
-            currentWeaponConfig = defaultWeapon;
+            currentWeaponConfig = _defaultWeapon;
             equipment = GetComponent<Equipment>();
             if(equipment)
             {
@@ -49,7 +50,7 @@ namespace Game.Combat
             var weapon = equipment.GetItemInSlot(EquipLocation.Weapon) as SO_WeaponItem;
             if (weapon == null)
             {
-                EquipWeapon(defaultWeapon);
+                EquipWeapon(_defaultWeapon);
             }
             else
             {

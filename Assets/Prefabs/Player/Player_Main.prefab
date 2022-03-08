@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 5980636598127323671}
   - component: {fileID: 6197886959752762871}
   - component: {fileID: 5106922876468637596}
+  - component: {fileID: 5758184306521622258}
   m_Layer: 8
   m_Name: Player_Main
   m_TagString: Player
@@ -505,7 +506,6 @@ MonoBehaviour:
   playerObject: {fileID: 585338627225832369, guid: 9c68753b4b9ff4380a4524cf02769498, type: 3}
   monsterObject: {fileID: 454606006753467870, guid: c9af1e2937fa94c51919db439c2f27fe, type: 3}
   currentObject: {fileID: 585338627225832369, guid: 9c68753b4b9ff4380a4524cf02769498, type: 3}
-  equipedCurse: {fileID: 11400000, guid: fdb54697978cc411d81e64d536bd41f5, type: 2}
 --- !u!114 &6197886959752762848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeAttackLaunchPosition: {fileID: 6197886959432231014}
-  defaultWeapon: {fileID: 11400000, guid: eab168d2bfc0e48e490ec1ad68256a6a, type: 2}
+  _defaultWeapon: {fileID: 11400000, guid: eab168d2bfc0e48e490ec1ad68256a6a, type: 2}
 --- !u!114 &6197886959752762879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,6 +637,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueIdentifier: player
+--- !u!114 &5758184306521622258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197886959752762870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a63cf3942a3543689fb649799169667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipedCurse: {fileID: 11400000, guid: fdb54697978cc411d81e64d536bd41f5, type: 2}
 --- !u!1 &6197886959996213119
 GameObject:
   m_ObjectHideFlags: 0

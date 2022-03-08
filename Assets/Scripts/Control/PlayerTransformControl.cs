@@ -14,33 +14,21 @@ namespace Game.Control
         [SerializeField] GameObject monsterObject;
         [SerializeField] GameObject currentObject;
 
-        private bool _isMonster;
+        private bool _isMonster = false;
         public bool IsMonster {get { return _isMonster; }}
         private PlayerTransformState playerTransformState;
 
-        Equipment playerEquipment;
-        [SerializeField] SO_Curse equipedCurse;
-
-        private void Awake() 
-        {
-            var player = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG);
-            playerEquipment = player.GetComponent<Equipment>();
-        }
         
         private void OnEnable()
         {
             EventHandler.TransformEvent += TransformAction;
             EventHandler.PlayerTransformStateEvent += TransformPlayer;
-            EventHandler.TransformEvent += AddCurse;
-            EventHandler.TransformEvent += RemoveCurse;
         }
 
         private void OnDisable()
         {
             EventHandler.TransformEvent -= TransformAction;
             EventHandler.PlayerTransformStateEvent -= TransformPlayer;
-            EventHandler.TransformEvent -= AddCurse;
-            EventHandler.TransformEvent -= RemoveCurse;
         }
 
         void Start() {
@@ -52,16 +40,6 @@ namespace Game.Control
             currentObject = Instantiate(playerObject, transform.position, Quaternion.identity);
             currentObject.transform.SetParent(gameObject.transform);
   
-        }
-
-        private void AddCurse()
-        {
-            if(_isMonster) playerEquipment.AddItem(EquipLocation.Curse, equipedCurse);
-        }
-
-        public void RemoveCurse()
-        {
-            if(!_isMonster) playerEquipment.RemoveItem(EquipLocation.Curse);
         }
 
         // Update is called once per frame
