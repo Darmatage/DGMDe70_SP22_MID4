@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Control;
 using Game.Enums;
 
 namespace Game.Story 
@@ -19,7 +20,7 @@ namespace Game.Story
         */
 
         return dict[getKey(scene, stage, npc, variant, false)];
-        // return dict[getKey(scene, stage, npc, variant, PlayerManager.Instance.hasIsMonster())];
+        // return dict[getKey(scene, stage, npc, variant, PlayerTransformControl.IsMonster)];
       }
 
       private string getKey(GameScenes scene, GameStages stage, CutSceneDestinationIdentifier npc, DialogueVariant variant = DialogueVariant.DV_01, bool isMonster = false) {
