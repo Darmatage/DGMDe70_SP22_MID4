@@ -9,14 +9,14 @@ public class PlayerManager : MonoBehaviour
     public GameObject monsterObject;
     public GameObject currentObject;
 
-    /*private static PlayerManager _instance;
+    private static PlayerManager _instance;
     public static PlayerManager Instance {
         get { return _instance; }
-    }*/
+    }
 
     private bool isMonster;
 
-    /*private void Awake() {
+    private void Awake() {
         if (_instance != null && _instance != this) {
             Destroy(this.gameObject);
             return;
@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
-    }*/
+    }
 
     // Start is called before the first frame update
     void Start() {
