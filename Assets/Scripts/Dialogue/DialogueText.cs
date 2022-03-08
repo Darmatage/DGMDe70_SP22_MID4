@@ -13,17 +13,16 @@ namespace Game.Story
         setDialogue();
       }
 
-      public string getDialogue(GameScenes scene, GameStages stage, CutSceneDestinationIdentifier npc, DialogueVariant variant = DialogueVariant.DV_01) {
+      public string getDialogue(GameScenes scene, GameStages stage, CutSceneDestinationIdentifier npc, bool isMonster, DialogueVariant variant = DialogueVariant.DV_01) {
         /* Useful for debugging
         Debug.Log("Who is the NPC??: " + npc);
         Debug.Log("Key: " + getKey(scene, stage, npc, variant));
         */
-
-        return dict[getKey(scene, stage, npc, variant, false)];
-        // return dict[getKey(scene, stage, npc, variant, PlayerTransformControl.IsMonster)];
+        //return dict[getKey(scene, stage, npc, variant, false)];
+        return dict[getKey(scene, stage, npc, isMonster, variant)];
       }
 
-      private string getKey(GameScenes scene, GameStages stage, CutSceneDestinationIdentifier npc, DialogueVariant variant = DialogueVariant.DV_01, bool isMonster = false) {
+      private string getKey(GameScenes scene, GameStages stage, CutSceneDestinationIdentifier npc, bool isMonster = false, DialogueVariant variant = DialogueVariant.DV_01) {
         return $"{scene.ToString()}-{stage.ToString()}-{npc.ToString()}-{variant.ToString()}-{isMonster.ToString()}";
       }
 
