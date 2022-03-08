@@ -29,7 +29,9 @@ namespace Game.Enums
         Scene_Gameover,
         Scene_01,
         Scene_02,
-        Scene_03
+        Scene_03,
+        Scene_04,
+        Scene_05
     }
 
     public enum GameStages
@@ -37,6 +39,13 @@ namespace Game.Enums
         Stage_01,
         Stage_02,
         Stage_03
+    }
+
+    public enum DialogueVariant
+    {
+        DV_01,
+        DV_02,
+        DV_03
     }
 
     /// <summary>

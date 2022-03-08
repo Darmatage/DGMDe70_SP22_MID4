@@ -21,15 +21,7 @@ namespace Game.NPC
         private bool isRaycastOn = false;
 
         private void Awake() {
-            // This is creating a new DialogueManager GameObject with the script on it at run time,
-            // which is why the object can't be found.
-            // GameObject gameObject = new GameObject("DialogueManager"); 
-            // dialogue = gameObject.AddComponent<DialogueManager>();
-
             dialogueUIManager = GameObject.FindWithTag(Tags.UI_DIALOGUE_CONTAINER_TAG).GetComponent<DialogueManager>();
-
-
-
         }
         
         private void OnEnable()
@@ -59,13 +51,8 @@ namespace Game.NPC
             if(isKeyActive)
             {
                 Debug.Log("Activate Wizard");
-                // GameScene.Instance.ChangeScene(GameScenes.Dialogue);
-                // GetComponent<NPCPortal>().GoToCutScene();
 
                 EventHandler.CallDialogueActionEvent(CutSceneDestinationIdentifier.Wizard); //<- Changed it to use the event system, Decoupling its reliance on the dialogue manager and followed a similar patten to the other interactable objects.
-
-                //dialogueUIManager.OpenScreen();
-
             }
             EventHandler.CallInteractActionKeyEvent(false);
             return true;
@@ -75,7 +62,6 @@ namespace Game.NPC
         {
             isKeyActive = isKeyPressed;
         }
-
 
     }
     

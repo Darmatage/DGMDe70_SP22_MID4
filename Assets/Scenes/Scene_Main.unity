@@ -4838,7 +4838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3310643506304786740, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -537.50006
+      value: -537.5
       objectReference: {fileID: 0}
     - target: {fileID: 3381557046640752068, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5118,7 +5118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5031137324714041755, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -430.1999
+      value: -430.19986
       objectReference: {fileID: 0}
     - target: {fileID: 5487588435811335328, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5642,7 +5642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8425845800796026908, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -430.19992
+      value: -430.19995
       objectReference: {fileID: 0}
     - target: {fileID: 8426171153331446108, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5769,6 +5769,10 @@ PrefabInstance:
     - target: {fileID: 1306681025845937313, guid: 7b41381e3ad684fc598b78fb7c321630, type: 3}
       propertyPath: speechBubble
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230731247752189287, guid: 7b41381e3ad684fc598b78fb7c321630, type: 3}
+      propertyPath: currentScene
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3970094337712931758, guid: 7b41381e3ad684fc598b78fb7c321630, type: 3}
       propertyPath: m_RootOrder
