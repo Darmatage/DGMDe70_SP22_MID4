@@ -113,10 +113,6 @@ namespace Game.Combat
                 {
                     Debug.Log("Up");
                     isRangeAttackingUp = true;
-
-                    // isRangeAttackingRight = false;
-                    // isRangeAttackingDown = false;
-                    // isRangeAttackingLeft = false;
                 }
                 if (launchDirection.x > 0.7f ) 
                 {
@@ -135,27 +131,7 @@ namespace Game.Combat
                 }
 
                 EventHandler.CallPlayerAttackEvent(isRangeAttackingUp, isRangeAttackingRight, isRangeAttackingDown, isRangeAttackingLeft);
-                
                 currentWeaponConfig.LaunchProjectile(rangeAttackLaunchPosition, launchDirection, damage);
-
-                // Vector3 launchDirection = new Vector3(0.0f, 0.0f, 0.0f);
-                // if (isAttackingUp) 
-                // {
-                //     launchDirection = Vector3.up;
-                // }
-                // if (isAttackingRight) 
-                // {
-                //     launchDirection = Vector3.right;
-                // }
-                // if (isAttackingLeft) 
-                // {
-                //     launchDirection = Vector3.left;
-                // }
-                // if (isAttackingDown) 
-                // {
-                //     launchDirection = Vector3.down;
-                // }
-                //currentWeaponConfig.LaunchProjectile(rangeAttackLaunchPosition, launchDirection, damage);
             }
         }
         object ISaveable.CaptureState()

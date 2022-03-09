@@ -34,15 +34,6 @@ namespace Game.Animation
             animator.SetBool(Settings.isWalking, isWalking);
             animator.SetBool(Settings.isRunning, isRunning);
 
-            // if (isAttackingRight)
-            //     animator.SetTrigger(Settings.isAttackingRight);
-            // if (isAttackingLeft)
-            //     animator.SetTrigger(Settings.isAttackingLeft);
-            // if (isAttackingUp)
-            //     animator.SetTrigger(Settings.isAttackingUp);
-            // if (isAttackingDown)
-            //     animator.SetTrigger(Settings.isAttackingDown);
-
             if (idleUp)
                 animator.SetTrigger(Settings.idleUp);
             if (idleDown)
