@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Control;
 using Game.Enums;
 using UnityEngine;
 
@@ -21,22 +22,9 @@ public class RockC2G : MonoBehaviour
     void Start()
     {
         mat = GetComponent<Renderer>().material;
-        // if (GameObject.FindWithTag("GameHandler") != null){
-        //     gameHandlerObj = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
-        //}
+
+        RestoreMapStat();
     }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     bool isMonster = gameHandlerObj.isMonster(); //gameHandler.GetComponent<GameHandler>().isMonster();
-
-    //     if (isMonster) {
-    //         mat.SetFloat("humanity", 1);
-    //     } else {
-    //         mat.SetFloat("humanity", 0);
-    //     }
-    // }
 
     private void TransformMapStat(PlayerTransformState transformStat)
     {
@@ -46,6 +34,15 @@ public class RockC2G : MonoBehaviour
         }
         else if (transformStat == PlayerTransformState.Human)
         {
+            mat.SetFloat("humanity", 0);
+        }
+    }
+      private void RestoreMapStat()
+    {
+        bool isMonster = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerTransformControl>().IsMonster;
+        if (isMonster) {
+            mat.SetFloat("humanity", 1);
+        } else {
             mat.SetFloat("humanity", 0);
         }
     }

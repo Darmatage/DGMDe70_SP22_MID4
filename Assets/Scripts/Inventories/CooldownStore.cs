@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game.Saving;
 using UnityEngine;
 
 namespace Game.Inventories
@@ -52,6 +53,13 @@ namespace Game.Inventories
             }
 
             return cooldownTimers[item] / initialCooldownTimes[item];
+        }
+
+        [System.Serializable]
+        private struct CooldownItemRecord
+        {
+            public string itemID;
+            public float timeLeft;
         }
     }
 }
