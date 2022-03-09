@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Game.Control;
 using Game.Enums;
 using Game.PlayerClass;
 
@@ -20,6 +21,8 @@ namespace Game.Inventories
                 foreach (float modifier in item.GetAdditiveModifiers(stat))
                 {
                     yield return modifier;
+                    // if (GetComponent<PlayerTransformControl>().IsMonster) yield return 0f;
+                    // if (!GetComponent<PlayerTransformControl>().IsMonster) yield return modifier;
                 }
             }
         }
@@ -34,6 +37,8 @@ namespace Game.Inventories
                 foreach (float modifier in item.GetPercentageModifiers(stat))
                 {
                     yield return modifier;
+                    // if (GetComponent<PlayerTransformControl>().IsMonster) yield return 0f;
+                    // if (!GetComponent<PlayerTransformControl>().IsMonster) yield return modifier;
                 }
             }
         }

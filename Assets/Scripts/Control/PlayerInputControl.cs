@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
+using Game.Inventories;
 using Game.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,6 +18,7 @@ namespace Game.Control
         private float timeSinceLastAction = Mathf.Infinity;
         private Vector2 playerDirection = new Vector2(0,0);
         private Rigidbody2D playerRigidbody2D;
+        private ActionStore actionStore;
         
         
         //Animation verables
@@ -31,12 +33,11 @@ namespace Game.Control
         private bool isAttackingLeft;
         private bool isAttackingRight;
 
-
-
         private void Awake() 
         {
             playerDirection = GetComponent<PlayerMovement>().GetPlayerVector2();
             playerRigidbody2D = GetComponent<Rigidbody2D>();
+            actionStore = GetComponent<ActionStore>();
         }
         private void OnEnable()
         {
@@ -118,6 +119,16 @@ namespace Game.Control
             if (value.started)
             {
                 EventHandler.CallTransformEvent();
+            }
+        }
+
+        public void UseAction(InputAction.CallbackContext value) //Keys: 1, 2, 3, 4, 5
+        {
+            if (value.started)
+            {
+                string keyPress = value.control.path.ToString();
+                int keyPressIndex = Int32.Parse(keyPress.Substring(keyPress.Length - 1)) - 1;
+                actionStore.Use(keyPressIndex, gameObject);
             }
         }
 
@@ -205,7 +216,7 @@ namespace Game.Control
         {
             // Send event to any listeners for player movement input
             EventHandler.CallPlayerInputEvent(0f, 0f, false, false, false, isMakingAttack,
-                isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
+                isAttackingUp, isAttackingRight, isAttackingDown, isAttackingLeft,
                 false, false, false, false);
         }
 

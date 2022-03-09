@@ -13,7 +13,7 @@ namespace Game.UI.HUD
 
         private void Awake()
         {
-            playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+            playerHealth = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerHealth>();
         }
         void Start()
         {
@@ -22,7 +22,7 @@ namespace Game.UI.HUD
 
         private void Update()
         {
-            healthDisplay.text = playerHealth.GetHealthPoints().ToString();
+            healthDisplay.text = String.Format("{0:0.0}/{1:0}", playerHealth.GetHealthPoints(), playerHealth.GetMaxHealthPoints());
         }
     }
 }

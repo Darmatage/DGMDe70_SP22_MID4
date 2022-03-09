@@ -21,5 +21,7 @@ MonoBehaviour:
   animatorOverride: {fileID: 22100000, guid: 5f43330b8d6a94d13989e0deb8c7e26c, type: 2}
   weaponBaseDamage: 8
   projectile: {fileID: 0}
-  additiveModifiers: []
+  additiveModifiers:
+  - stat: 1
+    value: 10
   percentageModifiers: []

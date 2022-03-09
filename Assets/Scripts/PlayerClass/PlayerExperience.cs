@@ -4,7 +4,7 @@ using Game.Saving;
 
 namespace Game.PlayerClass
 {
-    public class PlayerExperience : MonoBehaviour//, ISaveable
+    public class PlayerExperience : MonoBehaviour, ISaveable
     {
         [SerializeField] float experiencePoints = 0;
 
@@ -21,14 +21,14 @@ namespace Game.PlayerClass
             return experiencePoints;
         }
 
-        // object ISaveable.CaptureState()
-        // {
-        //     return experiencePoints;
-        // }
+        object ISaveable.CaptureState()
+        {
+            return experiencePoints;
+        }
 
-        // void ISaveable.RestoreState(object state)
-        // {
-        //     experiencePoints = (float)state;
-        // }
+        void ISaveable.RestoreState(object state)
+        {
+            experiencePoints = (float)state;
+        }
     }
 }
