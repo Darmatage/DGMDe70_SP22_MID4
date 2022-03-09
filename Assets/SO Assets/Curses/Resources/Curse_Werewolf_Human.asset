@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ddf5acb86a24f6882e2e72b4de6f08, type: 3}
+  m_Name: Curse_Werewolf_Human
+  m_EditorClassIdentifier: 
+  itemID: 36787335-5064-4dcb-8738-b316ec8a39ba
+  displayName: Werewolf Curse
+  description: 'Transform into a Werewolf!
+
+    Press Key M'
+  icon: {fileID: 21300000, guid: 6d6e2da30734bb74cb2de456bb56b0fb, type: 3}
+  pickupPrefab: {fileID: 0}
+  allowedEquipLocation: 8
+  curseType: 1
+  cursePairState: 0
+  additiveModifiers: []
+  percentageModifiers: []
+  curseWeapon: {fileID: 0}
+  effectStrategies: []

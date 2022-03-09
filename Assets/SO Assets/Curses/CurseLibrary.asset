@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111f4b3dee06f41388645206005c4ff0, type: 3}
+  m_Name: CurseLibrary
+  m_EditorClassIdentifier: 
+  curseTypeList:
+  - curseType: 1
+    curseFormPairSet:
+    - formState: 0
+      curseSO: {fileID: 11400000, guid: abf447a459b974f9ba2bb17e514e407d, type: 2}
+    - formState: 1
+      curseSO: {fileID: 11400000, guid: fdb54697978cc411d81e64d536bd41f5, type: 2}

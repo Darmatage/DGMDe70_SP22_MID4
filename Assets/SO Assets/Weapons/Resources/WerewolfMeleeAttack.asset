@@ -21,5 +21,6 @@ MonoBehaviour:
   animatorOverride: {fileID: 0}
   weaponBaseDamage: 10
   projectile: {fileID: 0}
+  isCurseAttack: 1
   additiveModifiers: []
   percentageModifiers: []

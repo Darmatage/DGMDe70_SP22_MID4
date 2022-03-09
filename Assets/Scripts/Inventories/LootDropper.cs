@@ -1,5 +1,7 @@
 using Game.Control;
+using Game.Curses;
 using Game.EnemyClass;
+using Game.Enums;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +14,8 @@ namespace Game.Inventories
         [SerializeField] SO_LootDropLibrary lootDropLibrary;
         [SerializeField] SO_SoulItem redSoulGemItem = null;
         [SerializeField] SO_SoulItem blueSoulGemItem = null;
+
+        PlayerCurses playerCurses;
 
         public void RandomDrop()
         {
@@ -26,20 +30,31 @@ namespace Game.Inventories
 
         public void GemDrop(GameObject instigator)
         {
-            if(redSoulGemItem == null || blueSoulGemItem == null) return;
+            if (redSoulGemItem == null || blueSoulGemItem == null) return;
 
             bool isMonster = instigator.GetComponent<PlayerTransformControl>().IsMonster;
-            int number = 1;
 
-            if(isMonster)
+            int soulGemDrop = 1;
+
+            if (isMonster)
             {
-                DropItem(redSoulGemItem, number);
+                DropItem(redSoulGemItem, soulGemDrop + GetBonusSoulGems(instigator));
             }
-            if(!isMonster)
+            if (!isMonster)
             {
-                DropItem(blueSoulGemItem, number);
+                DropItem(blueSoulGemItem, soulGemDrop);
             }
 
+        }
+
+        private int GetBonusSoulGems(GameObject instigator)
+        {
+            if (instigator.CompareTag(Tags.PLAYER_TAG))
+            {
+                playerCurses = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerCurses>();
+                return playerCurses.GetCurse().GetCurseEffectModifier(CurseEffectTypes.SoulBonus);
+            }
+            return 0;
         }
 
         protected override Vector3 GetDropLocation()

@@ -23,6 +23,10 @@ namespace Game.Inventories
         [Tooltip("Adding a Projectile will make this a ranged attack.")]
         [SerializeField] PlayerProjectile projectile = null;
 
+        [Header("Range Weapon Attributes")]
+        [Tooltip("Adding a Projectile will make this a ranged attack.")]
+        [SerializeField] bool isCurseAttack = false;
+
         [Header("Weapon Stat Modifiers")]
         [Tooltip("Modify base stats.")]
         [SerializeField] Modifier[] additiveModifiers;
@@ -56,6 +60,11 @@ namespace Game.Inventories
         public float GetDamage()
         {
             return weaponBaseDamage;
+        }
+
+        public override bool IsDroppable()
+        {
+            return !isCurseAttack;
         }
 
         [System.Serializable]

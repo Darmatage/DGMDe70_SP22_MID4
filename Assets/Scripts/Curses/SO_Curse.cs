@@ -7,9 +7,15 @@ using UnityEngine;
 
 namespace Game.Curses
 {
-    [CreateAssetMenu(fileName = "Curse", menuName = "Game/Player/New Curse")]
+    [CreateAssetMenu(fileName = "Curse", menuName = "Game/Player/Curses/New Curse")]
     public class SO_Curse : SO_EquipableItem, IModifierProvider
     {
+        [Header("Curse Info")]
+        [Tooltip("Which curse is this?")]
+        [SerializeField] CurseTypes curseType;
+        [Tooltip("What state is this?")]
+        [SerializeField] PlayerTransformState cursePairState;
+
         [Header("Curse Stat Modifiers")]
         [Tooltip("Modify base stats.")]
         [SerializeField] Modifier[] additiveModifiers;
@@ -17,6 +23,9 @@ namespace Game.Curses
         [SerializeField] Modifier[] percentageModifiers;
         [Tooltip("Does the Curse have it's own attack?")]
         [SerializeField] SO_WeaponItem curseWeapon = null;
+        [Tooltip("What else does the curse do?")]
+        [SerializeField] SO_EffectStrategy[] effectStrategies;
+        //[SerializeField] float cooldownTime = 0;
 
         [System.Serializable]
         struct Modifier
@@ -36,6 +45,32 @@ namespace Game.Curses
                 return curseWeapon;
             }
             return null;
+        }
+
+        public bool HasCurseEffects(CurseEffectTypes curseEffectType)
+        {
+            bool hasCurseEffects = false;
+            foreach (var effect in effectStrategies)
+            {
+                if(curseEffectType == effect.GetCurseEffectType())
+                {
+                    hasCurseEffects = effect.EnableCurseEffect(curseEffectType);
+                }
+            }
+            return hasCurseEffects;
+        }
+
+        public int GetCurseEffectModifier(CurseEffectTypes curseEffectType)
+        {
+            int total = 0;
+            foreach (ICurseProvider curseProvider in effectStrategies)
+            {
+                foreach (int modifier in curseProvider.GetCurseModifiers(curseEffectType))
+                {
+                    total += modifier;
+                }
+            }
+            return total;
         }
 
         public IEnumerable<float> GetAdditiveModifiers(PlayerStats stat)

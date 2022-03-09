@@ -54,9 +54,6 @@ namespace Game.PlayerClass
 
         public float GetStat(PlayerStats stat)
         {
-            // Debug.Log("Base Stat: " + GetBaseStat(stat));
-            // Debug.Log("Additive Modifier: " + GetAdditiveModifier(stat));
-            // Debug.Log("Percentage Modifier: " + GetPercentageModifier(stat));
             return (GetBaseStat(stat) + GetAdditiveModifier(stat)) * (1 + GetPercentageModifier(stat)/100);
         }
 

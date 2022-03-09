@@ -1,4 +1,8 @@
 using System;
+using Game.Combat;
+using Game.Control;
+using Game.Curses;
+using Game.Enums;
 using Game.Saving;
 using UnityEngine;
 
@@ -11,6 +15,8 @@ namespace Game.Inventories
         private float redSoulGemCount = 0f;
         private float greenSoulGemCount = 0f;
         private float blueSoulGemCount = 0f;
+
+        PlayerCurses playerCurses;
 
         public event Action onChange;
 
@@ -46,6 +52,25 @@ namespace Game.Inventories
             {
                 UpdateKarma(item.GetKarmaValue() * number);
                 CountSoulTypes(item.GetKarmaValue(), number);
+                CurseSoulEffect(item.GetKarmaValue(), number);
+            }
+        }
+
+        private void CurseSoulEffect(float soulValue, int number)
+        {
+            if(GetComponent<PlayerTransformControl>().IsMonster)
+            {
+                playerCurses = GetComponent<PlayerCurses>();
+                if (playerCurses.GetCurse().HasCurseEffects(CurseEffectTypes.SoulHealBonus))
+                {
+                    var health = GetComponent<PlayerHealth>();
+                    if (health && soulValue == -1)
+                    {
+                        var healthChange = playerCurses.GetCurse().GetCurseEffectModifier(CurseEffectTypes.SoulHealBonus);
+                        health.Heal(healthChange);
+                        Debug.Log("Souls heal me!");
+                    }
+                }
             }
         }
 

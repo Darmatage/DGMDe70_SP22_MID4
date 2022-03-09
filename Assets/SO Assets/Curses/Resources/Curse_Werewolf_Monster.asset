@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51ddf5acb86a24f6882e2e72b4de6f08, type: 3}
-  m_Name: TestCurse
+  m_Name: Curse_Werewolf_Monster
   m_EditorClassIdentifier: 
   itemID: a0c8f988-7f3f-4f90-9e91-4ffd2b43275c
-  displayName: TestCurse
+  displayName: Werewolf
   description: 
   icon: {fileID: 21300000, guid: a84f76576d9b64fb3afc9f869f22e877, type: 3}
   pickupPrefab: {fileID: 0}
   allowedEquipLocation: 8
+  curseType: 1
+  cursePairState: 1
   additiveModifiers: []
   percentageModifiers:
   - stat: 1
@@ -25,3 +27,6 @@ MonoBehaviour:
   - stat: 4
     value: 50
   curseWeapon: {fileID: 11400000, guid: 64b488593c70d405f89f4e323aeba983, type: 2}
+  effectStrategies:
+  - {fileID: 11400000, guid: dd3505cb4a19d45198f378dd10df868e, type: 2}
+  - {fileID: 11400000, guid: b6d2f202d84904e7fbab8e9b9e10582a, type: 2}

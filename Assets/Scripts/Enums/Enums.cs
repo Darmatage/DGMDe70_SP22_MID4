@@ -86,6 +86,22 @@ namespace Game.Enums
         Monster
     }
 
+    public enum CurseTypes
+    {
+        None,
+        Werewolf,
+        Llama,
+        Sasquatch,
+        LizardPerson
+    }
+
+    public enum CurseEffectTypes
+    {
+        None,
+        SoulBonus,
+        SoulHealBonus
+    }
+
     /// <summary>
     /// Enemy Enums<br/>
     /// Info about the enemy.

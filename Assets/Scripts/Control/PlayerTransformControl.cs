@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Curses;
 using Game.Enums;
-using Game.Inventories;
 using UnityEngine;
 
 namespace Game.Control
@@ -41,25 +40,6 @@ namespace Game.Control
             currentObject.transform.SetParent(gameObject.transform);
   
         }
-
-        // Update is called once per frame
-        // void Update() {
-        //     if (Input.GetKeyDown("m")) {
-        //         isMonster = !isMonster;
-        //         Destroy(currentObject);
-
-        //         if (isMonster) {
-        //             currentObject = Instantiate(monsterObject, transform.position, Quaternion.identity);
-        //         } else {
-        //             currentObject = Instantiate(playerObject, transform.position, Quaternion.identity);
-        //         }
-        //         currentObject.transform.SetParent(gameObject.transform);
-        //     }
-        // }
-
-        // public bool hasIsMonster() {
-        //     return isMonster;
-        // }
 
         private void TransformAction()
         { 

@@ -192,14 +192,15 @@ GameObject:
   - component: {fileID: 6197886959752762848}
   - component: {fileID: 6197886959752762879}
   - component: {fileID: 6197886959752762878}
+  - component: {fileID: 5758184306521622258}
   - component: {fileID: 6197886959752762877}
   - component: {fileID: 6197886959752762876}
   - component: {fileID: 6197886959752762875}
   - component: {fileID: 6423660341572640129}
   - component: {fileID: 5980636598127323671}
   - component: {fileID: 6197886959752762871}
+  - component: {fileID: 4602264444762569736}
   - component: {fileID: 5106922876468637596}
-  - component: {fileID: 5758184306521622258}
   m_Layer: 8
   m_Name: Player_Main
   m_TagString: Player
@@ -545,9 +546,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0689395bf79459b9f2ba069a15fca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLevel: 23
+  startingLevel: 1
   characterClass: 0
   progression: {fileID: 11400000, guid: f8f6511dd51614e52971d8e66af94594, type: 2}
+--- !u!114 &5758184306521622258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197886959752762870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a63cf3942a3543689fb649799169667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedCurse: 1
+  curseListLibrary: {fileID: 11400000, guid: 30a32bed3bd6d4aadb68c09ca69780ce, type: 2}
 --- !u!114 &6197886959752762877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,6 +639,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scatterDistance: 4
+--- !u!114 &4602264444762569736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197886959752762870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61884ad5b0b9547adb60d4beeb25f4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5106922876468637596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,19 +664,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueIdentifier: player
---- !u!114 &5758184306521622258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6197886959752762870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a63cf3942a3543689fb649799169667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipedCurse: {fileID: 11400000, guid: fdb54697978cc411d81e64d536bd41f5, type: 2}
 --- !u!1 &6197886959996213119
 GameObject:
   m_ObjectHideFlags: 0

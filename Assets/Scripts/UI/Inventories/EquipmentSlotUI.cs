@@ -18,6 +18,7 @@ namespace Game.UI.Inventories
         [SerializeField] EquipLocation equipLocation = EquipLocation.None;
         [SerializeField] GameObject slotTextContainer = null;
         [SerializeField] TextMeshProUGUI slotText = null;
+        [SerializeField] Image cooldownOverlay = null;
 
         Equipment playerEquipment;
        
@@ -27,7 +28,6 @@ namespace Game.UI.Inventories
             playerEquipment = player.GetComponent<Equipment>();
             playerEquipment.equipmentUpdated += RedrawUI;
         }
-
         private void Start() 
         {
             slotText.text = equipLocation.ToString();
