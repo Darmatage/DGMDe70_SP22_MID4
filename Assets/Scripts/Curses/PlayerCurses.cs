@@ -3,14 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Combat;
 using Game.Control;
+using Game.Core;
 using Game.Enums;
 using Game.Inventories;
+using Game.Saving;
 using Game.Utils;
 using UnityEngine;
 
 namespace Game.Curses
 {
-    public class PlayerCurses : MonoBehaviour
+    public class PlayerCurses : MonoBehaviour, ISaveable
     {
         [SerializeField] CurseTypes selectedCurse = CurseTypes.Werewolf;
         [Tooltip("Curse List Library")]
@@ -23,8 +25,12 @@ namespace Game.Curses
         private PlayerTransformControl playerTransform;
         private PlayerCombat playerCombat;
         private Inventory playerInventory;
+        private CooldownStore cooldownStore;
+        private PlayerHealth playerHealth;
 
         private SO_InventoryItem tempEquipedWeapon;
+        private float gameTick = 0f;
+        private bool isGamePaused = false;
 
         private void Awake() 
         {
@@ -35,6 +41,8 @@ namespace Game.Curses
             playerTransform = GetComponent<PlayerTransformControl>();
             playerCombat = GetComponent<PlayerCombat>();
             playerInventory = GetComponent<Inventory>();
+            cooldownStore = GetComponent<CooldownStore>();
+            playerHealth = GetComponent<PlayerHealth>();
         }
 
         private SO_Curse GetInitialCurseHuman()
@@ -54,34 +62,58 @@ namespace Game.Curses
 
             playerEquipment.AddItem(EquipLocation.Curse, equipedCurseHuman.value);
         }
-
         private void OnEnable()
         {
-            EventHandler.TransformEvent += AddCurse;
-            EventHandler.TransformEvent += RemoveCurse;
+            EventHandler.TransformEvent += ActivateCurse;
+            EventHandler.ActiveGameUI += GamePaused;
         }
 
         private void OnDisable()
         {
-            EventHandler.TransformEvent -= AddCurse;
-            EventHandler.TransformEvent -= RemoveCurse;
+            EventHandler.TransformEvent -= ActivateCurse;
+            EventHandler.ActiveGameUI -= GamePaused;
+        }
+
+        private void Update() 
+        {
+            if (!isGamePaused)
+            {
+                EarlyCurseTransform();
+            }
+        }
+
+        private void EarlyCurseTransform()
+        {
+            gameTick += Time.deltaTime;
+            if (gameTick >= Settings.secondsPerGameSecond)
+            {
+                gameTick -= Settings.secondsPerGameSecond;
+                if (cooldownStore.GetTimeRemaining(equipedCurseMonster.value) > 0 && !playerTransform.IsMonster)
+                {
+                    if (equipedCurseHuman.value.HasCurseEffects(CurseEffectTypes.DamageHealth))
+                    {
+                        playerHealth.TakeDamage(equipedCurseHuman.value.GetCurseEffectModifier(CurseEffectTypes.DamageHealth));
+                    }
+                    
+                    Debug.Log("Curse cooldown penalty! ");
+                }
+            }
         }
 
         public SO_Curse GetCurse()
         {
             return equipedCurseMonster.value;
         }
-        private void AddCurse()
+        private void ActivateCurse()
         {
             if (!playerTransform.IsMonster)
             {
+                equipedCurseMonster.value.ActivateCurse(gameObject);
                 playerEquipment.RemoveItem(EquipLocation.Curse);
                 playerEquipment.AddItem(EquipLocation.Curse, equipedCurseMonster.value);
+
                 EquipCurseAttack();
             }
-        }
-        public void RemoveCurse()
-        {
             if (playerTransform.IsMonster)
             {
                 playerEquipment.RemoveItem(EquipLocation.Curse);
@@ -127,12 +159,44 @@ namespace Game.Curses
             }
         }
 
-        [System.Serializable]
-        struct CursePairTypes
+        private void GamePaused(bool gameState)
         {
-            public CurseTypes curseType;
+            isGamePaused = gameState;
+        }
+
+        private struct CursePairRecord
+        {
             public SO_Curse curseHumanForm;
             public SO_Curse curseMonsterForm;
-        }  
+            public CooldownStore cooldownStore;
+            public PlayerTransformControl playerTransform;
+            public bool isGamePaused;
+        }
+
+        object ISaveable.CaptureState()
+        {
+            var cursePairRecord = new CursePairRecord();
+
+            cursePairRecord.curseHumanForm = equipedCurseHuman.value;
+            cursePairRecord.curseMonsterForm = equipedCurseMonster.value;
+            cursePairRecord.cooldownStore = cooldownStore;
+            cursePairRecord.playerTransform = playerTransform;
+            cursePairRecord.isGamePaused = isGamePaused;
+
+            return cursePairRecord;
+        }
+
+        void ISaveable.RestoreState(object state)
+        {
+            var cursePairRecord = (CursePairRecord)state;
+
+            equipedCurseHuman.value = cursePairRecord.curseHumanForm;
+            equipedCurseMonster.value = cursePairRecord.curseMonsterForm;
+            cooldownStore = cursePairRecord.cooldownStore;
+            playerTransform = cursePairRecord.playerTransform;
+            isGamePaused = cursePairRecord.isGamePaused;
+
+            ActivateCurse();
+        }
     }
 }

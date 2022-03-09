@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace Game.Curses.Effects
 {
-    [CreateAssetMenu(fileName = "More Souls Effect", menuName = "Game/Player/Curses/Effects/More Souls")]
-    public class SO_MoreSoulsEffect : SO_EffectStrategy, ICurseProvider
+    [CreateAssetMenu(fileName = "Health Damage Effect", menuName = "Game/Player/Curses/Effects/Damage Health")]
+    public class SO_HealthDamageEffect : SO_EffectStrategy, ICurseProvider
     {
         [Tooltip("Curse Effect Modifier.")]
         [SerializeField] Modifier[] curseEffectMod;
-        private CurseEffectTypes curseEffectType = CurseEffectTypes.SoulBonus;
+        private CurseEffectTypes curseEffectType = CurseEffectTypes.DamageHealth;
 
         public override CurseEffectTypes GetCurseEffectType()
         {
@@ -21,7 +21,7 @@ namespace Game.Curses.Effects
         {
             if(effectType == curseEffectType)
             {
-                Debug.Log("More Souls, Please!");
+                Debug.Log("It hurts!");
                 return true;
             }
             return false;

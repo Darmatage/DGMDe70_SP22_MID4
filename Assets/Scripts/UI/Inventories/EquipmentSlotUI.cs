@@ -18,7 +18,6 @@ namespace Game.UI.Inventories
         [SerializeField] EquipLocation equipLocation = EquipLocation.None;
         [SerializeField] GameObject slotTextContainer = null;
         [SerializeField] TextMeshProUGUI slotText = null;
-        [SerializeField] Image cooldownOverlay = null;
 
         Equipment playerEquipment;
        

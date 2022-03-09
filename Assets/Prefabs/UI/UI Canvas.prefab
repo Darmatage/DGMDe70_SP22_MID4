@@ -2438,7 +2438,6 @@ MonoBehaviour:
   equipLocation: 1
   slotTextContainer: {fileID: 6288020811418553966}
   slotText: {fileID: 7799132813501418714}
-  cooldownOverlay: {fileID: 0}
 --- !u!114 &7129221257123974004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2932,7 +2931,6 @@ MonoBehaviour:
   equipLocation: 5
   slotTextContainer: {fileID: 5870814643273159700}
   slotText: {fileID: 7640021090746554016}
-  cooldownOverlay: {fileID: 0}
 --- !u!114 &7262845750929871118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11733,7 +11731,6 @@ MonoBehaviour:
   equipLocation: 8
   slotTextContainer: {fileID: 1321428130765628603}
   slotText: {fileID: 1010788706174416843}
-  cooldownOverlay: {fileID: 8943322776318922793}
 --- !u!114 &6201733308078392645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12677,7 +12674,6 @@ MonoBehaviour:
   equipLocation: 7
   slotTextContainer: {fileID: 7487905257616266484}
   slotText: {fileID: 6671518027604481600}
-  cooldownOverlay: {fileID: 0}
 --- !u!114 &5934054644701155822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12786,7 +12782,6 @@ MonoBehaviour:
   equipLocation: 2
   slotTextContainer: {fileID: 6947435279023676265}
   slotText: {fileID: 6563332317479999965}
-  cooldownOverlay: {fileID: 0}
 --- !u!114 &6186154753952390771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13183,7 +13178,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -419.99985}
+  m_AnchoredPosition: {x: 0.000061035156, y: -419.99997}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332452809922910392
@@ -14009,8 +14004,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2749027884685719816}
   m_HandleRect: {fileID: 4527676626383106937}
   m_Direction: 2
-  m_Value: -0.0000010388968
-  m_Size: 0.8200021
+  m_Value: -0.0000005194484
+  m_Size: 0.82024235
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -22341,7 +22336,6 @@ MonoBehaviour:
   equipLocation: 6
   slotTextContainer: {fileID: 252005110293118495}
   slotText: {fileID: 4035455288275319979}
-  cooldownOverlay: {fileID: 0}
 --- !u!114 &3948759924318583557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24268,7 +24262,6 @@ MonoBehaviour:
   equipLocation: 4
   slotTextContainer: {fileID: 4224289125552565800}
   slotText: {fileID: 135157398814764188}
-  cooldownOverlay: {fileID: 0}
 --- !u!114 &1093299381942037298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25118,7 +25111,6 @@ MonoBehaviour:
   equipLocation: 3
   slotTextContainer: {fileID: 3891799737525907296}
   slotText: {fileID: 972196263874604500}
-  cooldownOverlay: {fileID: 0}
 --- !u!114 &266255910503230074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27252,7 +27244,6 @@ MonoBehaviour:
   equipLocation: 8
   slotTextContainer: {fileID: 2417733248837448720}
   slotText: {fileID: 1233297575898159139}
-  cooldownOverlay: {fileID: 0}
 --- !u!114 &4651208182218227263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29255,6 +29246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ActionSlot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4746275200328205858, guid: f1f914e3617711c47b5bb496f67b2ab7, type: 3}
+      propertyPath: index
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1f914e3617711c47b5bb496f67b2ab7, type: 3}
 --- !u!224 &4372883180716604620 stripped
@@ -29356,6 +29351,10 @@ PrefabInstance:
     - target: {fileID: 4613549633073926621, guid: f1f914e3617711c47b5bb496f67b2ab7, type: 3}
       propertyPath: m_Name
       value: ActionSlot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746275200328205858, guid: f1f914e3617711c47b5bb496f67b2ab7, type: 3}
+      propertyPath: index
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1f914e3617711c47b5bb496f67b2ab7, type: 3}

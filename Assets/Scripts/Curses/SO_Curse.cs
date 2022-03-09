@@ -15,6 +15,7 @@ namespace Game.Curses
         [SerializeField] CurseTypes curseType;
         [Tooltip("What state is this?")]
         [SerializeField] PlayerTransformState cursePairState;
+        [SerializeField] float cooldownTime = 0;
 
         [Header("Curse Stat Modifiers")]
         [Tooltip("Modify base stats.")]
@@ -25,7 +26,6 @@ namespace Game.Curses
         [SerializeField] SO_WeaponItem curseWeapon = null;
         [Tooltip("What else does the curse do?")]
         [SerializeField] SO_EffectStrategy[] effectStrategies;
-        //[SerializeField] float cooldownTime = 0;
 
         [System.Serializable]
         struct Modifier
@@ -45,6 +45,22 @@ namespace Game.Curses
                 return curseWeapon;
             }
             return null;
+        }
+
+        public bool ActivateCurse(GameObject player)
+        {
+            CooldownStore cooldownStore = player.GetComponent<CooldownStore>();
+            if (cooldownStore.GetTimeRemaining(this) > 0)
+            {
+                return false;
+            }
+            StartCooldownTimer(cooldownStore);
+            return true;
+        }
+
+        private void StartCooldownTimer(CooldownStore cooldownStore)
+        {
+            cooldownStore.StartCooldown(this, cooldownTime);
         }
 
         public bool HasCurseEffects(CurseEffectTypes curseEffectType)

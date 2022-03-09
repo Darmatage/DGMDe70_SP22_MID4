@@ -9,7 +9,8 @@ namespace Game.Inventories
         Dictionary<SO_InventoryItem, float> cooldownTimers = new Dictionary<SO_InventoryItem, float>();
         Dictionary<SO_InventoryItem, float> initialCooldownTimes = new Dictionary<SO_InventoryItem, float>();
 
-        void Update() {
+        void Update() 
+        {
             var keys = new List<SO_InventoryItem>(cooldownTimers.Keys);
             foreach (SO_InventoryItem item in keys)
             {

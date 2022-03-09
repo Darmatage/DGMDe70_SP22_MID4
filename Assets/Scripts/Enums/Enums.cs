@@ -99,7 +99,8 @@ namespace Game.Enums
     {
         None,
         SoulBonus,
-        SoulHealBonus
+        SoulHealBonus,
+        DamageHealth
     }
 
     /// <summary>
