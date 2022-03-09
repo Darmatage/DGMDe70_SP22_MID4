@@ -85,6 +85,11 @@ namespace Game.Inventories
         {
             return slots[slot].item.IsDroppable();
         }
+
+        public bool IsItemSwappable(int slot)
+        {
+            return slots[slot].item.IsSwappable();
+        }
         public void RemoveFromSlot(int slot, int number)
         {
             slots[slot].number -= number;

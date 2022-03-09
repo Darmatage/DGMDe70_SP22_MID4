@@ -44,6 +44,11 @@ namespace Game.UI.Inventories
             return inventory.IsItemDroppable(index);
         }
 
+        public bool IsSwappable()
+        {
+            return inventory.IsItemSwappable(index);
+        }
+
         public SO_InventoryItem GetItem()
         {
             return inventory.GetItemInSlot(index);

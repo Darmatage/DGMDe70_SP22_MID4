@@ -33,8 +33,6 @@ namespace Game.Control
         private bool isAttackingLeft;
         private bool isAttackingRight;
 
-
-
         private void Awake() 
         {
             playerDirection = GetComponent<PlayerMovement>().GetPlayerVector2();
@@ -218,7 +216,7 @@ namespace Game.Control
         {
             // Send event to any listeners for player movement input
             EventHandler.CallPlayerInputEvent(0f, 0f, false, false, false, isMakingAttack,
-                isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
+                isAttackingUp, isAttackingRight, isAttackingDown, isAttackingLeft,
                 false, false, false, false);
         }
 

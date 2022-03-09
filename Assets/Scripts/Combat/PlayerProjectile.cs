@@ -14,16 +14,18 @@ namespace Game.Combat
         private void Start()
         {
             transform.right = launchDirection;
+            //transform.rotation = Quaternion.Euler(0,0,0);
         }
         private void Update()
         {
             float step = projectileSpeed * Time.deltaTime;
             transform.Translate(Vector3.right * step);
+            
         }
         public void SetTarget(Vector3 launchDirection, float damage)
         {
             this.launchDirection = launchDirection;
-            this.damage = damage;
+            this.damage = damage;            
 
             Destroy(gameObject, maxLifeTime);
         }

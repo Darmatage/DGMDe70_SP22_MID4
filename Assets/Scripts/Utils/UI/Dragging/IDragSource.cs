@@ -22,6 +22,11 @@ namespace Game.Core.UI.Dragging
         bool IsDroppable();
 
         /// <summary>
+        /// Can the item be swapped?
+        /// </summary>
+        bool IsSwappable();
+
+        /// <summary>
         /// What is the quantity of items in this source?
         /// </summary>
         int GetNumber();

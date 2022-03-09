@@ -16,15 +16,17 @@ namespace Game.Animation
         private void OnEnable()
         {
             EventHandler.PlayerInputEvent += SetAnimationParameters;
+            EventHandler.PlayerAttackEvent += SetRangeAttackAnimationParameters;
         }
 
         private void OnDisable()
         {
             EventHandler.PlayerInputEvent -= SetAnimationParameters;
+            EventHandler.PlayerAttackEvent -= SetRangeAttackAnimationParameters;
         }
 
         private void SetAnimationParameters(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle, bool isMakingAttack,
-            bool isAttackingRight, bool isAttackingLeft, bool isAttackingUp, bool isAttackingDown,
+            bool isAttackingUp, bool isAttackingRight, bool isAttackingDown, bool isAttackingLeft,
             bool idleUp, bool idleDown, bool idleLeft, bool idleRight)
         {
             animator.SetFloat(Settings.xInput, xInput);
@@ -32,14 +34,14 @@ namespace Game.Animation
             animator.SetBool(Settings.isWalking, isWalking);
             animator.SetBool(Settings.isRunning, isRunning);
 
-            if (isAttackingRight)
-                animator.SetTrigger(Settings.isAttackingRight);
-            if (isAttackingLeft)
-                animator.SetTrigger(Settings.isAttackingLeft);
-            if (isAttackingUp)
-                animator.SetTrigger(Settings.isAttackingUp);
-            if (isAttackingDown)
-                animator.SetTrigger(Settings.isAttackingDown);
+            // if (isAttackingRight)
+            //     animator.SetTrigger(Settings.isAttackingRight);
+            // if (isAttackingLeft)
+            //     animator.SetTrigger(Settings.isAttackingLeft);
+            // if (isAttackingUp)
+            //     animator.SetTrigger(Settings.isAttackingUp);
+            // if (isAttackingDown)
+            //     animator.SetTrigger(Settings.isAttackingDown);
 
             if (idleUp)
                 animator.SetTrigger(Settings.idleUp);
@@ -49,6 +51,18 @@ namespace Game.Animation
                 animator.SetTrigger(Settings.idleLeft);
             if (idleRight)
                 animator.SetTrigger(Settings.idleRight);
+        }
+
+        private void SetRangeAttackAnimationParameters(bool isRangeAttackingUp, bool isRangeAttackingRight, bool isRangeAttackingDown, bool isRangeAttackingLeft)
+        {
+            if (isRangeAttackingUp)
+                animator.SetTrigger(Settings.isAttackingUp);
+            if (isRangeAttackingRight)
+                animator.SetTrigger(Settings.isAttackingRight);
+            if (isRangeAttackingDown)
+                animator.SetTrigger(Settings.isAttackingDown);
+            if (isRangeAttackingLeft)
+                animator.SetTrigger(Settings.isAttackingLeft);
         }
     }
 }

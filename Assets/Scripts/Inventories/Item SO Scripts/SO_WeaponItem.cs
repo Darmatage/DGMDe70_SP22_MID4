@@ -55,7 +55,10 @@ namespace Game.Inventories
         public void LaunchProjectile(Transform weaponPosition, Vector3 launchDirection, float calculatedDamage)
         {
             PlayerProjectile projectInstance = Instantiate(projectile, weaponPosition.position + launchDirection * 1.5f, Quaternion.identity, GameObject.FindGameObjectWithTag(Tags.PROJECTILES_TAG).transform);
+            
             projectInstance.SetTarget(launchDirection, calculatedDamage);
+            projectInstance.transform.rotation = Quaternion.Euler(0,0,0);
+            
         }
         public float GetDamage()
         {
@@ -63,6 +66,11 @@ namespace Game.Inventories
         }
 
         public override bool IsDroppable()
+        {
+            return !isCurseAttack;
+        }
+
+        public override bool IsSwappable()
         {
             return !isCurseAttack;
         }

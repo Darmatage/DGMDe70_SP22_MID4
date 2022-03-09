@@ -27,8 +27,8 @@ namespace Game.Curses
 
         private SO_InventoryItem tempEquipedWeapon;
         private bool isMonster;
-        private float gameTick = 0f;
         private bool isGamePaused = false;
+        private float gameTick = 0f;
 
         private void Awake() 
         {
@@ -125,10 +125,9 @@ namespace Game.Curses
                 {
                     if (equipedCurseHuman.value.HasCurseEffects(CurseEffectTypes.DamageHealth))
                     {
+                        Debug.Log("Curse cooldown penalty! ");
                         GetComponent<PlayerHealth>().TakeDamage(equipedCurseHuman.value.GetCurseEffectModifier(CurseEffectTypes.DamageHealth));
                     }
-                    
-                    Debug.Log("Curse cooldown penalty! ");
                 }
             }
         }
@@ -200,8 +199,6 @@ namespace Game.Curses
             equipedCurseHuman.value = UnityEngine.Resources.Load<SO_Curse>(cursePairRecord.curseHumanFormName);
             equipedCurseMonster.value = UnityEngine.Resources.Load<SO_Curse>(cursePairRecord.curseMonsterFormName);
             isGamePaused = cursePairRecord.IsGamePaused;
-
-            //ActivateCurse();
         }
     }
 }

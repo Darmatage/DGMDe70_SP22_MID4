@@ -81,6 +81,11 @@ namespace Game.Inventories
             return true;
         }
 
+        public virtual bool IsSwappable()
+        {
+            return true;
+        }
+
         public virtual float GetKarmaValue()
         {
             return 0f;

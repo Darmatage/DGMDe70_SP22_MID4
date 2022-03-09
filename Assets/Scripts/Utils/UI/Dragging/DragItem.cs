@@ -109,6 +109,7 @@ namespace Game.Core.UI.Dragging
         private void AttemptSwap(IDragContainer<T> destination, IDragContainer<T> source)
         {
             if(!source.IsDroppable()) return;
+            if(!destination.IsSwappable()) return;
             // Provisionally remove item from both sides. 
             var removedSourceNumber = source.GetNumber();
             var removedSourceItem = source.GetItem();

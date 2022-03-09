@@ -116,6 +116,15 @@ namespace Game.Inventories
             return false;
         }
 
+        public bool IsSwappable(int index)
+        {
+            if (dockedItems.ContainsKey(index))
+            {
+                return dockedItems[index].item.IsSwappable();
+            }
+            return false;
+        }
+
         /// <summary>
         /// Remove a given number of items from the given slot.
         /// </summary>

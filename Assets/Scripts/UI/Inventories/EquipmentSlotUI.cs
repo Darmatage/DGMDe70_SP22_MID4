@@ -58,6 +58,11 @@ namespace Game.UI.Inventories
             return playerEquipment.IsItemDroppable(equipLocation);
         }
 
+        public bool IsSwappable()
+        {
+            return playerEquipment.IsItemSwappable(equipLocation);
+        }
+
         public int GetNumber()
         {
             if (GetItem() != null)

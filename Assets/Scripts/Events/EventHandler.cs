@@ -5,9 +5,10 @@ using Game.Enums;
 using UnityEngine;
 
 public delegate void PlayerInputDelegate(float inputX, float inputY, bool isWalking, bool isRunning, bool isIdle, bool isMakingAttack,
-    bool isAttackingRight, bool isAttackingLeft, bool isAttackingUp, bool isAttackingDown,
+    bool isAttackingUp, bool isAttackingRight, bool isAttackingDown, bool isAttackingLeft,
     bool idleUp, bool idleDown, bool idleLeft, bool idleRight);
 
+public delegate void PlayerAttackDelegate(bool isRangeAttackingUp, bool isRangeAttackingRight, bool isRangeAttackingDown, bool isRangeAttackingLeft);
 public delegate void PlayerTransformStateDelegate(PlayerTransformState playerTransformState);
 
 public class EventHandler
@@ -17,14 +18,24 @@ public class EventHandler
 
     // Movement Event Call For Publishers
     public static void CallPlayerInputEvent(float inputX, float inputY, bool isWalking, bool isRunning, bool isIdle, bool isMakingAttack,
-    bool isAttackingRight, bool isAttackingLeft, bool isAttackingUp, bool isAttackingDown,
+    bool isAttackingUp, bool isAttackingRight, bool isAttackingDown, bool isAttackingLeft,
     bool idleUp, bool idleDown, bool idleLeft, bool idleRight)
     {
         if (PlayerInputEvent != null)
             PlayerInputEvent(inputX, inputY,
                 isWalking, isRunning, isIdle, isMakingAttack,
-                isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
+                isAttackingUp, isAttackingRight, isAttackingDown, isAttackingLeft,  
                 idleUp, idleDown, idleLeft, idleRight);
+    }
+
+    // Range Attack Event
+    public static event PlayerAttackDelegate PlayerAttackEvent;
+
+    // Range Attack Event Call For Publishers
+    public static void CallPlayerAttackEvent(bool isRangeAttackingUp, bool isRangeAttackingRight, bool isRangeAttackingDown, bool isRangeAttackingLeft)
+    {
+        if (PlayerAttackEvent != null)
+            PlayerAttackEvent(isRangeAttackingUp, isRangeAttackingRight, isRangeAttackingDown, isRangeAttackingLeft);
     }
 
     // Pause game and controls while in UI

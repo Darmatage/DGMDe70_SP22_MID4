@@ -60,6 +60,11 @@ namespace Game.UI.Inventories
             return store.IsDroppable(index);
         }
 
+        public bool IsSwappable()
+        {
+            return store.IsSwappable(index);
+        }
+
         void UpdateIcon()
         {
             icon.SetItem(GetItem(), GetNumber());
