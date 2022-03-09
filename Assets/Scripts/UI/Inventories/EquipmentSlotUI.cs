@@ -23,11 +23,10 @@ namespace Game.UI.Inventories
        
         private void Awake() 
         {
-            var player = GameObject.FindGameObjectWithTag("Player");
+            var player = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG);
             playerEquipment = player.GetComponent<Equipment>();
             playerEquipment.equipmentUpdated += RedrawUI;
         }
-
         private void Start() 
         {
             slotText.text = equipLocation.ToString();
@@ -52,6 +51,16 @@ namespace Game.UI.Inventories
         public SO_InventoryItem GetItem()
         {
             return playerEquipment.GetItemInSlot(equipLocation);
+        }
+
+        public bool IsDroppable()
+        {
+            return playerEquipment.IsItemDroppable(equipLocation);
+        }
+
+        public bool IsSwappable()
+        {
+            return playerEquipment.IsItemSwappable(equipLocation);
         }
 
         public int GetNumber()

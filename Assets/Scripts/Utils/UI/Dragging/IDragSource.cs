@@ -17,6 +17,16 @@ namespace Game.Core.UI.Dragging
         T GetItem();
 
         /// <summary>
+        /// Can the item be dropped?
+        /// </summary>
+        bool IsDroppable();
+
+        /// <summary>
+        /// Can the item be swapped?
+        /// </summary>
+        bool IsSwappable();
+
+        /// <summary>
         /// What is the quantity of items in this source?
         /// </summary>
         int GetNumber();

@@ -69,7 +69,7 @@ namespace Game.Movement
 
                 // Send event to any listeners for player movement input
                 EventHandler.CallPlayerInputEvent(xInput, yInput, isWalking, isRunning, isIdle, false,
-                    isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
+                    isAttackingUp, isAttackingRight, isAttackingDown, isAttackingLeft,
                     false, false, false, false);
                 }
 
@@ -158,7 +158,7 @@ namespace Game.Movement
 
             // Send event to any listeners for player movement input
                 EventHandler.CallPlayerInputEvent(xInput, yInput, isWalking, isRunning, isIdle, false,
-                    isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown,
+                    isAttackingUp, isAttackingRight, isAttackingDown, isAttackingLeft,
                     false, false, false, false);
         }
 

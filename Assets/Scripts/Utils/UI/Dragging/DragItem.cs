@@ -108,6 +108,8 @@ namespace Game.Core.UI.Dragging
 
         private void AttemptSwap(IDragContainer<T> destination, IDragContainer<T> source)
         {
+            if(!source.IsDroppable()) return;
+            if(!destination.IsSwappable()) return;
             // Provisionally remove item from both sides. 
             var removedSourceNumber = source.GetNumber();
             var removedSourceItem = source.GetItem();
@@ -160,7 +162,7 @@ namespace Game.Core.UI.Dragging
             var acceptable = destination.MaxAcceptable(draggingItem);
             var toTransfer = Mathf.Min(acceptable, draggingNumber);
 
-            if (toTransfer > 0)
+            if (toTransfer > 0 && source.IsDroppable())
             {
                 source.RemoveItems(toTransfer);
                 destination.AddItems(draggingItem, toTransfer);

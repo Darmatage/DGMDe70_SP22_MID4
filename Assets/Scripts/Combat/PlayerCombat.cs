@@ -7,6 +7,7 @@ using Game.PlayerClass;
 using Game.Saving;
 using Game.Utils;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Game.Combat
 {
@@ -14,39 +15,33 @@ namespace Game.Combat
     {
 
         [SerializeField] Transform rangeAttackLaunchPosition;
-        [SerializeField] SO_WeaponItem defaultWeapon = null;
+        [SerializeField] SO_WeaponItem _defaultWeapon = null;
+        public SO_WeaponItem DefaultWeapon {get { return _defaultWeapon; }}
         SO_WeaponItem currentWeaponConfig;
-        //LazyValue<PlayerWeaponPrefab> currentWeapon;
         Equipment equipment;
 
         private void Awake() 
         {
-            currentWeaponConfig = defaultWeapon;
-            //currentWeapon = new LazyValue<PlayerWeaponPrefab>(SetupDefaultWeapon);
+            currentWeaponConfig = _defaultWeapon;
             equipment = GetComponent<Equipment>();
             if(equipment)
             {
                 equipment.equipmentUpdated += UpdateWeapon;
             }
         }
-        // private PlayerWeaponPrefab SetupDefaultWeapon()
-        // {
-        //     return AttachWeapon(defaultWeapon);
-        // }
 
         private void OnEnable()
         {
-            EventHandler.PlayerInputEvent += SetAttackDirection;
+            EventHandler.PlayerInputEvent += SetMeleeAttackDirection;
+            EventHandler.PlayerInputEvent += SetRangeAttackDirection;
         }
 
         private void OnDisable()
         {
-            EventHandler.PlayerInputEvent -= SetAttackDirection;
+            EventHandler.PlayerInputEvent -= SetMeleeAttackDirection;
+            EventHandler.PlayerInputEvent -= SetRangeAttackDirection;
         }
-        // void Start() 
-        // {
-        //     currentWeapon.ForceInit();
-        // }
+
         public void EquipWeapon(SO_WeaponItem weapon)
         {
             currentWeaponConfig = weapon;
@@ -58,7 +53,7 @@ namespace Game.Combat
             var weapon = equipment.GetItemInSlot(EquipLocation.Weapon) as SO_WeaponItem;
             if (weapon == null)
             {
-                EquipWeapon(defaultWeapon);
+                EquipWeapon(_defaultWeapon);
             }
             else
             {
@@ -72,42 +67,73 @@ namespace Game.Combat
             weapon.Spawn(animator);
         }
 
-        private void SetAttackDirection(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle, bool isMakingAttack,
-            bool isAttackingRight, bool isAttackingLeft, bool isAttackingUp, bool isAttackingDown,
+        private void SetMeleeAttackDirection(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle, bool isMakingAttack,
+            bool isAttackingUp, bool isAttackingRight, bool isAttackingDown, bool isAttackingLeft,
             bool idleUp, bool idleDown, bool idleLeft, bool idleRight)
         {
             if(!isMakingAttack) return;
-
-            float damage = GetComponent<PlayerBaseStats>().GetStat(PlayerStats.BaseDamage);
-            //Debug.Log("Attack Damage: " + damage);
-
-            if(currentWeaponConfig.HasProjectile())
+            if(!currentWeaponConfig.HasProjectile())
             {
-                Vector3 launchDirection = new Vector3(0.0f, 0.0f, 0.0f);
-                if (isAttackingUp) 
-                {
-                    launchDirection = Vector3.up;
-                }
-                if (isAttackingRight) 
-                {
-                    launchDirection = Vector3.right;
-                }
-                if (isAttackingLeft) 
-                {
-                    launchDirection = Vector3.left;
-                }
-                if (isAttackingDown) 
-                {
-                    launchDirection = Vector3.down;
-                }
-                currentWeaponConfig.LaunchProjectile(rangeAttackLaunchPosition, launchDirection, damage);
-            }
-            else
-            {
+                EventHandler.CallPlayerAttackEvent(isAttackingUp, isAttackingRight, isAttackingDown, isAttackingLeft);
                 GetComponentInChildren<PlayerHitCollidersController>().ActivateMeleeHitCollider(isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown);
             }
         }
 
+        private void SetRangeAttackDirection(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle, bool isMakingAttack,
+            bool isAttackingUp, bool isAttackingRight, bool isAttackingDown, bool isAttackingLeft,
+            bool idleUp, bool idleDown, bool idleLeft, bool idleRight)
+        {
+            if(!isMakingAttack) return;
+            if(currentWeaponConfig.HasProjectile())
+            {
+                float damage = GetComponent<PlayerBaseStats>().GetStat(PlayerStats.BaseDamage);
+
+                bool isRangeAttackingUp = false;
+                bool isRangeAttackingRight = false;
+                bool isRangeAttackingDown = false;
+                bool isRangeAttackingLeft = false;
+
+                Vector3 mousePos = Mouse.current.position.ReadValue();   
+                mousePos.z = Camera.main.nearClipPlane;
+                Vector3 clickPos=Camera.main.ScreenToWorldPoint(mousePos);
+
+                Debug.Log("Mouse Pos: " + clickPos);
+
+                Vector3 launchDirection = new Vector3 (
+                    clickPos.x - transform.position.x,
+                    clickPos.y - transform.position.y,
+                    0
+                );
+
+                launchDirection.Normalize();
+
+                Debug.Log("Direction: " + launchDirection);
+
+                if ( launchDirection.y > 0.7f) 
+                {
+                    Debug.Log("Up");
+                    isRangeAttackingUp = true;
+                }
+                if (launchDirection.x > 0.7f ) 
+                {
+                    Debug.Log("Right");
+                    isRangeAttackingRight = true;
+                }
+                if (launchDirection.y < -0.7f) 
+                {
+                    Debug.Log("Down");
+                    isRangeAttackingDown = true; 
+                }
+                if (launchDirection.x < -0.7f) 
+                {
+                    Debug.Log("Left");
+                    isRangeAttackingLeft = true;
+                }
+
+                EventHandler.CallPlayerAttackEvent(isRangeAttackingUp, isRangeAttackingRight, isRangeAttackingDown, isRangeAttackingLeft);
+                currentWeaponConfig.LaunchProjectile(rangeAttackLaunchPosition, launchDirection, damage);
+            }
+        }
         object ISaveable.CaptureState()
         {
             return currentWeaponConfig.name;
