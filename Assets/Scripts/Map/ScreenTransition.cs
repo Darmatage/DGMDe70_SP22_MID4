@@ -15,9 +15,6 @@ public class ScreenTransition : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
-            // Vector3 newPosition = Camera.main.transform.position;
-            // newPosition += cameraShift;
-
             other.transform.position += playerShift;
             cameraTransition.newPosition += cameraShift;
         }
