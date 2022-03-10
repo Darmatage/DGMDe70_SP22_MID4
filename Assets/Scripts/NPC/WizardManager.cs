@@ -16,7 +16,6 @@ namespace Game.NPC
         [SerializeField] DialogueManager dialogueUIManager = null;
 
         DialogueManager dialogue;
-        public DialogueScene01 dialogueScene01 = new DialogueScene01();
         private bool isKeyActive = false;
         private bool isRaycastOn = false;
 

@@ -110,7 +110,7 @@ public class EventHandler
     }
 
     // Dialogue Action
-    public static event DialogueActionDelegate DialogueActionEvent; //<- Changed this to included the Enum CutSceneDestinationIdentifier to be included in the event call
+    public static event DialogueActionDelegate DialogueActionEvent;
     public static void CallDialogueActionEvent(CutSceneDestinationIdentifier cutSceneDestinationIdentifier)
     {
         if (DialogueActionEvent != null)

@@ -19,6 +19,7 @@ namespace Game.Story
         private void OnEnable() 
         {
             EventHandler.DialogueActionEvent += OpenScreen; 
+            Debug.Log("OpenScreen");
         }
 
         private void OnDisable() 
@@ -33,7 +34,7 @@ namespace Game.Story
             
             bool isMonster = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerTransformControl>().IsMonster;
 
-            TMP_Text textBox = dialogueBox.FindComponentInChildrenWithTag<TMP_Text>(Tags.UI_DIALOGUE_SPEECHTEXT_TAG); //<- TMP_Text instead of TextMeshPro
+            TMP_Text textBox = dialogueBox.FindComponentInChildrenWithTag<TMP_Text>(Tags.UI_DIALOGUE_SPEECHTEXT_TAG);
             textBox.text = gameDialogue.getDialogue(GameScene.Instance.currentScene, GameScene.Instance.currentStage, cutSceneDestinationIdentifier, isMonster, variant);
 
             Button closeDialogueButton = dialogueBox.FindComponentInChildrenWithTag<Button>(Tags.UI_BUTTON_DIALOGUE_CLOSE_TAG);
@@ -48,7 +49,7 @@ namespace Game.Story
 
             bool isMonster = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerTransformControl>().IsMonster;
 
-            TMP_Text textBox = dialogueBox.FindComponentInChildrenWithTag<TMP_Text>(Tags.UI_DIALOGUE_SPEECHTEXT_TAG); //<- TMP_Text instead of TextMeshPro
+            TMP_Text textBox = dialogueBox.FindComponentInChildrenWithTag<TMP_Text>(Tags.UI_DIALOGUE_SPEECHTEXT_TAG);
             textBox.text = gameDialogue.getDialogue(GameScene.Instance.currentScene, GameScene.Instance.currentStage, cutSceneDestinationIdentifier, isMonster, variant);
 
             Button closeDialogueButton = dialogueBox.FindComponentInChildrenWithTag<Button>(Tags.UI_BUTTON_DIALOGUE_CLOSE_TAG);
