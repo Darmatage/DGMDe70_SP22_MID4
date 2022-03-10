@@ -3,41 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+using Game.Enums;
+using System;
+using Game.Control;
 
 namespace Game.Story
 {
     public class DialogueManager : MonoBehaviour
     {
-        public GameObject speechBubble;
-        public Text textField;
-        public DialogueScene01 dialogueScene01 = new DialogueScene01();
-
-        void Awake() {
-            if (GameObject.FindWithTag("SpeechBubble") != null) {
-                speechBubble = GameObject.FindWithTag("SpeechBubble");
-            }
-        }
+        [SerializeField] GameObject dialogueScreen;
+        [SerializeField] GameObject dialogueBox;
+        GameDialogue gameDialogue = new GameDialogue();
 
         private void OnEnable() 
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            EventHandler.DialogueActionEvent += OpenScreen;
         }
 
-        void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-            OnDialogueScene();
+        private void OnDisable() 
+        {
+            EventHandler.DialogueActionEvent -= OpenScreen;
         }
 
-        void OnDialogueScene() {
-            if (speechBubble == null) {
-                return;
-            }
+        public void OpenScreen(CutSceneDestinationIdentifier cutSceneDestinationIdentifier) 
+        {
+            DialogueVariant variant = DialogueVariant.DV_01;
+            Debug.Log("This is the: " + cutSceneDestinationIdentifier.ToString());
+            
+            bool isMonster = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerTransformControl>().IsMonster;
 
-            speechBubble.SetActive(true);
-            Text textBox = GameObject.FindWithTag("SpeechText").GetComponent<Text>();
-            textBox.text = dialogueScene01.hello();
-            Debug.Log(dialogueScene01.hello());
+            TMP_Text textBox = dialogueBox.FindComponentInChildrenWithTag<TMP_Text>(Tags.UI_DIALOGUE_SPEECHTEXT_TAG);
+            textBox.text = gameDialogue.getDialogue(GameScene.Instance.currentScene, GameScene.Instance.currentStage, cutSceneDestinationIdentifier, isMonster, variant);
+
+            Button closeDialogueButton = dialogueBox.FindComponentInChildrenWithTag<Button>(Tags.UI_BUTTON_DIALOGUE_CLOSE_TAG);
+            closeDialogueButton.onClick.AddListener(() => 
+            {
+                EventHandler.CallCloseAllUIActionEvent();
+            });   
+        }
+        public void OpenScreen(CutSceneDestinationIdentifier cutSceneDestinationIdentifier, DialogueVariant variant = DialogueVariant.DV_01) 
+        {
+            Debug.Log("This is the: " + cutSceneDestinationIdentifier.ToString());
+
+            bool isMonster = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerTransformControl>().IsMonster;
+
+            TMP_Text textBox = dialogueBox.FindComponentInChildrenWithTag<TMP_Text>(Tags.UI_DIALOGUE_SPEECHTEXT_TAG);
+            textBox.text = gameDialogue.getDialogue(GameScene.Instance.currentScene, GameScene.Instance.currentStage, cutSceneDestinationIdentifier, isMonster, variant);
+
+            Button closeDialogueButton = dialogueBox.FindComponentInChildrenWithTag<Button>(Tags.UI_BUTTON_DIALOGUE_CLOSE_TAG);
+            closeDialogueButton.onClick.AddListener(() => 
+            {
+                EventHandler.CallCloseAllUIActionEvent();
+            });   
         }
     }
-
-    
 }

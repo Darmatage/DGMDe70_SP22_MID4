@@ -8,7 +8,6 @@ public class PlayerManager : MonoBehaviour
     public GameObject playerObject;
     public GameObject monsterObject;
     public GameObject currentObject;
-
     private bool isMonster;
 
     // Start is called before the first frame update

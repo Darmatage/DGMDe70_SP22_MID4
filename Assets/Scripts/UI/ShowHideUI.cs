@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ namespace Game.UI
     {
         [SerializeField] GameObject uiInventroyContainer = null;
         [SerializeField] GameObject uiCraftingContainer = null;
+        [SerializeField] GameObject uiDialogueContainer = null;
         [SerializeField] GameObject uiPauseContainer = null;
         private bool isGamePaused = false;
 
@@ -17,6 +19,8 @@ namespace Game.UI
             EventHandler.InventoryActionEvent += InventoryToggle;
             EventHandler.EscapeActionEvent += EscapeToggle;
             EventHandler.CraftingActionEvent += CraftingToggle;
+            EventHandler.DialogueActionEvent += DialogueToggle;
+            EventHandler.CloseAllUIActionEvent += CloseAllUI;
         }
 
         private void OnDisable()
@@ -24,12 +28,15 @@ namespace Game.UI
             EventHandler.InventoryActionEvent -= InventoryToggle;
             EventHandler.EscapeActionEvent -= EscapeToggle;
             EventHandler.CraftingActionEvent -= CraftingToggle;
+            EventHandler.DialogueActionEvent -= DialogueToggle;
+            EventHandler.CloseAllUIActionEvent -= CloseAllUI;
         }
         private void Start()
         {
             uiInventroyContainer.SetActive(false);
             uiCraftingContainer.SetActive(false);
             uiPauseContainer.SetActive(false);
+            uiDialogueContainer.SetActive(false);
         }
         private void Update()
         {
@@ -60,6 +67,12 @@ namespace Game.UI
             Debug.Log("Crafting toggle");
         }
 
+        private void DialogueToggle(CutSceneDestinationIdentifier cutSceneDestinationIdentifier) //<- Variables only included here because the event passes it through
+        {
+            MenuToggle(uiDialogueContainer);
+            Debug.Log("Dialogue toggle");
+        }
+
         private void EscapeToggle()
         {
             if(isGamePaused)
@@ -67,6 +80,7 @@ namespace Game.UI
                 uiInventroyContainer.SetActive(false);
                 uiCraftingContainer.SetActive(false);
                 uiPauseContainer.SetActive(false);
+                uiDialogueContainer.SetActive(false);
                 isGamePaused = false;
             }
             else 
@@ -79,10 +93,15 @@ namespace Game.UI
             Debug.Log("Escape toggle");
         }
 
-        // public void CloseUI()
-        // {
-        //     MenuToggle();
-        // }
+        private void CloseAllUI()
+        {
+            uiInventroyContainer.SetActive(false);
+            uiCraftingContainer.SetActive(false);
+            uiPauseContainer.SetActive(false);
+            uiDialogueContainer.SetActive(false);
+            isGamePaused = false;
+            EventHandler.CallActiveGameUI(isGamePaused);
+        }
 
         private void MenuToggle(GameObject uiContainer)
         {

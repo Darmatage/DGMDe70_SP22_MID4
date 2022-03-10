@@ -10,6 +10,7 @@ public delegate void PlayerInputDelegate(float inputX, float inputY, bool isWalk
 
 public delegate void PlayerAttackDelegate(bool isRangeAttackingUp, bool isRangeAttackingRight, bool isRangeAttackingDown, bool isRangeAttackingLeft);
 public delegate void PlayerTransformStateDelegate(PlayerTransformState playerTransformState);
+public delegate void DialogueActionDelegate(CutSceneDestinationIdentifier cutSceneDestinationIdentifier);
 
 public class EventHandler
 {
@@ -105,6 +106,26 @@ public class EventHandler
         if (CraftingActionEvent != null)
         {
             CraftingActionEvent();
+        }
+    }
+
+    // Dialogue Action
+    public static event DialogueActionDelegate DialogueActionEvent;
+    public static void CallDialogueActionEvent(CutSceneDestinationIdentifier cutSceneDestinationIdentifier)
+    {
+        if (DialogueActionEvent != null)
+        {
+            DialogueActionEvent(cutSceneDestinationIdentifier);
+        }
+    }
+
+    // Close All UI Action
+    public static event Action CloseAllUIActionEvent;
+    public static void CallCloseAllUIActionEvent()
+    {
+        if (CloseAllUIActionEvent != null)
+        {
+            CloseAllUIActionEvent();
         }
     }
 

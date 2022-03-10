@@ -15,6 +15,9 @@ TagManager:
   - UI_CraftingRecipes
   - UI_CraftingContainer
   - Tilemap_Rock
+  - UI_DialogueContainer
+  - UI_Button_DialogueClose
+  - UI_DialogueSpeechText
   layers:
   - Default
   - TransparentFX

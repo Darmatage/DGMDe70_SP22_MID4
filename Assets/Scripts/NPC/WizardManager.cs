@@ -12,9 +12,16 @@ namespace Game.NPC
     public class WizardManager : MonoBehaviour, IRaycastable
     {
         [SerializeField] GameObject interactionIndicatorUI = null;
-        public DialogueScene01 dialogueScene01 = new DialogueScene01();
+
+        [SerializeField] DialogueManager dialogueUIManager = null;
+
+        DialogueManager dialogue;
         private bool isKeyActive = false;
         private bool isRaycastOn = false;
+
+        private void Awake() {
+            dialogueUIManager = GameObject.FindWithTag(Tags.UI_DIALOGUE_CONTAINER_TAG).GetComponent<DialogueManager>();
+        }
         
         private void OnEnable()
         {
@@ -43,8 +50,8 @@ namespace Game.NPC
             if(isKeyActive)
             {
                 Debug.Log("Activate Wizard");
-                //GameScene.Instance.ChangeScene(GameScenes.Dialogue);
-                GetComponent<NPCPortal>().GoToCutScene();
+
+                EventHandler.CallDialogueActionEvent(CutSceneDestinationIdentifier.Wizard); //<- Changed it to use the event system, Decoupling its reliance on the dialogue manager and followed a similar patten to the other interactable objects.
             }
             EventHandler.CallInteractActionKeyEvent(false);
             return true;
@@ -54,7 +61,6 @@ namespace Game.NPC
         {
             isKeyActive = isKeyPressed;
         }
-
 
     }
     
