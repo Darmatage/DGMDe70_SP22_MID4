@@ -14185,7 +14185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiInventroyContainer: {fileID: 3716501412290181652}
   uiCraftingContainer: {fileID: 2503029238098210112}
-  uiDialogueContainer: {fileID: 0}
+  uiDialogueContainer: {fileID: 602706314451881953}
   uiPauseContainer: {fileID: 1998014225206771520}
 --- !u!114 &6410797825999932538
 MonoBehaviour:
@@ -31264,11 +31264,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60cf6d67d3e9849e19d2326e4b5ea30a, type: 3}
---- !u!1 &602706314451881953 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2725239565830903033, guid: 60cf6d67d3e9849e19d2326e4b5ea30a, type: 3}
-  m_PrefabInstance: {fileID: 3282210164043340568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &602706314451881952 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2725239565830903032, guid: 60cf6d67d3e9849e19d2326e4b5ea30a, type: 3}
@@ -31277,6 +31272,11 @@ RectTransform:
 --- !u!1 &602706315087910515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2725239566470073707, guid: 60cf6d67d3e9849e19d2326e4b5ea30a, type: 3}
+  m_PrefabInstance: {fileID: 3282210164043340568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &602706314451881953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2725239565830903033, guid: 60cf6d67d3e9849e19d2326e4b5ea30a, type: 3}
   m_PrefabInstance: {fileID: 3282210164043340568}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4038161050976733260
