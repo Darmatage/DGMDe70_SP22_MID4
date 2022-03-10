@@ -18,6 +18,7 @@ TagManager:
   - UI_DialogueContainer
   - UI_Button_DialogueClose
   - UI_DialogueSpeechText
+  - NPCImage
   layers:
   - Default
   - TransparentFX

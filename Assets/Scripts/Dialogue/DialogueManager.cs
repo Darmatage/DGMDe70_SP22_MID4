@@ -14,6 +14,7 @@ namespace Game.Story
     {
         [SerializeField] GameObject dialogueScreen;
         [SerializeField] GameObject dialogueBox;
+        [SerializeField] GameObject npmImage;
         GameDialogue gameDialogue = new GameDialogue();
 
         private void OnEnable() 
@@ -26,10 +27,29 @@ namespace Game.Story
             EventHandler.DialogueActionEvent -= OpenScreen;
         }
 
+        private void LoadNPCSprite(CutSceneDestinationIdentifier cutSceneDestinationIdentifier) {
+            return;
+            Image image = npmImage.GetComponent<Image>();
+            Sprite sprite;
+            String spritePath;
+
+            spritePath = "human_thumbnail";
+
+            sprite = Resources.Load<Sprite>(spritePath);
+
+            /*switch (cutSceneDestinationIdentifier) {
+
+            }*/
+
+            image.sprite = sprite;
+        }
+
         public void OpenScreen(CutSceneDestinationIdentifier cutSceneDestinationIdentifier) 
         {
+            LoadNPCSprite(cutSceneDestinationIdentifier);
+
             DialogueVariant variant = DialogueVariant.DV_01;
-            Debug.Log("This is the: " + cutSceneDestinationIdentifier.ToString());
+            // Debug.Log("This is the: " + cutSceneDestinationIdentifier.ToString());
             
             bool isMonster = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerTransformControl>().IsMonster;
 
@@ -44,7 +64,9 @@ namespace Game.Story
         }
         public void OpenScreen(CutSceneDestinationIdentifier cutSceneDestinationIdentifier, DialogueVariant variant = DialogueVariant.DV_01) 
         {
-            Debug.Log("This is the: " + cutSceneDestinationIdentifier.ToString());
+            LoadNPCSprite(cutSceneDestinationIdentifier);
+            
+            // Debug.Log("This is the: " + cutSceneDestinationIdentifier.ToString());
 
             bool isMonster = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerTransformControl>().IsMonster;
 
