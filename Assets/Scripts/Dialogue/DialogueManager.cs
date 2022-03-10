@@ -18,8 +18,7 @@ namespace Game.Story
 
         private void OnEnable() 
         {
-            EventHandler.DialogueActionEvent += OpenScreen; 
-            Debug.Log("OpenScreen");
+            EventHandler.DialogueActionEvent += OpenScreen;
         }
 
         private void OnDisable() 

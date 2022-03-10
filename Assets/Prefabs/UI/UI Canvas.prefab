@@ -13830,6 +13830,7 @@ GameObject:
   - component: {fileID: 6656564668184126760}
   - component: {fileID: 6410797825999932538}
   - component: {fileID: 7460864900120568716}
+  - component: {fileID: 7860028695956243427}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -13940,6 +13941,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7860028695956243427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4453052900415408093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85411bc547a89480b8c1150328ef78ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueScreen: {fileID: 602706314451881953}
+  dialogueBox: {fileID: 602706315087910515}
 --- !u!1 &4453126786863987735
 GameObject:
   m_ObjectHideFlags: 0
@@ -30792,9 +30807,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60cf6d67d3e9849e19d2326e4b5ea30a, type: 3}
+--- !u!1 &602706314451881953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2725239565830903033, guid: 60cf6d67d3e9849e19d2326e4b5ea30a, type: 3}
+  m_PrefabInstance: {fileID: 3282210164043340568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &602706314451881952 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2725239565830903032, guid: 60cf6d67d3e9849e19d2326e4b5ea30a, type: 3}
+  m_PrefabInstance: {fileID: 3282210164043340568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &602706315087910515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2725239566470073707, guid: 60cf6d67d3e9849e19d2326e4b5ea30a, type: 3}
   m_PrefabInstance: {fileID: 3282210164043340568}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4038161050976733260
