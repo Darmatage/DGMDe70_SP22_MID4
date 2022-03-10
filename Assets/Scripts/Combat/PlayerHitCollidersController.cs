@@ -13,7 +13,7 @@ namespace Game.Combat
         [SerializeField] private GameObject hitBox_Left;
         [SerializeField] private GameObject hitBox_Right;
 
-        public void ActivateMeleeHitCollider(bool isAttackingRight, bool isAttackingLeft, bool isAttackingUp, bool isAttackingDown)
+        public void ActivateMeleeHitCollider(bool isAttackingUp, bool isAttackingRight, bool isAttackingDown, bool isAttackingLeft)
         {
             if (isAttackingUp) 
             {

@@ -16,13 +16,13 @@ namespace Game.Animation
         private void OnEnable()
         {
             EventHandler.PlayerInputEvent += SetAnimationParameters;
-            EventHandler.PlayerAttackEvent += SetRangeAttackAnimationParameters;
+            EventHandler.PlayerAttackEvent += SetAttackAnimationParameters;
         }
 
         private void OnDisable()
         {
             EventHandler.PlayerInputEvent -= SetAnimationParameters;
-            EventHandler.PlayerAttackEvent -= SetRangeAttackAnimationParameters;
+            EventHandler.PlayerAttackEvent -= SetAttackAnimationParameters;
         }
 
         private void SetAnimationParameters(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle, bool isMakingAttack,
@@ -44,7 +44,7 @@ namespace Game.Animation
                 animator.SetTrigger(Settings.idleRight);
         }
 
-        private void SetRangeAttackAnimationParameters(bool isRangeAttackingUp, bool isRangeAttackingRight, bool isRangeAttackingDown, bool isRangeAttackingLeft)
+        private void SetAttackAnimationParameters(bool isRangeAttackingUp, bool isRangeAttackingRight, bool isRangeAttackingDown, bool isRangeAttackingLeft)
         {
             if (isRangeAttackingUp)
                 animator.SetTrigger(Settings.isAttackingUp);
