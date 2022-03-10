@@ -23,6 +23,10 @@ namespace Game.Inventories
         [Tooltip("Adding a Projectile will make this a ranged attack.")]
         [SerializeField] PlayerProjectile projectile = null;
 
+        [Header("Range Weapon Attributes")]
+        [Tooltip("Adding a Projectile will make this a ranged attack.")]
+        [SerializeField] bool isCurseAttack = false;
+
         [Header("Weapon Stat Modifiers")]
         [Tooltip("Modify base stats.")]
         [SerializeField] Modifier[] additiveModifiers;
@@ -51,11 +55,24 @@ namespace Game.Inventories
         public void LaunchProjectile(Transform weaponPosition, Vector3 launchDirection, float calculatedDamage)
         {
             PlayerProjectile projectInstance = Instantiate(projectile, weaponPosition.position + launchDirection * 1.5f, Quaternion.identity, GameObject.FindGameObjectWithTag(Tags.PROJECTILES_TAG).transform);
+            
             projectInstance.SetTarget(launchDirection, calculatedDamage);
+            projectInstance.transform.rotation = Quaternion.Euler(0,0,0);
+            
         }
         public float GetDamage()
         {
             return weaponBaseDamage;
+        }
+
+        public override bool IsDroppable()
+        {
+            return !isCurseAttack;
+        }
+
+        public override bool IsSwappable()
+        {
+            return !isCurseAttack;
         }
 
         [System.Serializable]

@@ -16,7 +16,6 @@ namespace Game.Saving
     /// </summary>
         public class SavingSystem : MonoBehaviour
     {
-        //public static Dictionary<string, object> saveState = FindObjectOfType<SavedFileCleaner>().sa;
         public IEnumerator LoadLastScene()
         {
             Dictionary<string, object> state = LoadFile();

@@ -4,6 +4,7 @@ using Game.Core;
 using Game.EnemyClass;
 using Game.Enums;
 using Game.Movement;
+using Game.PlayerClass;
 using Game.Utils;
 using UnityEngine;
 
@@ -84,14 +85,23 @@ namespace Game.Combat
         {
             if(target == null) { return; }
 
+            float damage = attackDamage.value;
+            PlayerBaseStats targetBaseStats = target.GetComponent<PlayerBaseStats>();
+
+            if (targetBaseStats != null)
+            {
+                float defence = targetBaseStats.GetStat(PlayerStats.BaseDefence);
+                damage /= 1 + defence / damage;
+            }
+
             if(enemyAttackType.value == WeaponAttackType.Range && HasProjectile())
             {
-                LaunchProjectile();
+                LaunchProjectile(damage);
                 print("AI Shoot Projectile");
             }
             else
             {
-                target.TakeDamage(attackDamage.value);
+                target.TakeDamage(damage);
                 print("AI Did Damage");
             }
 
@@ -104,10 +114,10 @@ namespace Game.Combat
                 projectile = enemyClass.GetEnemyProjectile();
             }
         }
-        private void LaunchProjectile()
+        private void LaunchProjectile(float damage)
         {
             EnemyProjectile projectInstance = Instantiate(projectile, rangeAttackLaunchPosition.position, Quaternion.identity, GameObject.FindGameObjectWithTag(Tags.PROJECTILES_TAG).transform);
-            projectInstance.SetTarget(target, attackDamage.value);
+            projectInstance.SetTarget(target, damage);
         }
 
         private bool HasProjectile()

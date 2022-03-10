@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
+using Game.Inventories;
 using Game.PlayerClass;
 using Game.Saving;
 using Game.Utils;
@@ -16,6 +17,7 @@ namespace Game.Combat
         private void Awake() 
         {
             healthPoints = new LazyValue<float>(GetInitialHealth);
+            GetComponent<Equipment>().equipmentUpdated += UpdateHealth;
         }
         private float GetInitialHealth()
         {
@@ -40,11 +42,7 @@ namespace Game.Combat
 
         public void TakeDamage(float damage)
         {
-            healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
-
-            Debug.Log("Player took damage: " + damage);
-            Debug.Log("Player health: " + healthPoints.value);
-            
+            healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);            
             if(IsDead())
             {
                 Debug.Log("Player is dead!");
@@ -75,6 +73,11 @@ namespace Game.Combat
         public float GetFraction()
         {
             return healthPoints.value / GetComponent<PlayerBaseStats>().GetStat(PlayerStats.Health);
+        }
+
+        private void UpdateHealth()
+        {
+            healthPoints.value = Mathf.Min(healthPoints.value, GetComponent<PlayerBaseStats>().GetStat(PlayerStats.Health));
         }
 
         private void RegenerateHealth()

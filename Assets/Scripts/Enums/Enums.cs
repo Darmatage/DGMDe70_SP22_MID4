@@ -95,6 +95,23 @@ namespace Game.Enums
         Monster
     }
 
+    public enum CurseTypes
+    {
+        None,
+        Werewolf,
+        Llama,
+        Sasquatch,
+        LizardPerson
+    }
+
+    public enum CurseEffectTypes
+    {
+        None,
+        SoulBonus,
+        SoulHealBonus,
+        DamageHealth
+    }
+
     /// <summary>
     /// Enemy Enums<br/>
     /// Info about the enemy.
@@ -137,7 +154,8 @@ namespace Game.Enums
         Legs,
         Boots,
         Weapon,
-        Shield
+        Shield,
+        Curse
     }
 
     public enum SoulType

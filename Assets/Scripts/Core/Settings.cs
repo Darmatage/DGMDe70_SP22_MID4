@@ -4,6 +4,9 @@ namespace Game.Core
 {
     public static class Settings
     {
+        // Time System
+        public const float secondsPerGameSecond = 1f;
+        
         // Player Animation Parameters
         public static int xInput;
         public static int yInput;
