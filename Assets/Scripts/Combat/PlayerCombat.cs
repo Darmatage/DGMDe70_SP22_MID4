@@ -74,8 +74,36 @@ namespace Game.Combat
             if(!isMakingAttack) return;
             if(!currentWeaponConfig.HasProjectile())
             {
-                EventHandler.CallPlayerAttackEvent(isAttackingUp, isAttackingRight, isAttackingDown, isAttackingLeft);
-                GetComponentInChildren<PlayerHitCollidersController>().ActivateMeleeHitCollider(isAttackingRight, isAttackingLeft, isAttackingUp, isAttackingDown);
+                bool isAttackUp = false;
+                bool isAttackRight = false;
+                bool isAttackDown = false;
+                bool isAttackLeft = false;
+
+                Vector3 meleeAttackDirection = GetAttackDirection();
+
+                if (meleeAttackDirection.y > 0.7f)
+                {
+                    Debug.Log("Up");
+                    isAttackUp = true;
+                }
+                if (meleeAttackDirection.x > 0.7f)
+                {
+                    Debug.Log("Right");
+                    isAttackRight = true;
+                }
+                if (meleeAttackDirection.y < -0.7f)
+                {
+                    Debug.Log("Down");
+                    isAttackDown = true;
+                }
+                if (meleeAttackDirection.x < -0.7f)
+                {
+                    Debug.Log("Left");
+                    isAttackLeft = true;
+                }
+
+                EventHandler.CallPlayerAttackEvent(isAttackUp, isAttackRight, isAttackDown, isAttackLeft);
+                GetComponentInChildren<PlayerHitCollidersController>().ActivateMeleeHitCollider(isAttackUp, isAttackRight, isAttackDown, isAttackLeft);
             }
         }
 
@@ -88,52 +116,57 @@ namespace Game.Combat
             {
                 float damage = GetComponent<PlayerBaseStats>().GetStat(PlayerStats.BaseDamage);
 
-                bool isRangeAttackingUp = false;
-                bool isRangeAttackingRight = false;
-                bool isRangeAttackingDown = false;
-                bool isRangeAttackingLeft = false;
+                bool isAttackUp = false;
+                bool isAttackRight = false;
+                bool isAttackDown = false;
+                bool isAttackLeft = false;
 
-                Vector3 mousePos = Mouse.current.position.ReadValue();   
-                mousePos.z = Camera.main.nearClipPlane;
-                Vector3 clickPos=Camera.main.ScreenToWorldPoint(mousePos);
+                Vector3 projectileLaunchDirection = GetAttackDirection();
 
-                Debug.Log("Mouse Pos: " + clickPos);
-
-                Vector3 launchDirection = new Vector3 (
-                    clickPos.x - transform.position.x,
-                    clickPos.y - transform.position.y,
-                    0
-                );
-
-                launchDirection.Normalize();
-
-                Debug.Log("Direction: " + launchDirection);
-
-                if ( launchDirection.y > 0.7f) 
+                if (projectileLaunchDirection.y > 0.7f)
                 {
                     Debug.Log("Up");
-                    isRangeAttackingUp = true;
+                    isAttackUp = true;
                 }
-                if (launchDirection.x > 0.7f ) 
+                if (projectileLaunchDirection.x > 0.7f)
                 {
                     Debug.Log("Right");
-                    isRangeAttackingRight = true;
+                    isAttackRight = true;
                 }
-                if (launchDirection.y < -0.7f) 
+                if (projectileLaunchDirection.y < -0.7f)
                 {
                     Debug.Log("Down");
-                    isRangeAttackingDown = true; 
+                    isAttackDown = true;
                 }
-                if (launchDirection.x < -0.7f) 
+                if (projectileLaunchDirection.x < -0.7f)
                 {
                     Debug.Log("Left");
-                    isRangeAttackingLeft = true;
+                    isAttackLeft = true;
                 }
 
-                EventHandler.CallPlayerAttackEvent(isRangeAttackingUp, isRangeAttackingRight, isRangeAttackingDown, isRangeAttackingLeft);
-                currentWeaponConfig.LaunchProjectile(rangeAttackLaunchPosition, launchDirection, damage);
+                EventHandler.CallPlayerAttackEvent(isAttackUp, isAttackRight, isAttackDown, isAttackLeft);
+                currentWeaponConfig.LaunchProjectile(rangeAttackLaunchPosition, projectileLaunchDirection, damage);
             }
         }
+
+        private Vector3 GetAttackDirection()
+        {
+            Vector3 mousePos = Mouse.current.position.ReadValue();
+            mousePos.z = Camera.main.nearClipPlane;
+            Vector3 clickPos = Camera.main.ScreenToWorldPoint(mousePos);
+
+            //Debug.Log("Mouse Pos: " + clickPos);
+
+            Vector3 launchDirection = new Vector3(
+                clickPos.x - transform.position.x,
+                clickPos.y - transform.position.y,
+                0
+            );
+
+            launchDirection.Normalize();
+            return launchDirection;
+        }
+
         object ISaveable.CaptureState()
         {
             return currentWeaponConfig.name;
