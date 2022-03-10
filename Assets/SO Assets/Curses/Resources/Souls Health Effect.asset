@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38077836612664ec4842fc64eb213f88, type: 3}
   m_Name: Souls Health Effect
   m_EditorClassIdentifier: 
-  curseEffectType: 2
+  curseEffectName: Soul Eater
   curseEffectMod:
   - stat: 2
     value: 1

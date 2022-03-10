@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c688c575a564a8fa205e036c6d56e9, type: 3}
   m_Name: More Souls Effect
   m_EditorClassIdentifier: 
-  curseEffectType: 1
+  curseEffectName: Soul Splitter
   curseEffectMod:
   - stat: 1
     value: 1

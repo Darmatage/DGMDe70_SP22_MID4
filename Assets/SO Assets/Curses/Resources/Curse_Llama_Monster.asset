@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ddf5acb86a24f6882e2e72b4de6f08, type: 3}
+  m_Name: Curse_Llama_Monster
+  m_EditorClassIdentifier: 
+  itemID: 49353a8f-39f1-4020-92d0-96249f7de8a1
+  displayName: Llama
+  description: You are a llama now! Spit spit!
+  icon: {fileID: 0}
+  pickupPrefab: {fileID: 0}
+  allowedEquipLocation: 8
+  curseType: 2
+  cursePairState: 1
+  cooldownTime: 0
+  curseWeapon: {fileID: 11400000, guid: 84b58fbacf9114c3e84efeff4ea9ad63, type: 2}
+  additiveModifiers:
+  - stat: 5
+    value: 5
+  percentageModifiers:
+  - stat: 1
+    value: -50
+  effectStrategies: []

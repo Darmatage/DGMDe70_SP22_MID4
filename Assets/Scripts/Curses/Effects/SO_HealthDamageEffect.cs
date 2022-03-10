@@ -9,6 +9,7 @@ namespace Game.Curses.Effects
     [CreateAssetMenu(fileName = "Health Damage Effect", menuName = "Game/Player/Curses/Effects/Damage Health")]
     public class SO_HealthDamageEffect : SO_EffectStrategy, ICurseProvider
     {
+        [SerializeField] string curseEffectName;
         [Tooltip("Curse Effect Modifier.")]
         [SerializeField] Modifier[] curseEffectMod;
         private CurseEffectTypes curseEffectType = CurseEffectTypes.DamageHealth;
@@ -25,6 +26,11 @@ namespace Game.Curses.Effects
                 return true;
             }
             return false;
+        }
+
+        public override string GetCurseEffectName()
+        {
+            return curseEffectName;
         }
 
         [System.Serializable]

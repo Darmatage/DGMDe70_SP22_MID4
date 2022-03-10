@@ -84,6 +84,20 @@ namespace Game.Curses
             return equipedCurseMonster.value;
         }
 
+        public string GetCurseName()
+        {
+            return equipedCurseMonster.value.GetDisplayName();
+        }
+        public string GetCurseDescription()
+        {
+            return equipedCurseMonster.value.GetDescription();
+        }
+
+        public string[] GetCurseEffectNames()
+        {
+            return equipedCurseMonster.value.GetCurseEffectNames();
+        }
+
         private void TransformPlayer(PlayerTransformState transformState)
         {
             if (transformState == PlayerTransformState.Monster && isMonster == false) 

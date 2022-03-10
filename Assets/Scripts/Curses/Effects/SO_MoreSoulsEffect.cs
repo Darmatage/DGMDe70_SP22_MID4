@@ -9,6 +9,7 @@ namespace Game.Curses.Effects
     [CreateAssetMenu(fileName = "More Souls Effect", menuName = "Game/Player/Curses/Effects/More Souls")]
     public class SO_MoreSoulsEffect : SO_EffectStrategy, ICurseProvider
     {
+        [SerializeField] string curseEffectName;
         [Tooltip("Curse Effect Modifier.")]
         [SerializeField] Modifier[] curseEffectMod;
         private CurseEffectTypes curseEffectType = CurseEffectTypes.SoulBonus;
@@ -26,7 +27,10 @@ namespace Game.Curses.Effects
             }
             return false;
         }
-
+        public override string GetCurseEffectName()
+        {
+            return curseEffectName;
+        }
         [System.Serializable]
         struct Modifier
         {
