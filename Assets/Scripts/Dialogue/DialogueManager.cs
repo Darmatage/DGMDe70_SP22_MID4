@@ -28,18 +28,19 @@ namespace Game.Story
         }
 
         private void LoadNPCSprite(CutSceneDestinationIdentifier cutSceneDestinationIdentifier) {
-            return;
+            // return;
             Image image = npmImage.GetComponent<Image>();
             Sprite sprite;
             String spritePath;
 
             spritePath = "human_thumbnail";
 
-            sprite = Resources.Load<Sprite>(spritePath);
+            switch (cutSceneDestinationIdentifier) {
+                case CutSceneDestinationIdentifier.Wizard:
+                    spritePath = "wizard_thumbnail"; break;
+            }
 
-            /*switch (cutSceneDestinationIdentifier) {
-
-            }*/
+            sprite = UnityEngine.Resources.Load<Sprite>(spritePath);
 
             image.sprite = sprite;
         }
