@@ -12,7 +12,8 @@ namespace Game.UI
         [SerializeField] GameObject uiCraftingContainer = null;
         [SerializeField] GameObject uiDialogueContainer = null;
         [SerializeField] GameObject uiPauseContainer = null;
-        private bool isGamePaused = false;
+        [SerializeField] GameObject uiStartScreenContainer = null;
+        private bool isGamePaused = true;
 
         private void OnEnable()
         {
@@ -103,6 +104,13 @@ namespace Game.UI
             EventHandler.CallActiveGameUI(isGamePaused);
         }
 
+        private void ShowGameUI() {
+            uiInventroyContainer.SetActive(true);
+            uiCraftingContainer.SetActive(true);
+            uiPauseContainer.SetActive(true);
+            uiDialogueContainer.SetActive(true);
+        }
+
         private void MenuToggle(GameObject uiContainer)
         {
             uiContainer.SetActive(!uiContainer.activeInHierarchy);
@@ -115,6 +123,35 @@ namespace Game.UI
                 isGamePaused = true;
             }
             EventHandler.CallActiveGameUI(isGamePaused);
+        }
+
+        public void StartGame() {
+            uiStartScreenContainer.SetActive(false);
+            ShowGameUI();
+            isGamePaused = false;
+        }
+
+        public void OpenCredits() {
+            
+        }
+
+        public void RestartGame() {
+
+        }
+
+        public void QuitGame(){
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #else
+            Application.Quit();
+            #endif
+        }
+
+        public void ChooseHero() {
+            
+        }
+        public void ChooseCurse() {
+            
         }
     }
 }

@@ -28,7 +28,6 @@ namespace Game.Story
         }
 
         private void LoadNPCSprite(CutSceneDestinationIdentifier cutSceneDestinationIdentifier) {
-            // return;
             Image image = npmImage.GetComponent<Image>();
             Sprite sprite;
             String spritePath;
