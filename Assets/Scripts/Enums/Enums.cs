@@ -100,7 +100,6 @@ namespace Game.Enums
         None,
         Werewolf,
         Llama,
-        Sasquatch,
         LizardPerson
     }
 

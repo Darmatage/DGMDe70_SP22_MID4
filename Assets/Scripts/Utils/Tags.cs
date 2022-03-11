@@ -10,5 +10,6 @@ public static class Tags
     public const string UI_DIALOGUE_CONTAINER_TAG = "UI_DialogueContainer";
     public const string UI_DIALOGUE_SPEECHTEXT_TAG = "UI_DialogueSpeechText";
     public const string UI_BUTTON_DIALOGUE_CLOSE_TAG = "UI_Button_DialogueClose";
+    public const string SAVING_STATE_PERSISTS_TAG = "SavingStatePersists";
     
 }

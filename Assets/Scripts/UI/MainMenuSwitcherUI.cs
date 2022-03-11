@@ -17,7 +17,6 @@ namespace Game.UI
             foreach (Transform child in transform)
             {
                 child.gameObject.SetActive(child.gameObject == toDisplay);
-                
             }
         }
 
