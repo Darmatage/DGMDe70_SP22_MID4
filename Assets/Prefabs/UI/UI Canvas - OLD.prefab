@@ -14118,7 +14118,7 @@ GameObject:
   - component: {fileID: 7460864900120568716}
   - component: {fileID: 7860028695956243427}
   m_Layer: 5
-  m_Name: UI Canvas
+  m_Name: UI Canvas - OLD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14187,7 +14187,6 @@ MonoBehaviour:
   uiCraftingContainer: {fileID: 2503029238098210112}
   uiDialogueContainer: {fileID: 602706314451881953}
   uiPauseContainer: {fileID: 1998014225206771520}
-  uiStartScreenContainer: {fileID: 0}
 --- !u!114 &6410797825999932538
 MonoBehaviour:
   m_ObjectHideFlags: 0

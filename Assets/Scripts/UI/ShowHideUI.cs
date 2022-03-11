@@ -106,7 +106,17 @@ namespace Game.UI
         private void MenuToggle(GameObject uiContainer)
         {
             uiContainer.SetActive(!uiContainer.activeInHierarchy);
-            if(isGamePaused)
+            if(isGamePaused && uiCraftingContainer.activeSelf)
+            {
+                uiCraftingContainer.SetActive(false);
+                isGamePaused = true;
+            }
+            else if(isGamePaused && uiDialogueContainer.activeSelf)
+            {
+                uiDialogueContainer.SetActive(false);
+                isGamePaused = true;
+            }
+            else if (isGamePaused && !uiCraftingContainer.activeSelf)
             {
                 isGamePaused = false;
             }

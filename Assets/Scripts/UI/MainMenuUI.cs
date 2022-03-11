@@ -4,7 +4,6 @@ using Game.Enums;
 using Game.SceneManagement;
 using Game.Utils;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Game.UI
 {

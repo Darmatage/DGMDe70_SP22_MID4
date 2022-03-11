@@ -4,7 +4,7 @@ using Game.Enums;
 public class SavedFileSingleton : Singleton<SavedFileSingleton>
 {
     public static Dictionary<string, object> saveState;
-    public CurseTypes selectedCurse;
+    public CurseTypes selectedCurse = CurseTypes.Werewolf;
 
     protected override void Awake() {
         base.Awake();
