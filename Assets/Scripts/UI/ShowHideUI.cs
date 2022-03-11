@@ -104,13 +104,6 @@ namespace Game.UI
             EventHandler.CallActiveGameUI(isGamePaused);
         }
 
-        private void ShowGameUI() {
-            uiInventroyContainer.SetActive(true);
-            uiCraftingContainer.SetActive(true);
-            uiPauseContainer.SetActive(true);
-            uiDialogueContainer.SetActive(true);
-        }
-
         private void MenuToggle(GameObject uiContainer)
         {
             uiContainer.SetActive(!uiContainer.activeInHierarchy);
@@ -127,7 +120,7 @@ namespace Game.UI
 
         public void StartGame() {
             uiStartScreenContainer.SetActive(false);
-            ShowGameUI();
+
             isGamePaused = false;
         }
 

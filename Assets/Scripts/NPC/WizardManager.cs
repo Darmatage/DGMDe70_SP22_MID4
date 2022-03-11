@@ -13,14 +13,14 @@ namespace Game.NPC
     {
         [SerializeField] GameObject interactionIndicatorUI = null;
 
-        [SerializeField] DialogueManager dialogueUIManager = null;
+        // [SerializeField] DialogueManager dialogueUIManager = null;
 
         DialogueManager dialogue;
         private bool isKeyActive = false;
         private bool isRaycastOn = false;
 
         private void Awake() {
-            dialogueUIManager = GameObject.FindWithTag(Tags.UI_DIALOGUE_CONTAINER_TAG).GetComponent<DialogueManager>();
+            // dialogueUIManager = GameObject.FindWithTag(Tags.UI_DIALOGUE_CONTAINER_TAG).GetComponent<DialogueManager>();
         }
         
         private void OnEnable()
