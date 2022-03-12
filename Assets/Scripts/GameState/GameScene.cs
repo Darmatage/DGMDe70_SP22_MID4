@@ -48,6 +48,11 @@ public class GameScene : MonoBehaviour
         }
     }
 
+    public void ResetStory() {
+        currentScene = GameScenes.Scene_01;
+        currentStage = GameStages.Stage_01;
+    }
+
     /*
     TODO: If we don't need this, let's remove it.
 
