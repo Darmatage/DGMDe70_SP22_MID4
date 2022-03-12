@@ -111,23 +111,58 @@ namespace Game.Story
                     Debug.Log("Dialogue:" + dialogue[i]);
                 }*/
 
-                TMP_Text choice1 =  DialogueChoiceText1.GetComponent<TMP_Text>();
-                choice1.text = dialogue[0];
-                Button button1 = DialogueChoiceButton1.GetComponent<Button>();
-                button1.onClick.AddListener(() => {
-                    actions[0]();
-                });
+                if (dialogue[0] != null) {
+                    DialogueChoiceButton1.SetActive(true);
+                    TMP_Text choice1 =  DialogueChoiceText1.GetComponent<TMP_Text>();
+                    choice1.text = dialogue[0];
+                    Button button1 = DialogueChoiceButton1.GetComponent<Button>();
+                    button1.onClick.AddListener(() => {
+                        actions[0]();
+                    });
+                }
+                else {
+                    DialogueChoiceButton1.SetActive(false);
+                }
 
-                TMP_Text choice2 =  DialogueChoiceText2.GetComponent<TMP_Text>();
-                choice2.text = dialogue[1];
+                if (dialogue[1] != null) {
+                    DialogueChoiceButton2.SetActive(true);
+                    TMP_Text choice2 =  DialogueChoiceText2.GetComponent<TMP_Text>();
+                    choice2.text = dialogue[1];
+                    Button button2 = DialogueChoiceButton2.GetComponent<Button>();
+                    button2.onClick.AddListener(() => {
+                        actions[1]();
+                    });
+                }
+                else {
+                    DialogueChoiceButton2.SetActive(false);
+                }
 
-                TMP_Text choice3 =  DialogueChoiceText3.GetComponent<TMP_Text>();
-                choice3.text = dialogue[2];
+                if (dialogue[2] != null) {
+                    DialogueChoiceButton3.SetActive(true);
+                    TMP_Text choice3 =  DialogueChoiceText3.GetComponent<TMP_Text>();
+                    choice3.text = dialogue[2];
+                    Button button3 = DialogueChoiceButton3.GetComponent<Button>();
+                    button3.onClick.AddListener(() => {
+                        actions[2]();
+                    });
+                }
+                else {
+                    DialogueChoiceButton3.SetActive(false);
+                }
 
-                TMP_Text choice4 =  DialogueChoiceText4.GetComponent<TMP_Text>();
-                choice4.text = dialogue[3];
+                if (dialogue[3] != null) {
+                    DialogueChoiceButton4.SetActive(true);
+                    TMP_Text choice4 =  DialogueChoiceText4.GetComponent<TMP_Text>();
+                    choice4.text = dialogue[3];
+                    Button button4 = DialogueChoiceButton4.GetComponent<Button>();
+                    button4.onClick.AddListener(() => {
+                        actions[3]();
+                    });
+                }
+                else {
+                    DialogueChoiceButton4.SetActive(false);
+                }
             }
-            
         }
     }
 }
