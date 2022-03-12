@@ -15,10 +15,14 @@ namespace Game.Story
         [SerializeField] GameObject dialogueScreen;
         [SerializeField] GameObject dialogueBox;
         [SerializeField] GameObject DialogueChoices;
-        [SerializeField] GameObject DialogueChoice1;
-        [SerializeField] GameObject DialogueChoice2;
-        [SerializeField] GameObject DialogueChoice3;
-        [SerializeField] GameObject DialogueChoice4;
+        [SerializeField] GameObject DialogueChoiceButton1;
+        [SerializeField] GameObject DialogueChoiceButton2;
+        [SerializeField] GameObject DialogueChoiceButton3;
+        [SerializeField] GameObject DialogueChoiceButton4;
+        [SerializeField] GameObject DialogueChoiceText1;
+        [SerializeField] GameObject DialogueChoiceText2;
+        [SerializeField] GameObject DialogueChoiceText3;
+        [SerializeField] GameObject DialogueChoiceText4;
         [SerializeField] GameObject DialogueText;
         [SerializeField] GameObject npmImage;
         GameDialogue gameDialogue = new GameDialogue();
@@ -101,20 +105,26 @@ namespace Game.Story
                 DialogueChoices.SetActive(true);
                 DialogueText.SetActive(false);
 
+                System.Action[] actions = gameDialogue.getActions(GameScene.Instance.currentScene, GameScene.Instance.currentStage, cutSceneDestinationIdentifier, isMonster, variant);
+
                 /*for(int i = 0; i < dialogue.Length; i++) {
                     Debug.Log("Dialogue:" + dialogue[i]);
                 }*/
 
-                TMP_Text choice1 =  DialogueChoice1.GetComponent<TMP_Text>();
+                TMP_Text choice1 =  DialogueChoiceText1.GetComponent<TMP_Text>();
                 choice1.text = dialogue[0];
+                Button button1 = DialogueChoiceButton1.GetComponent<Button>();
+                button1.onClick.AddListener(() => {
+                    actions[0]();
+                });
 
-                TMP_Text choice2 =  DialogueChoice2.GetComponent<TMP_Text>();
+                TMP_Text choice2 =  DialogueChoiceText2.GetComponent<TMP_Text>();
                 choice2.text = dialogue[1];
 
-                TMP_Text choice3 =  DialogueChoice3.GetComponent<TMP_Text>();
+                TMP_Text choice3 =  DialogueChoiceText3.GetComponent<TMP_Text>();
                 choice3.text = dialogue[2];
 
-                TMP_Text choice4 =  DialogueChoice4.GetComponent<TMP_Text>();
+                TMP_Text choice4 =  DialogueChoiceText4.GetComponent<TMP_Text>();
                 choice4.text = dialogue[3];
             }
             

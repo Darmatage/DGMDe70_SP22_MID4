@@ -21,6 +21,7 @@ TagManager:
   - NPCImage
   - SavingStatePersists
   - DialogueChoices
+  - DialogueChoicesButtons
   layers:
   - Default
   - TransparentFX
