@@ -25,3 +25,9 @@ MonoBehaviour:
       curseSO: {fileID: 11400000, guid: 716a95d4d477845918771f4a9c630de3, type: 2}
     - formState: 1
       curseSO: {fileID: 11400000, guid: f40041b456a724e108dedf828dd121f7, type: 2}
+  - curseType: 3
+    curseFormPairSet:
+    - formState: 0
+      curseSO: {fileID: 11400000, guid: 9087b4ce6c33d41aba42203b33097e9b, type: 2}
+    - formState: 1
+      curseSO: {fileID: 11400000, guid: a9164368bf0684183918194748e95ebe, type: 2}

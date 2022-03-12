@@ -14,10 +14,11 @@ namespace Game.Curses
 {
     public class PlayerCurses : MonoBehaviour, ISaveable
     {
-        [SerializeField] CurseTypes selectedCurse = CurseTypes.Werewolf;
+        //[SerializeField] CurseTypes selectedCurse = CurseTypes.Werewolf;
         [Tooltip("Curse List Library")]
         [SerializeField] SO_CurseListLibrary curseListLibrary;
 
+        CurseTypes selectedCurse;
         LazyValue<SO_Curse> equipedCurseMonster;
         LazyValue<SO_Curse> equipedCurseHuman;
 
@@ -32,6 +33,8 @@ namespace Game.Curses
 
         private void Awake() 
         {
+            selectedCurse = GameObject.FindWithTag(Tags.SAVING_STATE_PERSISTS_TAG).GetComponent<SavedFileSingleton>().GetCurseType();
+
             equipedCurseMonster = new LazyValue<SO_Curse>(GetInitialCurseMonster);
             equipedCurseHuman = new LazyValue<SO_Curse>(GetInitialCurseHuman);
 
@@ -39,7 +42,6 @@ namespace Game.Curses
             playerCombat = GetComponent<PlayerCombat>();
             playerInventory = GetComponent<Inventory>();
         }
-
         private SO_Curse GetInitialCurseHuman()
         {
             return curseListLibrary.GetCurseSO(selectedCurse, PlayerTransformState.Human);
