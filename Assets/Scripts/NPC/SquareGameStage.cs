@@ -9,7 +9,7 @@ using Game.SceneManagement;
 
 namespace Game.NPC
 {
-    public class SquareGameScene : MonoBehaviour, IRaycastable
+    public class SquareGameStage : MonoBehaviour, IRaycastable
     {
         [SerializeField] GameObject interactionIndicatorUI = null;
 
@@ -19,11 +19,11 @@ namespace Game.NPC
         
         private void OnEnable()
         {
-            EventHandler.InteractActionKeyEvent += InteractActionActivateScene;
+            EventHandler.InteractActionKeyEvent += InteractActionActivateStage;
         }
         private void OnDisable()
         {
-            EventHandler.InteractActionKeyEvent -= InteractActionActivateScene;
+            EventHandler.InteractActionKeyEvent -= InteractActionActivateStage;
         }
 
         private void Update() 
@@ -43,14 +43,14 @@ namespace Game.NPC
 
             if(isKeyActive)
             {
-                Debug.Log("Scene Pressed");
-                GameScene.Instance.AdvanceScene();
+                Debug.Log("Stage Pressed");
+                GameScene.Instance.AdvanceStage();
             }
             EventHandler.CallInteractActionKeyEvent(false);
             return true;
         }
 
-        private void InteractActionActivateScene(bool isKeyPressed)
+        private void InteractActionActivateStage(bool isKeyPressed)
         {
             isKeyActive = isKeyPressed;
         }

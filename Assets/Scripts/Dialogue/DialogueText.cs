@@ -31,7 +31,23 @@ namespace Game.Story
       */
 
       public void setDialogue() {
-        dict.Add(getKey(GameScenes.Scene_01, GameStages.Stage_01, CutSceneDestinationIdentifier.Wizard), "It's been a while since I've had visitors!!");
+        dict.Add(getKey(
+          GameScenes.Scene_01,
+          GameStages.Stage_01,
+          CutSceneDestinationIdentifier.Wizard),
+        "It's been a while since I've had visitors!!");
+
+        dict.Add(getKey(
+          GameScenes.Scene_01,
+          GameStages.Stage_02,
+          CutSceneDestinationIdentifier.Wizard),
+        "Hope you enjoy your first quest!!");
+
+        dict.Add(getKey(
+          GameScenes.Scene_02,
+          GameStages.Stage_01,
+          CutSceneDestinationIdentifier.Wizard),
+        "I have new text cause its the second scene!!");
 
         //Useful for debugging
         /*Debug.Log("KEYS:");

@@ -51,7 +51,7 @@ namespace Game.NPC
             {
                 Debug.Log("Activate Wizard");
 
-                EventHandler.CallDialogueActionEvent(CutSceneDestinationIdentifier.Wizard); //<- Changed it to use the event system, Decoupling its reliance on the dialogue manager and followed a similar patten to the other interactable objects.
+                EventHandler.CallDialogueActionEvent(CutSceneDestinationIdentifier.Wizard);
             }
             EventHandler.CallInteractActionKeyEvent(false);
             return true;
