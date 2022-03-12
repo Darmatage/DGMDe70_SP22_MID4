@@ -7,19 +7,19 @@ using Game.Enums;
 namespace Game.Story 
 {
     public class GameDialogue {
-      Dictionary<string, string> dict = new Dictionary<string, string>();
+      Dictionary<string, string[]> text = new Dictionary<string, string[]>();
 
       public GameDialogue() {
         setDialogue();
       }
 
-      public string getDialogue(GameScenes scene, GameStages stage, CutSceneDestinationIdentifier npc, bool isMonster = false, DialogueVariant variant = DialogueVariant.DV_01) {
+      public string[] getDialogue(GameScenes scene, GameStages stage, CutSceneDestinationIdentifier npc, bool isMonster = false, DialogueVariant variant = DialogueVariant.DV_01) {
         //Useful for debugging
         // Debug.Log("Who is the NPC??: " + npc);
         // Debug.Log("Key: " + getKey(scene, stage, npc, isMonster, variant));
         
         //return dict[getKey(scene, stage, npc, variant, false)];
-        return dict[getKey(scene, stage, npc, isMonster, variant)];
+        return text[getKey(scene, stage, npc, isMonster, variant)];
       }
 
       private string getKey(GameScenes scene, GameStages stage, CutSceneDestinationIdentifier npc, bool isMonster = false, DialogueVariant variant = DialogueVariant.DV_01) {
@@ -31,23 +31,37 @@ namespace Game.Story
       */
 
       public void setDialogue() {
-        dict.Add(getKey(
+        text.Add(getKey(
           GameScenes.Scene_01,
           GameStages.Stage_01,
           CutSceneDestinationIdentifier.Wizard),
-        "It's been a while since I've had visitors!!");
+          new string[] {"It's been a while since I've had visitors!!"}
+        );
 
-        dict.Add(getKey(
+        text.Add(getKey(
           GameScenes.Scene_01,
           GameStages.Stage_02,
           CutSceneDestinationIdentifier.Wizard),
-        "Hope you enjoy your first quest!!");
+          new string[] {"Hope you enjoy your first quest!!"});
 
-        dict.Add(getKey(
+        text.Add(getKey(
+          GameScenes.Scene_01,
+          GameStages.Stage_03,
+          CutSceneDestinationIdentifier.Wizard),
+          new string[] {
+            "First Choice",
+            "Second Choice",
+            "Third Choice",
+            "Four Choice"
+          }
+        );
+
+        text.Add(getKey(
           GameScenes.Scene_02,
           GameStages.Stage_01,
           CutSceneDestinationIdentifier.Wizard),
-        "I have new text cause its the second scene!!");
+          new string[] {"I have new text cause its the second scene!!"}
+        );
 
         //Useful for debugging
         /*Debug.Log("KEYS:");

@@ -14,6 +14,12 @@ namespace Game.Story
     {
         [SerializeField] GameObject dialogueScreen;
         [SerializeField] GameObject dialogueBox;
+        [SerializeField] GameObject DialogueChoices;
+        [SerializeField] GameObject DialogueChoice1;
+        [SerializeField] GameObject DialogueChoice2;
+        [SerializeField] GameObject DialogueChoice3;
+        [SerializeField] GameObject DialogueChoice4;
+        [SerializeField] GameObject DialogueText;
         [SerializeField] GameObject npmImage;
         GameDialogue gameDialogue = new GameDialogue();
 
@@ -53,8 +59,7 @@ namespace Game.Story
             
             bool isMonster = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerTransformControl>().IsMonster;
 
-            TMP_Text textBox = dialogueBox.FindComponentInChildrenWithTag<TMP_Text>(Tags.UI_DIALOGUE_SPEECHTEXT_TAG);
-            textBox.text = gameDialogue.getDialogue(GameScene.Instance.currentScene, GameScene.Instance.currentStage, cutSceneDestinationIdentifier, isMonster, variant);
+            ShowText(cutSceneDestinationIdentifier, isMonster, variant);
 
             Button closeDialogueButton = dialogueBox.FindComponentInChildrenWithTag<Button>(Tags.UI_BUTTON_DIALOGUE_CLOSE_TAG);
             closeDialogueButton.onClick.AddListener(() => 
@@ -70,14 +75,49 @@ namespace Game.Story
 
             bool isMonster = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerTransformControl>().IsMonster;
 
-            TMP_Text textBox = dialogueBox.FindComponentInChildrenWithTag<TMP_Text>(Tags.UI_DIALOGUE_SPEECHTEXT_TAG);
-            textBox.text = gameDialogue.getDialogue(GameScene.Instance.currentScene, GameScene.Instance.currentStage, cutSceneDestinationIdentifier, isMonster, variant);
+           ShowText(cutSceneDestinationIdentifier, isMonster, variant);
 
             Button closeDialogueButton = dialogueBox.FindComponentInChildrenWithTag<Button>(Tags.UI_BUTTON_DIALOGUE_CLOSE_TAG);
             closeDialogueButton.onClick.AddListener(() => 
             {
                 EventHandler.CallCloseAllUIActionEvent();
             });   
+        }
+
+        private void ShowText(CutSceneDestinationIdentifier cutSceneDestinationIdentifier, bool isMonster, DialogueVariant variant) {
+            String[] dialogue = gameDialogue.getDialogue(GameScene.Instance.currentScene, GameScene.Instance.currentStage, cutSceneDestinationIdentifier, isMonster, variant);
+
+            // Normal Dialogue Text
+            if (dialogue.Length == 1) {
+                DialogueChoices.SetActive(false);
+                DialogueText.SetActive(true);
+
+                TMP_Text textBox = DialogueText.GetComponent<TMP_Text>();
+                textBox.text = dialogue[0];
+            }
+
+            // Choices
+            else {
+                DialogueChoices.SetActive(true);
+                DialogueText.SetActive(false);
+
+                /*for(int i = 0; i < dialogue.Length; i++) {
+                    Debug.Log("Dialogue:" + dialogue[i]);
+                }*/
+
+                TMP_Text choice1 =  DialogueChoice1.GetComponent<TMP_Text>();
+                choice1.text = dialogue[0];
+
+                TMP_Text choice2 =  DialogueChoice2.GetComponent<TMP_Text>();
+                choice2.text = dialogue[1];
+
+                TMP_Text choice3 =  DialogueChoice3.GetComponent<TMP_Text>();
+                choice3.text = dialogue[2];
+
+                TMP_Text choice4 =  DialogueChoice4.GetComponent<TMP_Text>();
+                choice4.text = dialogue[3];
+            }
+            
         }
     }
 }
