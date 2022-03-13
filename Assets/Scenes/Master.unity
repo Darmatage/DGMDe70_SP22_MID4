@@ -810,7 +810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1354598641008157257, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -202.49998
+      value: -202.50003
       objectReference: {fileID: 0}
     - target: {fileID: 1388845009926107339, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchorMax.y
@@ -946,7 +946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1721180100097064915, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -202.49998
+      value: -202.50003
       objectReference: {fileID: 0}
     - target: {fileID: 1721180100879851248, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3486,7 +3486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8858426873069085414, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -202.49998
+      value: -202.50003
       objectReference: {fileID: 0}
     - target: {fileID: 8878527868172280589, guid: 66be39b48147c4f328337955a7fb7d36, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3717,7 +3717,7 @@ GameObject:
   - component: {fileID: 525816061}
   m_Layer: 5
   m_Name: ChoiceButton4
-  m_TagString: UI_Button_DialogueClose
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21548,7 +21548,7 @@ GameObject:
   - component: {fileID: 912303424}
   m_Layer: 5
   m_Name: ChoiceButton1
-  m_TagString: UI_Button_DialogueClose
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21669,7 +21669,7 @@ GameObject:
   - component: {fileID: 1003423792}
   m_Layer: 5
   m_Name: ChoiceButton3
-  m_TagString: UI_Button_DialogueClose
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22197,7 +22197,7 @@ GameObject:
   - component: {fileID: 1678328366}
   m_Layer: 5
   m_Name: ChoiceButton2
-  m_TagString: UI_Button_DialogueClose
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
