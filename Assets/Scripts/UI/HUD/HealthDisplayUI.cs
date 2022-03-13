@@ -8,7 +8,8 @@ namespace Game.UI.HUD
 {
     public class HealthDisplayUI : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI healthDisplay;
+        [SerializeField] Image healthBarUIMask;
+        private float originalSize;
         PlayerHealth playerHealth;
 
         private void Awake()
@@ -17,12 +18,16 @@ namespace Game.UI.HUD
         }
         void Start()
         {
-            healthDisplay.text = playerHealth.GetHealthPoints().ToString();
+            originalSize = healthBarUIMask.rectTransform.rect.width;
         }
 
         private void Update()
         {
-            healthDisplay.text = String.Format("{0:0.0}/{1:0}", playerHealth.GetHealthPoints(), playerHealth.GetMaxHealthPoints());
+            SetValue(playerHealth.GetPercentage()/100);
+        }
+        public void SetValue(float value)
+        {				
+            healthBarUIMask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * value);
         }
     }
 }

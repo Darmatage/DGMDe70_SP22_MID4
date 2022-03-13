@@ -1,37 +1,35 @@
-using System;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using Game.Inventories;
+// using System;
+// using UnityEngine;
+// using UnityEngine.UI;
+// using TMPro;
+// using Game.Inventories;
 
-namespace Game.UI.HUD
-{
-    public class SoulGemDisplayUI : MonoBehaviour
-    {
-        [SerializeField] TextMeshProUGUI karmasValueField;
-        [SerializeField] TextMeshProUGUI soulsCountField;
+// namespace Game.UI.HUD
+// {
+//     public class SoulGemDisplayUI : MonoBehaviour
+//     {
+//         [SerializeField] TextMeshProUGUI karmasValueField;
 
-        SoulGemManager playerSoulCount = null;
+//         SoulGemManager playerSoulCount = null;
 
-        private void Awake() 
-        {
-            playerSoulCount = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG).GetComponent<SoulGemManager>();
-        }
+//         private void Awake() 
+//         {
+//             playerSoulCount = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG).GetComponent<SoulGemManager>();
+//         }
 
-        private void Start() {
-            if (playerSoulCount != null)
-            {
-                playerSoulCount.onChange += RefreshUI;
-            }
+//         private void Start() {
+//             if (playerSoulCount != null)
+//             {
+//                 playerSoulCount.onChange += RefreshUI;
+//             }
 
-            RefreshUI();
-        }
+//             RefreshUI();
+//         }
 
-        private void RefreshUI()
-        {
-            karmasValueField.text = playerSoulCount.GetKarmaCount().ToString();
-            soulsCountField.text = String.Format("R{0} | G{1} | B{2}", playerSoulCount.GetRedSoulCount(), playerSoulCount.GetGreenSoulCount(), playerSoulCount.GetBlueSoulCount());
-        }
+//         private void RefreshUI()
+//         {
+//             karmasValueField.text = playerSoulCount.GetKarmaCount().ToString();
+//         }
 
-    }
-}
+//     }
+// }

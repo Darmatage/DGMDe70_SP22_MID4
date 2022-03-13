@@ -61,6 +61,7 @@ namespace Game.UI
             Debug.Log("Inventory toggle");
         }
 
+
         private void CraftingToggle()
         {
             MenuToggle(uiCraftingContainer);

@@ -12,9 +12,11 @@ namespace Game.UI.Curses
     {
         [SerializeField] TextMeshProUGUI curseNameDisplay;
         [SerializeField] TextMeshProUGUI curseDescriptionDisplay;
-        [SerializeField] TextMeshProUGUI curseEffectsDisplay;
+        [SerializeField] GameObject curseEffectsAdvantagesListArea;
+        [SerializeField] GameObject curseEffectsDisadvantagesListArea;
 
-        private string[] curseEffectsArray = null;
+        private string[] curseHumanEffectsArray = null;
+        private string[] curseMonsterEffectsArray = null;
         PlayerCurses playerCurses;
 
         private void Awake()
@@ -23,9 +25,14 @@ namespace Game.UI.Curses
         }
         void Start()
         {
-            curseEffectsArray = playerCurses.GetCurseEffectNames();
+            curseMonsterEffectsArray = playerCurses.GetCurseMonsterEffectNames();
+            curseHumanEffectsArray = playerCurses.GetCurseHumanEffectNames();
 
-            foreach (var effect in curseEffectsArray)
+            foreach (var effect in curseMonsterEffectsArray)
+            {
+                Debug.Log(effect);
+            }
+            foreach (var effect in curseHumanEffectsArray)
             {
                 Debug.Log(effect);
             }
