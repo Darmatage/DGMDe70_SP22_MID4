@@ -31,14 +31,19 @@ namespace Game.Enums
         Scene_02,
         Scene_03,
         Scene_04,
-        Scene_05
+        Scene_05,
+        Scene_06,
+        Scene_07,
+        Scene_08,
+        Scene_09
     }
 
     public enum GameStages
     {
         Stage_01,
         Stage_02,
-        Stage_03
+        Stage_03,
+        Stage_04
     }
 
     public enum DialogueVariant
@@ -100,7 +105,6 @@ namespace Game.Enums
         None,
         Werewolf,
         Llama,
-        Sasquatch,
         LizardPerson
     }
 

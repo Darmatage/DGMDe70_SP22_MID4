@@ -25,6 +25,37 @@ public class GameScene : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    public void AdvanceScene() {
+        switch (currentScene) {
+            case GameScenes.Scene_01: currentScene = GameScenes.Scene_02; break;
+            case GameScenes.Scene_02: currentScene = GameScenes.Scene_03; break;
+            case GameScenes.Scene_03: currentScene = GameScenes.Scene_04; break;
+            case GameScenes.Scene_04: currentScene = GameScenes.Scene_05; break;
+            case GameScenes.Scene_05: currentScene = GameScenes.Scene_06; break;
+            case GameScenes.Scene_06: currentScene = GameScenes.Scene_07; break;
+            case GameScenes.Scene_07: currentScene = GameScenes.Scene_08; break;
+            case GameScenes.Scene_08: currentScene = GameScenes.Scene_09; break;
+        }
+
+        currentStage = GameStages.Stage_01;
+    }
+
+    public void AdvanceStage() {
+        switch (currentStage) {
+            case GameStages.Stage_01: currentStage = GameStages.Stage_02; break;
+            case GameStages.Stage_02: currentStage = GameStages.Stage_03; break;
+            case GameStages.Stage_03: currentStage = GameStages.Stage_04; break;
+        }
+    }
+
+    public void ResetStory() {
+        currentScene = GameScenes.Scene_01;
+        currentStage = GameStages.Stage_01;
+    }
+
+    /*
+    TODO: If we don't need this, let's remove it.
+
     public void ChangeScene(GameScenes scene, GameStages stage = GameStages.Stage_01) 
     {
         SavingWrapperControl wrapper = FindObjectOfType<SavingWrapperControl>(); //<- Still working on this
@@ -56,4 +87,5 @@ public class GameScene : MonoBehaviour
     public void PreviousScene() {
         SceneManager.LoadSceneAsync((int)currentScene);
     }
+    */
 }

@@ -40,6 +40,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6418369746946636068}
     m_Modifications:
+    - target: {fileID: 184790906129871555, guid: f60b2b5848b954dadb1a91b2f43d4d1f, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184790906129871555, guid: f60b2b5848b954dadb1a91b2f43d4d1f, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1693517973510832014, guid: f60b2b5848b954dadb1a91b2f43d4d1f, type: 3}
       propertyPath: m_Pivot.x
       value: 0

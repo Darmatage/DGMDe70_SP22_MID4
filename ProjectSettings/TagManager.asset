@@ -19,6 +19,9 @@ TagManager:
   - UI_Button_DialogueClose
   - UI_DialogueSpeechText
   - NPCImage
+  - SavingStatePersists
+  - DialogueChoices
+  - DialogueChoicesButtons
   layers:
   - Default
   - TransparentFX

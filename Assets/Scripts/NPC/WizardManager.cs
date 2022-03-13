@@ -13,14 +13,14 @@ namespace Game.NPC
     {
         [SerializeField] GameObject interactionIndicatorUI = null;
 
-        [SerializeField] DialogueManager dialogueUIManager = null;
+        // [SerializeField] DialogueManager dialogueUIManager = null;
 
         DialogueManager dialogue;
         private bool isKeyActive = false;
         private bool isRaycastOn = false;
 
         private void Awake() {
-            dialogueUIManager = GameObject.FindWithTag(Tags.UI_DIALOGUE_CONTAINER_TAG).GetComponent<DialogueManager>();
+            // dialogueUIManager = GameObject.FindWithTag(Tags.UI_DIALOGUE_CONTAINER_TAG).GetComponent<DialogueManager>();
         }
         
         private void OnEnable()
@@ -51,7 +51,7 @@ namespace Game.NPC
             {
                 Debug.Log("Activate Wizard");
 
-                EventHandler.CallDialogueActionEvent(CutSceneDestinationIdentifier.Wizard); //<- Changed it to use the event system, Decoupling its reliance on the dialogue manager and followed a similar patten to the other interactable objects.
+                EventHandler.CallDialogueActionEvent(CutSceneDestinationIdentifier.Wizard);
             }
             EventHandler.CallInteractActionKeyEvent(false);
             return true;
