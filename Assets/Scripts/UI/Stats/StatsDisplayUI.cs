@@ -13,11 +13,11 @@ namespace Game.UI.Stats
 {
     public class StatsDisplayUI : MonoBehaviour
     {
+        [SerializeField] TextMeshProUGUI levelDisplay;
         [SerializeField] TextMeshProUGUI maxHealthDisplay;
         [SerializeField] TextMeshProUGUI damageDisplay;
         [SerializeField] TextMeshProUGUI defenceDisplay;
         [SerializeField] TextMeshProUGUI soulsCountDisplay;
-        //[SerializeField] TextMeshProUGUI karmaValueDisplay;
         [SerializeField] Slider karmaSlider;
         private float karmaStartValue = 50f;
 
@@ -44,6 +44,7 @@ namespace Game.UI.Stats
 
         private void Update()
         {
+            levelDisplay.text = String.Format("Level: {0}", playerBaseStats.GetLevel());
             maxHealthDisplay.text = String.Format("Max Health: {0}", playerHealth.GetMaxHealthPoints());
             damageDisplay.text = String.Format("Damage: {0}", playerBaseStats.GetStat(PlayerStats.BaseDamage));
             defenceDisplay.text = String.Format("Defence: {0}", playerBaseStats.GetStat(PlayerStats.BaseDefence)); //Defence is calculate as: TotalDamage /= 1 + PlayerDefence / EnemyDamage;
@@ -52,7 +53,6 @@ namespace Game.UI.Stats
         private void RefreshUI()
         {
             soulsCountDisplay.text = String.Format("Souls: R{0} | G{1} | B{2}", playerSoulCount.GetRedSoulCount(), playerSoulCount.GetGreenSoulCount(), playerSoulCount.GetBlueSoulCount());
-            //karmaValueDisplay.text = String.Format("Karma: {0}", playerSoulCount.GetKarmaCount());
             karmaSlider.value = karmaStartValue + playerSoulCount.GetKarmaCount();
         }
 
