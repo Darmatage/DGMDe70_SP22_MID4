@@ -9,7 +9,7 @@ namespace Game.Movement
     public class PlayerMovement : MonoBehaviour, ISaveable
     {
         [SerializeField] float runningSpeed = 15f;
-        [SerializeField] float walkingSpeed = 10f;
+        [SerializeField] float walkingSpeed = 5f;
         private float movementSpeed;
         private bool runningButtonHeld = false;
 
@@ -33,9 +33,12 @@ namespace Game.Movement
         private bool PlayerInputIsDisabled = false;
         //public bool PlayerInputIsDisabled { get => _playerInputIsDisabled; set => _playerInputIsDisabled = value; }
 
+        public Animator animator;
+
         private void Awake() 
         {
             playerRigidbody = GetComponent<Rigidbody2D>();
+            animator = GameObject.Find("Human_Form").GetComponent<Animator>();
         }
 
         private void OnEnable()
@@ -62,16 +65,20 @@ namespace Game.Movement
 
                 if (!PlayerInputIsDisabled)
                 {
-                ResetAnimationTriggers();
-                PlayerMovementInput();
-                
-                PlayerRunInput();
+                    ResetAnimationTriggers();
+                    PlayerMovementInput();
+                    
+                    PlayerRunInput();
 
-                // Send event to any listeners for player movement input
-                EventHandler.CallPlayerInputEvent(xInput, yInput, isWalking, isRunning, isIdle, false,
-                    isAttackingUp, isAttackingRight, isAttackingDown, isAttackingLeft,
-                    false, false, false, false);
+                    // Send event to any listeners for player movement input
+                    EventHandler.CallPlayerInputEvent(xInput, yInput, isWalking, isRunning, isIdle, false,
+                        isAttackingUp, isAttackingRight, isAttackingDown, isAttackingLeft,
+                        false, false, false, false);
                 }
+
+                animator.SetFloat("horizontal", xInput);
+                animator.SetFloat("vertical", yInput);
+                animator.SetFloat("speed", moveInput.sqrMagnitude);
 
             #endregion Player Input
         }

@@ -54146,6 +54146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapTransitionSouth
       objectReference: {fileID: 0}
+    - target: {fileID: 8443466278620180648, guid: f3fec2ee28a0a43dfb1f8dec1b405e40, type: 3}
+      propertyPath: playerShift.y
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3fec2ee28a0a43dfb1f8dec1b405e40, type: 3}
 --- !u!4 &6519659719616727934 stripped
@@ -54306,7 +54310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2209830292948934777, guid: da4115f5308474441b06983225cd8332, type: 3}
       propertyPath: m_Size.y
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2209830292948934777, guid: da4115f5308474441b06983225cd8332, type: 3}
       propertyPath: m_Offset.x
@@ -54326,7 +54330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223751417153463040, guid: da4115f5308474441b06983225cd8332, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.109
+      value: -8.083
       objectReference: {fileID: 0}
     - target: {fileID: 5223751417153463040, guid: da4115f5308474441b06983225cd8332, type: 3}
       propertyPath: m_LocalPosition.z
