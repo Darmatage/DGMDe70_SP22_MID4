@@ -47,7 +47,8 @@ namespace Game.Story
           GameScenes.Scene_01,
           GameStages.Stage_02,
           CutSceneDestinationIdentifier.Wizard),
-          new string[] {"Hope you enjoy your first quest!!"});
+          new string[] {"Hope you enjoy your first quest!!"}
+        );
 
         setDialogue(getKey(
           GameScenes.Scene_01,
@@ -65,6 +66,13 @@ namespace Game.Story
             () => Debug.Log("Chose 3"),
             () => Debug.Log("Chose 4")
           }
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_01,
+          GameStages.Stage_04,
+          CutSceneDestinationIdentifier.Wizard),
+          new string[] {"Interesting, I guess we will see."}
         );
 
         setDialogue(getKey(

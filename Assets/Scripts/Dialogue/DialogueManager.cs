@@ -12,6 +12,7 @@ namespace Game.Story
 {
     public class DialogueManager : MonoBehaviour
     {
+        public int dialogueChoice = 0;
         [SerializeField] GameObject dialogueScreen;
         [SerializeField] GameObject dialogueBox;
         [SerializeField] GameObject DialogueChoices;
@@ -88,7 +89,12 @@ namespace Game.Story
             });   
         }
 
+        private void RefreshDialogue(CutSceneDestinationIdentifier cutSceneDestinationIdentifier, bool isMonster, DialogueVariant variant) {
+            ShowText(cutSceneDestinationIdentifier, isMonster, variant);
+        }
+
         private void ShowText(CutSceneDestinationIdentifier cutSceneDestinationIdentifier, bool isMonster, DialogueVariant variant) {
+            dialogueChoice = 0;
             String[] dialogue = gameDialogue.getDialogue(GameScene.Instance.currentScene, GameScene.Instance.currentStage, cutSceneDestinationIdentifier, isMonster, variant);
 
             // Normal Dialogue Text
@@ -118,6 +124,9 @@ namespace Game.Story
                     Button button1 = DialogueChoiceButton1.GetComponent<Button>();
                     button1.onClick.AddListener(() => {
                         actions[0]();
+                        dialogueChoice = 1;
+                        GameScene.Instance.AdvanceStage();
+                        RefreshDialogue(cutSceneDestinationIdentifier, isMonster, variant);
                     });
                 }
                 else {
@@ -131,6 +140,9 @@ namespace Game.Story
                     Button button2 = DialogueChoiceButton2.GetComponent<Button>();
                     button2.onClick.AddListener(() => {
                         actions[1]();
+                        dialogueChoice = 2;
+                        GameScene.Instance.AdvanceStage();
+                        RefreshDialogue(cutSceneDestinationIdentifier, isMonster, variant);
                     });
                 }
                 else {
@@ -144,6 +156,9 @@ namespace Game.Story
                     Button button3 = DialogueChoiceButton3.GetComponent<Button>();
                     button3.onClick.AddListener(() => {
                         actions[2]();
+                        dialogueChoice = 3;
+                        GameScene.Instance.AdvanceStage();
+                        RefreshDialogue(cutSceneDestinationIdentifier, isMonster, variant);
                     });
                 }
                 else {
@@ -157,6 +172,9 @@ namespace Game.Story
                     Button button4 = DialogueChoiceButton4.GetComponent<Button>();
                     button4.onClick.AddListener(() => {
                         actions[3]();
+                        dialogueChoice = 4;
+                        GameScene.Instance.AdvanceStage();
+                        RefreshDialogue(cutSceneDestinationIdentifier, isMonster, variant);
                     });
                 }
                 else {
