@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.ClassTypes.Enemy
 {
-    [CreateAssetMenu(fileName = "EnemyClassStats", menuName = "Game/Enemy/New Enemy Class Stats", order = 1)]
+    [CreateAssetMenu(fileName = "EnemyClassStats", menuName = "Game/NPCs/Enemy/New Enemy Class Stats", order = 1)]
     public class SO_EnemyClassStats : ScriptableObject
     {
         [SerializeField] EnemyClassTypeCollection[] enemyClassTypeCollections = null;

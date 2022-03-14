@@ -19,3 +19,9 @@ MonoBehaviour:
       number: 1
     - item: {fileID: 11400000, guid: d97b6d2f8777849bf8446f10c840530c, type: 2}
       number: 3
+  - craftedItem: {fileID: 11400000, guid: 0f57181ead4c7489eb40e8168c6ed288, type: 2}
+    ingredients:
+    - item: {fileID: 11400000, guid: d97b6d2f8777849bf8446f10c840530c, type: 2}
+      number: 2
+    - item: {fileID: 11400000, guid: be858701799a84e20b363ee5d4f061f6, type: 2}
+      number: 1

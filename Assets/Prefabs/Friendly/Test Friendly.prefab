@@ -209,6 +209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scatterDistance: 2
-  lootDropLibrary: {fileID: 11400000, guid: 879223fb05f0143439c716366d504637, type: 2}
+  lootDropLibrary: {fileID: 11400000, guid: 9604098edb7544e7683e48e9534fc7c6, type: 2}
   redSoulGemItem: {fileID: 11400000, guid: 5172fba3f610b484a927bf373e1699a3, type: 2}
   blueSoulGemItem: {fileID: 11400000, guid: 388e371f1f05d49cf9b70ef25eab23f8, type: 2}

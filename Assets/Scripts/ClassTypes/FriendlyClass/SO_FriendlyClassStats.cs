@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.ClassTypes.Friendly
 {
-    [CreateAssetMenu(fileName = "FriendlyClassStats", menuName = "Game/Friendly/New Friendly Class Stats", order = 1)]
+    [CreateAssetMenu(fileName = "FriendlyClassStats", menuName = "Game/NPCs/Friendly/New Friendly Class Stats", order = 0)]
     public class SO_FriendlyClassStats : ScriptableObject
     {
         [SerializeField] FriendlyClassTypeCollection[] friendlyClassTypeCollectionList = null;

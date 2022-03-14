@@ -41,7 +41,7 @@ namespace Game.Combat
                 AwardExperience(instigator);
                 if(!GetComponent<LootDropper>()) return;
                 GetComponent<LootDropper>().RandomDrop();
-                GetComponent<LootDropper>().GemDrop(instigator);
+                GetComponent<LootDropper>().SoulGemDrop(instigator, AIMotiveState.Enemy);
             } 
         }
         public float GetHealthPoints()
