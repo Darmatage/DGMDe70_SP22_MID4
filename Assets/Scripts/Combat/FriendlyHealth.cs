@@ -15,6 +15,8 @@ namespace Game.Combat
         [SerializeField] float deathTime = 1.2f;
         LazyValue<float> healthPoints;
 
+        private bool isBeingAttacker = false;
+
         private void Awake() 
         {
             healthPoints = new LazyValue<float>(GetInitialHealth);
@@ -31,20 +33,27 @@ namespace Game.Combat
         {
             return healthPoints.value <= 0;
         }
+        public void SetBeingAttacker(bool beingAttacker)
+        {
+            isBeingAttacker = beingAttacker;
+        }
+        public bool GetBeingAttacker()
+        {
+            return isBeingAttacker;
+        }
         public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
             
             if(IsDead())
             {
-                
                 Die();
                 AwardExperience(instigator);
                 if(!GetComponent<LootDropper>()) return;
                 GetComponent<LootDropper>().RandomDrop();
                 GetComponent<LootDropper>().GemDrop(instigator);
-
             } 
+            isBeingAttacker = true;
         }
         public float GetHealthPoints()
         {
@@ -68,7 +77,7 @@ namespace Game.Combat
 
         private void Die() 
         {
-            StartCoroutine(removeEnemy());
+            StartCoroutine(removeAI());
             Debug.Log("The Friendly is dead!");
         }
         private void AwardExperience(GameObject instigator)
@@ -78,7 +87,7 @@ namespace Game.Combat
 
             experience.GainExperience(GetComponent<FriendlyClassSetup>().GetStat(AIBaseStat.ExperienceReward));
         }
-        IEnumerator removeEnemy()
+        IEnumerator removeAI()
         {
             yield return new WaitForSecondsRealtime(deathTime);
             Destroy(gameObject);

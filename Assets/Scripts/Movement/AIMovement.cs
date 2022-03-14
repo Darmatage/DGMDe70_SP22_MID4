@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Core;
-using Game.ClassTypes.Enemy;
 using UnityEngine;
-using Game.ClassTypes.Friendly;
+using Game.ClassTypes;
 
 namespace Game.Movement
 {
@@ -26,8 +25,7 @@ namespace Game.Movement
             aiRigidbody = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
 
-            if(this.CompareTag(Tags.ENEMY_TAG)) moveSpeed = GetComponent<EnemyClassSetup>().GetMovementSpeed();
-            if(this.CompareTag(Tags.FRIENDLY_TAG)) moveSpeed = GetComponent<FriendlyClassSetup>().GetMovementSpeed();
+            moveSpeed = GetComponent<IClassSetup>().GetMovementSpeed();
         }
         private void Start() 
         {
@@ -56,21 +54,18 @@ namespace Game.Movement
             transform.position = Vector2.MoveTowards(transform.position, destination, step);
             lookDirection.Set(posThisFrame.x - posLastFrame.x, posThisFrame.y - posLastFrame.y);
             lookDirection.Normalize();
-            
-            Vector2 v2 = new Vector2(0, 0);
-            v2 = transform.position;
-            Debug.DrawRay(v2 + Vector2.up * 0.2f, lookDirection, Color.red); //Visilize the Raycast
-
         }
-        public void MoveAway(Vector2 destination, float speedMultiplier)
+        public void MoveAway(Vector2 awayFrom, float speedMultiplier)
         {
             moveAwaySpeed = moveSpeed * speedMultiplier;
-            float step = moveAwaySpeed * Time.deltaTime;
+            float step = moveAwaySpeed * Time.fixedDeltaTime;
 
-            transform.position = Vector2.MoveTowards(transform.position, -destination, step);
-            lookDirection.Set(posThisFrame.x - posLastFrame.x, posThisFrame.y - posLastFrame.y);
+            lookDirection.Set((posThisFrame.x - awayFrom.x), (posThisFrame.y - awayFrom.y));
             lookDirection.Normalize();
 
+            aiRigidbody.MovePosition(aiRigidbody.position + lookDirection * step);
+
+            Debug.DrawRay(transform.position, lookDirection, Color.green); //Visilize the Raycast for interaction
         }
 
         public void Cancel()

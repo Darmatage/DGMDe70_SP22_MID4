@@ -37,13 +37,11 @@ namespace Game.Combat
             
             if(IsDead())
             {
-                
                 Die();
                 AwardExperience(instigator);
                 if(!GetComponent<LootDropper>()) return;
                 GetComponent<LootDropper>().RandomDrop();
                 GetComponent<LootDropper>().GemDrop(instigator);
-
             } 
         }
         public float GetHealthPoints()

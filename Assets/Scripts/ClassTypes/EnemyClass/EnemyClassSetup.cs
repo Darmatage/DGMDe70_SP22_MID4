@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.ClassTypes.Enemy
 {
-    public class EnemyClassSetup : MonoBehaviour
+    public class EnemyClassSetup : MonoBehaviour, IClassSetup
     {
         [Range(1,5)]
         [SerializeField] int difficultyLevel = 1;

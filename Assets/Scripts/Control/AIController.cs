@@ -11,7 +11,7 @@ namespace Game.Control
 {
     public class AIController : MonoBehaviour
     {
-        [SerializeField] float interactDistance = 5f;
+        [SerializeField] float interactDistance = 4f;
         [SerializeField] float suspicionTime = 2f;
         [SerializeField] bool guardThisPosition = false;
         private EnemyCombat combat;
@@ -77,15 +77,31 @@ namespace Game.Control
         {
             if (InAttackRangeOfPlayer() && player.GetComponent<PlayerTransformControl>().IsMonster)
             {
+                timeSinceLastSawPlayer = 0;
                 FleeBehaviour(1.5f);
+            }
+            else if (IsBeingAttacked() && InAttackRangeOfPlayer())
+            {
+                timeSinceLastSawPlayer = 0;
+                FleeBehaviour(1.75f);
+            }
+            else if (timeSinceLastSawPlayer < suspicionTime)
+            {
+                SuspicionBehaviour();
+                GetComponent<FriendlyHealth>().SetBeingAttacker(false);
             }
             else
             {
+                Debug.Log("Wondering");
                 WonderBehaviour();
             }
-
             timeSinceLastSawPlayer += Time.deltaTime;
  
+        }
+
+        private bool IsBeingAttacked()
+        {
+            return GetComponent<FriendlyHealth>().GetBeingAttacker();
         }
 
         private void AttackBehaviour()

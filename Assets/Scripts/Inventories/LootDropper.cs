@@ -4,6 +4,7 @@ using Game.ClassTypes.Enemy;
 using Game.Enums;
 using UnityEngine;
 using UnityEngine.AI;
+using Game.ClassTypes;
 
 namespace Game.Inventories
 {
@@ -19,9 +20,9 @@ namespace Game.Inventories
 
         public void RandomDrop()
         {
-            var enemyClass = GetComponent<EnemyClassSetup>();
+            var aiClass = GetComponent<IClassSetup>();
 
-            var drops = lootDropLibrary.GetRandomDrops(enemyClass.GetDifficultyLevel());
+            var drops = lootDropLibrary.GetRandomDrops(aiClass.GetDifficultyLevel());
             foreach (var drop in drops)
             {
                 DropItem(drop.item, drop.number);

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.ClassTypes.Friendly
 {
-    public class FriendlyClassSetup : MonoBehaviour
+    public class FriendlyClassSetup : MonoBehaviour, IClassSetup
     {
         [Range(1,5)]
         [SerializeField] int difficultyLevel = 1;

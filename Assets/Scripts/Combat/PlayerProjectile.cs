@@ -14,7 +14,6 @@ namespace Game.Combat
         private void Start()
         {
             transform.right = launchDirection;
-            //transform.rotation = Quaternion.Euler(0,0,0);
         }
         private void Update()
         {
