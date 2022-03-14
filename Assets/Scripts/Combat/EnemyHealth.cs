@@ -4,14 +4,13 @@ using Game.ClassTypes.Enemy;
 using Game.ClassTypes.Player;
 using Game.Enums;
 using Game.Inventories;
-
 using Game.Utils;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Game.Combat
 {
-    public class EnemyHealth : MonoBehaviour
+    public class EnemyHealth : MonoBehaviour, IHealth
     {
         [SerializeField] float deathTime = 1.2f;
         LazyValue<float> healthPoints;
@@ -22,7 +21,7 @@ namespace Game.Combat
         }
         private float GetInitialHealth()
         {
-            return GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.Health);
+            return GetComponent<EnemyClassSetup>().GetStat(AIBaseStat.Health);
         }
         private void Start()
         {
@@ -47,14 +46,14 @@ namespace Game.Combat
 
             } 
         }
-        public float GetEnemyHealthPoints()
+        public float GetHealthPoints()
         {
             return healthPoints.value;
         }
 
-        public float GetEnemyMaxHealthPoints()
+        public float GetMaxHealthPoints()
         {
-            return GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.Health);
+            return GetComponent<EnemyClassSetup>().GetStat(AIBaseStat.Health);
         }
 
         public float GetPercentage()
@@ -64,7 +63,7 @@ namespace Game.Combat
 
         public float GetFraction()
         {
-            return healthPoints.value / GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.Health);
+            return healthPoints.value / GetComponent<EnemyClassSetup>().GetStat(AIBaseStat.Health);
         }
 
         private void Die() 
@@ -77,7 +76,7 @@ namespace Game.Combat
             PlayerExperience experience = instigator.GetComponent<PlayerExperience>();
             if (experience == null) return;
 
-            experience.GainExperience(GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.ExperienceReward));
+            experience.GainExperience(GetComponent<EnemyClassSetup>().GetStat(AIBaseStat.ExperienceReward));
         }
         IEnumerator removeEnemy()
         {

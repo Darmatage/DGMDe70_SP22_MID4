@@ -10,9 +10,9 @@ namespace Game.ClassTypes.Enemy
     public class SO_EnemyClassStats : ScriptableObject
     {
         [SerializeField] EnemyClassTypeCollection[] enemyClassTypeCollections = null;
-        Dictionary<EnemyType, Dictionary<EnemyBaseStat, float[]>> lookupTable = null;
+        Dictionary<EnemyType, Dictionary<AIBaseStat, float[]>> lookupTable = null;
 
-        public float GetStat(EnemyType enemyType, EnemyBaseStat stat,  int difficultyLevel)
+        public float GetStat(EnemyType enemyType, AIBaseStat stat,  int difficultyLevel)
         {
             BuildLookup();
 
@@ -69,11 +69,11 @@ namespace Game.ClassTypes.Enemy
         {
             if(lookupTable != null) return;
 
-            lookupTable = new Dictionary<EnemyType, Dictionary<EnemyBaseStat, float[]>>();
+            lookupTable = new Dictionary<EnemyType, Dictionary<AIBaseStat, float[]>>();
 
             foreach(EnemyClassTypeCollection enemyClassTypeCollection in enemyClassTypeCollections)
             {
-                var stateLookupTable = new Dictionary<EnemyBaseStat, float[]>();
+                var stateLookupTable = new Dictionary<AIBaseStat, float[]>();
 
                 foreach (EnemyStatCollections enemyStatItem in enemyClassTypeCollection.stats)
                 {
@@ -96,7 +96,7 @@ namespace Game.ClassTypes.Enemy
         [System.Serializable]
         class EnemyStatCollections
         {
-            public EnemyBaseStat enemyBaseStat;
+            public AIBaseStat enemyBaseStat;
             public float[] levels;
         }
 

@@ -9,8 +9,8 @@ namespace Game.Combat
     /// </summary>
     public class EnemyProjectile : MonoBehaviour
     {
-        [SerializeField] float projectileSpeed = 1f;
-        [SerializeField] float maxLifeTime = 5f;
+        [SerializeField] float projectileSpeed = 5f;
+        [SerializeField] float maxLifeTime = 2f;
         [SerializeField] bool isHoming = false;
         private PlayerHealth target = null;
         private float damage = 0f;

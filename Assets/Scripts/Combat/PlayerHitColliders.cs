@@ -18,7 +18,7 @@ namespace Game.Combat
             {
                 Debug.Log("Attacking: " + other);
                 float damage = GetComponentInParent<PlayerBaseStats>().GetStat(PlayerStats.BaseDamage);
-                other.GetComponent<EnemyHealth>().TakeDamage(GameObject.FindWithTag(Tags.PLAYER_TAG), damage);
+                other.GetComponent<IHealth>().TakeDamage(GameObject.FindWithTag(Tags.PLAYER_TAG), damage);
             }
         }
     }

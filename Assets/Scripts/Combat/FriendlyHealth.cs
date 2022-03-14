@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Game.ClassTypes.Enemy;
+using Game.ClassTypes.Friendly;
 using Game.ClassTypes.Player;
 using Game.Enums;
 using Game.Inventories;
@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 namespace Game.Combat
 {
-    public class FriendlyHealth : MonoBehaviour
+    public class FriendlyHealth : MonoBehaviour, IHealth
     {
         [SerializeField] float deathTime = 1.2f;
         LazyValue<float> healthPoints;
@@ -21,7 +21,7 @@ namespace Game.Combat
         }
         private float GetInitialHealth()
         {
-            return GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.Health);
+            return GetComponent<FriendlyClassSetup>().GetStat(AIBaseStat.Health);
         }
         private void Start()
         {
@@ -46,14 +46,14 @@ namespace Game.Combat
 
             } 
         }
-        public float GetEnemyHealthPoints()
+        public float GetHealthPoints()
         {
             return healthPoints.value;
         }
 
-        public float GetEnemyMaxHealthPoints()
+        public float GetMaxHealthPoints()
         {
-            return GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.Health);
+            return GetComponent<FriendlyClassSetup>().GetStat(AIBaseStat.Health);
         }
 
         public float GetPercentage()
@@ -63,20 +63,20 @@ namespace Game.Combat
 
         public float GetFraction()
         {
-            return healthPoints.value / GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.Health);
+            return healthPoints.value / GetComponent<FriendlyClassSetup>().GetStat(AIBaseStat.Health);
         }
 
         private void Die() 
         {
             StartCoroutine(removeEnemy());
-            Debug.Log("The Enemy is dead!");
+            Debug.Log("The Friendly is dead!");
         }
         private void AwardExperience(GameObject instigator)
         {
             PlayerExperience experience = instigator.GetComponent<PlayerExperience>();
             if (experience == null) return;
 
-            experience.GainExperience(GetComponent<EnemyClassSetup>().GetStat(EnemyBaseStat.ExperienceReward));
+            experience.GainExperience(GetComponent<FriendlyClassSetup>().GetStat(AIBaseStat.ExperienceReward));
         }
         IEnumerator removeEnemy()
         {

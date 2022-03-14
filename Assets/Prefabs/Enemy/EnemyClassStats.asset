@@ -15,21 +15,21 @@ MonoBehaviour:
   enemyClassTypeCollections:
   - enemyType: 1
     stats:
-    - enemyBaseStat: 0
+    - enemyBaseStat: 1
       levels:
       - 5
       - 10
       - 15
       - 20
       - 25
-    - enemyBaseStat: 1
+    - enemyBaseStat: 2
       levels:
       - 1
       - 2
       - 3
       - 4
       - 5
-    - enemyBaseStat: 2
+    - enemyBaseStat: 3
       levels:
       - 2
       - 5
@@ -41,5 +41,5 @@ MonoBehaviour:
       attackRange: 2
     rangeAttackDetails:
       attackDamage: 0
-      attackRange: 6
+      attackRange: 4
       projectile: {fileID: 6215970973363243965, guid: a1f49de7f1b314c6792e47336b377283, type: 3}

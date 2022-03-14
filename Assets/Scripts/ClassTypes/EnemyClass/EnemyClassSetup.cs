@@ -14,7 +14,7 @@ namespace Game.ClassTypes.Enemy
         [SerializeField] WeaponAttackType enemyAttackType;
         [SerializeField] float movementSpeed = 1f;
         [SerializeField] SO_EnemyClassStats enemyClassStats = null;
-        public float GetStat(EnemyBaseStat stat)
+        public float GetStat(AIBaseStat stat)
         {
             return (GetBaseStat(stat));
         }
@@ -37,7 +37,7 @@ namespace Game.ClassTypes.Enemy
             {
                 addedAttackDamage = 0;
             }
-            return (GetBaseStat(EnemyBaseStat.BaseDamage) + addedAttackDamage);
+            return (GetBaseStat(AIBaseStat.BaseDamage) + addedAttackDamage);
         }
         
         public float GetAttackRange()
@@ -71,7 +71,7 @@ namespace Game.ClassTypes.Enemy
         {
             return movementSpeed;
         }
-        private float GetBaseStat(EnemyBaseStat stat)
+        private float GetBaseStat(AIBaseStat stat)
         {
             return enemyClassStats.GetStat(enemyType, stat, difficultyLevel);
         }

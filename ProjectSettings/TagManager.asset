@@ -22,6 +22,7 @@ TagManager:
   - SavingStatePersists
   - DialogueChoices
   - DialogueChoicesButtons
+  - Friendly
   layers:
   - Default
   - TransparentFX
