@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Game.Control;
 using Game.Enums;
-using Game.PlayerClass;
+using Game.ClassTypes.Player;
 
 namespace Game.Inventories
 {

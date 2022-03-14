@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using Game.Saving;
 
-namespace Game.PlayerClass
+namespace Game.ClassTypes.Player
 {
     public class PlayerExperience : MonoBehaviour, ISaveable
     {

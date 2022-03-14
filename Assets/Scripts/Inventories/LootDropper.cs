@@ -1,6 +1,6 @@
 using Game.Control;
 using Game.Curses;
-using Game.EnemyClass;
+using Game.ClassTypes.Enemy;
 using Game.Enums;
 using UnityEngine;
 using UnityEngine.AI;

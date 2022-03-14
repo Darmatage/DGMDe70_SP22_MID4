@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using Game.Enums;
 
-namespace Game.PlayerClass
+namespace Game.ClassTypes.Player
 {
     [CreateAssetMenu(fileName = "Progression", menuName = "Game/Player/New Player Progression")]
     public class SO_PlayerProgression : ScriptableObject

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
 using Game.Inventories;
-using Game.PlayerClass;
+using Game.ClassTypes.Player;
 using Game.Saving;
 using Game.Utils;
 using UnityEngine;

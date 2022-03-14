@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Core;
-using Game.EnemyClass;
+using Game.ClassTypes.Enemy;
 using UnityEngine;
 
 namespace Game.Movement
 {
     public class AIMovement : MonoBehaviour, IAction
     {
-        private float enemySpeed;
+        private float moveSpeed;
+        private float moveTowardsSpeed;
+        private float moveAwaySpeed;
         private Vector2 lookDirection = new Vector2(0,0);
         private Rigidbody2D enemyRigidbody;
         private Animator animator;
@@ -22,7 +24,9 @@ namespace Game.Movement
         {
             enemyRigidbody = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
-            enemySpeed = GetComponent<EnemyClassSetup>().GetMovementSpeed();
+            moveSpeed = GetComponent<EnemyClassSetup>().GetMovementSpeed();
+            moveTowardsSpeed = moveSpeed * 1.25f;
+            moveAwaySpeed = moveSpeed * 1.75f;
         }
         private void Start() 
         {
@@ -45,7 +49,7 @@ namespace Game.Movement
 
         public void MoveTo(Vector2 destination)
         {
-            float step = enemySpeed * Time.deltaTime;
+            float step = moveTowardsSpeed * Time.deltaTime;
 
             transform.position = Vector2.MoveTowards(transform.position, destination, step);
             lookDirection.Set(posThisFrame.x - posLastFrame.x, posThisFrame.y - posLastFrame.y);
@@ -56,6 +60,15 @@ namespace Game.Movement
             Debug.DrawRay(v2 + Vector2.up * 0.2f, lookDirection, Color.red); //Visilize the Raycast
 
         }
+        public void MoveAway(Vector2 destination)
+        {
+            float step = moveAwaySpeed * Time.deltaTime;
+
+            transform.position = Vector2.MoveTowards(transform.position, -destination, step);
+            lookDirection.Set(posThisFrame.x - posLastFrame.x, posThisFrame.y - posLastFrame.y);
+            lookDirection.Normalize();
+
+        }
 
         public void Cancel()
         {
@@ -63,7 +76,7 @@ namespace Game.Movement
 
         public void MoveAround() {
             if (!canMove) { return; }
-            enemyRigidbody.MovePosition(enemyRigidbody.position + movement * enemySpeed * Time.fixedDeltaTime);
+            enemyRigidbody.MovePosition(enemyRigidbody.position + movement * moveSpeed * Time.fixedDeltaTime);
         }
 
         // random movement around map

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Game.Combat;
 using Game.Enums;
 using Game.Inventories;
-using Game.PlayerClass;
+using Game.ClassTypes.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

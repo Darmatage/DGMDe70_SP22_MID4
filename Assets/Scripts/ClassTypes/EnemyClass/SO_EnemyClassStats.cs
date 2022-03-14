@@ -4,7 +4,7 @@ using Game.Combat;
 using Game.Enums;
 using UnityEngine;
 
-namespace Game.EnemyClass
+namespace Game.ClassTypes.Enemy
 {
     [CreateAssetMenu(fileName = "EnemyClassStats", menuName = "Game/Enemy/New Enemy Class Stats", order = 1)]
     public class SO_EnemyClassStats : ScriptableObject

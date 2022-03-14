@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Game.Enums;
 
-namespace Game.PlayerClass
+namespace Game.ClassTypes.Player
 {
     public interface IModifierProvider
     {

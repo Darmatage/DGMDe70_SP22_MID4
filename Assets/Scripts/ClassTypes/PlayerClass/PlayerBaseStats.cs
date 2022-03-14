@@ -5,7 +5,7 @@ using Game.Enums;
 using Game.Utils;
 using UnityEngine;
 
-namespace Game.PlayerClass
+namespace Game.ClassTypes.Player
 {
     public class PlayerBaseStats : MonoBehaviour
     {

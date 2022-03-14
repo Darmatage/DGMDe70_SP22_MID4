@@ -4,14 +4,13 @@ using Game.ClassTypes.Enemy;
 using Game.ClassTypes.Player;
 using Game.Enums;
 using Game.Inventories;
-
 using Game.Utils;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Game.Combat
 {
-    public class EnemyHealth : MonoBehaviour
+    public class FriendlyHealth : MonoBehaviour
     {
         [SerializeField] float deathTime = 1.2f;
         LazyValue<float> healthPoints;

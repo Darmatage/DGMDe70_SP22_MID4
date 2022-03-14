@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Game.PlayerClass;
+using Game.ClassTypes.Player;
 using Game.Enums;
 using Game.Combat;
 

@@ -4,7 +4,7 @@ using Game.Combat;
 using Game.Enums;
 using UnityEngine;
 
-namespace Game.EnemyClass
+namespace Game.ClassTypes.Enemy
 {
     public class EnemyClassSetup : MonoBehaviour
     {

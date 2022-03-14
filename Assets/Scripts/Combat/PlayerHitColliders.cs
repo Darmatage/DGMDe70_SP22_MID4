@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
-using Game.PlayerClass;
+using Game.ClassTypes.Player;
 using UnityEngine;
 
 namespace Game.Combat
