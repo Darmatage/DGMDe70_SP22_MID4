@@ -206,6 +206,8 @@ GameObject:
   - component: {fileID: 6197886959752762852}
   - component: {fileID: 6197886959752762872}
   - component: {fileID: 6197886959752762873}
+  - component: {fileID: 8992002131921465738}
+  - component: {fileID: 2978481815175665425}
   - component: {fileID: 6197886959752762851}
   - component: {fileID: 6197886959752762850}
   - component: {fileID: 6197886959752762849}
@@ -215,6 +217,7 @@ GameObject:
   - component: {fileID: 5758184306521622258}
   - component: {fileID: 6197886959752762877}
   - component: {fileID: 6197886959752762876}
+  - component: {fileID: 7990007246662172520}
   - component: {fileID: 6197886959752762875}
   - component: {fileID: 6423660341572640129}
   - component: {fileID: 5980636598127323671}
@@ -465,7 +468,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6197886959752762870}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -484,6 +487,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.99878126}
   m_EdgeRadius: 0
+--- !u!70 &8992002131921465738
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197886959752762870}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.35}
+  m_Size: {x: 0.75, y: 1.25}
+  m_Direction: 0
+--- !u!58 &2978481815175665425
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197886959752762870}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
 --- !u!114 &6197886959752762851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runningSpeed: 15
   walkingSpeed: 10
+  animator: {fileID: 0}
 --- !u!114 &6197886959752762850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a63cf3942a3543689fb649799169667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedCurse: 1
   curseListLibrary: {fileID: 11400000, guid: 30a32bed3bd6d4aadb68c09ca69780ce, type: 2}
 --- !u!114 &6197886959752762877
 MonoBehaviour:
@@ -609,6 +644,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySize: 12
+--- !u!114 &7990007246662172520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197886959752762870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ced468c05ab4fa192287d0f8bb8147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6197886959752762875
 MonoBehaviour:
   m_ObjectHideFlags: 0
