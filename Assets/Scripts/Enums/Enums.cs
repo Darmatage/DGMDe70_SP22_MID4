@@ -53,6 +53,14 @@ namespace Game.Enums
         DV_03
     }
 
+    public enum CursorType
+    {
+        None,
+        Melee,
+        Range,
+        UI
+    }
+
     /// <summary>
     /// Input Action Enums<br/>
     /// </summary>

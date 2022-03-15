@@ -178,8 +178,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1, y: 0}
-  m_Size: {x: 1.5, y: 2.5}
+  m_Offset: {x: -1, y: 0.25}
+  m_Size: {x: 1.5, y: 3}
   m_Direction: 0
 --- !u!114 &6197886959596841872
 MonoBehaviour:
@@ -209,10 +209,11 @@ GameObject:
   - component: {fileID: 6197886959752762851}
   - component: {fileID: 6197886959752762850}
   - component: {fileID: 6197886959752762849}
+  - component: {fileID: 5758184306521622258}
+  - component: {fileID: 6197886959752762878}
   - component: {fileID: 6197886959752762848}
   - component: {fileID: 6197886959752762879}
-  - component: {fileID: 6197886959752762878}
-  - component: {fileID: 5758184306521622258}
+  - component: {fileID: 9032028752368935864}
   - component: {fileID: 6197886959752762877}
   - component: {fileID: 6197886959752762876}
   - component: {fileID: 6197886959752762875}
@@ -519,6 +520,34 @@ MonoBehaviour:
   humanObject: {fileID: 3134603612674481819}
   monsterObject: {fileID: 8117792920495781800}
   currentObject: {fileID: 585338627225832369, guid: 9c68753b4b9ff4380a4524cf02769498, type: 3}
+--- !u!114 &5758184306521622258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197886959752762870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a63cf3942a3543689fb649799169667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curseListLibrary: {fileID: 11400000, guid: 30a32bed3bd6d4aadb68c09ca69780ce, type: 2}
+--- !u!114 &6197886959752762878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197886959752762870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0689395bf79459b9f2ba069a15fca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingLevel: 1
+  characterClass: 0
+  progression: {fileID: 11400000, guid: f8f6511dd51614e52971d8e66af94594, type: 2}
 --- !u!114 &6197886959752762848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,7 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   regenerationPercentage: 5
---- !u!114 &6197886959752762878
+--- !u!114 &9032028752368935864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -555,25 +584,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6197886959752762870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd0689395bf79459b9f2ba069a15fca1, type: 3}
+  m_Script: {fileID: 11500000, guid: ad5d3b7c130c142b799548d1fdbe9ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLevel: 1
-  characterClass: 0
-  progression: {fileID: 11400000, guid: f8f6511dd51614e52971d8e66af94594, type: 2}
---- !u!114 &5758184306521622258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6197886959752762870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a63cf3942a3543689fb649799169667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curseListLibrary: {fileID: 11400000, guid: 30a32bed3bd6d4aadb68c09ca69780ce, type: 2}
 --- !u!114 &6197886959752762877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded166849f8ce48a9bb225f3df75b235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySize: 12
+  inventorySize: 16
 --- !u!114 &6197886959752762875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,8 +745,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.4}
-  m_Size: {x: 2.5, y: 1.5}
+  m_Offset: {x: 0, y: -0.75}
+  m_Size: {x: 3, y: 1.5}
   m_Direction: 1
 --- !u!114 &6197886959996213089
 MonoBehaviour:
@@ -793,7 +806,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1}
-  m_Size: {x: 2.5, y: 1.5}
+  m_Size: {x: 3, y: 1.5}
   m_Direction: 1
 --- !u!114 &6197886960872085560
 MonoBehaviour:
@@ -835,7 +848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6197886960884506653}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6197886960872085559}
@@ -990,8 +1003,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1, y: 0}
-  m_Size: {x: 1.5, y: 2.5}
+  m_Offset: {x: 1, y: 0.25}
+  m_Size: {x: 1.5, y: 3}
   m_Direction: 0
 --- !u!114 &6197886960920881724
 MonoBehaviour:

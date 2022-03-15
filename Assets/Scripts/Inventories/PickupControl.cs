@@ -47,10 +47,10 @@ namespace Game.Inventories
         }
 
         //Called by Unity to visulize the guard area
-        private void OnDrawGizmos() 
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, attrackDistance);
-        }
+        // private void OnDrawGizmos() 
+        // {
+        //     Gizmos.color = Color.blue;
+        //     Gizmos.DrawWireSphere(transform.position, attrackDistance);
+        // }
     }
 }

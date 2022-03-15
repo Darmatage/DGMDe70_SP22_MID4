@@ -22,6 +22,7 @@ namespace Game.Inventories
         [Header("Range Weapon Attributes")]
         [Tooltip("Adding a Projectile will make this a ranged attack.")]
         [SerializeField] PlayerProjectile projectile = null;
+        [SerializeField] float projectileManaCost = 0;
 
         [Header("Range Weapon Attributes")]
         [Tooltip("Adding a Projectile will make this a ranged attack.")]
@@ -63,6 +64,11 @@ namespace Game.Inventories
         public float GetDamage()
         {
             return weaponBaseDamage;
+        }
+
+        public float GetManaCost()
+        {
+            return projectileManaCost;
         }
 
         public override bool IsDroppable()

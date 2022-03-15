@@ -48,6 +48,11 @@ namespace Game.Combat
             AttachWeapon(weapon);
         }
 
+        public bool IsWeaponRangeAttack()
+        {
+            return currentWeaponConfig.HasProjectile();
+        }
+
         private void UpdateWeapon()
         {
             var weapon = equipment.GetItemInSlot(EquipLocation.Weapon) as SO_WeaponItem;
@@ -112,8 +117,13 @@ namespace Game.Combat
             bool idleUp, bool idleDown, bool idleLeft, bool idleRight)
         {
             if(!isMakingAttack) return;
+            
+            PlayerMana mana = GetComponent<PlayerMana>();
+            if (mana.GetMana() < currentWeaponConfig.GetManaCost()) return;
+
             if(currentWeaponConfig.HasProjectile())
             {
+                mana.UseMana(currentWeaponConfig.GetManaCost());
                 float damage = GetComponent<PlayerBaseStats>().GetStat(PlayerStats.BaseDamage);
 
                 bool isAttackUp = false;
