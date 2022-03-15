@@ -1,16 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
 using Game.SceneManagement;
 using Game.Utils;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.UI
 {
     public class MainMenuUI : MonoBehaviour
     {
         [SerializeField] float fadeTime = 0.5f;
-        [SerializeField] float buttonLoadWaitTime = 5f;
         [SerializeField] int firstSceneBuildIndex = 1;
         [SerializeField] GameObject loadScreenCanvas = null;
         [SerializeField] GameObject startGameButton = null;
@@ -20,6 +21,7 @@ namespace Game.UI
         private void Awake() {
             savedFileSingleton = new LazyValue<SavedFileSingleton>(GetSavedFileSingleton);
             savingWrapper = new LazyValue<SavingWrapperControl>(GetSavingWrapper);
+            GetComponentInChildren<LoadCanvasUI>().loadScreenUpdated += ShowStartButton;
         }
         private SavedFileSingleton GetSavedFileSingleton()
         {
@@ -37,13 +39,19 @@ namespace Game.UI
             Debug.Log(chosenCurse);
 
             StartCoroutine(FadeToLoadScreen());
-            StartCoroutine(StartButtonWait());
+            //StartCoroutine(StartButtonWait());
         }
 
         public void StartNewGame()
         {
             Debug.Log("Starting the game!");
             savingWrapper.value.NewGame(firstSceneBuildIndex, fadeTime);
+        }
+
+        private void ShowStartButton()
+        {
+            if (startGameButton != null) startGameButton.SetActive(true);
+            Debug.Log("Show Start Button");
         }
 
         private IEnumerator FadeToLoadScreen() 
@@ -53,14 +61,6 @@ namespace Game.UI
             if (loadScreenCanvas != null) loadScreenCanvas.SetActive(true);
             if (startGameButton != null) startGameButton.SetActive(false);
             yield return fader.FadeIn(fadeTime);
-            
-        }
-
-        private IEnumerator StartButtonWait()
-        {
-            yield return new WaitForSecondsRealtime(buttonLoadWaitTime);
-            if (startGameButton != null) startGameButton.SetActive(true);
-            Debug.Log("Show Start Button");
         }
 
     }

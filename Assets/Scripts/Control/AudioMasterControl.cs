@@ -9,22 +9,20 @@ namespace Game.Control
     public class AudioMasterControl : MonoBehaviour 
     {
             [SerializeField] AudioMixer mixer;
-            [SerializeField] static float volumeLevel = 1.0f;
             [SerializeField] Slider sliderVolumeCtrl;
+            private SavedFileSingleton saveFileVar;
 
             private void Awake ()
             {
-                SetLevel (volumeLevel);
-                if (sliderVolumeCtrl != null)
-                {
-                    sliderVolumeCtrl.value = volumeLevel;
-                }
+                saveFileVar = GameObject.FindWithTag(Tags.SAVING_STATE_PERSISTS_TAG).GetComponent<SavedFileSingleton>();
+                SetLevel (saveFileVar.GetVolumeLevel());
             }
 
             public void SetLevel (float sliderValue)
             {
+                saveFileVar.SetVolumeLevel(sliderValue);
                 mixer.SetFloat("MusicVolume", Mathf.Log10 (sliderValue) * 20);
-                volumeLevel = sliderValue;
+                sliderVolumeCtrl.value = sliderValue;
             }
     }
 }
