@@ -74,7 +74,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   craftingRecipe: {fileID: 11400000, guid: 35ec193d108934543aeacb63fe47cd6b, type: 2}
   craftingItems: {fileID: 0}
-  uiCraftingContainer: {fileID: 0}
   interactionIndicatorUI: {fileID: 1718634956650159366}
 --- !u!1 &8613417578045682804
 GameObject:
@@ -180,7 +179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4853346899800235845, guid: b7cbe0fb34c654f5c9f56cb5b309b84a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.124
+      value: 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 4853346899800235845, guid: b7cbe0fb34c654f5c9f56cb5b309b84a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -220,7 +219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7193576640344936076, guid: b7cbe0fb34c654f5c9f56cb5b309b84a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7cbe0fb34c654f5c9f56cb5b309b84a, type: 3}
