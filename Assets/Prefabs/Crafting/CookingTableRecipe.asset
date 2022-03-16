@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 458f7cabaff164524b9dffd19afcba67, type: 3}
-  m_Name: SecondCraftingRecipeTest
+  m_Name: CookingTableRecipe
   m_EditorClassIdentifier: 
   recipes:
-  - craftedItem: {fileID: 11400000, guid: fae7e666c02e94c67b94b53212edf5fe, type: 2}
+  - craftedItem: {fileID: 11400000, guid: 0f57181ead4c7489eb40e8168c6ed288, type: 2}
     ingredients:
-    - item: {fileID: 11400000, guid: 68d26ad5fa1a546beb7c113902818f1a, type: 2}
+    - item: {fileID: 11400000, guid: be858701799a84e20b363ee5d4f061f6, type: 2}
       number: 1
-    - item: {fileID: 11400000, guid: 791475797a98940ab907fa34d27f67fd, type: 2}
-      number: 0
+    - item: {fileID: 11400000, guid: d97b6d2f8777849bf8446f10c840530c, type: 2}
+      number: 2
