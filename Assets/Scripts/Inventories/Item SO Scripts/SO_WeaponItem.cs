@@ -13,6 +13,9 @@ namespace Game.Inventories
     [CreateAssetMenu(fileName = "Weapon", menuName = "Game/Inventory/New Weapon Item")]
     public class SO_WeaponItem : SO_EquipableItem, IModifierProvider
     {
+        [Tooltip("What is the weapon made of?")]
+        [SerializeField] EquipmentMaterial weaponMaterial = EquipmentMaterial.None;
+
         [Tooltip("To change which animation is played based on the equiped weapon.")]
         [SerializeField] AnimatorOverrideController animatorOverride = null; 
 
@@ -79,6 +82,17 @@ namespace Game.Inventories
         public override bool IsSwappable()
         {
             return !isCurseAttack;
+        }
+        public override EquipmentMaterial GetEquipmentMaterial()
+        {
+            if (isCurseAttack)
+            {
+                return EquipmentMaterial.None;
+            }
+            else
+            {
+                return weaponMaterial;
+            }
         }
 
         [System.Serializable]

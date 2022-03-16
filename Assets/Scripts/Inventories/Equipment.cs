@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.Enums;
 using Game.Saving;
+using Game.Curses;
+using Game.Curses.Effects;
 
 namespace Game.Inventories
 {
@@ -87,6 +89,33 @@ namespace Game.Inventories
         {
             return equippedItems.Keys;
         }
+
+
+        // private bool IsEquipmentMaterialRestricted(SO_EquipableItem item)
+        // {
+        //     if (!GetComponent<PlayerCurses>().DoesCurseHaveEffect(CurseEffectTypes.ArmorRestrictMaterial, PlayerTransformState.Human)) return false;
+        //     if (restrictedMaterialList.Count == 0)
+        //     {
+        //         CreateRestrictedMaterialList();
+        //     }
+        //     foreach (EquipmentMaterial restrictedMaterialItem in restrictedMaterialList)
+        //     {
+        //         if (item.GetEquipmentMaterial() == restrictedMaterialItem) return true;
+        //     }
+        //     return false;
+        // }
+
+        // private void CreateRestrictedMaterialList()
+        // {
+        //     var curseEffect = GetComponent<PlayerCurses>().GetCurseEffectStrategy(CurseEffectTypes.ArmorRestrictMaterial, PlayerTransformState.Human) as SO_ArmorRestrictEffect;
+        //     foreach (EquipmentMaterial item in curseEffect.GetRestictedArmorMaterial())
+        //     {
+        //         restrictedMaterialList.Add(item);
+        //     }
+        // }
+
+
+
         object ISaveable.CaptureState()
         {
             var equippedItemsForSerialization = new Dictionary<EquipLocation, string>();

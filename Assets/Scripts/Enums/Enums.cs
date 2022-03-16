@@ -105,7 +105,8 @@ namespace Game.Enums
     public enum PlayerTransformState
     {
         Human,
-        Monster
+        Monster,
+        Either
     }
 
     public enum CurseTypes
@@ -121,7 +122,8 @@ namespace Game.Enums
         None,
         SoulBonus,
         SoulHealBonus,
-        DamageHealth
+        DamageHealth,
+        ArmorRestrictMaterial
     }
 
     /// <summary>
@@ -183,22 +185,16 @@ namespace Game.Enums
         Curse
     }
 
-    public enum ArmorMaterial
+    public enum EquipmentMaterial
     {
         None,
         Cloth,
+        wood,
         Leather,
         Iron,
         Steel,
+        Silver,
         LlamaFiber
-    }
-    public enum WeaponMaterial
-    {
-        None,
-        Wood,
-        Iron,
-        Steel,
-        Silver
     }
 
     public enum SoulType

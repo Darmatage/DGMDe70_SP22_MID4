@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d471c392b2fd43f5a34821d5081f1c4, type: 3}
-  m_Name: Health Damage Effect
+  m_Name: Effect_HealthDamage
   m_EditorClassIdentifier: 
   curseEffectName: Early Pain
-  curseEffectMod:
-  - stat: 3
-    value: 1
+  healthDamageValue: 1

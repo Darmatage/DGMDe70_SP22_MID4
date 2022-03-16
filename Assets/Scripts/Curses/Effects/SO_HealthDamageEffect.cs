@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Game.Enums;
-using Game.ClassTypes.Player;
 using UnityEngine;
 
 namespace Game.Curses.Effects
@@ -11,7 +10,7 @@ namespace Game.Curses.Effects
     {
         [SerializeField] string curseEffectName;
         [Tooltip("Curse Effect Modifier.")]
-        [SerializeField] Modifier[] curseEffectMod;
+        [SerializeField] float healthDamageValue = 0f;
         private CurseEffectTypes curseEffectType = CurseEffectTypes.DamageHealth;
 
         public override CurseEffectTypes GetCurseEffectType()
@@ -22,32 +21,19 @@ namespace Game.Curses.Effects
         {
             if(effectType == curseEffectType)
             {
-                Debug.Log("It hurts!");
                 return true;
             }
             return false;
         }
-
         public override string GetCurseEffectName()
         {
             return curseEffectName;
         }
-
-        [System.Serializable]
-        struct Modifier
+        public IEnumerable<float> GetCurseModifiers(CurseEffectTypes effectType)
         {
-            public CurseEffectTypes stat;
-            public int value;
-        }  
-
-        public IEnumerable<int> GetCurseModifiers(CurseEffectTypes stat)
-        {
-            foreach (var modifier in curseEffectMod)
+            if (effectType == curseEffectType)
             {
-                if (modifier.stat == stat)
-                {
-                    yield return modifier.value;
-                }
+                yield return healthDamageValue;
             }
         }
     }

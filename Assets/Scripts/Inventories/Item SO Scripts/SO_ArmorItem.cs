@@ -14,7 +14,7 @@ namespace Game.Inventories
     public class SO_ArmorItem : SO_EquipableItem, IModifierProvider
     {
         [Tooltip("What is the armor made of?")]
-        [SerializeField] ArmorMaterial armorMaterialType = ArmorMaterial.None;
+        [SerializeField] EquipmentMaterial armorMaterial = EquipmentMaterial.None;
 
         [Header("Armor Stat Modifiers")]
         [Tooltip("Modify base stats.")]
@@ -22,9 +22,9 @@ namespace Game.Inventories
         [Tooltip("Modify base stats by percentage.")]
         [SerializeField] Modifier[] percentageModifiers;
 
-        public ArmorMaterial GetArmorMaterial()
+        public override EquipmentMaterial GetEquipmentMaterial()
         {
-            return armorMaterialType;
+            return armorMaterial;
         }
 
         [System.Serializable]

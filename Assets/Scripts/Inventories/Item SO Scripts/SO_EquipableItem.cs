@@ -14,5 +14,6 @@ namespace Game.Inventories
         {
             return allowedEquipLocation;
         }
+        public abstract EquipmentMaterial GetEquipmentMaterial();
     }
 }

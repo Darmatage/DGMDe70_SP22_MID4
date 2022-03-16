@@ -61,12 +61,12 @@ namespace Game.Inventories
             if(GetComponent<PlayerTransformControl>().IsMonster)
             {
                 playerCurses = GetComponent<PlayerCurses>();
-                if (playerCurses.GetCurse().HasCurseEffects(CurseEffectTypes.SoulHealBonus))
+                if (playerCurses.DoesCurseHaveEffect(CurseEffectTypes.SoulHealBonus, PlayerTransformState.Monster))
                 {
                     var health = GetComponent<PlayerHealth>();
                     if (health && soulValue == -1)
                     {
-                        var healthChange = playerCurses.GetCurse().GetCurseEffectModifier(CurseEffectTypes.SoulHealBonus);
+                        var healthChange = playerCurses.GetCurseEffectModifiers(CurseEffectTypes.SoulHealBonus, PlayerTransformState.Monster);
                         health.Heal(healthChange);
                         Debug.Log("Souls heal me!");
                     }

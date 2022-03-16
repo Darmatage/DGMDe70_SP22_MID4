@@ -93,14 +93,83 @@ namespace Game.Curses
         {
             return equipedCurseMonster.value.GetDescription();
         }
-
-        public string[] GetCurseMonsterEffectNames()
+        public IEnumerable<string> GetCurseEffectNames(PlayerTransformState transformState)
         {
-            return equipedCurseMonster.value.GetCurseEffectNames();
+            if (transformState == PlayerTransformState.Human)
+            {
+                return equipedCurseHuman.value.GetCurseEffectNames();
+            }
+            else if (transformState == PlayerTransformState.Monster)
+            {
+                return equipedCurseMonster.value.GetCurseEffectNames();
+            }
+            else
+            {
+                return null;
+            }
         }
-        public string[] GetCurseHumanEffectNames()
+
+        public float GetCurseEffectModifiers(CurseEffectTypes curseEffectType, PlayerTransformState transformState)
         {
-            return equipedCurseHuman.value.GetCurseEffectNames();
+            float total = 0;
+            if (transformState == PlayerTransformState.Human)
+            {
+                foreach (float modifier in equipedCurseHuman.value.GetCurseEffectModifier(curseEffectType))
+                {
+                    total += modifier;
+                }
+            }
+            if (transformState == PlayerTransformState.Monster)
+            {
+                foreach (float modifier in equipedCurseMonster.value.GetCurseEffectModifier(curseEffectType))
+                {
+                    total += modifier;
+                }
+            }
+            if (transformState == PlayerTransformState.Either)
+            {
+                // Need to work out how to handle this.
+                // if (equipedCurseHuman.value.HasCurseEffects(curseEffectType) || equipedCurseMonster.value.HasCurseEffects(curseEffectType))
+                // {
+                // }
+            }
+            return total;
+        }
+        public bool DoesCurseHaveEffect(CurseEffectTypes curseEffectType, PlayerTransformState transformState)
+        {
+            bool hasCurseEffect = false;
+            if (transformState == PlayerTransformState.Human)
+            {
+                hasCurseEffect = equipedCurseHuman.value.HasCurseEffects(curseEffectType);
+            }
+            if (transformState == PlayerTransformState.Monster)
+            {
+                hasCurseEffect = equipedCurseMonster.value.HasCurseEffects(curseEffectType);
+            }
+            if (transformState == PlayerTransformState.Either)
+            {
+                if (equipedCurseHuman.value.HasCurseEffects(curseEffectType) || equipedCurseMonster.value.HasCurseEffects(curseEffectType))
+                {
+                    hasCurseEffect = true;
+                }
+            }
+            return hasCurseEffect;
+        }
+
+        public SO_EffectStrategy GetCurseEffectStrategy(CurseEffectTypes curseEffectType, PlayerTransformState transformState)
+        {
+            if (!DoesCurseHaveEffect(curseEffectType, transformState)) return null;
+
+            if (transformState == PlayerTransformState.Human)
+            {
+                return equipedCurseHuman.value.GetSpecificCurseEffectStrategy(curseEffectType);
+            }
+            if (transformState == PlayerTransformState.Monster)
+            {
+                return equipedCurseMonster.value.GetSpecificCurseEffectStrategy(curseEffectType);
+            }
+
+            return null;
         }
 
         private void TransformPlayer(PlayerTransformState transformState)
@@ -145,7 +214,7 @@ namespace Game.Curses
                     if (equipedCurseHuman.value.HasCurseEffects(CurseEffectTypes.DamageHealth))
                     {
                         Debug.Log("Curse cooldown penalty! ");
-                        GetComponent<PlayerHealth>().TakeDamage(equipedCurseHuman.value.GetCurseEffectModifier(CurseEffectTypes.DamageHealth));
+                        GetComponent<PlayerHealth>().TakeDamage(GetCurseEffectModifiers(CurseEffectTypes.DamageHealth, PlayerTransformState.Human));
                     }
                 }
             }
