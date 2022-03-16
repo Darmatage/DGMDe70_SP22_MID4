@@ -18,9 +18,12 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: b275f9c3c43f042c2b0e56b686e901c7, type: 3}
   pickupPrefab: {fileID: 1644453927555417061, guid: 62c5efee5cd3d4b3b97460aa4e44ee21, type: 3}
   allowedEquipLocation: 6
+  weaponMaterial: 4
   animatorOverride: {fileID: 22100000, guid: 5f43330b8d6a94d13989e0deb8c7e26c, type: 2}
   weaponBaseDamage: 8
   projectile: {fileID: 0}
+  projectileManaCost: 0
+  isCurseAttack: 0
   additiveModifiers:
   - stat: 1
     value: 10

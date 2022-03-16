@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ba8234cb0215241c0b599a07ab3b8479, type: 3}
   pickupPrefab: {fileID: 1644453927555417061, guid: 62c5efee5cd3d4b3b97460aa4e44ee21, type: 3}
   allowedEquipLocation: 2
-  armorMaterialType: 3
+  armorMaterial: 4
   additiveModifiers:
   - stat: 5
     value: 2

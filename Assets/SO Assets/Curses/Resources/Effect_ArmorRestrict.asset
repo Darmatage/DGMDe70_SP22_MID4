@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curseEffectName: No Metals
   restrictedArmorMaterialList:
-  - cantEquipArmor: 3
   - cantEquipArmor: 4
+  - cantEquipArmor: 5
