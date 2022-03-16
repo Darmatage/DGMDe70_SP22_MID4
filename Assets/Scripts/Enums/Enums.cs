@@ -183,6 +183,24 @@ namespace Game.Enums
         Curse
     }
 
+    public enum ArmorMaterial
+    {
+        None,
+        Cloth,
+        Leather,
+        Iron,
+        Steel,
+        LlamaFiber
+    }
+    public enum WeaponMaterial
+    {
+        None,
+        Wood,
+        Iron,
+        Steel,
+        Silver
+    }
+
     public enum SoulType
     {
         None,

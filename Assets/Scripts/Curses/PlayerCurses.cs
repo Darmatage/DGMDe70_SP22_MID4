@@ -14,7 +14,6 @@ namespace Game.Curses
 {
     public class PlayerCurses : MonoBehaviour, ISaveable
     {
-        //[SerializeField] CurseTypes selectedCurse = CurseTypes.Werewolf;
         [Tooltip("Curse List Library")]
         [SerializeField] SO_CurseListLibrary curseListLibrary;
 

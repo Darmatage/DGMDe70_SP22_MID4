@@ -44,14 +44,12 @@ namespace Game.UI
 
         public void StartNewGame()
         {
-            Debug.Log("Starting the game!");
             savingWrapper.value.NewGame(firstSceneBuildIndex, fadeTime);
         }
 
         private void ShowStartButton()
         {
             if (startGameButton != null) startGameButton.SetActive(true);
-            Debug.Log("Show Start Button");
         }
 
         private IEnumerator FadeToLoadScreen() 

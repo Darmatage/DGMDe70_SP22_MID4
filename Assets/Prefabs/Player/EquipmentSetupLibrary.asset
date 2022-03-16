@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0fad3929d2b4defa1b784be6909b64, type: 3}
+  m_Name: EquipmentSetupLibrary
+  m_EditorClassIdentifier: 
+  equipmentSetupByCurseList:
+  - curseType: 1
+    setupEquipmentItemList:
+    - equipLocation: 1
+      equipableItemSO: {fileID: 11400000, guid: 715803b96a4ae435283d93809aa53184, type: 2}
+    - equipLocation: 2
+      equipableItemSO: {fileID: 11400000, guid: cf6f9213185ab4bacb8e976a81dbcef8, type: 2}
+    - equipLocation: 3
+      equipableItemSO: {fileID: 11400000, guid: 17ab64937aa0940519ad52486848235c, type: 2}
+    - equipLocation: 4
+      equipableItemSO: {fileID: 11400000, guid: 221d733c05b354634a7b7d1e237ce7be, type: 2}
+    - equipLocation: 5
+      equipableItemSO: {fileID: 11400000, guid: 3f82be073c08640d283b378622302668, type: 2}
+  - curseType: 2
+    setupEquipmentItemList:
+    - equipLocation: 1
+      equipableItemSO: {fileID: 11400000, guid: 715803b96a4ae435283d93809aa53184, type: 2}
+    - equipLocation: 2
+      equipableItemSO: {fileID: 11400000, guid: cf6f9213185ab4bacb8e976a81dbcef8, type: 2}
+    - equipLocation: 3
+      equipableItemSO: {fileID: 11400000, guid: 17ab64937aa0940519ad52486848235c, type: 2}
+    - equipLocation: 4
+      equipableItemSO: {fileID: 11400000, guid: 221d733c05b354634a7b7d1e237ce7be, type: 2}
+    - equipLocation: 5
+      equipableItemSO: {fileID: 11400000, guid: 3f82be073c08640d283b378622302668, type: 2}
