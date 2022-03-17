@@ -1,19 +1,29 @@
 using System;
 using System.Collections.Generic;
 using Game.Enums;
-using Game.ClassTypes.Player;
 using UnityEngine;
 
 namespace Game.Curses.Effects
 {
-    [CreateAssetMenu(fileName = "More Souls Effect", menuName = "Game/Player/Curses/Effects/More Souls")]
+    [CreateAssetMenu(fileName = "Effect_MoreSouls_", menuName = "Game/Player/Curses/Effects/More Souls")]
     public class SO_MoreSoulsEffect : SO_EffectStrategy, ICurseProvider
     {
         [SerializeField] string curseEffectName;
+        [SerializeField] CurseEffectConditionType curseEffectConditionType = CurseEffectConditionType.None;
+        [Tooltip("Curse effect description.")]
+        [SerializeField][TextArea] string description = null;
         [Tooltip("Curse Effect Modifier.")]
-        [SerializeField] Modifier[] curseEffectMod;
+        [SerializeField] float additionalSoulsValue = 0f;
         private CurseEffectTypes curseEffectType = CurseEffectTypes.SoulBonus;
 
+        public override string GetCurseEffectName()
+        {
+            return curseEffectName;
+        }
+        public override string GetDescription()
+        {
+            return description;
+        }
         public override CurseEffectTypes GetCurseEffectType()
         {
             return curseEffectType;
@@ -22,31 +32,22 @@ namespace Game.Curses.Effects
         {
             if(effectType == curseEffectType)
             {
-                Debug.Log("More Souls, Please!");
                 return true;
             }
             return false;
         }
-        public override string GetCurseEffectName()
-        {
-            return curseEffectName;
-        }
-        [System.Serializable]
-        struct Modifier
-        {
-            public CurseEffectTypes stat;
-            public int value;
-        }  
 
-        public IEnumerable<int> GetCurseModifiers(CurseEffectTypes stat)
+        public IEnumerable<float> GetCurseModifiers(CurseEffectTypes effectType)
         {
-            foreach (var modifier in curseEffectMod)
+            if (effectType == curseEffectType)
             {
-                if (modifier.stat == stat)
-                {
-                    yield return modifier.value;
-                }
+                yield return additionalSoulsValue;
             }
+        }
+
+        public override CurseEffectConditionType GetCurseEffectConditionType()
+        {
+            return curseEffectConditionType;
         }
     }
 }

@@ -65,7 +65,7 @@ namespace Game.Inventories
             if (instigator.CompareTag(Tags.PLAYER_TAG))
             {
                 playerCurses = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerCurses>();
-                return playerCurses.GetCurse().GetCurseEffectModifier(CurseEffectTypes.SoulBonus);
+                return Mathf.RoundToInt(playerCurses.GetCurseEffectModifiers(CurseEffectTypes.SoulBonus, PlayerTransformState.Monster));  //GetCurse().GetCurseEffectModifier(CurseEffectTypes.SoulBonus);
             }
             return 0;
         }

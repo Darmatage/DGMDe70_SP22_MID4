@@ -36,7 +36,7 @@ TagManager:
   - Enemies
   - Interactable
   - Projectiles
-  - 
+  - Friendly
   - 
   - 
   - 
@@ -80,4 +80,7 @@ TagManager:
     locked: 0
   - name: Projectiles
     uniqueID: 1198816385
+    locked: 0
+  - name: InGameUI
+    uniqueID: 843830771
     locked: 0

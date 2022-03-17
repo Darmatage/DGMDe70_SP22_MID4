@@ -15,19 +15,18 @@ namespace Game.UI.Stats
     {
         [SerializeField] TextMeshProUGUI levelDisplay;
         [SerializeField] TextMeshProUGUI maxHealthDisplay;
+        [SerializeField] TextMeshProUGUI maxManaDisplay;
         [SerializeField] TextMeshProUGUI damageDisplay;
         [SerializeField] TextMeshProUGUI defenceDisplay;
         [SerializeField] TextMeshProUGUI soulsCountDisplay;
         [SerializeField] Slider karmaSlider;
         private float karmaStartValue = 50f;
-
-        PlayerHealth playerHealth;
+        
         PlayerBaseStats playerBaseStats;
         SoulGemManager playerSoulCount = null;
 
         private void Awake()
         {
-            playerHealth = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerHealth>();
             playerBaseStats = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerBaseStats>();
             playerSoulCount = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG).GetComponent<SoulGemManager>();
         }
@@ -38,14 +37,14 @@ namespace Game.UI.Stats
                 playerSoulCount.onChange += RefreshUI;
             }
             RefreshUI();
-            maxHealthDisplay.text = playerHealth.GetHealthPoints().ToString();
             karmaSlider.maxValue = 100f;
         }
 
         private void Update()
         {
             levelDisplay.text = String.Format("Level: {0}", playerBaseStats.GetLevel());
-            maxHealthDisplay.text = String.Format("Max Health: {0}", playerHealth.GetMaxHealthPoints());
+            maxHealthDisplay.text = String.Format("Max Health: {0}", playerBaseStats.GetStat(PlayerStats.Health));
+            maxManaDisplay.text = String.Format("Max Mana: {0}", playerBaseStats.GetStat(PlayerStats.Mana));
             damageDisplay.text = String.Format("Damage: {0}", playerBaseStats.GetStat(PlayerStats.BaseDamage));
             defenceDisplay.text = String.Format("Defence: {0}", playerBaseStats.GetStat(PlayerStats.BaseDefence)); //Defence is calculate as: TotalDamage /= 1 + PlayerDefence / EnemyDamage;
         }

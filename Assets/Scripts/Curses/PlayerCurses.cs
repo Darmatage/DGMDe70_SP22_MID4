@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Game.Combat;
 using Game.Control;
 using Game.Core;
@@ -14,7 +15,6 @@ namespace Game.Curses
 {
     public class PlayerCurses : MonoBehaviour, ISaveable
     {
-        //[SerializeField] CurseTypes selectedCurse = CurseTypes.Werewolf;
         [Tooltip("Curse List Library")]
         [SerializeField] SO_CurseListLibrary curseListLibrary;
 
@@ -94,14 +94,107 @@ namespace Game.Curses
         {
             return equipedCurseMonster.value.GetDescription();
         }
-
-        public string[] GetCurseMonsterEffectNames()
+        public IEnumerable<string> GetCurseEffectNamesByTransformState(PlayerTransformState transformState)
         {
-            return equipedCurseMonster.value.GetCurseEffectNames();
+            if (transformState == PlayerTransformState.Human)
+            {
+                return equipedCurseHuman.value.GetCurseEffectNames();
+            }
+            else if (transformState == PlayerTransformState.Monster)
+            {
+                return equipedCurseMonster.value.GetCurseEffectNames();
+            }
+            else
+            {
+                return null;
+            }
         }
-        public string[] GetCurseHumanEffectNames()
+
+        public Dictionary<string, SO_EffectStrategy> GetCurseEffectNamesByConditionType(CurseEffectConditionType conditionType)
         {
-            return equipedCurseHuman.value.GetCurseEffectNames();
+            Dictionary<string, SO_EffectStrategy> curseEffectsList = new Dictionary<string, SO_EffectStrategy>();
+
+            foreach (var effectStrategyItem in equipedCurseHuman.value.GetCurseEffectStrategies(conditionType))
+            {
+                curseEffectsList[effectStrategyItem.GetCurseEffectName()] = effectStrategyItem;
+            }
+            foreach (var effectStrategyItem in equipedCurseMonster.value.GetCurseEffectStrategies(conditionType))
+            {
+                curseEffectsList[effectStrategyItem.GetCurseEffectName()] = effectStrategyItem;
+            }
+
+            return curseEffectsList;
+        }
+
+        public float GetCurseEffectModifiers(CurseEffectTypes curseEffectType, PlayerTransformState transformState)
+        {
+            float total = 0;
+            if (transformState == PlayerTransformState.Human)
+            {
+                foreach (float modifier in equipedCurseHuman.value.GetCurseEffectModifier(curseEffectType))
+                {
+                    total += modifier;
+                }
+            }
+            if (transformState == PlayerTransformState.Monster)
+            {
+                foreach (float modifier in equipedCurseMonster.value.GetCurseEffectModifier(curseEffectType))
+                {
+                    total += modifier;
+                }
+            }
+            if (transformState == PlayerTransformState.Either)
+            {
+                // Need to work out how to handle this.
+                // if (equipedCurseHuman.value.HasCurseEffects(curseEffectType) || equipedCurseMonster.value.HasCurseEffects(curseEffectType))
+                // {
+                // }
+            }
+            return total;
+        }
+        public bool DoesCurseHaveEffect(CurseEffectTypes curseEffectType, PlayerTransformState transformState)
+        {
+            bool hasCurseEffect = false;
+            if (transformState == PlayerTransformState.Human)
+            {
+                hasCurseEffect = equipedCurseHuman.value.HasCurseEffects(curseEffectType);
+            }
+            if (transformState == PlayerTransformState.Monster)
+            {
+                hasCurseEffect = equipedCurseMonster.value.HasCurseEffects(curseEffectType);
+            }
+            if (transformState == PlayerTransformState.Either)
+            {
+                if (equipedCurseHuman.value.HasCurseEffects(curseEffectType) || equipedCurseMonster.value.HasCurseEffects(curseEffectType))
+                {
+                    hasCurseEffect = true;
+                }
+            }
+            return hasCurseEffect;
+        }
+
+        public SO_EffectStrategy GetCurseEffectStrategyByTransformState(CurseEffectTypes curseEffectType, PlayerTransformState transformState)
+        {
+            if (!DoesCurseHaveEffect(curseEffectType, transformState)) return null;
+
+            if (transformState == PlayerTransformState.Human)
+            {
+                return equipedCurseHuman.value.GetSpecificCurseEffectStrategy(curseEffectType);
+            }
+            if (transformState == PlayerTransformState.Monster)
+            {
+                return equipedCurseMonster.value.GetSpecificCurseEffectStrategy(curseEffectType);
+            }
+            if (transformState == PlayerTransformState.Either)
+            {
+                List<SO_EffectStrategy> curseEffectList = new List<SO_EffectStrategy>();
+                curseEffectList.Add(equipedCurseHuman.value.GetSpecificCurseEffectStrategy(curseEffectType));
+                curseEffectList.Add(equipedCurseMonster.value.GetSpecificCurseEffectStrategy(curseEffectType));
+                curseEffectList = curseEffectList.Distinct().ToList();
+                return curseEffectList.First<SO_EffectStrategy>();
+            }
+
+            return null;
         }
 
         private void TransformPlayer(PlayerTransformState transformState)
@@ -146,7 +239,7 @@ namespace Game.Curses
                     if (equipedCurseHuman.value.HasCurseEffects(CurseEffectTypes.DamageHealth))
                     {
                         Debug.Log("Curse cooldown penalty! ");
-                        GetComponent<PlayerHealth>().TakeDamage(equipedCurseHuman.value.GetCurseEffectModifier(CurseEffectTypes.DamageHealth));
+                        GetComponent<PlayerHealth>().TakeDamage(GetCurseEffectModifiers(CurseEffectTypes.DamageHealth, PlayerTransformState.Human));
                     }
                 }
             }

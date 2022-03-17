@@ -31,6 +31,7 @@ public class SavingWrapperControl : MonoBehaviour
         CanvasFader fader = FindObjectOfType<CanvasFader>();
         yield return fader.FadeOut(fadeTime);
         yield return SceneManager.LoadSceneAsync(buildIndex);
+        EventHandler.CallLoadFirstSceneEvent();
         yield return fader.FadeIn(fadeTime);
         Save();
     }

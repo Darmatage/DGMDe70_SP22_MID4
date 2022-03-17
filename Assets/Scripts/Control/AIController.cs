@@ -92,7 +92,6 @@ namespace Game.Control
             }
             else
             {
-                Debug.Log("Wondering");
                 WonderBehaviour();
             }
             timeSinceLastSawPlayer += Time.deltaTime;

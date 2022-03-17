@@ -13,11 +13,19 @@ namespace Game.Inventories
     [CreateAssetMenu(fileName = "Armor", menuName = ("Game/Inventory/New Armor Item"))]
     public class SO_ArmorItem : SO_EquipableItem, IModifierProvider
     {
+        [Tooltip("What is the armor made of?")]
+        [SerializeField] EquipmentMaterial armorMaterial = EquipmentMaterial.None;
+
         [Header("Armor Stat Modifiers")]
         [Tooltip("Modify base stats.")]
         [SerializeField] Modifier[] additiveModifiers;
         [Tooltip("Modify base stats by percentage.")]
         [SerializeField] Modifier[] percentageModifiers;
+
+        public override EquipmentMaterial GetEquipmentMaterial()
+        {
+            return armorMaterial;
+        }
 
         [System.Serializable]
         struct Modifier

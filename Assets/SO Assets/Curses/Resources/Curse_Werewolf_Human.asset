@@ -23,8 +23,9 @@ MonoBehaviour:
   curseType: 1
   cursePairState: 0
   cooldownTime: 0
+  curseWeapon: {fileID: 0}
   additiveModifiers: []
   percentageModifiers: []
-  curseWeapon: {fileID: 0}
   effectStrategies:
   - {fileID: 11400000, guid: b6ee400f7c4904ee7b690bf49f2370d6, type: 2}
+  - {fileID: 11400000, guid: 7da2f59cca39d4943a742bf80c89c181, type: 2}

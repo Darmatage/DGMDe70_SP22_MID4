@@ -13,6 +13,9 @@ namespace Game.Inventories
     [CreateAssetMenu(fileName = "Weapon", menuName = "Game/Inventory/New Weapon Item")]
     public class SO_WeaponItem : SO_EquipableItem, IModifierProvider
     {
+        [Tooltip("What is the weapon made of?")]
+        [SerializeField] EquipmentMaterial weaponMaterial = EquipmentMaterial.None;
+
         [Tooltip("To change which animation is played based on the equiped weapon.")]
         [SerializeField] AnimatorOverrideController animatorOverride = null; 
 
@@ -22,6 +25,7 @@ namespace Game.Inventories
         [Header("Range Weapon Attributes")]
         [Tooltip("Adding a Projectile will make this a ranged attack.")]
         [SerializeField] PlayerProjectile projectile = null;
+        [SerializeField] float projectileManaCost = 0;
 
         [Header("Range Weapon Attributes")]
         [Tooltip("Adding a Projectile will make this a ranged attack.")]
@@ -65,6 +69,11 @@ namespace Game.Inventories
             return weaponBaseDamage;
         }
 
+        public float GetManaCost()
+        {
+            return projectileManaCost;
+        }
+
         public override bool IsDroppable()
         {
             return !isCurseAttack;
@@ -73,6 +82,17 @@ namespace Game.Inventories
         public override bool IsSwappable()
         {
             return !isCurseAttack;
+        }
+        public override EquipmentMaterial GetEquipmentMaterial()
+        {
+            if (isCurseAttack)
+            {
+                return EquipmentMaterial.None;
+            }
+            else
+            {
+                return weaponMaterial;
+            }
         }
 
         [System.Serializable]

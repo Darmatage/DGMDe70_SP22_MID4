@@ -129,4 +129,14 @@ public class EventHandler
         }
     }
 
+    // Load First Scene Event
+    public static event Action LoadFirstSceneEvent;
+    public static void CallLoadFirstSceneEvent()
+    {
+        if (LoadFirstSceneEvent != null)
+        {
+            LoadFirstSceneEvent();
+        }
+    }
+
 }

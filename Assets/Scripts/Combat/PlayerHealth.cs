@@ -72,17 +72,17 @@ namespace Game.Combat
 
         public float GetFraction()
         {
-            return healthPoints.value / GetComponent<PlayerBaseStats>().GetStat(PlayerStats.Health);
+            return healthPoints.value / GetMaxHealthPoints();
         }
 
         private void UpdateHealth()
         {
-            healthPoints.value = Mathf.Min(healthPoints.value, GetComponent<PlayerBaseStats>().GetStat(PlayerStats.Health));
+            healthPoints.value = Mathf.Min(healthPoints.value, GetMaxHealthPoints());
         }
 
         private void RegenerateHealth()
         {
-            float regenHealthPoints = GetComponent<PlayerBaseStats>().GetStat(PlayerStats.Health) * (regenerationPercentage / 100);
+            float regenHealthPoints = GetMaxHealthPoints() * (regenerationPercentage / 100);
             healthPoints.value = Mathf.Max(healthPoints.value, regenHealthPoints);
         }
 

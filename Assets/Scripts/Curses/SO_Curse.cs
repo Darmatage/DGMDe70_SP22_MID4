@@ -63,16 +63,22 @@ namespace Game.Curses
             cooldownStore.StartCooldown(this, cooldownTime);
         }
 
-        public string[] GetCurseEffectNames()
+        public IEnumerable<string> GetCurseEffectNames()
         {
-            string[] curseEffectNames = new string[effectStrategies.Length];
-            int i = 0;
             foreach (var effect in effectStrategies)
             {
-                curseEffectNames[i] = effect.GetCurseEffectName();
-                i++;
+                yield return effect.GetCurseEffectName();
             }
-            return curseEffectNames;
+        }
+        public IEnumerable<SO_EffectStrategy> GetCurseEffectStrategies(CurseEffectConditionType conditionType)
+        {
+            foreach (var effect in effectStrategies)
+            {
+                if (conditionType == effect.GetCurseEffectConditionType())
+                {
+                    yield return effect;
+                } 
+            }
         }
 
         public bool HasCurseEffects(CurseEffectTypes curseEffectType)
@@ -88,17 +94,27 @@ namespace Game.Curses
             return hasCurseEffects;
         }
 
-        public int GetCurseEffectModifier(CurseEffectTypes curseEffectType)
+        public SO_EffectStrategy GetSpecificCurseEffectStrategy(CurseEffectTypes curseEffectType)
         {
-            int total = 0;
-            foreach (ICurseProvider curseProvider in effectStrategies)
+            foreach (var effect in effectStrategies)
             {
-                foreach (int modifier in curseProvider.GetCurseModifiers(curseEffectType))
+                if(curseEffectType == effect.GetCurseEffectType())
                 {
-                    total += modifier;
+                    return effect;
                 }
             }
-            return total;
+            return null;
+        }
+
+        public IEnumerable<float> GetCurseEffectModifier(CurseEffectTypes curseEffectType)
+        {
+            foreach (ICurseProvider curseProvider in effectStrategies)
+            {
+                foreach (float modifier in curseProvider.GetCurseModifiers(curseEffectType))
+                {
+                    yield return modifier;
+                }
+            }
         }
 
         public IEnumerable<float> GetAdditiveModifiers(PlayerStats stat)
@@ -123,5 +139,9 @@ namespace Game.Curses
             }
         }
 
+        public override EquipmentMaterial GetEquipmentMaterial()
+        {
+            return EquipmentMaterial.None;
+        }
     }
 }

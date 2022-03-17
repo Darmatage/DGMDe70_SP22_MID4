@@ -67,6 +67,11 @@ namespace Game.ClassTypes.Player
             return currentLevel.value;
         }
 
+        public CharacterClasses GetCharacterClass()
+        {
+            return characterClass;
+        }
+
         private float GetAdditiveModifier(PlayerStats stat)
         {
             float total = 0;

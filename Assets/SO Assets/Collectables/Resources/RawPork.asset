@@ -15,6 +15,6 @@ MonoBehaviour:
   itemID: 43389951-ea32-4e3d-80b5-e46633aeafd0
   displayName: Raw Pork
   description: I can't eat this!
-  icon: {fileID: -5563641394862097508, guid: 106f9d208142047beb85daf73d8d833a, type: 3}
+  icon: {fileID: 21300000, guid: be95c9c8e5f0d4ac2820d43670e4f23a, type: 3}
   pickupPrefab: {fileID: 1644453927555417061, guid: 62c5efee5cd3d4b3b97460aa4e44ee21, type: 3}
   stackable: 1

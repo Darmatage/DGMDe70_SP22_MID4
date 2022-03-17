@@ -53,6 +53,14 @@ namespace Game.Enums
         DV_03
     }
 
+    public enum CursorType
+    {
+        None,
+        Melee,
+        Range,
+        UI
+    }
+
     /// <summary>
     /// Input Action Enums<br/>
     /// </summary>
@@ -97,7 +105,8 @@ namespace Game.Enums
     public enum PlayerTransformState
     {
         Human,
-        Monster
+        Monster,
+        Either
     }
 
     public enum CurseTypes
@@ -111,9 +120,19 @@ namespace Game.Enums
     public enum CurseEffectTypes
     {
         None,
+        DetailEffect,
         SoulBonus,
         SoulHealBonus,
-        DamageHealth
+        DamageHealth,
+        EquipmentRestrictMaterial
+    }
+
+    public enum CurseEffectConditionType
+    {
+        None,
+        Advantage,
+        Disadvantage
+
     }
 
     /// <summary>
@@ -173,6 +192,18 @@ namespace Game.Enums
         Weapon,
         Shield,
         Curse
+    }
+
+    public enum EquipmentMaterial
+    {
+        None,
+        Cloth,
+        wood,
+        Leather,
+        Iron,
+        Steel,
+        Silver,
+        LlamaFiber
     }
 
     public enum SoulType

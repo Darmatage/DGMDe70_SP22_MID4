@@ -1,19 +1,29 @@
 using System;
 using System.Collections.Generic;
 using Game.Enums;
-using Game.ClassTypes.Player;
 using UnityEngine;
 
 namespace Game.Curses.Effects
 {
-    [CreateAssetMenu(fileName = "Souls Health Effect", menuName = "Game/Player/Curses/Effects/Souls Health")]
+    [CreateAssetMenu(fileName = "Effect_SoulsHealth_", menuName = "Game/Player/Curses/Effects/Souls Health")]
     public class SO_SoulsHealthEffect : SO_EffectStrategy, ICurseProvider
     {
         [SerializeField] string curseEffectName;
+        [SerializeField] CurseEffectConditionType curseEffectConditionType = CurseEffectConditionType.None;
+        [Tooltip("Curse effect description.")]
+        [SerializeField][TextArea] string description = null;
         [Tooltip("Curse Effect Modifier.")]
-        [SerializeField] Modifier[] curseEffectMod;
+        [SerializeField] float healthHealValue = 0f;
         private CurseEffectTypes curseEffectType = CurseEffectTypes.SoulHealBonus;
 
+        public override string GetCurseEffectName()
+        {
+            return curseEffectName;
+        }
+        public override string GetDescription()
+        {
+            return description;
+        }
         public override CurseEffectTypes GetCurseEffectType()
         {
             return curseEffectType;
@@ -26,26 +36,17 @@ namespace Game.Curses.Effects
             }
             return false;
         }
-        public override string GetCurseEffectName()
+        public IEnumerable<float> GetCurseModifiers(CurseEffectTypes effectType)
         {
-            return curseEffectName;
-        }
-        [System.Serializable]
-        struct Modifier
-        {
-            public CurseEffectTypes stat;
-            public int value;
-        }  
-
-        public IEnumerable<int> GetCurseModifiers(CurseEffectTypes stat)
-        {
-            foreach (var modifier in curseEffectMod)
+            if (effectType == curseEffectType)
             {
-                if (modifier.stat == stat)
-                {
-                    yield return modifier.value;
-                }
+                yield return healthHealValue;
             }
+        }
+
+        public override CurseEffectConditionType GetCurseEffectConditionType()
+        {
+            return curseEffectConditionType;
         }
     }
 }

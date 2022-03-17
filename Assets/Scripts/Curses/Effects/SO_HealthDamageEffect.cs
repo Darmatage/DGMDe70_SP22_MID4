@@ -1,18 +1,29 @@
 using System;
 using System.Collections.Generic;
 using Game.Enums;
-using Game.ClassTypes.Player;
 using UnityEngine;
 
 namespace Game.Curses.Effects
 {
-    [CreateAssetMenu(fileName = "Health Damage Effect", menuName = "Game/Player/Curses/Effects/Damage Health")]
+    [CreateAssetMenu(fileName = "Effect_HealthDamage_", menuName = "Game/Player/Curses/Effects/Damage Health")]
     public class SO_HealthDamageEffect : SO_EffectStrategy, ICurseProvider
     {
         [SerializeField] string curseEffectName;
+        [SerializeField] CurseEffectConditionType curseEffectConditionType = CurseEffectConditionType.None;
+        [Tooltip("Curse effect description.")]
+        [SerializeField][TextArea] string description = null;
         [Tooltip("Curse Effect Modifier.")]
-        [SerializeField] Modifier[] curseEffectMod;
+        [SerializeField] float healthDamageValue = 0f;
         private CurseEffectTypes curseEffectType = CurseEffectTypes.DamageHealth;
+
+        public override string GetCurseEffectName()
+        {
+            return curseEffectName;
+        }
+        public override string GetDescription()
+        {
+            return description;
+        }
 
         public override CurseEffectTypes GetCurseEffectType()
         {
@@ -22,33 +33,21 @@ namespace Game.Curses.Effects
         {
             if(effectType == curseEffectType)
             {
-                Debug.Log("It hurts!");
                 return true;
             }
             return false;
         }
-
-        public override string GetCurseEffectName()
+        public IEnumerable<float> GetCurseModifiers(CurseEffectTypes effectType)
         {
-            return curseEffectName;
+            if (effectType == curseEffectType)
+            {
+                yield return healthDamageValue;
+            }
         }
 
-        [System.Serializable]
-        struct Modifier
+        public override CurseEffectConditionType GetCurseEffectConditionType()
         {
-            public CurseEffectTypes stat;
-            public int value;
-        }  
-
-        public IEnumerable<int> GetCurseModifiers(CurseEffectTypes stat)
-        {
-            foreach (var modifier in curseEffectMod)
-            {
-                if (modifier.stat == stat)
-                {
-                    yield return modifier.value;
-                }
-            }
+            return curseEffectConditionType;
         }
     }
 }
