@@ -70,6 +70,16 @@ namespace Game.Curses
                 yield return effect.GetCurseEffectName();
             }
         }
+        public IEnumerable<SO_EffectStrategy> GetCurseEffectStrategies(CurseEffectConditionType conditionType)
+        {
+            foreach (var effect in effectStrategies)
+            {
+                if (conditionType == effect.GetCurseEffectConditionType())
+                {
+                    yield return effect;
+                } 
+            }
+        }
 
         public bool HasCurseEffects(CurseEffectTypes curseEffectType)
         {

@@ -120,10 +120,19 @@ namespace Game.Enums
     public enum CurseEffectTypes
     {
         None,
+        DetailEffect,
         SoulBonus,
         SoulHealBonus,
         DamageHealth,
-        ArmorRestrictMaterial
+        EquipmentRestrictMaterial
+    }
+
+    public enum CurseEffectConditionType
+    {
+        None,
+        Advantage,
+        Disadvantage
+
     }
 
     /// <summary>

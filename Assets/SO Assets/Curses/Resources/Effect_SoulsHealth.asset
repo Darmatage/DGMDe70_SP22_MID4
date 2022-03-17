@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Effect_SoulsHealth
   m_EditorClassIdentifier: 
   curseEffectName: Soul Eater
+  curseEffectConditionType: 1
+  description: 
   healthHealValue: 1
+  curseEffectType: 3

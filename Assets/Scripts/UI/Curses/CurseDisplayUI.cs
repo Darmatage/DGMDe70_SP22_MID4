@@ -15,7 +15,7 @@ namespace Game.UI.Curses
         [SerializeField] TextMeshProUGUI curseDescriptionDisplay;
         [SerializeField] Transform curseEffectsAdvantagesListArea;
         [SerializeField] Transform curseEffectsDisadvantagesListArea;
-        [SerializeField] GameObject effectListItemPrefab;
+        [SerializeField] CurseEffectStrategySlotUI effectStrategySlotPrefab;
         
         PlayerCurses playerCurses;
 
@@ -32,28 +32,20 @@ namespace Game.UI.Curses
         {
             curseNameDisplay.text = playerCurses.GetCurseName();
             curseDescriptionDisplay.text = playerCurses.GetCurseDescription();
-            ListCurseEffect(PlayerTransformState.Monster, curseEffectsAdvantagesListArea);
-            ListCurseEffect(PlayerTransformState.Human, curseEffectsDisadvantagesListArea);
-
-
-            // if(playerCurses.DoesCurseHaveEffect(CurseEffectTypes.ArmorRestrictMaterial, PlayerTransformState.Human))
-            // {
-            //     var test = playerCurses.GetCurseEffectStrategy(CurseEffectTypes.ArmorRestrictMaterial, PlayerTransformState.Human) as SO_ArmorRestrictEffect;
-            //     foreach (var item in test.GetRestictedArmorMaterial())
-            //     {
-            //         Debug.Log(item.ToString());
-            //     }
-            // }
+            ListCurseEffect(CurseEffectConditionType.Advantage, curseEffectsAdvantagesListArea);
+            ListCurseEffect(CurseEffectConditionType.Disadvantage, curseEffectsDisadvantagesListArea);
         }
-
-        private void ListCurseEffect(PlayerTransformState transformState, Transform curseEffectListArea)
+        private void ListCurseEffect(CurseEffectConditionType conditionType, Transform curseEffectListArea)
         {
-            foreach (var effect in playerCurses.GetCurseEffectNames(transformState))
+            foreach (Transform child in curseEffectListArea)
             {
-                GameObject listItemInstance = Instantiate(effectListItemPrefab, curseEffectListArea);
-                TMP_Text listItemText = listItemInstance.GetComponentInChildren<TMP_Text>();
-                listItemText.text = effect.ToString();
-                Debug.Log(effect);
+                Destroy(child.gameObject);
+            }
+
+            foreach (var effect in playerCurses.GetCurseEffectNamesByConditionType(conditionType))
+            {
+                var listItemInstance = Instantiate(effectStrategySlotPrefab, curseEffectListArea);
+                listItemInstance.Setup(effect.Value);
             }
         }
     }

@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Effect_MoreSouls
   m_EditorClassIdentifier: 
   curseEffectName: Soul Splitter
+  curseEffectConditionType: 1
+  description: 
   additionalSoulsValue: 1
+  curseEffectType: 2

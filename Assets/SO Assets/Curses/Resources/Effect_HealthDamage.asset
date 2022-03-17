@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Effect_HealthDamage
   m_EditorClassIdentifier: 
   curseEffectName: Early Pain
+  curseEffectConditionType: 2
+  description: 
   healthDamageValue: 1
+  curseEffectType: 4

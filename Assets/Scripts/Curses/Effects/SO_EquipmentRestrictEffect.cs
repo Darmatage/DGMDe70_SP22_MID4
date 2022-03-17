@@ -5,13 +5,16 @@ using UnityEngine;
 
 namespace Game.Curses.Effects
 {
-    [CreateAssetMenu(fileName = "Armor Restrict Effect", menuName = "Game/Player/Curses/Effects/Armor Restrict")]
-    public class SO_ArmorRestrictEffect : SO_EffectStrategy, ICurseProvider
+    [CreateAssetMenu(fileName = "Effect_EquipmentRestrict_", menuName = "Game/Player/Curses/Effects/Equipment Material Restrict")]
+    public class SO_EquipmentRestrictEffect : SO_EffectStrategy, ICurseProvider
     {
         [SerializeField] string curseEffectName;
-        [Tooltip("Curse Effect Modifier.")]
+        [SerializeField] CurseEffectConditionType curseEffectConditionType = CurseEffectConditionType.None;
+        [Tooltip("Curse effect description.")]
+        [SerializeField][TextArea] string description = null;
+        [Tooltip("List restricted materials.")]
         [SerializeField] RestrictedArmorMaterial[] restrictedArmorMaterialList;
-        private CurseEffectTypes curseEffectType = CurseEffectTypes.ArmorRestrictMaterial;
+        private CurseEffectTypes curseEffectType = CurseEffectTypes.EquipmentRestrictMaterial;
 
 
         [System.Serializable]
@@ -19,6 +22,14 @@ namespace Game.Curses.Effects
         {
             public EquipmentMaterial cantEquipArmor;
         } 
+        public override string GetCurseEffectName()
+        {
+            return curseEffectName;
+        }
+        public override string GetDescription()
+        {
+            return description;
+        }
         public override CurseEffectTypes GetCurseEffectType()
         {
             return curseEffectType;
@@ -30,10 +41,6 @@ namespace Game.Curses.Effects
                 return true;
             }
             return false;
-        }
-        public override string GetCurseEffectName()
-        {
-            return curseEffectName;
         }
         public IEnumerable<float> GetCurseModifiers(CurseEffectTypes effectType)
         {
@@ -51,6 +58,10 @@ namespace Game.Curses.Effects
             }
         }
 
+        public override CurseEffectConditionType GetCurseEffectConditionType()
+        {
+            return curseEffectConditionType;
+        }
 
     }
 }

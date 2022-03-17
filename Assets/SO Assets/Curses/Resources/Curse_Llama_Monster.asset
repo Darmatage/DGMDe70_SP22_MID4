@@ -24,8 +24,10 @@ MonoBehaviour:
   curseWeapon: {fileID: 11400000, guid: 84b58fbacf9114c3e84efeff4ea9ad63, type: 2}
   additiveModifiers:
   - stat: 5
-    value: 5
+    value: 10
   percentageModifiers:
   - stat: 1
     value: -50
+  - stat: 3
+    value: 10
   effectStrategies: []

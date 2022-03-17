@@ -27,13 +27,7 @@ MonoBehaviour:
       equipableItemSO: {fileID: 11400000, guid: 3f82be073c08640d283b378622302668, type: 2}
   - curseType: 2
     setupEquipmentItemList:
-    - equipLocation: 1
-      equipableItemSO: {fileID: 11400000, guid: 715803b96a4ae435283d93809aa53184, type: 2}
-    - equipLocation: 2
-      equipableItemSO: {fileID: 11400000, guid: cf6f9213185ab4bacb8e976a81dbcef8, type: 2}
     - equipLocation: 3
       equipableItemSO: {fileID: 11400000, guid: 17ab64937aa0940519ad52486848235c, type: 2}
     - equipLocation: 4
       equipableItemSO: {fileID: 11400000, guid: 221d733c05b354634a7b7d1e237ce7be, type: 2}
-    - equipLocation: 5
-      equipableItemSO: {fileID: 11400000, guid: 3f82be073c08640d283b378622302668, type: 2}

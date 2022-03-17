@@ -42,7 +42,7 @@ namespace Game.UI.Inventories
         public int MaxAcceptable(SO_InventoryItem item)
         {
             SO_EquipableItem equipableItem = item as SO_EquipableItem;
-            if (IsEquipmentMaterialRestricted((SO_EquipableItem) item)) return 0;
+            if (IsEquipmentMaterialRestricted(equipableItem)) return 0;
             if (equipableItem == null) return 0;
             if (equipableItem.GetAllowedEquipLocation() != equipLocation) return 0;
             if (GetItem() != null) return 0;
@@ -87,11 +87,9 @@ namespace Game.UI.Inventories
             playerEquipment.RemoveItem(equipLocation);
         }
 
-        // PRIVATE
-
         private bool IsEquipmentMaterialRestricted(SO_EquipableItem item)
         {
-            if (!player.GetComponent<PlayerCurses>().DoesCurseHaveEffect(CurseEffectTypes.ArmorRestrictMaterial, PlayerTransformState.Human)) return false;
+            if (!player.GetComponent<PlayerCurses>().DoesCurseHaveEffect(CurseEffectTypes.EquipmentRestrictMaterial, PlayerTransformState.Either)) return false;
             if (restrictedMaterialList.Count == 0)
             {
                 CreateRestrictedMaterialList();
@@ -105,7 +103,7 @@ namespace Game.UI.Inventories
 
         private void CreateRestrictedMaterialList()
         {
-            var curseEffect = player.GetComponent<PlayerCurses>().GetCurseEffectStrategy(CurseEffectTypes.ArmorRestrictMaterial, PlayerTransformState.Human) as SO_ArmorRestrictEffect;
+            var curseEffect = player.GetComponent<PlayerCurses>().GetCurseEffectStrategyByTransformState(CurseEffectTypes.EquipmentRestrictMaterial, PlayerTransformState.Either) as SO_EquipmentRestrictEffect;
             foreach (EquipmentMaterial item in curseEffect.GetRestictedArmorMaterial())
             {
                 restrictedMaterialList.Add(item);
