@@ -11,11 +11,9 @@ namespace Game.Control
 {
    public class PlayerInputControl : MonoBehaviour
     {
-        [SerializeField] float timeBetweenActions = 0.75f; //move this to settings
-
         private bool canAttack = true;
         private bool isGamePaused = false;
-        private float timeSinceLastAction = Mathf.Infinity;
+        
         private Vector2 playerDirection = new Vector2(0,0);
         private Rigidbody2D playerRigidbody2D;
         private ActionStore actionStore;
@@ -54,7 +52,6 @@ namespace Game.Control
         }
         private void Update() 
         {    
-            timeSinceLastAction += Time.deltaTime;
             playerDirection = GetComponent<PlayerMovement>().GetPlayerVector2();
             
             Debug.DrawRay(playerRigidbody2D.position, playerDirection, Color.green); //Visilize the Raycast for interaction
@@ -136,8 +133,6 @@ namespace Game.Control
         //Private Functions
         private void DoAction(ActionTypes actionTypes)
         {
-            if(timeSinceLastAction < timeBetweenActions) return;
-
             if(actionTypes == ActionTypes.Attack && canAttack)
             {
                 ResetAnimationTriggers();
@@ -149,7 +144,6 @@ namespace Game.Control
                 //EventHandler.CallInteractActionKeyEvent(false);
                 ResetAnimationTriggers();
             }
-            timeSinceLastAction = 0;
         }
         private void MakeAttackAction()
         {
@@ -175,7 +169,6 @@ namespace Game.Control
             }
 
             isMakingAttack = true;
-            timeSinceLastAction = 0;
         }
 
         private bool InteractWithComponent()

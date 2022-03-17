@@ -21,6 +21,7 @@ MonoBehaviour:
   weaponMaterial: 4
   animatorOverride: {fileID: 22100000, guid: 5f43330b8d6a94d13989e0deb8c7e26c, type: 2}
   weaponBaseDamage: 8
+  weaponAttackSpeed: 2
   projectile: {fileID: 0}
   projectileManaCost: 0
   isCurseAttack: 0

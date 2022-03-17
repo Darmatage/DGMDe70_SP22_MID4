@@ -42,10 +42,10 @@ namespace Game.UI.Inventories
         public int MaxAcceptable(SO_InventoryItem item)
         {
             SO_EquipableItem equipableItem = item as SO_EquipableItem;
-            if (IsEquipmentMaterialRestricted(equipableItem)) return 0;
             if (equipableItem == null) return 0;
             if (equipableItem.GetAllowedEquipLocation() != equipLocation) return 0;
             if (GetItem() != null) return 0;
+            if (IsEquipmentMaterialRestricted(equipableItem)) return 0;
 
             return 1;
         }
@@ -90,10 +90,8 @@ namespace Game.UI.Inventories
         private bool IsEquipmentMaterialRestricted(SO_EquipableItem item)
         {
             if (!player.GetComponent<PlayerCurses>().DoesCurseHaveEffect(CurseEffectTypes.EquipmentRestrictMaterial, PlayerTransformState.Either)) return false;
-            if (restrictedMaterialList.Count == 0)
-            {
-                CreateRestrictedMaterialList();
-            }
+            if (restrictedMaterialList.Count == 0) CreateRestrictedMaterialList();
+            
             foreach (EquipmentMaterial restrictedMaterialItem in restrictedMaterialList)
             {
                 if (item.GetEquipmentMaterial() == restrictedMaterialItem) return true;

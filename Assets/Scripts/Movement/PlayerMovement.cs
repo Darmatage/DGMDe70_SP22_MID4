@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.ClassTypes.Player;
+using Game.Enums;
+using Game.Inventories;
 using Game.Saving;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,8 +11,8 @@ namespace Game.Movement
 {
     public class PlayerMovement : MonoBehaviour, ISaveable
     {
-        [SerializeField] float runningSpeed = 15f;
-        [SerializeField] float walkingSpeed = 5f;
+        private float runningSpeed = 15f;
+        private float walkingSpeed;
         private float movementSpeed;
         private bool runningButtonHeld = false;
 
@@ -39,6 +42,8 @@ namespace Game.Movement
         {
             playerRigidbody = GetComponent<Rigidbody2D>();
             animator = GameObject.Find("Human_Form").GetComponent<Animator>();
+            UpdateMovementSpeed();
+            GetComponent<Equipment>().equipmentUpdated += UpdateMovementSpeed;
         }
 
         private void OnEnable()
@@ -52,7 +57,6 @@ namespace Game.Movement
         }
         private void FixedUpdate()
         {
-           
             if (!PlayerInputIsDisabled)
             {
                 PlayerMove(moveInput);
@@ -99,6 +103,11 @@ namespace Game.Movement
                 lookDirection.Normalize();
             }
 
+        }
+
+        private void UpdateMovementSpeed()
+        {
+            walkingSpeed = GetComponent<PlayerBaseStats>().GetStat(PlayerStats.MovementSpeed);
         }
 
         private void PlayerMovementInput()

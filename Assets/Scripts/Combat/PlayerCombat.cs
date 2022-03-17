@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
 using Game.Inventories;
-using Game.Movement;
 using Game.ClassTypes.Player;
 using Game.Saving;
-using Game.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,12 +11,13 @@ namespace Game.Combat
 {
     public class PlayerCombat : MonoBehaviour, ISaveable
     {
-
         [SerializeField] Transform rangeAttackLaunchPosition;
         [SerializeField] SO_WeaponItem _defaultWeapon = null;
         public SO_WeaponItem DefaultWeapon {get { return _defaultWeapon; }}
         SO_WeaponItem currentWeaponConfig;
         Equipment equipment;
+        private float timeBetweenAttacks = 1f;
+        private float timeSinceLastAttack = Mathf.Infinity;
 
         private void Awake() 
         {
@@ -40,6 +39,11 @@ namespace Game.Combat
         {
             EventHandler.PlayerInputEvent -= SetMeleeAttackDirection;
             EventHandler.PlayerInputEvent -= SetRangeAttackDirection;
+        }
+
+        private void Update() 
+        {
+            timeSinceLastAttack += Time.deltaTime;
         }
 
         public void EquipWeapon(SO_WeaponItem weapon)
@@ -70,6 +74,7 @@ namespace Game.Combat
             PlayerHitCollidersController playerWeapon = GetComponentInChildren<PlayerHitCollidersController>();
             Animator animator = playerWeapon.gameObject.GetComponent<Animator>();
             weapon.Spawn(animator);
+            timeBetweenAttacks = weapon.GetWeaponAttackSpeed();
         }
 
         private void SetMeleeAttackDirection(float xInput, float yInput, bool isWalking, bool isRunning, bool isIdle, bool isMakingAttack,
@@ -77,6 +82,7 @@ namespace Game.Combat
             bool idleUp, bool idleDown, bool idleLeft, bool idleRight)
         {
             if(!isMakingAttack) return;
+            if(timeSinceLastAttack < timeBetweenAttacks) return;
             if(!currentWeaponConfig.HasProjectile())
             {
                 bool isAttackUp = false;
@@ -109,6 +115,7 @@ namespace Game.Combat
 
                 EventHandler.CallPlayerAttackEvent(isAttackUp, isAttackRight, isAttackDown, isAttackLeft);
                 GetComponentInChildren<PlayerHitCollidersController>().ActivateMeleeHitCollider(isAttackUp, isAttackRight, isAttackDown, isAttackLeft);
+                timeSinceLastAttack = 0;
             }
         }
 
@@ -117,6 +124,7 @@ namespace Game.Combat
             bool idleUp, bool idleDown, bool idleLeft, bool idleRight)
         {
             if(!isMakingAttack) return;
+            if(timeSinceLastAttack < timeBetweenAttacks) return;
             
             PlayerMana mana = GetComponent<PlayerMana>();
             if (mana.GetMana() < currentWeaponConfig.GetManaCost()) return;
@@ -156,6 +164,7 @@ namespace Game.Combat
 
                 EventHandler.CallPlayerAttackEvent(isAttackUp, isAttackRight, isAttackDown, isAttackLeft);
                 currentWeaponConfig.LaunchProjectile(rangeAttackLaunchPosition, projectileLaunchDirection, damage);
+                timeSinceLastAttack = 0;
             }
         }
 
