@@ -4,6 +4,7 @@ using Game.Enums;
 public class SavedFileSingleton : Singleton<SavedFileSingleton>
 {
     public static Dictionary<string, object> saveState;
+    public static float volumeLevel = 0.5f;
     public CurseTypes selectedCurse = CurseTypes.Werewolf;
 
     protected override void Awake() {
@@ -24,6 +25,16 @@ public class SavedFileSingleton : Singleton<SavedFileSingleton>
     {
         saveState = newSave;
         //Debug.Log("Set Save: " + saveState);
+    }
+
+    public void SetVolumeLevel(float level)
+    {
+        volumeLevel = level;
+    }
+
+    public float GetVolumeLevel()
+    {
+        return volumeLevel;
     }
 
     public void SetCurseType(CurseTypes chosenCurse)

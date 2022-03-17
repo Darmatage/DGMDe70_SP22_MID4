@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Combat;
@@ -10,31 +11,41 @@ namespace Game.Control
 {
     public class AIController : MonoBehaviour
     {
-        [SerializeField] float chaseDistance = 10f;
+        [SerializeField] float interactDistance = 4f;
         [SerializeField] float suspicionTime = 2f;
         [SerializeField] bool guardThisPosition = false;
         private EnemyCombat combat;
-        private EnemyHealth health;
         private AIMovement movement;
         private GameObject player;
         private Vector2 guardPosition;
+
+        private AIMotiveState aiMotive;
         
         float timeSinceLastSawPlayer = Mathf.Infinity;
         
         private void Awake() 
         {
-            combat = GetComponent<EnemyCombat>();
-            health = GetComponent<EnemyHealth>();
-            movement = GetComponent<AIMovement>();
-
             player = GameObject.FindWithTag(Tags.PLAYER_TAG);
 
+            if(this.CompareTag(Tags.ENEMY_TAG)) EnemyAISetup();
+            if(this.CompareTag(Tags.FRIENDLY_TAG)) FriendlyAISetup();
+        }
+        void Update()
+        {
+            if (aiMotive == AIMotiveState.Enemy) EnemyAIUpdates();
+            if (aiMotive == AIMotiveState.Friendly) FriendlyAIUpdates();
+        }
+
+        private void EnemyAISetup()
+        {
+            aiMotive = AIMotiveState.Enemy;
+            movement = GetComponent<AIMovement>();
+            combat = GetComponent<EnemyCombat>();
             guardPosition = transform.position;
         }
 
-        void Update()
+        private void EnemyAIUpdates()
         {
-            if (health.IsDead()) return;
             if (InAttackRangeOfPlayer() && combat.CanAttack(player) && !player.GetComponent<PlayerTransformControl>().IsMonster)
             {
                 timeSinceLastSawPlayer = 0;
@@ -42,12 +53,10 @@ namespace Game.Control
             }
             else if (timeSinceLastSawPlayer < suspicionTime)
             {
-                //Suspicion State
                 SuspicionBehaviour();
             }
             else if (guardThisPosition)
             {
-                //Guard State
                 GuardBehavior();
             }
             else
@@ -56,6 +65,43 @@ namespace Game.Control
             }
 
             timeSinceLastSawPlayer += Time.deltaTime;
+        }
+
+        private void FriendlyAISetup()
+        {
+            aiMotive = AIMotiveState.Friendly;
+            movement = GetComponent<AIMovement>();
+        }
+
+        private void FriendlyAIUpdates()
+        {
+            if (InAttackRangeOfPlayer() && player.GetComponent<PlayerTransformControl>().IsMonster)
+            {
+                timeSinceLastSawPlayer = 0;
+                FleeBehaviour(1.5f);
+            }
+            else if (IsBeingAttacked() && InAttackRangeOfPlayer())
+            {
+                timeSinceLastSawPlayer = 0;
+                FleeBehaviour(1.75f);
+            }
+            else if (timeSinceLastSawPlayer < suspicionTime)
+            {
+                SuspicionBehaviour();
+                GetComponent<FriendlyHealth>().SetBeingAttacker(false);
+            }
+            else
+            {
+                Debug.Log("Wondering");
+                WonderBehaviour();
+            }
+            timeSinceLastSawPlayer += Time.deltaTime;
+ 
+        }
+
+        private bool IsBeingAttacked()
+        {
+            return GetComponent<FriendlyHealth>().GetBeingAttacker();
         }
 
         private void AttackBehaviour()
@@ -70,22 +116,25 @@ namespace Game.Control
         {
             movement.StartMoveAction(guardPosition);
         }
+        private void FleeBehaviour(float speedMultiplier)
+        {
+            movement.MoveAway(player.transform.position, speedMultiplier);
+        }
         private void WonderBehaviour()
         {
             movement.MoveAround();
-
         }
 
         private bool InAttackRangeOfPlayer()
         {  
             float distanceToPlayer = Vector2.Distance(player.transform.position, transform.position);
-            return distanceToPlayer < chaseDistance;
+            return distanceToPlayer < interactDistance;
         }
 
         //Called by Unity to visulize the guard area
         private void OnDrawGizmos() {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, chaseDistance);
+            Gizmos.DrawWireSphere(transform.position, interactDistance);
         }
     }
     

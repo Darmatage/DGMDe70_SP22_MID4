@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
+using Game.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +13,18 @@ namespace Game.UI
         [SerializeField] GameObject uiCraftingContainer = null;
         [SerializeField] GameObject uiDialogueContainer = null;
         [SerializeField] GameObject uiPauseContainer = null;
+        LazyValue<SavingWrapperControl> savingWrapper;
         private bool isGamePaused = false;
+
+        private void Awake() 
+        {
+            savingWrapper = new LazyValue<SavingWrapperControl>(GetSavingWrapper);
+        }
+
+        private SavingWrapperControl GetSavingWrapper()
+        {
+            return FindObjectOfType<SavingWrapperControl>();
+        }
 
         private void OnEnable()
         {
@@ -50,9 +62,21 @@ namespace Game.UI
             }
         }
 
+        public void OpenInventoryHUDButton()
+        {
+            MenuToggle(uiInventroyContainer);
+        }
+
         public void ClosePauseUI()
         {
             MenuToggle(uiPauseContainer);
+        }
+
+        public void ExitGameUI()
+        {
+            isGamePaused = false;
+            savingWrapper.value.ExitGame(0, 0.5f);
+            Debug.Log("Exit Game");
         }
 
         private void InventoryToggle()
@@ -60,6 +84,7 @@ namespace Game.UI
             MenuToggle(uiInventroyContainer);
             Debug.Log("Inventory toggle");
         }
+
 
         private void CraftingToggle()
         {

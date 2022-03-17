@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
-using Game.PlayerClass;
+using Game.ClassTypes.Player;
 using UnityEngine;
 
 namespace Game.Combat
@@ -14,11 +14,11 @@ namespace Game.Combat
         }
         private void MeleeAttack(Collider2D other)
         {
-            if (other.gameObject.CompareTag(Tags.ENEMY_TAG)) 
+            if (other.gameObject.CompareTag(Tags.ENEMY_TAG) || other.gameObject.CompareTag(Tags.FRIENDLY_TAG)) 
             {
                 Debug.Log("Attacking: " + other);
                 float damage = GetComponentInParent<PlayerBaseStats>().GetStat(PlayerStats.BaseDamage);
-                other.GetComponent<EnemyHealth>().TakeDamage(GameObject.FindWithTag(Tags.PLAYER_TAG), damage);
+                other.GetComponent<IHealth>().TakeDamage(GameObject.FindWithTag(Tags.PLAYER_TAG), damage);
             }
         }
     }

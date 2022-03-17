@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7c2904c3d6749858deea8d323dcf23, type: 3}
+  m_Name: RawPork
+  m_EditorClassIdentifier: 
+  itemID: 43389951-ea32-4e3d-80b5-e46633aeafd0
+  displayName: Raw Pork
+  description: I can't eat this!
+  icon: {fileID: -5563641394862097508, guid: 106f9d208142047beb85daf73d8d833a, type: 3}
+  pickupPrefab: {fileID: 1644453927555417061, guid: 62c5efee5cd3d4b3b97460aa4e44ee21, type: 3}
+  stackable: 1

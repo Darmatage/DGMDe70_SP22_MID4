@@ -197,7 +197,7 @@ namespace Game.Control
 
         RaycastHit2D[] RaycastAllSorted()
         {
-            RaycastHit2D[] hits = Physics2D.RaycastAll(playerRigidbody2D.position, playerDirection, 2f);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(playerRigidbody2D.position, playerDirection, 1f);
             float[] distances = new float[hits.Length];
             for (int i = 0; i < hits.Length; i++)
             {

@@ -9,7 +9,7 @@ namespace Game.Inventories
     /// as well as the option to change chances by difficultly level.
     /// </summary>
 
-    [CreateAssetMenu(fileName = "LootDropTable", menuName = ("Game/Enemy/Loot Drop Table"))]
+    [CreateAssetMenu(fileName = "LootDropTable", menuName = ("Game/NPCs/Loot Drop Table"))]
     public class SO_LootDropLibrary : ScriptableObject
     {
         [Tooltip("What items can be dropped?")]

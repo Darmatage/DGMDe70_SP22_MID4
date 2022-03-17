@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: c69343d2-975f-4976-b048-b30779ba84e9
   displayName: Health Potion
-  description: Heal 5 Points
+  description: Heal 20 Points
   icon: {fileID: 21300000, guid: 69cff5c4b8fb947ebaadcc1e88545cb8, type: 3}
   pickupPrefab: {fileID: 1644453927555417061, guid: 62c5efee5cd3d4b3b97460aa4e44ee21, type: 3}
   consumable: 1
   stackable: 1
   cooldownTime: 10
-  healthChange: 5
+  healthChange: 20

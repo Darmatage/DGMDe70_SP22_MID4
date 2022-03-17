@@ -11,6 +11,11 @@ public class SavingWrapperControl : MonoBehaviour
         StartCoroutine(LoadFirstScene(buildIndex, fadeTime));
     }
 
+    public void ExitGame(int buildIndex, float fadeTime)
+    {
+        StartCoroutine(LoadMainMenuScene(buildIndex, fadeTime));
+    }
+
     public void Save()
     {
         GetComponent<SavingSystem>().Save();
@@ -22,6 +27,15 @@ public class SavingWrapperControl : MonoBehaviour
     }
 
     private IEnumerator LoadFirstScene(int buildIndex, float fadeTime) 
+    {
+        CanvasFader fader = FindObjectOfType<CanvasFader>();
+        yield return fader.FadeOut(fadeTime);
+        yield return SceneManager.LoadSceneAsync(buildIndex);
+        yield return fader.FadeIn(fadeTime);
+        Save();
+    }
+
+    private IEnumerator LoadMainMenuScene(int buildIndex, float fadeTime) 
     {
         CanvasFader fader = FindObjectOfType<CanvasFader>();
         yield return fader.FadeOut(fadeTime);

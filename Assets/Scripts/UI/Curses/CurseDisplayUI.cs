@@ -12,9 +12,13 @@ namespace Game.UI.Curses
     {
         [SerializeField] TextMeshProUGUI curseNameDisplay;
         [SerializeField] TextMeshProUGUI curseDescriptionDisplay;
-        [SerializeField] TextMeshProUGUI curseEffectsDisplay;
+        [SerializeField] Transform curseEffectsAdvantagesListArea;
+        [SerializeField] Transform curseEffectsDisadvantagesListArea;
+        [SerializeField] GameObject effectListItemPrefab;
 
-        private string[] curseEffectsArray = null;
+        private string[] curseMonsterEffectsArray = null;
+        private string[] curseHumanEffectsArray = null;
+        
         PlayerCurses playerCurses;
 
         private void Awake()
@@ -23,17 +27,29 @@ namespace Game.UI.Curses
         }
         void Start()
         {
-            curseEffectsArray = playerCurses.GetCurseEffectNames();
+            curseMonsterEffectsArray = playerCurses.GetCurseMonsterEffectNames();
+            curseHumanEffectsArray = playerCurses.GetCurseHumanEffectNames();
 
-            foreach (var effect in curseEffectsArray)
-            {
-                Debug.Log(effect);
-            }
-
-            curseNameDisplay.text = playerCurses.GetCurseName();
-            curseDescriptionDisplay.text = playerCurses.GetCurseDescription();
-
+            SetupCurseDetails();
         }
 
+        private void SetupCurseDetails()
+        {
+            curseNameDisplay.text = playerCurses.GetCurseName();
+            curseDescriptionDisplay.text = playerCurses.GetCurseDescription();
+            ListCurseEffect(curseMonsterEffectsArray, curseEffectsAdvantagesListArea);
+            ListCurseEffect(curseHumanEffectsArray, curseEffectsDisadvantagesListArea);
+        }
+
+        private void ListCurseEffect(string[] curseEffects, Transform curseEffectListArea)
+        {
+            foreach (var effect in curseEffects)
+            {
+                GameObject listItemInstance = Instantiate(effectListItemPrefab, curseEffectListArea);
+                TMP_Text listItemText = listItemInstance.GetComponentInChildren<TMP_Text>();
+                listItemText.text = effect.ToString();
+                Debug.Log(effect);
+            }
+        }
     }
 }

@@ -95,9 +95,13 @@ namespace Game.Curses
             return equipedCurseMonster.value.GetDescription();
         }
 
-        public string[] GetCurseEffectNames()
+        public string[] GetCurseMonsterEffectNames()
         {
             return equipedCurseMonster.value.GetCurseEffectNames();
+        }
+        public string[] GetCurseHumanEffectNames()
+        {
+            return equipedCurseHuman.value.GetCurseEffectNames();
         }
 
         private void TransformPlayer(PlayerTransformState transformState)

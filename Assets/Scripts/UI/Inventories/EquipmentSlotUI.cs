@@ -16,6 +16,7 @@ namespace Game.UI.Inventories
     {
         [SerializeField] InventoryItemIcon icon = null;
         [SerializeField] EquipLocation equipLocation = EquipLocation.None;
+        [SerializeField] GameObject slotIconContainer = null;
         [SerializeField] GameObject slotTextContainer = null;
         [SerializeField] TextMeshProUGUI slotText = null;
 
@@ -30,6 +31,7 @@ namespace Game.UI.Inventories
         private void Start() 
         {
             slotText.text = equipLocation.ToString();
+            if(slotIconContainer != null) slotTextContainer.SetActive(false);
             RedrawUI();
         }
 
@@ -85,8 +87,17 @@ namespace Game.UI.Inventories
         void RedrawUI()
         {
             icon.SetItem(playerEquipment.GetItemInSlot(equipLocation));
-            if(playerEquipment.GetItemInSlot(equipLocation) == null) slotTextContainer.SetActive(true);
-            if(playerEquipment.GetItemInSlot(equipLocation) != null) slotTextContainer.SetActive(false);
+            if(slotIconContainer == null)
+            {
+                if(playerEquipment.GetItemInSlot(equipLocation) == null) slotTextContainer.SetActive(true);
+                if(playerEquipment.GetItemInSlot(equipLocation) != null) slotTextContainer.SetActive(false);
+            }
+            else
+            {
+                if(playerEquipment.GetItemInSlot(equipLocation) == null) slotIconContainer.SetActive(true);
+                if(playerEquipment.GetItemInSlot(equipLocation) != null) slotIconContainer.SetActive(false);
+            }
+
         }
     }
 }

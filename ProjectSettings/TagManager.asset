@@ -22,6 +22,7 @@ TagManager:
   - SavingStatePersists
   - DialogueChoices
   - DialogueChoicesButtons
+  - Friendly
   layers:
   - Default
   - TransparentFX
@@ -73,6 +74,9 @@ TagManager:
     locked: 0
   - name: Collisions
     uniqueID: 4147367637
+    locked: 0
+  - name: Shadows
+    uniqueID: 1435931229
     locked: 0
   - name: Projectiles
     uniqueID: 1198816385

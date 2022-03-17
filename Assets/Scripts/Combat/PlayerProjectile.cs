@@ -14,7 +14,6 @@ namespace Game.Combat
         private void Start()
         {
             transform.right = launchDirection;
-            //transform.rotation = Quaternion.Euler(0,0,0);
         }
         private void Update()
         {
@@ -31,8 +30,8 @@ namespace Game.Combat
         }
         private void OnTriggerEnter2D(Collider2D other) 
         {
-            if(other.GetComponent<EnemyHealth>() == null) return;
-            other.GetComponent<EnemyHealth>().TakeDamage(GameObject.FindWithTag(Tags.PLAYER_TAG), damage);
+            if(other.GetComponent<IHealth>() == null) return;
+            other.GetComponent<IHealth>().TakeDamage(GameObject.FindWithTag(Tags.PLAYER_TAG), damage);
             Destroy(gameObject);
         }
     }

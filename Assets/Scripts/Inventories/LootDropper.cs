@@ -1,9 +1,9 @@
 using Game.Control;
 using Game.Curses;
-using Game.EnemyClass;
 using Game.Enums;
 using UnityEngine;
 using UnityEngine.AI;
+using Game.ClassTypes;
 
 namespace Game.Inventories
 {
@@ -19,30 +19,43 @@ namespace Game.Inventories
 
         public void RandomDrop()
         {
-            var enemyClass = GetComponent<EnemyClassSetup>();
+            var aiClass = GetComponent<IClassSetup>();
 
-            var drops = lootDropLibrary.GetRandomDrops(enemyClass.GetDifficultyLevel());
+            var drops = lootDropLibrary.GetRandomDrops(aiClass.GetDifficultyLevel());
             foreach (var drop in drops)
             {
                 DropItem(drop.item, drop.number);
             }   
         }
 
-        public void GemDrop(GameObject instigator)
+        public void SoulGemDrop(GameObject instigator, AIMotiveState aiState)
         {
             if (redSoulGemItem == null || blueSoulGemItem == null) return;
-
             bool isMonster = instigator.GetComponent<PlayerTransformControl>().IsMonster;
+            int soulGemDropAmount = 1;
 
-            int soulGemDrop = 1;
-
-            if (isMonster)
+            if (aiState == AIMotiveState.Enemy)
             {
-                DropItem(redSoulGemItem, soulGemDrop + GetBonusSoulGems(instigator));
+                if (!isMonster)
+                {
+                    DropItem(blueSoulGemItem, soulGemDropAmount);
+                }
+                if (isMonster)
+                {
+                    DropItem(redSoulGemItem, soulGemDropAmount + GetBonusSoulGems(instigator));
+                }
             }
-            if (!isMonster)
+
+            if (aiState == AIMotiveState.Friendly)
             {
-                DropItem(blueSoulGemItem, soulGemDrop);
+                if (!isMonster)
+                {
+                    DropItem(redSoulGemItem, soulGemDropAmount);
+                }
+                if (isMonster)
+                {
+                    DropItem(blueSoulGemItem, soulGemDropAmount + GetBonusSoulGems(instigator));
+                }
             }
 
         }

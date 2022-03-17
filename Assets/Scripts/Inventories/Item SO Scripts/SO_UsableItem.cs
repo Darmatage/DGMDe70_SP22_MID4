@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Inventories
 {
-    [CreateAssetMenu(fileName = "Health Potion", menuName = "Game/Inventory/New Health Potion")]
+    [CreateAssetMenu(fileName = "Health Item", menuName = "Game/Inventory/New Health Item")]
     public class SO_UsableItem : SO_ActionItem
     {
         [SerializeField] float cooldownTime = 0f;

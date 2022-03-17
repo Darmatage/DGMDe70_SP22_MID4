@@ -120,6 +120,19 @@ namespace Game.Enums
     /// Enemy Enums<br/>
     /// Info about the enemy.
     /// </summary>
+    public enum AIMotiveState
+    {
+        None,
+        Enemy,
+        Friendly
+    }
+    public enum AIBaseStat
+    {
+        None,
+        Health,
+        BaseDamage,
+        ExperienceReward
+    }
     public enum EnemyType
     {
         None,
@@ -127,11 +140,11 @@ namespace Game.Enums
         Bat,
         Wolf
     }
-    public enum EnemyBaseStat
+    public enum FriendlyType
     {
-        Health,
-        BaseDamage,
-        ExperienceReward
+        None,
+        Pig,
+        Sprout
     }
 
     /// <summary>

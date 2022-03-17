@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Core;
-using Game.EnemyClass;
+using Game.ClassTypes.Enemy;
+using Game.ClassTypes.Player;
 using Game.Enums;
 using Game.Movement;
-using Game.PlayerClass;
 using Game.Utils;
 using UnityEngine;
 
