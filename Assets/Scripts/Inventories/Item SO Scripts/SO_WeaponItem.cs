@@ -21,6 +21,8 @@ namespace Game.Inventories
 
         [Tooltip("The weapons base damage.")]
         [SerializeField] float weaponBaseDamage = 5f;
+        [Tooltip("Weapon attack speed")]
+        [SerializeField] WeaponAttackSpeed weaponAttackSpeed = WeaponAttackSpeed.None;
 
         [Header("Range Weapon Attributes")]
         [Tooltip("Adding a Projectile will make this a ranged attack.")]
@@ -92,6 +94,18 @@ namespace Game.Inventories
             else
             {
                 return weaponMaterial;
+            }
+        }
+
+        public float GetWeaponAttackSpeed()
+        {
+            switch (weaponAttackSpeed)
+            {
+                case WeaponAttackSpeed.Fast: return 0.25f;
+                case WeaponAttackSpeed.Medium: return 0.5f;
+                case WeaponAttackSpeed.Slow: return 0.75f;
+                
+                default: return 1f;
             }
         }
 

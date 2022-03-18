@@ -99,7 +99,8 @@ namespace Game.Enums
         ManaRegenRate,
         BaseDamage,
         BaseDefence,
-        ExperienceToLevelUp
+        ExperienceToLevelUp,
+        MovementSpeed
     }
 
     public enum PlayerTransformState
@@ -204,6 +205,14 @@ namespace Game.Enums
         Steel,
         Silver,
         LlamaFiber
+    }
+
+    public enum WeaponAttackSpeed
+    {
+        None,
+        Fast,
+        Medium,
+        Slow
     }
 
     public enum SoulType

@@ -18,7 +18,12 @@ MonoBehaviour:
   icon: {fileID: 0}
   pickupPrefab: {fileID: 0}
   allowedEquipLocation: 6
+  weaponMaterial: 0
+  animatorOverride: {fileID: 0}
   weaponBaseDamage: 5
+  weaponAttackSpeed: 1
   projectile: {fileID: 0}
+  projectileManaCost: 0
+  isCurseAttack: 0
   additiveModifiers: []
   percentageModifiers: []
