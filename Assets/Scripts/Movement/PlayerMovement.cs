@@ -4,6 +4,7 @@ using Game.ClassTypes.Player;
 using Game.Enums;
 using Game.Inventories;
 using Game.Saving;
+using Game.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +13,7 @@ namespace Game.Movement
     public class PlayerMovement : MonoBehaviour, ISaveable
     {
         private float runningSpeed = 15f;
-        private float walkingSpeed;
+        LazyValue<float> walkingSpeed;
         private float movementSpeed;
         private bool runningButtonHeld = false;
 
@@ -42,8 +43,13 @@ namespace Game.Movement
         {
             playerRigidbody = GetComponent<Rigidbody2D>();
             animator = GameObject.Find("Human_Form").GetComponent<Animator>();
-            UpdateMovementSpeed();
+            walkingSpeed = new LazyValue<float>(GetInitialWalkSpeed);
             GetComponent<Equipment>().equipmentUpdated += UpdateMovementSpeed;
+        }
+
+        private void Start()
+        {
+            walkingSpeed.ForceInit();
         }
 
         private void OnEnable()
@@ -86,6 +92,11 @@ namespace Game.Movement
 
             #endregion Player Input
         }
+
+        private float GetInitialWalkSpeed()
+        {
+            return GetComponent<PlayerBaseStats>().GetStat(PlayerStats.MovementSpeed);
+        }
         
         public void Move(InputAction.CallbackContext value)
         {
@@ -107,7 +118,7 @@ namespace Game.Movement
 
         private void UpdateMovementSpeed()
         {
-            walkingSpeed = GetComponent<PlayerBaseStats>().GetStat(PlayerStats.MovementSpeed);
+            walkingSpeed.value = GetComponent<PlayerBaseStats>().GetStat(PlayerStats.MovementSpeed);
         }
 
         private void PlayerMovementInput()
@@ -129,7 +140,7 @@ namespace Game.Movement
                 isWalking = true;
                 isRunning = false;
                 isIdle = false;
-                movementSpeed = walkingSpeed;
+                movementSpeed = walkingSpeed.value;
             }
             else if (xInput == 0 && yInput == 0)
             {
@@ -153,7 +164,7 @@ namespace Game.Movement
                 isWalking = true;
                 isRunning = false;
                 isIdle = false;
-                movementSpeed = walkingSpeed;
+                movementSpeed = walkingSpeed.value;
             }
         }
 
