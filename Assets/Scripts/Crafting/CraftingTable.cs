@@ -9,8 +9,8 @@ namespace Game.Crafting
     public class CraftingTable : MonoBehaviour, IRaycastable
     {
         [SerializeField] SO_CraftingRecipe craftingRecipe = null;
-        [SerializeField] CraftingUI craftingItems = null;
         [SerializeField] GameObject interactionIndicatorUI = null;
+        private CraftingUI craftingItems = null;
         private bool isKeyActive = false;
         private bool isRaycastOn = false;
         private void OnEnable()
