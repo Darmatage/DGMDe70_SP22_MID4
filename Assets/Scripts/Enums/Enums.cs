@@ -18,7 +18,8 @@ namespace Game.Enums
     public enum CutSceneDestinationIdentifier
     {
         Wizard,
-        EvilWizard
+        EvilWizard,
+        Guard,
     }
 
     public enum GameScenes
