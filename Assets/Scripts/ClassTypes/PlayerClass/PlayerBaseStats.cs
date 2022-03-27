@@ -9,8 +9,9 @@ namespace Game.ClassTypes.Player
 {
     public class PlayerBaseStats : MonoBehaviour
     {
-        [Range(1, 99)]
-        [SerializeField] int startingLevel = 1;
+        // [Range(1, 5)]
+        // [SerializeField] int startingLevel = 1;
+        private int startingLevel = 1;
         [SerializeField] CharacterClasses characterClass;
         [SerializeField] SO_PlayerProgression progression = null;
         public event Action onLevelUp;

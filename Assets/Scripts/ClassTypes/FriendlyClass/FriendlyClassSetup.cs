@@ -8,8 +8,9 @@ namespace Game.ClassTypes.Friendly
 {
     public class FriendlyClassSetup : MonoBehaviour, IClassSetup
     {
-        [Range(1,5)]
-        [SerializeField] int difficultyLevel = 1;
+        // [Range(1,5)]
+        // [SerializeField] int difficultyLevel = 1;
+        private int difficultyLevel = 1;
         [SerializeField] FriendlyType friendlyType;
         [SerializeField] float movementSpeed = 1f;
         [SerializeField] SO_FriendlyClassStats friendlyClassStats = null;

@@ -19,7 +19,7 @@ namespace Game.Enums
     {
         Wizard,
         EvilWizard,
-        Guard,
+        Guard
     }
 
     public enum GameScenes
@@ -157,15 +157,14 @@ namespace Game.Enums
     public enum EnemyType
     {
         None,
-        Blob,
-        Bat,
-        Wolf
+        Lizard,
+        Wolf,
+        WerePig
     }
     public enum FriendlyType
     {
         None,
-        Pig,
-        Sprout
+        Pig
     }
 
     /// <summary>

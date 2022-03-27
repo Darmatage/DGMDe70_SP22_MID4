@@ -178,7 +178,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1, y: 0.25}
+  m_Offset: {x: -0.75, y: 0.25}
   m_Size: {x: 1.5, y: 3}
   m_Direction: 0
 --- !u!114 &6197886959596841872
@@ -475,7 +475,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.1}
-  m_Size: {x: 1.0000004, y: 0.2}
+  m_Size: {x: 0.8, y: 0.2}
   m_Direction: 1
 --- !u!114 &6197886959752762851
 MonoBehaviour:
@@ -489,8 +489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43feac24ea6014d4598392a6f4e609c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runningSpeed: 15
-  walkingSpeed: 10
   animator: {fileID: 0}
 --- !u!114 &6197886959752762850
 MonoBehaviour:
@@ -504,7 +502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2524e7ab213ed4d53a08a51c25f6a2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenActions: 0.75
 --- !u!114 &6197886959752762849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,7 +543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0689395bf79459b9f2ba069a15fca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLevel: 1
   characterClass: 0
   progression: {fileID: 11400000, guid: f8f6511dd51614e52971d8e66af94594, type: 2}
 --- !u!114 &6197886959752762848
@@ -759,7 +755,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.75}
+  m_Offset: {x: 0, y: -0.5}
   m_Size: {x: 3, y: 1.5}
   m_Direction: 1
 --- !u!114 &6197886959996213089
@@ -1017,7 +1013,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1, y: 0.25}
+  m_Offset: {x: 0.75, y: 0.25}
   m_Size: {x: 1.5, y: 3}
   m_Direction: 0
 --- !u!114 &6197886960920881724

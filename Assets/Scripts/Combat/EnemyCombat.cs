@@ -118,6 +118,7 @@ namespace Game.Combat
         {
             EnemyProjectile projectInstance = Instantiate(projectile, rangeAttackLaunchPosition.position, Quaternion.identity, GameObject.FindGameObjectWithTag(Tags.PROJECTILES_TAG).transform);
             projectInstance.SetTarget(target, damage);
+            projectInstance.transform.rotation = Quaternion.Euler(0,0,0);
         }
 
         private bool HasProjectile()
