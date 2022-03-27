@@ -19,7 +19,15 @@ namespace Game.Enums
     {
         Wizard,
         EvilWizard,
-        Guard
+        Guard,
+        SirWalter,
+        Narrator,
+        Hero,
+        Stuart,
+        Alex,
+        Esther,
+        Gerald,
+        Troll
     }
 
     public enum GameScenes
@@ -44,7 +52,13 @@ namespace Game.Enums
         Stage_01,
         Stage_02,
         Stage_03,
-        Stage_04
+        Stage_04,
+        Stage_05,
+        Stage_06,
+        Stage_07,
+        Stage_08,
+        Stage_09,
+        Stage_10
     }
 
     public enum DialogueVariant
