@@ -19,7 +19,7 @@ namespace Game.Enums
     {
         Wizard,
         EvilWizard,
-        Guard,
+        Guard
     }
 
     public enum GameScenes

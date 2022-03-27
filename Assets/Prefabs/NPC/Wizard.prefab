@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8367631440745114260}
   - component: {fileID: 7415626621460735411}
   - component: {fileID: 3874200173546148347}
-  - component: {fileID: 5348108096993999285}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Untagged
@@ -49,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionIndicatorUI: {fileID: 2872553406277174192}
+  cutSceneDestinationIdentifier: 0
 --- !u!61 &3874200173546148347
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09847659, y: -0.2151897}
+  m_Offset: {x: -0.01926893, y: 0.025073528}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -73,26 +73,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3866118, y: 2.4078517}
+  m_Size: {x: 0.9641701, y: 1.314785}
   m_EdgeRadius: 0
---- !u!114 &5348108096993999285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2419816002067204258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79089632e6937462b88ff74872432f0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneNameGoto: 1
-  _reappearSpawnPoint: {fileID: 4747346679104767294}
-  _nPCDestination: 0
-  fadeOutTime: 0.5
-  fadeWaitTime: 0.5
-  fadeInTime: 0.5
 --- !u!1 &3700894157724318193
 GameObject:
   m_ObjectHideFlags: 0

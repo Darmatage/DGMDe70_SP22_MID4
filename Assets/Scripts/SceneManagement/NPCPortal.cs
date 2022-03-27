@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using Game.Control;
 using Game.Enums;
 
+//no longer used to manage character dialogue scenes
+
 namespace Game.SceneManagement
 {
     public class NPCPortal : MonoBehaviour
