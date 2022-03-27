@@ -17,7 +17,7 @@ MonoBehaviour:
     stats:
     - friendlyBaseStat: 1
       levels:
-      - 5
+      - 20
     - friendlyBaseStat: 3
       levels:
       - 0

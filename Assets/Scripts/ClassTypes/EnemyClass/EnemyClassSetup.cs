@@ -8,8 +8,9 @@ namespace Game.ClassTypes.Enemy
 {
     public class EnemyClassSetup : MonoBehaviour, IClassSetup
     {
-        [Range(1,5)]
-        [SerializeField] int difficultyLevel = 1;
+        // [Range(1,5)]
+        // [SerializeField] int difficultyLevel = 1;
+        private int difficultyLevel = 1;
         [SerializeField] EnemyType enemyType;
         [SerializeField] WeaponAttackType enemyAttackType;
         [SerializeField] float movementSpeed = 1f;

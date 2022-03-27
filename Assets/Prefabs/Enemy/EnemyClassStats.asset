@@ -17,29 +17,53 @@ MonoBehaviour:
     stats:
     - enemyBaseStat: 1
       levels:
-      - 5
-      - 10
-      - 15
-      - 20
       - 25
     - enemyBaseStat: 2
       levels:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
+      - 0
     - enemyBaseStat: 3
       levels:
-      - 2
-      - 5
-      - 8
-      - 10
-      - 15
+      - 0
     meleeAttackDetails:
-      attackDamage: 0
-      attackRange: 2
+      attackDamage: 5
+      attackRange: 1
     rangeAttackDetails:
-      attackDamage: 0
+      attackDamage: 3
+      attackRange: 4
+      projectile: {fileID: 6215970973363243965, guid: a1f49de7f1b314c6792e47336b377283, type: 3}
+  - enemyType: 2
+    stats:
+    - enemyBaseStat: 1
+      levels:
+      - 25
+    - enemyBaseStat: 2
+      levels:
+      - 0
+    - enemyBaseStat: 3
+      levels:
+      - 0
+    meleeAttackDetails:
+      attackDamage: 5
+      attackRange: 1
+    rangeAttackDetails:
+      attackDamage: 2.5
+      attackRange: 4
+      projectile: {fileID: 6215970973363243965, guid: a1f49de7f1b314c6792e47336b377283, type: 3}
+  - enemyType: 3
+    stats:
+    - enemyBaseStat: 1
+      levels:
+      - 25
+    - enemyBaseStat: 2
+      levels:
+      - 0
+    - enemyBaseStat: 3
+      levels:
+      - 0
+    meleeAttackDetails:
+      attackDamage: 5
+      attackRange: 1
+    rangeAttackDetails:
+      attackDamage: 2.5
       attackRange: 4
       projectile: {fileID: 6215970973363243965, guid: a1f49de7f1b314c6792e47336b377283, type: 3}
