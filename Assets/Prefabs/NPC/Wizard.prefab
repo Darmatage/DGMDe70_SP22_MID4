@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8367631440745114260}
-  - component: {fileID: 7415626621460735411}
   - component: {fileID: 3874200173546148347}
+  - component: {fileID: 7415626621460735411}
   - component: {fileID: 5348108096993999285}
   m_Layer: 0
   m_Name: Wizard
@@ -36,19 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7415626621460735411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2419816002067204258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 975a1a534cab447a68c4d7a1bb2d57bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionIndicatorUI: {fileID: 2872553406277174192}
 --- !u!61 &3874200173546148347
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -75,6 +62,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3866118, y: 2.4078517}
   m_EdgeRadius: 0
+--- !u!114 &7415626621460735411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419816002067204258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2b52506c7e1497c977c8db77acd584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionIndicatorUI: {fileID: 2872553406277174192}
+  cutSceneDestinationIdentifier: 0
 --- !u!114 &5348108096993999285
 MonoBehaviour:
   m_ObjectHideFlags: 0
