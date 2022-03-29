@@ -60,6 +60,10 @@ namespace Game.Story
         scene03();
         scene04();
         scene05();
+        scene06();
+        scene07();
+        scene08();
+        scene09();
 
         testDialogue();
 
