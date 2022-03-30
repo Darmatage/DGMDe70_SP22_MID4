@@ -623,7 +623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1615757110644304918, guid: 505d573f136cb4876b2e877822db97de, type: 3}
       propertyPath: buttonLoadWaitTime
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1615757110751982887, guid: 505d573f136cb4876b2e877822db97de, type: 3}
       propertyPath: m_AnchorMax.y

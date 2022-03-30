@@ -7,6 +7,7 @@ using TMPro;
 using Game.Enums;
 using System;
 using Game.Control;
+using Game.SceneManagement;
 
 namespace Game.Story
 {
@@ -72,7 +73,7 @@ namespace Game.Story
             closeDialogueButton.onClick.AddListener(() => 
             {
                 EventHandler.CallCloseAllUIActionEvent();
-            });   
+            });
         }
         public void OpenScreen(CutSceneDestinationIdentifier cutSceneDestinationIdentifier, DialogueVariant variant = DialogueVariant.DV_01) 
         {
@@ -88,7 +89,7 @@ namespace Game.Story
             closeDialogueButton.onClick.AddListener(() => 
             {
                 EventHandler.CallCloseAllUIActionEvent();
-            });   
+            });
         }
 
         private void RefreshDialogue(CutSceneDestinationIdentifier cutSceneDestinationIdentifier, bool isMonster, DialogueVariant variant) {
