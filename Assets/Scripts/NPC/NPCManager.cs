@@ -9,11 +9,11 @@ using Game.SceneManagement;
 
 namespace Game.NPC
 {
-    public class WizardManager : MonoBehaviour, IRaycastable
+    public class NPCManager : MonoBehaviour, IRaycastable
     {
         [SerializeField] GameObject interactionIndicatorUI = null;
 
-        // [SerializeField] DialogueManager dialogueUIManager = null;
+        [SerializeField] CutSceneDestinationIdentifier cutSceneDestinationIdentifier = CutSceneDestinationIdentifier.Wizard;
 
         DialogueManager dialogue;
         private bool isKeyActive = false;
@@ -25,11 +25,11 @@ namespace Game.NPC
         
         private void OnEnable()
         {
-            EventHandler.InteractActionKeyEvent += InteractActionActivateWizard;
+            EventHandler.InteractActionKeyEvent += InteractActionActivate;
         }
         private void OnDisable()
         {
-            EventHandler.InteractActionKeyEvent -= InteractActionActivateWizard;
+            EventHandler.InteractActionKeyEvent -= InteractActionActivate;
         }
 
         private void Update() 
@@ -49,15 +49,15 @@ namespace Game.NPC
 
             if(isKeyActive)
             {
-                Debug.Log("Activate Wizard");
+                Debug.Log("Activate " + cutSceneDestinationIdentifier);
 
-                EventHandler.CallDialogueActionEvent(CutSceneDestinationIdentifier.Wizard);
+                EventHandler.CallDialogueActionEvent(cutSceneDestinationIdentifier);
             }
             EventHandler.CallInteractActionKeyEvent(false);
             return true;
         }
 
-        private void InteractActionActivateWizard(bool isKeyPressed)
+        private void InteractActionActivate(bool isKeyPressed)
         {
             isKeyActive = isKeyPressed;
         }

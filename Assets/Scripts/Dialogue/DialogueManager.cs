@@ -7,6 +7,7 @@ using TMPro;
 using Game.Enums;
 using System;
 using Game.Control;
+using Game.SceneManagement;
 
 namespace Game.Story
 {
@@ -72,7 +73,7 @@ namespace Game.Story
             closeDialogueButton.onClick.AddListener(() => 
             {
                 EventHandler.CallCloseAllUIActionEvent();
-            });   
+            });
         }
         public void OpenScreen(CutSceneDestinationIdentifier cutSceneDestinationIdentifier, DialogueVariant variant = DialogueVariant.DV_01) 
         {
@@ -88,7 +89,7 @@ namespace Game.Story
             closeDialogueButton.onClick.AddListener(() => 
             {
                 EventHandler.CallCloseAllUIActionEvent();
-            });   
+            });
         }
 
         private void RefreshDialogue(CutSceneDestinationIdentifier cutSceneDestinationIdentifier, bool isMonster, DialogueVariant variant) {
@@ -115,6 +116,7 @@ namespace Game.Story
                     Button next = DialogueChoiceButtonNext.GetComponent<Button>();
                     next.onClick.AddListener(() => {
                         GameScene.Instance.AdvanceStage();
+                        actions[0]();
                         RefreshDialogue(cutSceneDestinationIdentifier, isMonster, variant);
                     });
                 }
@@ -142,9 +144,9 @@ namespace Game.Story
                     choice1.text = dialogue[1];
                     Button button1 = DialogueChoiceButton1.GetComponent<Button>();
                     button1.onClick.AddListener(() => {
-                        actions[0]();
                         dialogueChoice = 1;
                         GameScene.Instance.AdvanceStage();
+                        actions[0]();
                         RefreshDialogue(cutSceneDestinationIdentifier, isMonster, variant);
                     });
                 }
@@ -158,9 +160,9 @@ namespace Game.Story
                     choice2.text = dialogue[2];
                     Button button2 = DialogueChoiceButton2.GetComponent<Button>();
                     button2.onClick.AddListener(() => {
-                        actions[1]();
                         dialogueChoice = 2;
                         GameScene.Instance.AdvanceStage();
+                        actions[1]();
                         RefreshDialogue(cutSceneDestinationIdentifier, isMonster, variant);
                     });
                 }
@@ -174,9 +176,9 @@ namespace Game.Story
                     choice3.text = dialogue[3];
                     Button button3 = DialogueChoiceButton3.GetComponent<Button>();
                     button3.onClick.AddListener(() => {
-                        actions[2]();
                         dialogueChoice = 3;
                         GameScene.Instance.AdvanceStage();
+                        actions[2]();
                         RefreshDialogue(cutSceneDestinationIdentifier, isMonster, variant);
                     });
                 }
@@ -190,9 +192,9 @@ namespace Game.Story
                     choice4.text = dialogue[4];
                     Button button4 = DialogueChoiceButton4.GetComponent<Button>();
                     button4.onClick.AddListener(() => {
-                        actions[3]();
                         dialogueChoice = 4;
                         GameScene.Instance.AdvanceStage();
+                        actions[3]();
                         RefreshDialogue(cutSceneDestinationIdentifier, isMonster, variant);
                     });
                 }

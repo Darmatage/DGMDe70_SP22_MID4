@@ -20,10 +20,10 @@ MonoBehaviour:
   allowedEquipLocation: 6
   weaponMaterial: 2
   animatorOverride: {fileID: 22100000, guid: 2cb083f3c719049339f8dbb4d7d3bbb1, type: 2}
-  weaponBaseDamage: 12
+  weaponBaseDamage: 6
   weaponAttackSpeed: 1
   projectile: {fileID: 8701212113269864078, guid: c985473fe05cc48189647fbcc311ded2, type: 3}
-  projectileManaCost: 3
+  projectileManaCost: 5
   isCurseAttack: 0
   additiveModifiers: []
   percentageModifiers: []

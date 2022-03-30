@@ -23,6 +23,7 @@ TagManager:
   - DialogueChoices
   - DialogueChoicesButtons
   - Friendly
+  - CanvasFader
   layers:
   - Default
   - TransparentFX

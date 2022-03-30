@@ -11,19 +11,25 @@ namespace Game.UI
     {
         [SerializeField] GameObject uiInventroyContainer = null;
         [SerializeField] GameObject uiCraftingContainer = null;
-        [SerializeField] GameObject uiDialogueContainer = null;
         [SerializeField] GameObject uiPauseContainer = null;
+
+        LazyValue<GameObject> uiDialogueContainer;
         LazyValue<SavingWrapperControl> savingWrapper;
         private bool isGamePaused = false;
 
         private void Awake() 
         {
+            uiDialogueContainer = new LazyValue<GameObject>(GetDialogueContainer);
             savingWrapper = new LazyValue<SavingWrapperControl>(GetSavingWrapper);
         }
 
         private SavingWrapperControl GetSavingWrapper()
         {
             return FindObjectOfType<SavingWrapperControl>();
+        }
+        private GameObject GetDialogueContainer()
+        {
+            return GameObject.FindWithTag(Tags.UI_DIALOGUE_CONTAINER_TAG);
         }
 
         private void OnEnable()
@@ -33,6 +39,7 @@ namespace Game.UI
             EventHandler.CraftingActionEvent += CraftingToggle;
             EventHandler.DialogueActionEvent += DialogueToggle;
             EventHandler.CloseAllUIActionEvent += CloseAllUI;
+            EventHandler.ActiveGameUI += GamePausedToggle;
         }
 
         private void OnDisable()
@@ -42,13 +49,15 @@ namespace Game.UI
             EventHandler.CraftingActionEvent -= CraftingToggle;
             EventHandler.DialogueActionEvent -= DialogueToggle;
             EventHandler.CloseAllUIActionEvent -= CloseAllUI;
+            EventHandler.ActiveGameUI -= GamePausedToggle;
         }
         private void Start()
         {
+            uiDialogueContainer.ForceInit();
             uiInventroyContainer.SetActive(false);
             uiCraftingContainer.SetActive(false);
             uiPauseContainer.SetActive(false);
-            uiDialogueContainer.SetActive(false);
+            uiDialogueContainer.value.SetActive(false);
         }
         private void Update()
         {
@@ -94,7 +103,7 @@ namespace Game.UI
 
         private void DialogueToggle(CutSceneDestinationIdentifier cutSceneDestinationIdentifier) //<- Variables only included here because the event passes it through
         {
-            MenuToggle(uiDialogueContainer);
+            MenuToggle(uiDialogueContainer.value);
             Debug.Log("Dialogue toggle");
         }
 
@@ -105,7 +114,7 @@ namespace Game.UI
                 uiInventroyContainer.SetActive(false);
                 uiCraftingContainer.SetActive(false);
                 uiPauseContainer.SetActive(false);
-                uiDialogueContainer.SetActive(false);
+                uiDialogueContainer.value.SetActive(false);
                 isGamePaused = false;
             }
             else 
@@ -123,7 +132,7 @@ namespace Game.UI
             uiInventroyContainer.SetActive(false);
             uiCraftingContainer.SetActive(false);
             uiPauseContainer.SetActive(false);
-            uiDialogueContainer.SetActive(false);
+            uiDialogueContainer.value.SetActive(false);
             isGamePaused = false;
             EventHandler.CallActiveGameUI(isGamePaused);
         }
@@ -136,9 +145,9 @@ namespace Game.UI
                 uiCraftingContainer.SetActive(false);
                 isGamePaused = true;
             }
-            else if(isGamePaused && uiDialogueContainer.activeSelf)
+            else if(isGamePaused && uiDialogueContainer.value.activeSelf)
             {
-                uiDialogueContainer.SetActive(false);
+                uiDialogueContainer.value.SetActive(false);
                 isGamePaused = true;
             }
             else if (isGamePaused && !uiCraftingContainer.activeSelf)
@@ -150,6 +159,12 @@ namespace Game.UI
                 isGamePaused = true;
             }
             EventHandler.CallActiveGameUI(isGamePaused);
+        }
+
+        private void GamePausedToggle(bool toggleTo)
+        {
+            isGamePaused = toggleTo;
+            Debug.Log("IsGamePause: " + isGamePaused);
         }
 
     }

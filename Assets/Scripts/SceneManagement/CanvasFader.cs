@@ -17,6 +17,10 @@ namespace Game.SceneManagement
         {
             canvasGroup.alpha = 1;
         }
+        public void FadeInImmediate()
+        {
+            canvasGroup.alpha = 0;
+        }
         public Coroutine FadeOut(float time)
         {
             return Fade(1, time);
@@ -42,6 +46,7 @@ namespace Game.SceneManagement
             while (!Mathf.Approximately(canvasGroup.alpha, target))
             {
                 canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, target, Time.deltaTime / time);
+                //Debug.Log(canvasGroup.alpha);
                 yield return null;
             }
         }
