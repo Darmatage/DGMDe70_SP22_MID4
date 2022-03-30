@@ -38,7 +38,7 @@ namespace Game.Story
           return text[getKey(scene, stage, npc, isMonster, variant)];
         }
         catch {
-          return null;
+          return text[getKey(GameScenes.Scene_00, stage, CutSceneDestinationIdentifier.Narrator, isMonster, variant)];
         }
       }
 
@@ -55,6 +55,7 @@ namespace Game.Story
       */
 
       private void initDialogue() {
+        scene00();
         scene01();
         scene02();
         scene03();
@@ -80,6 +81,16 @@ namespace Game.Story
         if (dialogueActions != null) {
           actions.Add(key, dialogueActions);
         }
+      }
+
+      // Fallback dialogue if active NPC character has no commentary for active scene.
+      private void scene00() {
+        setDialogue(getKey(
+          GameScenes.Scene_00,
+          GameStages.Stage_01,
+          CutSceneDestinationIdentifier.Narrator),
+          new string[] {"Come back and see me later."}
+        );
       }
 
       private void scene01() {

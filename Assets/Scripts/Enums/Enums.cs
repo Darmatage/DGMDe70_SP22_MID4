@@ -36,6 +36,7 @@ namespace Game.Enums
         Scene_Dialogue,
         Scene_Credits,
         Scene_Gameover,
+        Scene_00,
         Scene_01,
         Scene_02,
         Scene_03,
