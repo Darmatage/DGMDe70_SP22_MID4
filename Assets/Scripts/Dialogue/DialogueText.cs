@@ -137,13 +137,27 @@ namespace Game.Story
 
         setDialogue(getKey(
           GameScenes.Scene_00,
-          GameStages.Stage_01,
+          GameStages.Stage_04,
           CutSceneDestinationIdentifier.Villager),
-          new string[] {"Welcome to Goldfleece; the guards can help you."}
+          new string[] {"Welcome to Goldfleece!"},
+          new System.Action[] {
+            () => {
+              GameScene.Instance.AdvanceScene();
+            }
+          }
         );
       }
 
       private void scene01() {
+
+        // VILLAGER
+
+        setDialogue(getKey(
+          GameScenes.Scene_01,
+          GameStages.Stage_01,
+          CutSceneDestinationIdentifier.Villager),
+          new string[] {"The guards can help you."}
+        );
 
         // GUARD
 
@@ -197,7 +211,7 @@ namespace Game.Story
 
         setDialogue(getKey(
           GameScenes.Scene_01,
-          GameStages.Stage_06,
+          GameStages.Stage_05,
           CutSceneDestinationIdentifier.SirWalter),
           new string[] {
             "Hey there- you look like a strong fighter! Are you looking for me?",
@@ -237,18 +251,23 @@ namespace Game.Story
 
         setDialogue(getKey(
           GameScenes.Scene_01,
-          GameStages.Stage_10,
+          GameStages.Stage_09,
           CutSceneDestinationIdentifier.Guard),
-          new string[] {"Guard: Sir Walter! The wolves are here again!"}
+          new string[] {"Sir Walter! The wolves are here again!"}
         );
 
         // SIR WALTER
 
         setDialogue(getKey(
           GameScenes.Scene_01,
-          GameStages.Stage_11,
+          GameStages.Stage_10,
           CutSceneDestinationIdentifier.SirWalter),
-          new string[] {"Go defend us!"}
+          new string[] {"Go defend us!"},
+          new System.Action[] {
+            () => {
+              GameScene.Instance.AdvanceScene();
+            }
+          }
         );
 
       }
@@ -260,6 +279,13 @@ namespace Game.Story
         setDialogue(getKey(
           GameScenes.Scene_02,
           GameStages.Stage_01,
+          CutSceneDestinationIdentifier.SirWalter),
+          new string[] {"The wolves are here!"}
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_02,
+          GameStages.Stage_02,
           CutSceneDestinationIdentifier.Narrator),
           new string[] {"As you fight the wolves, you feel a strange power awaken inside you…"},
           nextAction
@@ -267,7 +293,7 @@ namespace Game.Story
 
         setDialogue(getKey(
           GameScenes.Scene_02,
-          GameStages.Stage_02,
+          GameStages.Stage_03,
           CutSceneDestinationIdentifier.Narrator),
           new string[] {"You transform into a monster, with powerful attacks, but more vulnerable!"},
           nextAction
@@ -275,7 +301,7 @@ namespace Game.Story
 
         setDialogue(getKey(
           GameScenes.Scene_02,
-          GameStages.Stage_03,
+          GameStages.Stage_04,
           CutSceneDestinationIdentifier.Narrator),
           new string[] {"What secrets await?"}
         );
