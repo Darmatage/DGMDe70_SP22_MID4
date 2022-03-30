@@ -27,6 +27,7 @@ public class GameScene : MonoBehaviour
 
     public void AdvanceScene() {
         switch (currentScene) {
+            case GameScenes.Scene_00: currentScene = GameScenes.Scene_01; break;
             case GameScenes.Scene_01: currentScene = GameScenes.Scene_02; break;
             case GameScenes.Scene_02: currentScene = GameScenes.Scene_03; break;
             case GameScenes.Scene_03: currentScene = GameScenes.Scene_04; break;
@@ -45,6 +46,13 @@ public class GameScene : MonoBehaviour
             case GameStages.Stage_01: currentStage = GameStages.Stage_02; break;
             case GameStages.Stage_02: currentStage = GameStages.Stage_03; break;
             case GameStages.Stage_03: currentStage = GameStages.Stage_04; break;
+            case GameStages.Stage_04: currentStage = GameStages.Stage_05; break;
+            case GameStages.Stage_05: currentStage = GameStages.Stage_06; break;
+            case GameStages.Stage_06: currentStage = GameStages.Stage_07; break;
+            case GameStages.Stage_07: currentStage = GameStages.Stage_08; break;
+            case GameStages.Stage_08: currentStage = GameStages.Stage_09; break;
+            case GameStages.Stage_09: currentStage = GameStages.Stage_10; break;
+            case GameStages.Stage_10: currentStage = GameStages.Stage_11; break;
         }
     }
 
@@ -52,40 +60,4 @@ public class GameScene : MonoBehaviour
         currentScene = GameScenes.Scene_01;
         currentStage = GameStages.Stage_01;
     }
-
-    /*
-    TODO: If we don't need this, let's remove it.
-
-    public void ChangeScene(GameScenes scene, GameStages stage = GameStages.Stage_01) 
-    {
-        SavingWrapperControl wrapper = FindObjectOfType<SavingWrapperControl>(); //<- Still working on this
-
-        switch (scene) {
-            case GameScenes.Scene_Dialogue:
-                wrapper.Save();
-                SceneManager.LoadSceneAsync((int)SceneName.Scene_Dialogue);
-                wrapper.Load();
-                break;
-            
-            case GameScenes.Scene_Credits:
-                wrapper.Save();
-                SceneManager.LoadSceneAsync("Start");
-                wrapper.Load();
-                break;
-
-            // Game Scenes
-
-            case GameScenes.Scene_Main:
-                wrapper.Save();
-                SceneManager.LoadSceneAsync((int)SceneName.Scene_Main);
-                wrapper.Load();
-                break;
-
-        }
-    }
-
-    public void PreviousScene() {
-        SceneManager.LoadSceneAsync((int)currentScene);
-    }
-    */
 }

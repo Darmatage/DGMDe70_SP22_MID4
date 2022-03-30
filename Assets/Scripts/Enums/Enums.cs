@@ -27,7 +27,9 @@ namespace Game.Enums
         Alex,
         Esther,
         Gerald,
-        Troll
+        Troll,
+        Fallback,
+        Villager
     }
 
     public enum GameScenes
@@ -59,7 +61,8 @@ namespace Game.Enums
         Stage_07,
         Stage_08,
         Stage_09,
-        Stage_10
+        Stage_10,
+        Stage_11
     }
 
     public enum DialogueVariant

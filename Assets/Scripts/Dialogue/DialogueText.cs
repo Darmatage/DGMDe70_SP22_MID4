@@ -12,6 +12,13 @@ namespace Game.Story
 
       System.Action[] nextAction = new System.Action[] {() => {}};
 
+      // Use when you want to skip past the alternate choice from a choice menu.
+      System.Action[] skipNext1Action = new System.Action[] {
+        () => {
+          GameScene.Instance.AdvanceStage();
+        }
+      };
+
       public GameDialogue() {
         initDialogue();
       }
@@ -38,7 +45,7 @@ namespace Game.Story
           return text[getKey(scene, stage, npc, isMonster, variant)];
         }
         catch {
-          return text[getKey(GameScenes.Scene_00, stage, CutSceneDestinationIdentifier.Narrator, isMonster, variant)];
+          return text[getKey(GameScenes.Scene_00, GameStages.Stage_01, CutSceneDestinationIdentifier.Fallback, false, variant)];
         }
       }
 
@@ -83,13 +90,56 @@ namespace Game.Story
         }
       }
 
-      // Fallback dialogue if active NPC character has no commentary for active scene.
       private void scene00() {
+
+        // Fallback dialogue if active NPC character has no commentary for active scene.
+        setDialogue(getKey(
+          GameScenes.Scene_00,
+          GameStages.Stage_01,
+          CutSceneDestinationIdentifier.Fallback),
+          new string[] {"Come back and see me later."}
+        );
+
+        // NARRATOR
+
         setDialogue(getKey(
           GameScenes.Scene_00,
           GameStages.Stage_01,
           CutSceneDestinationIdentifier.Narrator),
-          new string[] {"Come back and see me later."}
+          new string[] {"You are the 17th child of Gerald the Gallant, who recently fought Esther, the sorceress."},
+          nextAction
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_00,
+          GameStages.Stage_02,
+          CutSceneDestinationIdentifier.Narrator),
+          new string[] {"Your father is a good hero, but your family is in terrible debt. On your 18th birthday, you enlisted in the military, hoping to find a fortune on the frontier."},
+          nextAction
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_00,
+          GameStages.Stage_03,
+          CutSceneDestinationIdentifier.Narrator),
+          new string[] {"After a long journey, you finally arrive at Goldfleece, from the wild, monster filled forests."},
+          nextAction
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_00,
+          GameStages.Stage_04,
+          CutSceneDestinationIdentifier.Narrator),
+          new string[] {"Your journey is just beginning.."}
+        );
+
+        // VILLAGER
+
+        setDialogue(getKey(
+          GameScenes.Scene_00,
+          GameStages.Stage_01,
+          CutSceneDestinationIdentifier.Villager),
+          new string[] {"Welcome to Goldfleece; the guards can help you."}
         );
       }
 
@@ -132,15 +182,22 @@ namespace Game.Story
           GameScenes.Scene_01,
           GameStages.Stage_04,
           CutSceneDestinationIdentifier.Guard),
-          new string[] {"Well, we're drafting able bodied souls to help us fight local monsters. Go see Sir Walter by the barracks!"},
+          new string[] {"Well, we're drafting able bodied souls to help us fight local monsters."},
           nextAction
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_01,
+          GameStages.Stage_05,
+          CutSceneDestinationIdentifier.Guard),
+          new string[] {"Go see Sir Walter by the barracks!"}
         );
 
         // SIR WALTER
 
         setDialogue(getKey(
           GameScenes.Scene_01,
-          GameStages.Stage_05,
+          GameStages.Stage_06,
           CutSceneDestinationIdentifier.SirWalter),
           new string[] {
             "Hey there- you look like a strong fighter! Are you looking for me?",
@@ -155,7 +212,7 @@ namespace Game.Story
 
         setDialogue(getKey(
           GameScenes.Scene_01,
-          GameStages.Stage_06,
+          GameStages.Stage_07,
           CutSceneDestinationIdentifier.SirWalter),
           new string[] {"Well you'll need a job soon! As captain of the Goldfleece guard, I hereby draft you into military service. Congratulations!"},
           nextAction
@@ -163,17 +220,24 @@ namespace Game.Story
 
         setDialogue(getKey(
           GameScenes.Scene_01,
-          GameStages.Stage_07,
+          GameStages.Stage_08,
           CutSceneDestinationIdentifier.SirWalter),
           new string[] {"Welcome, recruit! You'll be a hero in no time. Take this sword."},
           nextAction
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_01,
+          GameStages.Stage_09,
+          CutSceneDestinationIdentifier.SirWalter),
+          new string[] {"Take this sword."}
         );
 
         // GUARD
 
         setDialogue(getKey(
           GameScenes.Scene_01,
-          GameStages.Stage_08,
+          GameStages.Stage_10,
           CutSceneDestinationIdentifier.Guard),
           new string[] {"Guard: Sir Walter! The wolves are here again!"}
         );
@@ -182,10 +246,9 @@ namespace Game.Story
 
         setDialogue(getKey(
           GameScenes.Scene_01,
-          GameStages.Stage_09,
+          GameStages.Stage_11,
           CutSceneDestinationIdentifier.SirWalter),
-          new string[] {"Go defend us!"},
-          nextAction
+          new string[] {"Go defend us!"}
         );
 
       }
@@ -256,11 +319,18 @@ namespace Game.Story
           nextAction
         );
 
+        setDialogue(getKey(
+          GameScenes.Scene_03,
+          GameStages.Stage_05,
+          CutSceneDestinationIdentifier.Hero),
+          new string[] {"My first clue…!"}
+        );
+
         // NARRATOR
 
         setDialogue(getKey(
           GameScenes.Scene_03,
-          GameStages.Stage_05,
+          GameStages.Stage_06,
           CutSceneDestinationIdentifier.Narrator),
           new string[] {"As the adrenaline from your fight subsides, you notice a bloodstained note on a tree, near the end of the tracks."},
           nextAction
@@ -268,7 +338,7 @@ namespace Game.Story
 
         setDialogue(getKey(
           GameScenes.Scene_03,
-          GameStages.Stage_06,
+          GameStages.Stage_07,
           CutSceneDestinationIdentifier.Narrator),
           new string[] {
             "Do you want to read the note?",
@@ -276,22 +346,25 @@ namespace Game.Story
             "No"
           },
           new System.Action[] {
-            () => Debug.Log("Chose 1"),
-            () => Debug.Log("Chose 2")
+            () => Debug.Log("Chose 1"), // The first option is the next stage
+            () => {
+              Debug.Log("Chose 2");
+              GameScene.Instance.AdvanceStage();
+            }
           }
         );
 
         setDialogue(getKey(
           GameScenes.Scene_03,
-          GameStages.Stage_07,
+          GameStages.Stage_08,
           CutSceneDestinationIdentifier.Narrator),
           new string[] {"The note is from your father, Gerald: \"Find me at Crystal Cove! I'll explain everything!\""},
-          nextAction
+          skipNext1Action
         );
 
         setDialogue(getKey(
           GameScenes.Scene_03,
-          GameStages.Stage_08,
+          GameStages.Stage_09,
           CutSceneDestinationIdentifier.Narrator),
           new string[] {"You ignore the note and leave it behind, never to find it again."},
           nextAction
@@ -299,10 +372,9 @@ namespace Game.Story
 
         setDialogue(getKey(
           GameScenes.Scene_03,
-          GameStages.Stage_09,
+          GameStages.Stage_10,
           CutSceneDestinationIdentifier.Narrator),
-          new string[] {"Maybe I should return to the barracks?"},
-          nextAction
+          new string[] {"Maybe I should return to the barracks?"}
         );
       }
 
@@ -321,7 +393,10 @@ namespace Game.Story
           },
           new System.Action[] {
             () => Debug.Log("Chose 1"),
-            () => Debug.Log("Chose 2")
+            () => {
+              Debug.Log("Chose 2");
+              GameScene.Instance.AdvanceStage();
+            }
           }
         );
 
@@ -330,7 +405,7 @@ namespace Game.Story
           GameStages.Stage_02,
           CutSceneDestinationIdentifier.SirWalter),
           new string[] {"Ha! You must have been knocked out cold. There was a massive monster that quickly killed the wolves. We called our men back and stood in awe."},
-          nextAction
+          skipNext1Action
         );
 
         setDialogue(getKey(
@@ -400,8 +475,15 @@ namespace Game.Story
           GameScenes.Scene_04,
           GameStages.Stage_10,
           CutSceneDestinationIdentifier.SirWalter),
-          new string[] {"Your orders are to investigate this monster sighting, and find it's cause. Your father should be in the area- he may have the answers we seek. Go find him!"},
+          new string[] {"Your orders are to investigate this monster sighting, and find it's cause. Your father should be in the area- he may have the answers we seek."},
           nextAction
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_04,
+          GameStages.Stage_11,
+          CutSceneDestinationIdentifier.SirWalter),
+          new string[] {"Go find him!"}
         );
       }
 
@@ -420,7 +502,10 @@ namespace Game.Story
           },
           new System.Action[] {
             () => Debug.Log("Chose 1"),
-            () => Debug.Log("Chose 2")
+            () => {
+              Debug.Log("Chose 2");
+              GameScene.Instance.AdvanceStage();
+            }
           }
         );
 
@@ -431,7 +516,7 @@ namespace Game.Story
           GameStages.Stage_02,
           CutSceneDestinationIdentifier.Stuart),
           new string[] {"Thank you, hero! I'm Stuart. I used to be human like you, but I was experimented on by Queen Esther."},
-          nextAction
+          skipNext1Action
         );
 
         setDialogue(getKey(
@@ -469,7 +554,10 @@ namespace Game.Story
           },
           new System.Action[] {
             () => Debug.Log("Chose 1"),
-            () => Debug.Log("Chose 2")
+            () => {
+              Debug.Log("Chose 2");
+              GameScene.Instance.AdvanceStage();
+            }
           }
         );
 
@@ -477,9 +565,24 @@ namespace Game.Story
           GameScenes.Scene_05,
           GameStages.Stage_07,
           CutSceneDestinationIdentifier.Stuart),
-          new string[] {"No, you need it more than me."}
+          new string[] {"Use it well!"},
+          skipNext1Action
         );
 
+        setDialogue(getKey(
+          GameScenes.Scene_05,
+          GameStages.Stage_08,
+          CutSceneDestinationIdentifier.Stuart),
+          new string[] {"No, you need it more than me."},
+          nextAction
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_05,
+          GameStages.Stage_09,
+          CutSceneDestinationIdentifier.Stuart),
+          new string[] {"I wish you well."}
+        );
       }
 
       private void scene06() {
@@ -505,7 +608,10 @@ namespace Game.Story
           },
           new System.Action[] {
             () => Debug.Log("Chose 1"),
-            () => Debug.Log("Chose 2")
+            () => {
+              Debug.Log("Chose 2");
+              GameScene.Instance.AdvanceStage();
+            }
           }
         );
 
@@ -514,7 +620,7 @@ namespace Game.Story
           GameStages.Stage_03,
           CutSceneDestinationIdentifier.Wizard),
           new string[] {"Great! I'm hungry for bacon, and there's a were-pig nearby. Their bacon is the juiciest, tastiest thing. I know you'll be tempted to eat it yourself, but give me at least 3 pieces of it."},
-          nextAction
+          skipNext1Action
         );
 
         setDialogue(getKey(
@@ -536,16 +642,31 @@ namespace Game.Story
           GameScenes.Scene_06,
           GameStages.Stage_05,
           CutSceneDestinationIdentifier.Wizard),
-          new string[] {"Fine, take it! Younguns these days have no respect!"},
-          nextAction
+          new string[] {"Good, now I'm hungry!"},
+          skipNext1Action
         );
 
         setDialogue(getKey(
           GameScenes.Scene_06,
           GameStages.Stage_06,
           CutSceneDestinationIdentifier.Wizard),
+          new string[] {"Fine, take it! Younguns these days have no respect!"},
+          nextAction
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_06,
+          GameStages.Stage_07,
+          CutSceneDestinationIdentifier.Wizard),
           new string[] {"Well done! Here, take this scroll- use it on any rusty magic item, and it will be good as new!"},
           nextAction
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_06,
+          GameStages.Stage_08,
+          CutSceneDestinationIdentifier.Wizard),
+          new string[] {"There are many dangers awaiting you; best of luck."}
         );
       }
 
@@ -564,7 +685,10 @@ namespace Game.Story
           },
           new System.Action[] {
             () => Debug.Log("Chose 1"),
-            () => Debug.Log("Chose 2")
+            () => {
+              Debug.Log("Chose 2");
+              GameScene.Instance.AdvanceStage();
+            }
           }
         );
 
@@ -573,7 +697,7 @@ namespace Game.Story
           GameStages.Stage_02,
           CutSceneDestinationIdentifier.Alex),
           new string[] {"Good! He's at the spring trying to stop Esther, I had to leave because one of those disgusting monsters broke my arm."},
-          nextAction
+          skipNext1Action
         );
 
         setDialogue(getKey(
@@ -614,6 +738,13 @@ namespace Game.Story
           CutSceneDestinationIdentifier.Alex),
           new string[] {"Please, stop her from poisoning the water supply! Maybe you can find a cure with dad!"},
           nextAction
+        );
+
+        setDialogue(getKey(
+          GameScenes.Scene_07,
+          GameStages.Stage_08,
+          CutSceneDestinationIdentifier.Alex),
+          new string[] {"Hurry! Before it's too late!"}
         );
       }
 
