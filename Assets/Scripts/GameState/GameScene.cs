@@ -56,6 +56,15 @@ public class GameScene : MonoBehaviour
         }
     }
 
+    public void ChangeScene(GameScenes scene) {
+        currentScene = scene;
+        currentStage = GameStages.Stage_01;
+    }
+
+    public void ChangeStage(GameStages stage) {
+        currentStage = stage;
+    }
+
     public void ResetStory() {
         currentScene = GameScenes.Scene_01;
         currentStage = GameStages.Stage_01;

@@ -45,6 +45,7 @@ namespace Game.Story
           return text[getKey(scene, stage, npc, isMonster, variant)];
         }
         catch {
+          Debug.Log("Tried to load key for: " + getKey(scene, stage, npc, isMonster, variant));
           return text[getKey(GameScenes.Scene_00, GameStages.Stage_01, CutSceneDestinationIdentifier.Fallback, false, variant)];
         }
       }
@@ -142,7 +143,8 @@ namespace Game.Story
           new string[] {"Welcome to Goldfleece!"},
           new System.Action[] {
             () => {
-              GameScene.Instance.AdvanceScene();
+              GameScene.Instance.ChangeScene(GameScenes.Scene_01);
+              Debug.Log("What is the Scene?:" + GameScene.Instance.currentScene);
             }
           }
         );
@@ -265,7 +267,7 @@ namespace Game.Story
           new string[] {"Go defend us!"},
           new System.Action[] {
             () => {
-              GameScene.Instance.AdvanceScene();
+              GameScene.Instance.ChangeScene(GameScenes.Scene_02);
             }
           }
         );
