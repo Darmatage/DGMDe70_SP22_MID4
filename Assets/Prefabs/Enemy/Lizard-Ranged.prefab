@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &4275291586855407423
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361771063440933170}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04253b81088d84bf68b5a7464015c4da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6408815144643072380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59,9 +78,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5338266366477963339, guid: 2e25574924b9b4eca9707d61af8214f5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4644523113532460279, guid: 06e39ed4d67b74c488417748b2cefc75, type: 3}
     - target: {fileID: 5338266366477963342, guid: 2e25574924b9b4eca9707d61af8214f5, type: 3}
       propertyPath: m_Name
       value: Lizard-Ranged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e25574924b9b4eca9707d61af8214f5, type: 3}
+--- !u!1 &1361771063440933170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5338266366477963342, guid: 2e25574924b9b4eca9707d61af8214f5, type: 3}
+  m_PrefabInstance: {fileID: 6408815144643072380}
+  m_PrefabAsset: {fileID: 0}
