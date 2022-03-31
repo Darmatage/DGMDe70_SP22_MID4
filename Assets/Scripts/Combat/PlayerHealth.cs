@@ -46,7 +46,8 @@ namespace Game.Combat
             if(IsDead())
             {
                 Debug.Log("Player is dead!");
-                FindObjectOfType<SavingWrapperControl>().Load();
+                EventHandler.CallGameOverActionEvent();
+                //FindObjectOfType<SavingWrapperControl>().ExitGame(0, 0.5f);
             } 
         }
 

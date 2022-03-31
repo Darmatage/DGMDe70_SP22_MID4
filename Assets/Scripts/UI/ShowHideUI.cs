@@ -12,6 +12,7 @@ namespace Game.UI
         [SerializeField] GameObject uiInventroyContainer = null;
         [SerializeField] GameObject uiCraftingContainer = null;
         [SerializeField] GameObject uiPauseContainer = null;
+        [SerializeField] GameObject uiGameOverContainer = null;
 
         LazyValue<GameObject> uiDialogueContainer;
         LazyValue<SavingWrapperControl> savingWrapper;
@@ -39,6 +40,7 @@ namespace Game.UI
             EventHandler.CraftingActionEvent += CraftingToggle;
             EventHandler.DialogueActionEvent += DialogueToggle;
             EventHandler.CloseAllUIActionEvent += CloseAllUI;
+            EventHandler.GameOverActionEvent += GameOverUI;
             EventHandler.ActiveGameUI += GamePausedToggle;
         }
 
@@ -49,14 +51,17 @@ namespace Game.UI
             EventHandler.CraftingActionEvent -= CraftingToggle;
             EventHandler.DialogueActionEvent -= DialogueToggle;
             EventHandler.CloseAllUIActionEvent -= CloseAllUI;
+            EventHandler.GameOverActionEvent -= GameOverUI;
             EventHandler.ActiveGameUI -= GamePausedToggle;
         }
+
         private void Start()
         {
             uiDialogueContainer.ForceInit();
             uiInventroyContainer.SetActive(false);
             uiCraftingContainer.SetActive(false);
             uiPauseContainer.SetActive(false);
+            uiGameOverContainer.SetActive(false);
             uiDialogueContainer.value.SetActive(false);
         }
         private void Update()
@@ -88,6 +93,12 @@ namespace Game.UI
             Debug.Log("Exit Game");
         }
 
+        private void GameOverUI()
+        {
+            MenuToggle(uiGameOverContainer);
+            Debug.Log("Game Over");
+        }
+
         private void InventoryToggle()
         {
             MenuToggle(uiInventroyContainer);
@@ -109,22 +120,26 @@ namespace Game.UI
 
         private void EscapeToggle()
         {
-            if(isGamePaused)
+            if (!uiGameOverContainer.activeSelf)
             {
-                uiInventroyContainer.SetActive(false);
-                uiCraftingContainer.SetActive(false);
-                uiPauseContainer.SetActive(false);
-                uiDialogueContainer.value.SetActive(false);
-                isGamePaused = false;
-            }
-            else 
-            {
-                Debug.Log("Open Pause UI");
-                uiPauseContainer.SetActive(true);
-                isGamePaused = true;
-            }
-            EventHandler.CallActiveGameUI(isGamePaused);
-            Debug.Log("Escape toggle");
+                if(isGamePaused)
+                {
+                    uiInventroyContainer.SetActive(false);
+                    uiCraftingContainer.SetActive(false);
+                    uiPauseContainer.SetActive(false);
+                    uiDialogueContainer.value.SetActive(false);
+                    isGamePaused = false;
+                }
+                else 
+                {
+                    Debug.Log("Open Pause UI");
+                    uiPauseContainer.SetActive(true);
+                    isGamePaused = true;
+                }
+                EventHandler.CallActiveGameUI(isGamePaused);
+                Debug.Log("Escape toggle");
+
+                }
         }
 
         private void CloseAllUI()

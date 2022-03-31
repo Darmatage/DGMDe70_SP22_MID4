@@ -109,6 +109,16 @@ public class EventHandler
         }
     }
 
+    // Crafting Action
+    public static event Action GameOverActionEvent;
+    public static void CallGameOverActionEvent()
+    {
+        if (GameOverActionEvent != null)
+        {
+            GameOverActionEvent();
+        }
+    }
+
     // Dialogue Action
     public static event DialogueActionDelegate DialogueActionEvent;
     public static void CallDialogueActionEvent(CutSceneDestinationIdentifier cutSceneDestinationIdentifier)
